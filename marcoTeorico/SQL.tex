@@ -1,0 +1,89 @@
+\subsubsection{Structured Query Language}
+\textit{Structured Query Language} o SQL está basado en el álgebra relacional, en el cálculo relacional y es un lenguaje de manipulación de datos, un lenguaje de definición de datos, un lenguaje de control de transacciones y un lenguaje de control de datos.
+
+\paragraph*{Lenguaje de manipulación de datos (DML)}
+Un \textit{Data Manipulation Language} o DML incluye comandos para insertar, actualizar, eliminar y recuperar datos dentro de las tablas de la base de datos. 
+
+\paragraph*{Lenguaje de definición de datos (DDL)}
+ Un \textit{Data Definition Language} o DDL incluye comandos para crear objetos de base de datos como tablas, índices y vistas, así como comandos para definir accesos a objetos de la base de datos. 
+
+\paragraph*{Lenguaje de control de transacciones (TCL)}
+Los comandos de un \textit{Transaction Control Language} o TCL se ejecutan dentro del contexto de una transacción, que es una unidad lógica de trabajo compuesta por una o más instrucciones SQL. 
+
+
+SQL proporciona comandos para controlar el procesamiento de estas transacciones atómicas.
+
+\paragraph*{Lenguaje de control de datos (DCL)}
+Los comandos de un \textit{Data Control Language} o DCL se utilizan para controlar el acceso a los objetos de datos, como otorgar a un usuario permiso para ver solo una tabla y otorgar a otro usuario permiso para cambiar los datos de la mista tabla.
+
+
+%\renewcommand*{\arraystretch}{1.4}
+\begin{longtable}[l]{ l p{7cm} }
+
+    \caption{Comandos de SQL.\label{long}}\\
+    
+    \hline
+    \multicolumn{2}{ c }{Comandos de manipulación de datos}\\
+    \hline
+    \multicolumn{1}{c}{Comando} & \multicolumn{1}{c}{Descripción}\\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \multicolumn{2}{|l|}{Continuación de Tabla \ref{long}}\\
+    \hline
+    Continuación de comandos SQL\\
+    \hline
+    \endhead
+    
+    \hline
+    \endfoot
+    
+    \hline
+    \multicolumn{2}{ c }{Fin de Tabla}\\
+    \hline%\hline
+    \endlastfoot
+    
+    \textbf{SELECT} & \textbf{Selecciona atributos de filas en una o más tablas o vistas}\\
+    \qquad FROM  & Especifica las tablas de las que se deben recuperar los datos\\
+    \qquad WHERE  & Restringe la selección de filas en función de una expresión condicional\\
+    \qquad GROUP BY & Agrupa las filas seleccionadas en función de uno o más atributos\\
+    \qquad HAVING & Restringe la selección de filas agrupadas en función de una condición\\
+    \qquad ORDER BY & Ordena las filas seleccionadas en función de uno o más atributos\\
+     \textbf{INSERT} & \textbf{Inserta filas en una tabla}\\
+     \textbf{UPDATE} & \textbf{Modifica los valores de un atributo en una o más filas de la tabla}\\
+    \textbf{DELETE} & \textbf{Elimina una o más filas de una tabla}\\
+    \textbf{Operadores de comparación} \\
+    \qquad $=,<,>,\leq,\geq,<>,!=$ & Usados en expresiones condicionales\\
+    \textbf{Operadores lógicos} \\
+    \qquad AND, OR, NOT & Usados en expresiones condicionales\\
+    \textbf{Operadores especiales} \\
+    \qquad BETWEEN & Comprueba si un valor de atributo está dentro de un rango\\
+    \qquad IN & Comprueba si un valor de atributo coincide con algún valor dentro de una lista de valores\\
+    \qquad LIKE & Comprueba si un valor de atributo coincide con un patrón de cadena dado\\
+    \qquad IS NULL & Comprueba si un valor de atributo es nulo\\
+    \qquad EXIST & Comprueba si una subconsulta devuelve alguna fila\\
+    \qquad DISTINCT & Limita que los valores sean únicos\\
+    \textbf{Comandos de definición de datos}\\
+    \textbf{CREATE SCHEMA} & \textbf{Crea el esquema de la base de datos}\\
+    \textbf{CREATE TABLE} & Crea una nueva tabla en el esquema de la base de datos del usuario\\
+    \qquad NOT NULL & Asegura que una columna no tendrá valores nulos\\
+    \qquad UNIQUE & Asegura que una columna no tendrá valores duplicados\\
+    \qquad PRIMARY KEY & Define una clave primaria para una tabla\\
+    \qquad FOREIGN KEY & Define una clave externa para una tabla\\
+    \qquad DEFAULT & Define un valor predeterminado para una columna (cuando no se proporciona ningún valor)\\
+    \qquad CHECK & Valida datos en un atributo\\
+    \textbf{CREATE INDEX} & \textbf{Crea un índice para una tabla}\\
+    \textbf{CREATE VIEW} & \textbf{Crea un subconjunto dinámico de filas y columnas a partir de una o más tablas}\\
+    \textbf{ALTER TABLE} & \textbf{Modifica la definición de una tabla (agrega, modifica o elimina atributos o restricciones)}\\
+    \textbf{CREATE TABLE AS} & \textbf{Crea una nueva tabla basada en una consulta en el esquema de la base de datos del usuario}\\
+    \textbf{DROP TABLE} & \textbf{Elimina permanentemente una tabla (y sus datos)}\\
+    \textbf{DROP INDEX} & \textbf{Elimina permanentemente un índice}\\
+    \textbf{DROP VIEW} & \textbf{Elimina permanentemente una vista}\\
+    \textbf{Lenguaje de control de transacciones}\\
+    \qquad COMMIT & Guarda de manera permanente los cambios en los datos\\
+    \qquad ROLLBACK & Restaura los datos a sus valores anteriores\\
+    \textbf{Lenguaje de control de datos}\\
+    \qquad GRANT & Le da un usuario permiso de hacer una acción de sistema o de acceder a datos de un objeto\\
+    \qquad REVOKE & Le quita el privilegio a un usario de hacer algunas operaciones\\
+\end{longtable}

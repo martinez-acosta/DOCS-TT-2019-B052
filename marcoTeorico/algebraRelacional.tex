@@ -1,0 +1,138 @@
+\subsection{Álgebra relacional}
+El álgebra relacional es muy importante por varias razones. La primera, porque proporciona un fundamento formal para las operaciones del modelo relacional. La segunda razón, y quizá la más importante, es que se utiliza como base para la implementación y optimización de consultas en los RDBMS. Tercera, porque algunos de sus conceptos se han incorporado al lenguaje estándar de consultas SQL para los RDBMS.
+
+
+\subsubsection{Operaciones relacionales unarias}
+\paragraph{Selección}
+
+SELECCIÓN se emplea para seleccionar un subconjunto de las tuplas de una relación que satisfacen una condición de selección. Se puede considerar esta operación como un filtro que mantiene sólo las tuplas que satisfacen una determinada condición. 
+
+
+SELECCIÓN puede visualizarse también como una partición horizontal de la relación en dos conjuntos de tuplas: las que satisfacen la condición son seleccionadas y las que no, descartadas. 
+
+
+En general, SELECCIÓN está designada como:
+
+
+$\sigma<$condición de selección$>(R)$
+
+
+donde el símbolo $\sigma$ (sigma) se utiliza para especificar el operador de SELECCIÓN, mientras que la condición de selección es una expresión lógica (o booleana) especificada sobre los atributos de la relación R. 
+
+
+Observe que R es, generalmente, una expresión de álgebra relacional cuyo resultado es una relación: la más sencilla de estas expresiones es sólo el nombre de una relación de base de datos. El resultado de SELECCIÓN tiene los mismos atributos que R.
+
+
+SELECCIÓN es unaria, es decir, se aplica a una sola relación. Además, esta operación se aplica a cada tupla individualmente; por consiguiente, las condiciones de selección no pueden implicar a más de una tupla. 
+
+
+El grado de la relación resultante de una operación SELECCIÓN (su número de atributos) es el mismo que el de R. El número de tuplas en la relación resultante es siempre menor que o igual que el número de tuplas en R.
+
+\paragraph{Proyección}
+
+
+PROYECCIÓN selecciona ciertas columnas de la tabla y descarta otras. Si sólo estamos interesados en algunos atributos de una relación, usamos la operación PROYECCIÓN para planear la relación sólo sobre esos atributos. 
+
+
+Por consiguiente, el resultado de esta operación puede visualizarse como una partición vertical de la relación en otras dos: una contiene las columnas (atributos) necesarias y otra las descartadas. 
+
+La forma general de la operación PROYECCIÓN es:
+
+
+$\Pi<$lista de atributos>(R)
+
+
+donde $\Pi$ (pi) es el símbolo usado para representar la operación PROYECCIÓN, mientras que <lista de atributos> contiene la lista de campos de la relación R que queremos. 
+
+
+De nuevo, observe que R es, en general, una expresión de álgebra relacional cuyo resultado es una relación, cuyo caso más simple es obtener sólo el nombre de una relación de base de datos.
+
+
+El resultado de la operación PROYECCIÓN sólo tiene los atributos especificados en <lista de atributos> en el mismo orden a como aparecen en la lista. Por tanto, su grado es igual al número de atributos contenidos en <lista de atributos>.
+
+
+Si la lista de atributos sólo incluye atributos no clave de R, es posible que se dupliquen tuplas. La operación PROYECCIÓN elimina cualquier tupla duplicada, por lo que el resultado de la misma es un conjunto de tuplas y, por consiguiente, una relación válida. Esto se conoce como eliminación de duplicados.
+
+\paragraph{Renombrar}
+
+Podemos definir una operación RENOMBRAR como un operador unario. Una operación RENOMBRAR
+aplicada a una relación R de grado n aparece denotada de cualquiera de estas tres formas
+
+
+$\rho_S (B_1,B_2,...,B_n)$ o $\rho_S (R)$ o $\rho_{(B_1,B_2,...,B_n)}(R)$
+
+
+donde el símbolo $\rho$ (rho) se utiliza para especificar el operador RENOMBRAR, S es el nombre de la nueva relación y $B_{1} , B_{2} ,..., B_{n}$ son los de los nuevos atributos.
+
+
+La primera expresión renombra tanto la relación como sus atributos, la segunda solo lo hace con la relación y la tercera solo con los atributos. Si los atributos de R son $(A_1, A_2,...,A_n)$ por este orden, entonces cada $A_i$ es renombrado como $B_i$. 
+\subsubsection{Operaciones de álgebra relacional de la teoría de conjuntos}
+
+Para combinar los elementos de dos conjuntos se utilizan varias operaciones de la teoría de conjuntos, como la UNIÓN, la INTERSECCIÓN y la DIFERENCIA DE CONJUNTOS (llamada también a veces MENOS, o MINUS). Todas ellas son operaciones binarias, es decir, se aplican a dos conjuntos de tuplas.
+
+
+Cuando se refieren a las bases de datos relacionales, las relaciones sobre las que se aplican estas tres operaciones deben tener el mismo tipo de tuplas; esta condición recibe el nombre de compatibilidad de unión. 
+
+
+Dos relaciones $R(A_1, A_2,...,A_n)$ y $S(B_1,B_2,...,B_n)$ se dice que son de unión compatible si tienen el mismo grado n y si el dom($A_i$) = dom($B_i$ ) para $1 \leq i \leq n$. 
+
+
+Esto significa que ambas relaciones tienen el mismo número de atributos y que cada par correspondiente cuenta con el mismo dominio.
+
+
+Podemos definir las tres operaciones UNIÓN, INTERSECCIÓN y DIFERENCIA DE CONJUNTO en dos relaciones de unión compatible R y S del siguiente modo:
+
+\begin{itemize}
+    \item UNIÓN El resultado de esta operación, especificada como $R \cup S$, es una relación que incluye todas las tuplas que están tanto en R como en S o en ambas, R y S. Las tuplas duplicadas se eliminan.
+
+    \item INTERSECCIÓN El resultado de esta operación, especificada como $R \cap S$, es una relación que incluye todas las tuplas que están en R y en S.
+    
+    \item  DIFERENCIA DE CONJUNTO (o MENOS ). El resultado de esta operación, especificada como $R - S$, es una relación que incluye todas las tuplas que están en R pero no en S.
+\end{itemize}
+
+\paragraph{Producto cartesiano}
+
+Se trata también de una operación de conjuntos binarios, aunque no es necesario que las relaciones en las que se aplica sean una unión compatible. En su forma binaria produce un nuevo elemento combinando cada miembro (tupla) de una relación (conjunto) con los de la otra.
+
+
+En general, el resultado de $R(A_1, A_2,...,A_n) \times S(B_1, B_2,..., B_m)$ es una relación Q con un grado de n + m atributos $Q(A_1, A_2,..., A_n, B_1, B_2,..., B_m)$, en este orden.
+
+
+La relación resultante Q tiene una tupla por cada combinación de éstas (una para R y otra para S). Por tanto, si R tiene n R tuplas (indicado como $|R| = n_R$ ), y S cuenta con $n_S$ tuplas, $R \times S$ tendrá $n_R \ast	 n_S$ tuplas.
+
+
+La operación PRODUCTO CARTESIANO n-ario es una extensión del concepto indicado más arriba que produce nuevas tuplas concatenando todas las posibles combinaciones de tuplas desde n relaciones subyacentes.
+
+
+Es útil cuando va seguida por una selección que correlacione los valores de los atributos procedentes de las relaciones componentes.
+
+\subsubsection{Operaciones relacionales binarias}
+\paragraph{Concatenación}
+CONCATENACIÓN, especificada mediante $\bowtie $, se emplea para combinar tuplas relacionadas de dos relaciones en una sola. Esta operación es muy importante para cualquier base de datos relacional que cuente con más de una relación, ya que nos permite procesar relaciones entre relaciones.
+
+
+La forma general de una CONCATENACIÓN en dos relaciones $R(A_1, A_2,...,A_n)$ y $S(B_1, B_2,..., B_m)$ es:
+
+
+$R\bowtie<$condición de conexión$> S$
+
+El resultado de la CONCATENACIÓN es una relación Q de n + m atributos $Q(A_1, A_2,..., A_n, B_1, B_2,..., B_m)$ por este orden; Q tiene una tupla por cada combinación de éstas (una para R y otra para S) siempre que dicha combinación satisfaga la condición de conexión.
+
+
+Ésta es la principal diferencia existente entre el PRODUCTO CARTESIANO y la CONCATENACIÓN. En la CONCATENACIÓN sólo aparecen en el resultado las combinaciones de tuplas que satisfacen la condición de conexión, mientras que en el PRODUCTO CARTESIANO
+se incluyen todas las combinaciones de tuplas.
+
+
+La condición de conexión está especificada sobre los atributos de las dos relaciones R y S y es evaluada para cada combinación de tuplas, incluyéndose en la relación Q resultante en forma de una única tupla combinada sólo aquéllas cuya condición de conexión se evalúe como VERDADERO.
+
+\paragraph{División}
+
+La DIVISIÓN, especificada mediante $\div$, es útil para cierto tipo de consultas que a veces se realizan en aplicaciones de bases de datos. 
+
+
+Para que una tupla t aparezca en el resultado T de la DIVISIÓN, los valores de aquélla deben aparecer en R en combinación con cada tupla en S.
+
+
+Observe que en la formulación de la operación DIVISIÓN, las tuplas de la relación denominador restringen la relación numerador seleccionando aquellas tuplas del resultado que sean iguales a todos los valores presentes en el denominador. 
+
+La operación DIVISIÓN está definida por conveniencia para gestionar las consultas que implican una cuantificación universal.

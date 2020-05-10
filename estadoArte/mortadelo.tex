@@ -1,0 +1,11 @@
+\section{Mortadelo}
+Es un framework para el diseño automático de bases de datos NoSQL que ofrece un proceso de transformación basado en modelos con el objetivo de brindar un tratamiento homogéneo a los diferentes paradigmas sobre tecnologías bien conocidas. 
+
+
+Define un proceso de transformación el cual, a través de una serie de pasos transforma primero el modelo conceptual provisto denotado como GDM (generic data model) el cual representa una definición conceptual de la base de datos dada por el usuario en un modelo lógico dependiendo del paradigma NoSQL, para después generar scripts de implementación que instanciarían la tecnología NoSQL específica de ese paradigma
+
+
+Parte de la validación del GDM compuesto por dos bloques que contienen la información sobre el dominio de las entidades y sus relaciones (Modelo de estructura) y la definición como los datos del modelo serán solicitados por el esquema (Consultas de acceso), posteriormente se traduce el GDM en las especificaciones lógicas NoSQL mediante la aplicación de un conjunto de reglas de transformación para finalmente transformar el modelo en texto proporcionando un diseño e implementación generados automáticamente para el almacén de datos NoSQL deseado.
+
+
+Para la comprobación de su validez, se ha implementado una herramienta que admite la generación de almacenes de datos de columnas con transformaciones concretas para Cassandra, así mismo ofrece soporte preliminar de los basados ​​en documentos.

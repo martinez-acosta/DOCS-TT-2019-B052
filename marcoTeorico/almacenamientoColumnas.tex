@@ -1,0 +1,36 @@
+\subsubsection{Orientado a columnas}
+Este modelo de base de datos se originó con el BigTable de Google. Otras bases de datos orientados a columnas incluyen HBase, Hypertable y Cassandra. 
+
+
+Cassandra comenzó como un proyecto en Facebook, pero Facebook lo lanzó a la comunidad de código abierto, que ha seguido desarrollando a Cassandra en una de las bases de datos orientadas a columnas más populares.
+
+
+
+
+Afortunadamente, las bases de datos de la familia de columnas son conceptualmente simples y conceptualmente lo suficientemente cercanas al modelo relacional para que su comprensión del modelo relacional pueda ayudarlo a comprender el modelo familiar de columnas.
+
+
+El término base de datos orientada a columnas puede referirse a dos conjuntos diferentes de tecnologías que a menudo se confunden entre sí. 
+
+
+En cierto sentido, el término de base de datos orientada a columnas puede usarse para tecnologías de bases de datos relacionales tradicionales que usan almacenamiento enfocado en columnas en lugar de almacenamiento en filas. 
+
+
+Por otro lado, en un sistema de base de datos NoSQL describe un tipo de base de datos que organiza datos en pares nombre-valor donde el nombre actua también como la clave.
+
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.75\textwidth]{noSQL/columna.png}
+    \caption{Familia de columnas}
+    \label{img:documentos-columna}
+\end{figure}
+
+
+Cada par de clave-valor representa una columna y siempre contiene una fecha que sirve para resolver confiltos de escritura, datos expirados entre otras cosas.
+
+
+
+Al ser una bases de datos NoSQL, no requiere que los datos se ajusten a estructuras predefinidas ni admite SQL para consultas.
+
+

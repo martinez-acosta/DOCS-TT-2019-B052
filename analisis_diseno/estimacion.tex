@@ -1,0 +1,117 @@
+
+
+\subsection*{Estimación}
+Para la mayoría de los proyectos, el mayor costo es el primer rubro. Debe estimarse el esfuerzo total (en meses-hombre) que es probable se requiera para completar el trabajo de un proyecto. Desde luego, se cuenta con datos limitados para realizar tal valoración, de manera que habrá que hacer la mejor evaluación posible y a continuación agregar contingencia significativa (tiempo y esfuerzo adicionales) en caso de que la estimación inicial sea optimista.
+\subsection{COCOMO II}
+
+El modelo COCOMO (por sus acrónimo en inglés COnstructive COst MOdel) original se convirtió en uno de los modelos de estimación de costo más ampliamente utilizados y estudiados en la industria. Evolucionó hacia un modelo de estimación más exhaustivo, llamado COCOMO II. Como su predecesor, COCOMO II en realidad es una jerarquía de modelos de estimación que aborda las áreas siguientes:\textbf{[Roger S. Pressman, Ph.D. Ingeniería del software UN ENFOQUE PRÁCTICO 7 edición, ed. McGRAW-HILL]}
+\begin{enumerate}
+	\item \textbf{Modelo de composición de aplicación.} Se usa durante las primeras etapas de la ingeniería de software, cuando son primordiales la elaboración de prototipos de las interfaces de usuario, la consideración de la interacción del software y el sistema, la valoración del rendimiento y la evaluación de la madurez de la tecnología.
+	
+	\item \textbf{Modelo de etapa temprana de diseño.} Se usa una vez estabilizados los requisitos y establecida la arquitectura básica del software.
+	
+	\item \textbf{Modelo de etapa postarquitectónica.} Se usa durante la construcción del software.
+\end{enumerate}
+
+
+Como todos los modelos de estimación para software, los modelos COCOMO II requieren información sobre dimensionamiento. Como parte de la jerarquía del modelo, están disponibles tres diferentes opciones de dimensionamiento: puntos objeto, puntos de función y líneas de código fuente.
+
+
+\subsubsection{El modelo de composición de aplicación COCOMO II }
+Para derivar una estimación del esfuerzo debemos utilizar la siguiente relación.
+
+\[ Esfuerzo_{estimado} = \frac{NOP}{PROD}\]
+
+donde:
+\begin{itemize}
+	\item Esfuerzo estimado (PM) es la estimación del esfuerzo en meses-hombre. 
+	\item NOP es el número de puntos de aplicación en el sistema entregado. 
+	\item PROD es la productividad del punto de aplicación	
+\end{itemize}
+
+
+Para determinar NOP se necesita utilizar el punto de objeto el cual una medida de software indirecta que se calcula usando conteos del número de:
+\begin{enumerate}
+	\item pantallas (en la interfaz de usuario)
+	\item reportes 
+	\item componentes que probablemente se requieran para construir la aplicación.
+\end{enumerate}
+
+Cada instancia de objeto (por ejemplo, una pantalla o reporte) se clasifica en uno de tres niveles de complejidad (simple, medio o difícil), usando criterios sugeridos por Boehm [ Boehm, B., “Anchoring the Software Process”, IEEE Software, vol. 13, núm. 4, julio 1996, pp. 73-82]
+
+
+
+\begin{longtable}{  l | l | l | l | l | l  }	
+	
+	\hline
+	
+	\textbf{Tipo de objeto } & \textbf{Cantidad } & \multicolumn{3}{|c|}{\textbf{Peso de complejidad}} & \textbf{Subtotal }  \\
+	
+	\endfirsthead
+	
+	\multicolumn{6}{c}{Continuación de Tabla \ref{long}}\\
+	\hline
+	Continuación de tabla\\
+	\hline
+	\endhead
+	
+	\hline
+	\endfoot
+	
+	& & Simple & Media & Difícil &  \\
+	\hline
+	\hline
+	Pantalla & 4 & 1 & 2 & \underline{3} & 12 \\
+	Reporte & 9 & 10 & \underline{5} & 8 & 45 \\
+	Componente & 10 &  &  & 10 & 100 \\
+	\hline
+	\multicolumn{5}{l|}{\textbf{Total OP}}&  157 \\	
+\end{longtable}
+
+Determinado el conteo de puntos de objeto se multiplican el número original de instancias de objeto por el factor de ponderación y se suman para obtener un conteo total de puntos de objeto.
+
+\[ NOP = (Puntos\_de\_objeto)(\frac{100-\%reutilizacion}{100})\]
+
+Dentro de este punto, no se encuentra codigo el cual reutilizar, por lo que:
+
+\[ NOP = (Puntos\_de\_objeto)\]
+\[ NOP = (157)\]
+
+Para la tasa de productividad se utiliza la figura[referenciar tabla], para diferentes niveles de experiencia del desarrollador y de madurez del entorno de desarrollo.
+
+
+
+\begin{longtable}{  l || l | l | l | l | l  }	
+	
+	\hline
+	
+	\textbf{Experiencia del desarrollador } & Muy baja & Baja & Nominal & Alta & Muy alta  \\
+	\hline
+	
+	\endfirsthead
+	
+	\multicolumn{6}{c}{Continuación de Tabla \ref{long}}\\
+	\hline
+	Continuación de tabla\\
+	\hline
+	\endhead
+	
+	\hline
+	\endfoot
+	
+	\textbf{Madurez/ capacidad del entorno } & Muy baja & Baja & Nominal & Alta & Muy alta  \\
+	\hline
+	\textbf{PROD } & 4 & 7 & 10 & 25 & 50 \\
+\end{longtable}
+
+Una vez determinados los nuevos puntos de objeto y la tasa de productividad, se puede calcular una estimación del esfuerzo del proyecto 
+
+\[ Esfuerzo_{estimado} = \frac{NOP}{PROD}\]
+\[ Esfuerzo_{estimado} = \frac{157}{7}\]
+\[ Esfuerzo_{estimado} = 22.42\]
+\[ Esfuerzo_{estimado} = 23 Meses-hombre\]
+
+Una vez obtenidos estos valores, se pueden sumar los costos derivados del desarrollo de software 
+
+
+

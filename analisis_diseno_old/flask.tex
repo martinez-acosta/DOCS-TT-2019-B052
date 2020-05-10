@@ -1,0 +1,31 @@
+\subsection*{Flask}
+Flask es un micro \textit{web framework} escrito en Python. Se clasifica como micro porque no requiere herramientas o bibliotecas particulares.
+
+
+No tiene capa de abstracción de base de datos, validación de formularios ni ningún otro componente donde las bibliotecas de terceros preexistentes brinden funciones comunes. Sin embargo, Flask admite extensiones que pueden agregar características de la aplicación como si se implementaran en el propio Flask.
+
+
+Existen extensiones para mapeadores relacionales de objetos, validación de formularios, manejo de carga, varias tecnologías de autenticación abiertas y varias herramientas relacionadas con el marco común. Las extensiones se actualizan con mucha más frecuencia que el programa central Flask.
+
+
+\subsubsection*{Ventajas y desventajas de Flask}
+Está basado en la especificación WSGI de Werkzeug y el motor de templates Jinja2; además, tiene una licencia BSD.
+
+
+Entre las ventajas y desventajas, destacamos:
+
+\paragraph*{Ventajas}
+\begin{enumerate}
+    \item Es un framework que se destaca en instalar extensiones o complementos de acuerdo al tipo de proyecto que se va a desarrollar, es decir, es perfecto para el prototipado rápido de proyectos.
+    \item Incluye un servidor web, así podemos evitamos instalar uno como Apache o Nginx. Además, nos ofrece soporte para pruebas unitarias y para Cookies de seguridad (sesiones del lado del cliente), apoyándose en el motor de plantillas ​Jinja2​.
+    \item Su velocidad es mejor a comparación de Django. Generalmente el desempeño que tiene Flask es superior debido a su diseño minimalista que tiene en su estructura.
+    \item  Flask permite combinarse con herramientas para potenciar su funcionamiento, por ejemplo: Jinja2, SQLAlchemy, Mako y Peewee entre otras.
+\end{enumerate}
+\paragraph*{Desventajas}
+
+\begin{enumerate}
+    \item  Su sistema de autenticación de usuarios es muy básico, a comparación del potente sistema de autenticación que utiliza Django, este puede crear un sistema de Login API sencillo para aplicaciones más pequeñas.
+    \item  Su representación de Plugins no es tan extensa como la tiene Django.
+    \item  Es complicado en las pruebas unitarias o migraciones.
+    \item El ORM (Mapeo objeto relacional) para conectar con las bases de datos, SQLAlchemy es externo.
+\end{enumerate}

@@ -1,0 +1,59 @@
+\subsection{El modelo entidad-relación extendido}
+
+De acuerdo a la bibliografía de Catherine\cite{catherine_m_ricardo_bases_nodate}, el modelo entidad-relación extendido (EE-R) extiende el modelo ER para permitir la inclusión de varios tipos de abstracción, y para expresar restricciones más claramente. A los diagramas ER estándar se agregan símbolos adicionales para crear diagramas EE-R que expresen estos conceptos.
+
+\subsubsection{Especialización}
+Con frecuencia, un conjunto de entidades contiene uno o más subconjuntos que tienen atributos especiales o que participan en relaciones que otros miembros del mismo conjunto  de entidades no tiene.
+
+
+El método de identificar subconjuntos de conjuntos de entidades existentes, llamado especialización, corresponde a la noción de herencia de subclase y clase en el diseño orientado a objetos, donde se representa mediante jerarquías de clase.
+
+
+El circulo que conecta a la superclase con las subclases se llama se llama círculo de especialización.  Cada subclase se conecta al círculo mediante una línea que tiene un símbolo de herencia, un símbolo de subconjunto o copa, con el lado abierto de frente a la superclase. Las subclases heredan los atributos de la superclase y opcionalmente pueden tener atributos locales distintos.
+
+
+Dado que cada miembro de una subclase es miembro de la superclase, al círculo de especialización a veces se le conoce como relación isa.
+
+
+En ocasiones una entidad tiene solo un subconjunto con propiedades o relaciones especiales de las que quiere tener información. Solo contiene una subclase para una especialización. En este caso, en el diagrama EE-R se omite el círculo y simplemente se muestra la subclase conectada mediante una línea de subconjunto a la superclase.
+
+
+Las subclases también pueden participar en relaciones locales que no se apliquen a la superclase o a otras subclases en la misma jerarquía.
+
+\subsubsection{Generalización}
+Además de la especialización, también se pueden crear jerarquías de clase al reconocer que dos o más clases tienen propiedades comunes e identificar una superclase común para ellas, un proceso llamado generalización. Estos dos procesos son inversos uno de otro, pero ambos resultan en el mismo tipo de diagrama jerárquico.
+
+
+\subsubsection{Restricciones}
+
+Las subclases pueden ser traslapantes (\textit{overlapping}), lo que significa que la misma instancia de entidad puede pertenecer a más de una de las subclases, o desarticuladas (\textit{disjoint}), lo que significa que no tienen miembros en común. A esto se le refiere como restricción de desarticulación (\textit{disjointness}) y se expresa al colocar una letra adecuada, $d$ u $o$, en el círculo de especialización. Una $d$ indica subclases de desarticulación y una $o$ indica subclases de traslapamiento. 
+
+
+Una especialización también tiene una restricción de completud (\textit{completeness}), que muestra si todo miembro del conjunto de entidades debe participar en ella.
+
+
+Si todo miembro de la superclase debe pertenecer a alguna subclase, se tiene una especialización total. Si a algunos miembros de la superclase no se les puede permitir pertenecer a alguna subclase, la especialización es parcial.
+
+
+En algunas jerarquías de especialización es posible identificar la subclase a la que pertenece una entidad al examinar una condición o predicado específico para cada subclase, es decir, es una especialización definida por predicado, pues la membresía a la subclase está determinada por un predicado.
+
+
+Algunas especializaciones definidas por predicado usan el valor del mismo atributo en el predicado definitorio para todas las subclases. Estas se llaman especializaciones definidas por atributo. 
+
+
+Las especializaciones que no están definidas por predicado se dice que son definidas por el usuario, pues el usuario es el responsable de colocar la instancia de entidad en la subclase correcta.
+
+
+\subsubsection{Jerarquías múltiples y herencia}
+
+Cuando el mismo conjunto de entidades puede ser una subclase de dos o más superclases, se dice que tal clase es una subclase compartida y tiene herencia múltiple de sus superclases.
+
+
+\subsubsection{Unión}
+
+Mientras que una subclase compartida representa un miembro de todas sus superclases y hereda atributos de todas ellas, una subclase se puede relacionar con la de una colección, llamada unión o categoría de superclases, en vez de pertenecer a todas ellas. En este caso, una instancia de la subclase hereda solo los atributos de una de las superclases, dependiendo de a cuál miembro de la unión pertenece.
+
+
+Las categorías pueden ser parciales o totales, dependiendo de si cada miembro de los conjuntos que constituyen la unión participan en ella. 
+
+

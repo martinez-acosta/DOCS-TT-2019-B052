@@ -1,0 +1,23 @@
+En los últimos años, los sistemas \textit{Not only SQL} o NoSQL han surgido como alternativa a los sistemas de bases de datos relacionales y se enfocan, principalmente, en buscar resolver problemáticas inherentes al usarlas en algunos escenarios.
+
+
+Los sistemas NoSQL admiten diferentes modelos de datos, como los de clave-valor, documentos, columnas y grafos; con ello se enfocan en guardar datos de una manera apropiada de acuerdo a los requisitos actuales para la gestión de datos en la web o en la nube, enfatizando la escalabilidad, la tolerancia a fallos y la disponibilidad a costa de la consistencia.
+
+
+De acuerdo a Google Trends, en 2009 aumentó el interés en los sistemas NoSQL y desde entonces, también empezaron a resaltar algunas problemáticas propias de estos sistemas, porque si bien resuelven algunos dilemas de las bases de datos relacionales, por enfocarse en la ya mencionada escalabilidad, la tolerancia a fallos o la flexibilidad para realizar cambios en el esquema de la base de datos, la heterogeneidad de los sistemas NoSQL ha llevado a una amplia diversificación de las interfaces de almacenamiento de datos, provocando la pérdida de un paradigma de modelado común o de un lenguaje de consultas estándar como SQL.
+
+
+Respecto al modelado de datos, en el diseño de las bases de datos tradicionales, el modelo entidad-relación\cite{codd_relational_nodate} es el modelo conceptual más usado y tiene procedimientos bien establecidos como resultado de décadas de investigación, sin embargo, para los sistemas NoSQL los enfoques tradicionales de diseño de bases de datos no proporcionan un soporte adecuado para satisfacer el modelado de sus diferentes modelos de datos y para abordar esta problemática se han creado varias metodologías de diseño para sistemas NoSQL en los últimos años, porque para modelar estos sistemas, los diseñadores de bases de datos deben tener en cuenta no solo qué datos se almacenarán en la base de datos, sino también cómo se accederán a ellos \cite{li_transforming_2010,chebotko_big_2015,mior_nose_2017}. 
+
+
+Para tener en cuenta cómo se accederán a los datos se debe conocer cómo se realizarán las consultas de los mismos y de acuerdo al trabajo de Mosquera\cite{martinez-mosquera_modeling_2020}, que es una investigación 1376 \textit{papers} sobre el modelado de sistemas NoSQL, se muestra que de las metodologías propuestas la mayoría usa el lenguaje de modelado UML (\textit{Unified Modeling Language}), mientras que algunos proponen su propio modelo conceptual; en resumen, en la literatura sobre el tema solo existen cinco herramientas propuestas para el modelado conceptual y, en general, no hay una tendencia en el modelado de datos NoSQL.
+
+
+Lo que resta del capítulo está organizado de la siguiente manera: primero se muestra la problemática a resolver, después la propuesta de solución, la justificación, el objetivo del proyecto y por último se menciona el alcance con las limitaciones del mismo.
+
+
+\input{introduccion/problema}
+\input{introduccion/propuesta}
+\input{introduccion/justificacion}
+\input{introduccion/objetivo}
+\input{introduccion/alcanceLimitaciones}
