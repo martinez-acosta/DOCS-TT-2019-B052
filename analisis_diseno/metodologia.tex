@@ -1,0 +1,221 @@
+
+\section{Metodología}
+
+La metodología, es un marco de trabajo usado para estructurar, planificar y controlar el proceso de desarrollo en sistemas de información. En un proyecto de desarrollo de software la metodología ayuda a definir: Quién debe hacer Qué Cuándo y Cómo debe hacerlo. La metodología para el desarrollo de software es un modo sistemático de realizar, gestionar y administrar un proyecto para llevarlo a cabo con altas posibilidades de éxito. Una metodología para el desarrollo de software comprende actividades a seguir para idear, implementar y mantener un producto de software desde que surge la necesidad del producto hasta que se cumple el objetivo por el cual fue creado.[https://www.uladech.edu.pe/images/stories/universidad/documentos/2018/metodologia-desarrollo-software-v001.pdf] 
+
+Dentro del campo del desarrollo de software, nos encontramos con dos grupos de metodologías, las tradicionales y las agiles.
+Las tradicionales, exigen una documentación exhaustiva y se centran en cumplir con el plan del proyecto definido totalmente en la fase inicial del desarrollo del mismo.
+
+Dado a que cualquier cambio en el proceso generaba la necesidad de una reconstrucción en la metodología, surgieron las llamadas metodologías ágiles, las cuales permiten realizar cambios en los requerimientos conforme se va desarrollando el proyecto basada en las habilidades del equipo y una buena relación con el usuario mostrando avances funcionales en cortos periodos de tiempo con la posibilidad de que este realice una evaluacion y de ser necesario, sugiera cambios. 
+
+Se han propuesto muchos modelos ágiles de proceso y están en uso en toda la industria. Entre ellos se encuentran los siguientes:
+\begin{itemize}
+	\item Desarrollo adaptativo de software (DAS)
+	\item Scrum
+	\item Método de desarrollo de sistemas dinámicos (MDSD)
+	\item Cristal
+	\item Desarrollo impulsado por las características (DIC)
+	\item Desarrollo esbelto de software (DES)
+	\item Modelado ágil (MA)
+	\item Proceso unificado ágil (PUA)
+\end{itemize}
+
+\subsection{SCRUM}
+Para la factibilidad técnica se realiza una evaluación de las herramientas de hardware  y software que el equipo de trabajo tiene disponible.
+
+Scrum se basa en la teoría de control de procesos empírica o empirismo. El empirismo asegura que el conocimiento procede de la experiencia y de tomar decisiones basándose en lo que se conoce. Scrum emplea un enfoque iterativo e incremental para optimizar la predictibilidad y el control del riesgo. 
+
+\noindent Los tres pilares que soportan toda la implementación del control de procesos: 
+\begin{itemize}
+	\item Transparencia
+	\item Inspección
+	\item Adaptación
+\end{itemize}
+
+\noindent Scrum prescribe cuatro eventos formales, contenidos dentro del Sprint, para la inspección y adaptación.[K. Schwaber and J. Sutherland, The Scrum Guide, Julio 2016,]
+\begin{itemize}
+	\item Planificación del Sprint (\textit{Sprint Planning}) 
+	\item Scrum Diario (\textit{Daily Scrum}) 
+	\item Revisión del Sprint (\textit{Sprint Review}) 
+	\item Retrospectiva del Sprint (\textit{Sprint Retrospective})  			
+\end{itemize}
+
+\noindent El Equipo Scrum consiste en los siguientes roles:
+\begin{itemize}
+	\item El Dueño de Producto (\textit{Product Owner}):\\
+	Responsable de maximizar el valor del producto y el trabajo del Equipo de Desarrollo. Es la única persona responsable de gestionar la Lista del Producto (\textit{Product Backlog}).
+	\item El Equipo de Desarrollo (\textit{Development Team}):\\
+	Profesionales que realizan el trabajo de entregar un Incremento de producto “Terminado” que potencialmente se pueda poner en producción al final de cada Sprint. Solo los miembros del Equipo de Desarrollo participan en la creación del Incremento. 
+	\item  El Scrum Master:\\
+	Responsable de asegurar que Scrum se entienda y se adopte, asegurándose de que el Equipo Scrum trabaja ajustándose a la teoría, prácticas y reglas de Scrum. Ayuda a las personas externas al Equipo Scrum a entender qué interacciones con el Equipo Scrum pueden ser útiles y cuáles no. 
+\end{itemize}
+
+\noindent La metodología Scrum cuenta con los elementos descritos a continuación: 
+
+\begin{itemize}
+	\item Lista de Producto (\textit{Product Backlog}):\\
+	Es el listado de todas las tareas que necesita el proyecto para alcanzar su realización. Al iniciar el desarrollo del
+	proyecto esta lista no se encuentra completa y conforme avanzan los \textit{sprints} se le añaden tareas para solventar las necesidades que	van surgiendo gracias a la retroalimentación del cliente.
+	\item Lista de Pendientes del Sprint (\textit{Sprint Backlog}) : \\
+	Es la lista de tareas seleccionadas del product backlog que se planifica realizar durante el periodo del \textit{sprints} y se definen a los responsables de cada tarea.
+	\item Sprint:\\
+	Es un periodo de tiempo determinado donde el equipo completa conjuntos de tareas incluidas en el \textit{backlog}.
+	\item Incremento : \\
+	El Incremento es la suma de todos los elementos de la Lista de Producto completados durante un \textit{sprints} y el valor de los incrementos de todos los Sprints anteriores
+\end{itemize}
+
+La metodología nos permite definir un periodo de hasta un mes para cada sprint y se ha optado por un periodo de 30 días,
+contemplándose un total de ocho sprints, donde al término de cada uno se tendrá un avance del sistema. 
+
+\subsubsection{Lista de Producto (\textit{Product Backlog})}
+La Lista de Producto es una lista ordenada de todo lo que podría ser necesario en el producto y es la única fuente de requisitos para cualquier cambio a realizarse en el producto, enumera todas las características, funcionalidades, requisitos, mejoras y correcciones que constituyen cambios a realizarse sobre el producto para entregas futuras.[http://openaccess.uoc.edu/webapps/o2/bitstream/10609/17885/1/mtrigasTFC0612memoria.pdf]
+
+\begin{longtable}{ p{.7cm} | p{8cm} | c | c | c }	
+	
+	\hline
+	
+	\textbf{Id} & \textbf{Descripción } & \textbf{Estimación } & \textbf{Valor }  & \textbf{Prioridad }\\
+	\hline
+	\hline
+	
+	\endfirsthead
+	
+	\multicolumn{5}{c}{Continuación de Tabla \ref{long}}\\
+	\hline
+	Continuación de tabla\\
+	\hline
+	\endhead
+	
+	\hline
+	\endfoot
+	
+	A & Investigación y selección de las tecnologías del modelo de base de datos no relacional a utilizar. & 2 & 1 & Media \\[.4cm]
+	B & Interfaz gráfica de la plataforma web. & 3 & 3 & Media\\[.4cm]
+	C & Edición y validación del esquema entidad-relación & 3 & 4 & Media \\[.4cm]
+	D & Transformación del esquema entidad-relación al modelo relacional. & 5 & 4 & Alta \\[.4cm]
+	E & Visualización de la transformación de modelo entidad-relación al modelo relacional. & 3 & 5 & Media \\[.4cm]
+	F & Transformación del modelo relacional al modelo NoSQL. & 5 & 5 & Alta \\[.4cm]
+	G & Visualización del modelo relacional al modelo NoSQL & 3 & 4 & Media \\[.4cm]
+	H & Pruebas de caso de estudio para verificar la correcta transformación y coherencia en los datos. & 2 & 2 & Baja \\[.4cm]
+	
+\end{longtable}
+
+\subsubsection{Historias de usuario}
+
+\begin{longtable}{ p{1.3cm} | p{7.6cm} | c | c }	
+	
+	\hline
+	\centering \textbf{Historia Id} & \centering  \textbf{Tarea } & \centering  \textbf{Responsable } & \textbf{Prioridad } \\
+	\hline
+	\hline
+	
+	\endfirsthead
+	
+	\multicolumn{4}{c}{Continuación de Tabla \ref{long}}\\
+	\hline
+	\hline
+	\endhead
+	
+	\hline
+	\endfoot
+	
+	\centering A - 01 & Investigación Bases de datos relacionales.& AQO & Baja\\[.5cm]
+	\hline
+	\centering A - 02 & Redacción y selección de las tecnologías a utilizar para el desarrollo de la plataforma. & AQO & Baja \\[.5cm]
+	\hline
+	\centering A - 03 & Investigación Bases de datos relacionales. & MAE & Baja \\[.5cm]
+	\hline
+	\centering A -  04 & Redacción bases de datos relacionales	en el documento técnico. & MAE & Baja \\[.5cm]
+	\hline
+	\centering A - 05 & Investigación Bases de datos no relacionales & GMSM &  \\[.5cm]
+	\hline
+	\centering A - 06 & Redacción bases de datos no relacionales en el documento técnico. & GMSM & Baja \\[.5cm]
+	\hline
+	\centering A - 07 & Investigación y selección del modelo de base de datos no relacional a utilizar junto a las	tecnologías a utilizar & AQO MAE GMSM & Media \\[.5cm]
+	\hline
+	\centering B - 01 & Análisis y diseño de la aquitectura Web & AQO & Alta \\[.5cm]
+	\hline
+	\centering B - 02  & Integración de la primera versión de la plataforma web. & AQO & Media \\[.5cm]
+	\hline
+	\centering B - 03 & Desarrollo de la estructura básica del backend. & MAE & Media \\[.5cm]
+	\hline
+	\centering B - 04 & Planteamiento de escenarios de los esquemas entidad-relación. & MAE & Baja \\[.5cm]
+	\hline
+	\centering B - 05 & Desarrollo de la estructura	básica del frontend. & GMSM & Media \\[.5cm]
+	\hline
+	\centering B - 06 & Primera implementación del maquetado frontend. & GMSM & Media \\[.5cm]
+	\hline
+	\centering B - 07 & Interfaz gráfica de la plataforma web. & GMSM & Media \\[.5cm]
+	\hline
+	\centering C - 01 & Definición de las reglas del modelo	entidad-relacion (etapa 1). & AQO MAE & Alta \\[.5cm]
+	\hline
+	\centering C - 02 & Desarrollo para la edición de diagramas en la plataforma web. & AQO GMSM& Media \\[.5cm]
+	\hline
+	\centering C - 03 & Habilitar la carga de un modelo entidad-relación en la plataforma web. & MAE & Media \\[.5cm]
+	\hline
+	\centering C - 04 & Agregar elementos básicos para la edición del diagrama E-R. & GMSM & Media \\[.5cm]
+	\hline
+	\centering C - 05 & Edición y validación del esquema entidad-relación. & AQO MAE GMSM & Alta \\[.5cm]
+	\hline
+	\centering D - 01 & Pruebas de captura de distintos diagramas entidad-relación. & AQO & Baja \\[.5cm]
+	\hline
+	\centering D - 02 & Transformación del esquema entidad-relación al modelo relacional. & AQO & Alta \\[.5cm]
+	\hline
+	\centering D - 03 & Guardado del esquema entidad-relación. & MAE & Media \\[.5cm]
+	\hline
+	\centering D - 04 & Visualización de la primera etapa de transformación en la plataforma web. & MAE & Alta \\[.5cm]
+	\hline
+	\centering D - 05 & Adición de elementos a la paleta de edición del diagrama E-R. & GMSM & Media \\[.5cm]
+	\hline
+	\centering D - 06 & Documento reporte técnico para presentación	TT1 & AQO MAE GMSM & Alta \\[.5cm]
+	\hline
+	\centering E - 01 & Planteamiento de escenarios del modelo relacional al modelos noSQL & AQO MAE & Media \\[.5cm]
+	\hline
+	\centering E - 02 & Definición de las reglas de transformación al modelo noSQL & AQO GMSM& Alta \\[.5cm]
+	\hline
+	\centering E - 03 & Prueba de transformación de distintos diagramas E-R. & MAE & Baja \\[.5cm]
+	\hline
+	\centering E - 04 & Conexión de la plataforma con un SGBD. & MAE & Alta \\[.5cm]
+	\hline
+	\centering E - 05 & Generación de distintos	diagramas E-R & GMSM & Media \\[.5cm]
+	\hline
+	\centering E - 06 & Lectura del modelo E-R para	visualizar en la plataforma. & GMSM & Media \\[.5cm]
+	\hline
+	\centering E - 07 & Visualización de la transformación de modelo entidad-relación al modelo relacional. & AQO MAE GMSM& Alta \\[.5cm]
+	\hline
+	\centering F - 01 & Generar pruebas de concepto del esquema noSQL & AQO & Baja \\[.5cm]
+	\hline
+	\centering F - 02 & Agregación de la función de transformación a la plataforma. & AQO MAE & Media \\[.5cm]
+	\hline
+	\centering F - 03 & Visualización de la segunda etapa de transformación en la plataforma web. & MAE & Alta \\[.5cm]
+	\hline
+	\centering F - 04 & Pruebas de distintos escenarios del modelo relacional al modelo noSQL. & MAE & Baja \\[.5cm]
+	\hline
+	\centering F - 05 & Agregar nuevas funciones de visualización a la interfaz gráfica. & GAMS & Media \\[.5cm]
+	\hline
+	\centering F - 06 & Comprobación de la coherencia de la transformación entre bases de datos. & GAMS & Media \\[.5cm]
+	\hline
+	\centering F - 07 & Transformación del modelo relacional al modelo noSQL seleccionado. & AQO MAE GMSM& Alta \\[.5cm]
+	\hline
+	\centering G - 01 & Agregar nuevas funciones de visualización a la interfaz gráfica. & AQO & Media \\[.5cm]
+	\hline
+	\centering G - 02 & Comprobación de la coherencia de la transformación entre bases de datos. & AQO GAMS& Alta \\[.5cm]
+	\hline
+	\centering G - 03 & Pruebas de persistencia y coherencia de las bases SQL a noSQL(etapa 3) & MAE GAMS& Media \\[.5cm]
+	\hline
+	\centering G - 04 & Integración de la visualización a la plataforma. & MAE & Alta \\[.5cm]
+	\hline
+	\centering G - 05 & Visualización del modelo relacional al modelo noSQL seleccionado. & AQO MAE GAMS& Alta \\[.5cm]
+	\hline
+	\centering H - 01 & Documento reporte técnico para presentación TT2 & AQO MAE GAMS & Alta \\[.5cm]
+	\hline
+	\centering H - 02 & Pruebas de caso de estudio para verificar la correcta transformación y coherencia en los datos. & AQO MAE GAMS & Alta \\[.5cm]
+	\hline
+	
+\end{longtable}
+
+
+
+
+
+
