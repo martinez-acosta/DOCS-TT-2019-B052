@@ -2155,12 +2155,15 @@
     <bcf:citekey order="21">noauthor_javascript_nodate</bcf:citekey>
     <bcf:citekey order="22">typescript_publishing_typescript_2019</bcf:citekey>
     <bcf:citekey order="23">noauthor_stack_nodate</bcf:citekey>
-    <bcf:citekey order="24">noauthor_que_nodate</bcf:citekey>
-    <bcf:citekey order="25">noauthor_what_nodate-1</bcf:citekey>
-    <bcf:citekey order="26">noauthor_introduction_nodate</bcf:citekey>
-    <bcf:citekey order="27">noauthor_mongodb_nodate</bcf:citekey>
-    <bcf:citekey order="28">noauthor_gojs_nodate</bcf:citekey>
-    <bcf:citekey order="29">lutz_learning_2013</bcf:citekey>
+    <bcf:citekey order="24">noauthor_web_nodate</bcf:citekey>
+    <bcf:citekey order="25">noauthor_que_nodate</bcf:citekey>
+    <bcf:citekey order="26">noauthor_what_nodate-1</bcf:citekey>
+    <bcf:citekey order="27">noauthor_introduction_nodate</bcf:citekey>
+    <bcf:citekey order="28">noauthor_vuetify_nodate</bcf:citekey>
+    <bcf:citekey order="29">noauthor_documentation_nodate-1</bcf:citekey>
+    <bcf:citekey order="30">noauthor_mongodb_nodate</bcf:citekey>
+    <bcf:citekey order="31">noauthor_gojs_nodate</bcf:citekey>
+    <bcf:citekey order="32">lutz_learning_2013</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
