@@ -1,5 +1,5 @@
-\subsection{CSS3 vs SCSS}
-
+\subsection{CSS3 vs SASS}
+\subsubsection*{CSS3}
 De acuerdo a la documentación de la W3C\cite{noauthor_what_nodate}, Cascading Style Sheets, CSS, o hojas de estilo en cascada, es un lenguaje de diseño gráfico para definir y crear la presentación de un documento estructurado escrito en un lenguaje de marcado.
 
 
@@ -39,3 +39,37 @@ Respecto al soporte de los navegadores web, cada navegador web usa un motor de r
 
 Además, CSS3 definen muchas queries, entre las cuales se provee la directiva @supports que permite a los desarrolladores especificar navegadores con soporte para alguna función en específico directamente en el CSS3.1​. 
 
+\subsubsection*{Sass}
+
+De acuerdo a la documentación de Sass\cite{noauthor_documentation_nodate}, Sass es un lenguaje de preprocesado que genera hojas de estilo en cascada (CSS) y consta de dos sintaxis.
+
+\subsubsection*{Características}
+
+\paragraph*{Variables}
+Las variables comienzan con un signo de dólar y la asignación de valor se realiza con dos puntos.
+
+SassScript permite 4 tipos de datos:6​
+\begin{enumerate}
+    \item Números (incluyendo las unidades).
+    \item Strings (con comillas o sin ellas).
+    \item Colores (código, o nombre).
+    \item Booleanos.
+\end{enumerate}
+Las variables pueden ser resultados o argumentos de varias funciones disponibles. Durante el proceso de traducción, los valores de las variables son insertados en el documento CSS de salida.
+
+\paragraph*{Anidamiento}
+CSS soporta anidamiento lógico, pero los bloques de código no son anidados. Sass permite que el código anidado sea insertado dentro de cualquier otro bloque.3
+
+
+\paragraph*{Mixins}
+
+Como CSS no soporta \textit{mixins}, cualquier código duplicado debe ser repetido en cada lugar. Un \textit{mixin} en Sass es una sección de código que contiene código Sass. 
+
+
+Cada vez que se llama un \textit{mixin} en el proceso de conversión el contenido del mismo es insertado en el lugar de la llamada. Los \textit{mixin} permiten una solución limpia a las repeticiones de código, así como una forma fácil de alterar el mismo.
+
+
+
+\subsubsection*{Conclusión}
+
+Tomando en cuenta la experiencia del equipo con CSS, además de que el proyecto no se enfocará en hacer muchas hojas de estilo para cada componente, página o vista de la aplicación web, se usará CSS en lugar de Sass.
