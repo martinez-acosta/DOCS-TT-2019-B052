@@ -1,4 +1,7 @@
 \subsection{Django vs Flask}
+Para elegir el lenguaje a usar para el back end se realizó un estudio de lenguajes apropiados para usar con un JavaScript web \textit{framework}.
+
+\subsubsection*{Flask}
 Flask es un micro \textit{web framework} escrito en Python. Se clasifica como micro porque no requiere herramientas o bibliotecas particulares.
 
 
@@ -8,20 +11,20 @@ No tiene capa de abstracción de base de datos, validación de formularios ni ni
 Existen extensiones para mapeadores relacionales de objetos, validación de formularios, manejo de carga, varias tecnologías de autenticación abiertas y varias herramientas relacionadas con el marco común. Las extensiones se actualizan con mucha más frecuencia que el programa central Flask.
 
 
-\subsubsection*{Ventajas y desventajas de Flask}
+\paragraph*{Ventajas y desventajas de Flask}
 Está basado en la especificación WSGI de Werkzeug y el motor de templates Jinja2; además, tiene una licencia BSD.
 
 
 Entre las ventajas y desventajas, destacamos:
 
-\paragraph*{Ventajas}
+\subparagraph*{Ventajas}
 \begin{enumerate}
     \item Es un framework que se destaca en instalar extensiones o complementos de acuerdo al tipo de proyecto que se va a desarrollar, es decir, es perfecto para el prototipado rápido de proyectos.
     \item Incluye un servidor web, así podemos evitamos instalar uno como Apache o Nginx. Además, nos ofrece soporte para pruebas unitarias y para Cookies de seguridad (sesiones del lado del cliente), apoyándose en el motor de plantillas ​Jinja2​.
     \item Su velocidad es mejor a comparación de Django. Generalmente el desempeño que tiene Flask es superior debido a su diseño minimalista que tiene en su estructura.
     \item  Flask permite combinarse con herramientas para potenciar su funcionamiento, por ejemplo: Jinja2, SQLAlchemy, Mako y Peewee entre otras.
 \end{enumerate}
-\paragraph*{Desventajas}
+\subparagraph*{Desventajas}
 
 \begin{enumerate}
     \item  Su sistema de autenticación de usuarios es muy básico, a comparación del potente sistema de autenticación que utiliza Django, este puede crear un sistema de Login API sencillo para aplicaciones más pequeñas.
@@ -29,3 +32,23 @@ Entre las ventajas y desventajas, destacamos:
     \item  Es complicado en las pruebas unitarias o migraciones.
     \item El ORM (Mapeo objeto relacional) para conectar con las bases de datos, SQLAlchemy es externo.
 \end{enumerate}
+
+
+\subsubsection*{Django}
+
+De acuerdo con Wikipedia\cite{wikipedia_django_2020}, Django es un framework de desarrollo web de código abierto, escrito en Python, que respeta el patrón de diseño conocido como MVC (Modelo–Vista–Controlador).
+
+\paragraph*{Características}
+\begin{enumerate}
+    \item Aplicaciones ``enchufables" que pueden instalarse en cualquier página gestionada con Django.
+    \item Una API de base de datos robusta.
+    \item Un sistema incorporado de ``vistas genéricas" que ahorra tener que escribir la lógica de ciertas tareas comunes.
+    \item Un sistema extensible de plantillas basado en etiquetas, con herencia de plantillas.
+    \item Un despachador de URL basado en expresiones regulares.
+    \item Un sistema ``middleware" para desarrollar características adicionales.
+    \item Documentación incorporada accesible a través de la aplicación administrativa.
+\end{enumerate}
+
+\subsubsection*{Elección}
+
+Se ha elegido Flask por ser un \textit{framework} web conocido por el equipo y que ha dado resultados.

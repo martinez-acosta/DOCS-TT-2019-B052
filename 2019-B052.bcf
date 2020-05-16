@@ -2167,8 +2167,13 @@
     <bcf:citekey order="33">noauthor_vuetify_nodate</bcf:citekey>
     <bcf:citekey order="34">noauthor_documentation_nodate-1</bcf:citekey>
     <bcf:citekey order="35">wikipedia_mongodb_2020</bcf:citekey>
-    <bcf:citekey order="36">noauthor_gojs_nodate</bcf:citekey>
-    <bcf:citekey order="37">lutz_learning_2013</bcf:citekey>
+    <bcf:citekey order="36">wikipedia_couchdb_2020</bcf:citekey>
+    <bcf:citekey order="37">martinez-mosquera_modeling_2020</bcf:citekey>
+    <bcf:citekey order="38">noauthor_gojs_nodate</bcf:citekey>
+    <bcf:citekey order="39">noauthor_fabric_2020</bcf:citekey>
+    <bcf:citekey order="40">wikipedia_contributors_d3js_2020</bcf:citekey>
+    <bcf:citekey order="41">lutz_learning_2013</bcf:citekey>
+    <bcf:citekey order="42">wikipedia_django_2020</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

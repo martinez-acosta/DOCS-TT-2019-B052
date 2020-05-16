@@ -17,3 +17,21 @@ En lugar de guardar los datos en tablas, tal y como se hace en las bases de dato
 
 
 \subsubsection*{Apache CouchDB}
+
+
+De acuerdo con Wikipedia\cite{wikipedia_couchdb_2020},  se trata de una base de datos NoSQL que emplea JSON para almacenar los datos, JavaScript como lenguaje de consulta por medio de MapReduce y HTTP como API.
+
+
+\paragraph*{Características}
+\begin{enumerate}
+    \item Almacenamiento de documentos: CouchDB almacena los datos como ``documentos", esto es, uno o más pares campo/valor expresados en JSON. 
+    \item Semántica ACID: CouchDB provee una semántica de atomicidad, consistencia, aislamiento y durabilidad.
+    \item Vistas e índices Map/Reduce: los datos almacenados se estructuran por medio de vistas. 
+    \item Arquitectura distribuida con replicación: CouchDB se diseñó con teniendo en mente la replicación bidireccional (o sincronización) y la operación \textit{offline}. 
+    \item Interfaz REST: todos los ítems tienen una URI única que queda expuesta vía HTTP. REST usa los métodos HTTP POST, GET, PUT y DELETE para las cuatro operaciones básicas CRUD (\textit{Create, Read, Update, Delete}).
+\end{enumerate}
+
+\subsubsection*{Elección}
+
+De acuerdo con Mosquera\cite{martinez-mosquera_modeling_2020}, MongoDB es l1a base de datos NoSQL orientada a documentos más popular y usada en los \textit{papers} de investigación. Por ello se usará MongoDB como base de datos.
+
