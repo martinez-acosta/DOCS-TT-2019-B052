@@ -96,7 +96,7 @@ cuando el equipo de desarrollo complete la descripción de la tarjeta.\\
 
 Siguiendo con esta linea a continuacion se listan las principales historias de usuario que se consideraron para el desarrollo de este trabajo terminal,
 tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otras no se considero necesaria ya que son explicitamente claras.\\
-
+\hline
 \begin{itemize}
 	\item No. 1
 	\item Como usuario
@@ -107,7 +107,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item El usuario recibirá un correo electrónico de confirmación de su alta en el sistema con el correo y contraseña que ingreso para tenerlos de respaldo.
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 2
 	\item Como usuario
@@ -119,10 +119,10 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al ingresar una nueva contraseña, recibirá un correo de confirmación del cambio de contraseña y sus datos permaneceran intactos.
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 3
-	\item Como usuario del sistema quiero darme de alta con una contraseña facil de recordad
+	\item Como usuario del sistema quiero darme de alta con una contraseña facil de recordar
 	\item Pero que este segura en la base de datos,
 	\item Para no tener comprometido los diagramas que yo pueda generar en el sistema.
 
@@ -133,7 +133,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Antes de guardar la contraseña, esta debera pasar por un metodo que la haga ilegible para el usuario(algun algoritmo de digestion o cifrado).
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 4
 	\item Como usuario quiero poder crear un diagrama entidad-relacióno o diagrama ER arrastrando y soltando elementos de una paleta de iconos
@@ -145,7 +145,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Podra arrastrar y soltar los iconos a un area delimitada para empezar con el diseño de su diagrama.
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 5
 	\item Como usuario quiero poder guardar mi último trabajo realizado en el diagramador ER.
@@ -156,15 +156,14 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Antes de almacenar el diagrama en el canvas, se le mostrará un mensaje de confirmación para guardar su diagrama actual.
 	\end{itemize}m
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 6
 	\item Como usuario me gustaría poder ver mi último trabajo que realice
 	\item Cuando seleccione la opción "Entidad-Relación"
-	\item Para poder continuar con el.
-	\item Criterios de aceptación
+	\item Para poder modificar el diseño.
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 7
 	\item Como usuario quiero tener la opción de cargar un diagrama a partir de un archivo
@@ -177,7 +176,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al contener un información compatible, se mostrará en el canvas el contenido del archivo.
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 8
 	\item Como usuario quiero poder descargar el diagrama que este visible en la pagina web
@@ -188,7 +187,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item El archivo generado será de extensión .json con la información necesaria para que el diagramador pueda cargarlo en otro momento.
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 9
 	\item Como usuario quiero tener una forma de validar mi diagrama ER
@@ -199,7 +198,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al termino del proceso de validación se le mostrará un mensaje al usuario indicando si el diagrama cumple o no las reglas de un diagrama ER.
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 10
 	\item Como usuario en caso de tener un diagrama valido
@@ -210,12 +209,35 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item El usuario dispondra de la opción de tranformar al modelo relacional solamente despues de haber validado que el diagrama ER cumple con las reglas.
 		\item Posterior a la validación se le mostrará al ususario en mensaje de confirmación y un botón para disparar el proceso de transformación a su equivalente relacional.
 		\item Al terminar el proceso de transformación equivalente se le redirijira al menú "Relacional" donde podra visualizar el equivalente al modelo relacional.
-		\item Las sentencias SQl solo podran ser descargadas en el menú "Relacional" a un archivo con extension .sql dando click a un botón con la leyenda "Descargar SQL"
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
 	\item No. 11
+	\item Como usuario despues de observar el esquema relacional
+	\item Quiero poder obtener las sentencias SQL equivalentes
+	\item Para poder crear el mismo esquema de base de datos relacional en un SBGB
+	\item Criterios de aceptación
+	\begin{itemize}
+		\item Las sentencias SQl solo podran ser descargadas en el menú "Relacional" a un archivo con extension .sql dando click a un botón con la leyenda "Descargar SQL".
+		\item Solo podran ser obtenidas las sentencias SQL de un diagrama ER creado y/o validado por el sistema.
+	\end{itemize}
+\end{itemize}
+\hline
+\begin{itemize}
+	\item No. 12
+	\item Como usuario una vez observado el equivalente relacional del diagrama ER
+	\item Quiero poder iniciar el proceso de transformación al modelo no relacional
+	\item Para poder observar el cambio entre modelos.
+	\item Criterios de aceptación
+	\begin{itemize}
+		\item Al dar click al botón "Transformar a NoSQl" el usuario iniciará el proceso para obtener el equivalente del modelo relacional al modelo NR.
+		\item Al termino del proceso de transformación se le redirigirá la menú "No Relacional" donde observará el modelo NR equivalente a su diagrama ER.
+	\end{itemize}
+\end{itemize}
+\hline
+\begin{itemize}
+	\item No. 13
 	\item Como usuario quiero poder transformar mi diagrama ER en su equivalente modelo no relacional
 	\item Para poder observar el cambio entre modelos.
 	\item Criterios de aceptación
@@ -223,21 +245,17 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item El usuario dispondra de la opción de tranformar al modelo relacional solamente despues de haber validado que el diagrama ER cumple con las reglas.
 		\item Posterior a la validación se le mostrará al ususario en mensaje de confirmación y un botón para disparar el proceso de transformación al modelo no relacional o modelo NR.
 		\item Una vez validado el diagrama ER e iniciado el proceso para la transformación al modelo NR se le indicará al usuario que el proceso puede ser tardado ya que primero realizará la transformación al modelo relacional.
-		\item Al termino del proceso de transformación se le redirigirá la menú "NoSQL" donde observará el modelo NR equivalente a su diagrama ER.
+		\item Al termino del proceso de transformación se le redirigirá la menú "No Relacional" donde observará el modelo NR equivalente a su diagrama ER.
 	\end{itemize}
 \end{itemize}
-
+\hline
 \begin{itemize}
-	\item No. 12
-	\item Como usuario una vez observado el equivalente relacional del diagrama ER
-	\item Quiero poder iniciar el proceso de transformación al modelo NR
-	\item Para poder observar el cambio entre modelos.
-	\item Criterios de aceptación
-	\begin{itemize}
-		\item Al dar click al botón "Transformar a NoSQl" el usuario iniciará el proceso para obtener el equivalente del modelo relacional al modelo NR.
-		\item Al termino del proceso de transformación se le redirigirá la menú "NoSQL" donde observará el modelo NR equivalente a su diagrama ER.
-	\end{itemize}
+	\item No. 14
+	\item Como usuario me gustaría tener un reporte técnico y
+	\item Quiero que la redacción sea legible y referenciada
+	\item Para compartirlo en el futuro con equipos de desarrollo y ver la posibilidad de agregar nuevas funciones al sistema.
 \end{itemize}
+\hline
 
 \\\\
 Teniendo en cuenta que se esta trabajando con una metodología ágil, estas historias de usuario pueden aumentar o en su defecto dividirse en historias mas pequeñas dependiendo
@@ -245,148 +263,143 @@ de las criterios del equipo de desarrollo durante el proceso de la implementaci�
 
 
 \subsubsection{Lista de Producto (\textit{Product Backlog})}
-La Lista de Producto es una lista ordenada de todo lo que podría ser necesario en el producto y es la única fuente de requisitos para cualquier cambio a realizarse en el producto, enumera todas las características, funcionalidades, requisitos, mejoras y correcciones que constituyen cambios a realizarse sobre el producto para entregas futuras.[http://openaccess.uoc.edu/webapps/o2/bitstream/10609/17885/1/mtrigasTFC0612memoria.pdf]
+La Lista de Producto es una lista ordenada de todo lo que podría ser necesario en el producto y es la fuente de requisitos para cualquier cambio a realizarse en el producto, enumera todas las características, funcionalidades, requisitos, mejoras y correcciones que constituyen cambios a realizarse sobre el producto para entregas futuras.[http://openaccess.uoc.edu/webapps/o2/bitstream/10609/17885/1/mtrigasTFC0612memoria.pdf]
 
-\begin{longtable}{ p{.7cm} | p{8cm} | c | c | c }
+Se consideran la siguiente lista como el product backlog con las tareas necesarias para complir con todas las historias de usuario mencionadas en la sección anterior.
+Considerando que estas pueden cambiar conforme avancen los sprints y añadirse nuevas tareas.
 
-	\hline
-
-	\textbf{Id} & \textbf{Descripción } & \textbf{Estimación } & \textbf{Valor }  & \textbf{Prioridad }\\
-	\hline
-	\hline
-
-	\endfirsthead
-
-	\multicolumn{5}{c}{Continuación de Tabla \ref{long}}\\
-	\hline
-	Continuación de tabla\\
-	\hline
-	\endhead
+\begin{longtable}{ p{2cm} | p{10cm} | p{2cm} }
 
 	\hline
-	\endfoot
-
-	A & Investigación y selección de las tecnologías del modelo de base de datos no relacional a utilizar. & 2 & 1 & Media \\[.4cm]
-	B & Interfaz gráfica de la plataforma web. & 3 & 3 & Media\\[.4cm]
-	C & Edición y validación del esquema entidad-relación & 3 & 4 & Media \\[.4cm]
-	D & Transformación del esquema entidad-relación al modelo relacional. & 5 & 4 & Alta \\[.4cm]
-	E & Visualización de la transformación de modelo entidad-relación al modelo relacional. & 3 & 5 & Media \\[.4cm]
-	F & Transformación del modelo relacional al modelo NoSQL. & 5 & 5 & Alta \\[.4cm]
-	G & Visualización del modelo relacional al modelo NoSQL & 3 & 4 & Media \\[.4cm]
-	H & Pruebas de caso de estudio para verificar la correcta transformación y coherencia en los datos. & 2 & 2 & Baja \\[.4cm]
-
-\end{longtable}
-
-\subsubsection{ProductBAcklog-Historias de usuario}
-
-\begin{longtable}{ p{1.2cm} |  p{1.1cm} | p{4.0cm} | p{.91cm} | p{3cm} | p{1.5cm} | c  }
-
-	\hline
-	\centering \textbf{Historia Id} & \centering  \textbf{Rol } &\centering  \textbf{Evento } &\centering  \textbf{Sub tarea } & \centering  \textbf{Funcionalidad } & \centering  \textbf{Criterio de aceptación } & \textbf{Prioridad } \\[.5cm]
+	No. Historia de Usuario & requerimiento/Tarea &  Responsable \\[0.5cm]
 	\hline
 	\hline
 
 	\endfirsthead
 
-	\multicolumn{6}{c}{Continuación de Tabla \ref{long}}\\
+	\multicolumn{3}{c}{Continuación de tabla product backlog }\\
 	\hline
 	\hline
 	\endhead
 
 	\hline
-	\endfoot
+	\hline
+	\caption{Product Backlog}
+	\endlastfoot
 
-	\centering A - 01 & Scrum team  & Investigación Bases de datos relacionales.& \centering1 &  &  & Baja\\[.5cm]
+	% template row table
+	% \centering & & & \\[0.5cm]
+	% \hline
+
+	\centering 14 & Investigación Bases de datos relacionales. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering A - 02 & Scrum team & Redacción y selección de las tecnologías a utilizar para el desarrollo de la plataforma. & \centering1 &  &  &   Baja \\[.5cm]
+	\centering 14 & Redacción y selección de las tecnologías a utilizar para el desarrollo de la plataforma.  & Eduardo \\[0.5cm]
 	\hline
-	\centering A - 03 & Scrum team & Investigación Bases de datos relacionales. & \centering1 &  &  & Baja \\[.5cm]
+	\centering 14 & Investigación Bases de datos relacionales.  & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering A -  04 & Scrum team & Redacción bases de datos relacionales	en el documento técnico. & \centering1 &  &  & Baja \\[.5cm]
+	\centering 14 & Redacción bases de datos relacionales	en el documento técnico.  & Eduardo \\[0.5cm]
 	\hline
-	\centering A - 05 & Scrum team & Investigación Bases de datos no relacionales & \centering1 &  &  & Baja \\[.5cm]
+	\centering 14 & Investigación Bases de datos no relacionales  & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering A - 06 & Scrum team & Redacción bases de datos no relacionales en el documento técnico. & \centering1 &  &  & Baja \\[.5cm]
+	\centering 14 & Redacción bases de datos no relacionales en el documento técnico.  & Eduardo \\[0.5cm]
 	\hline
-	\centering A - 07 & Scrum team & Investigación y selección del modelo de base de datos no relacional a utilizar junto a las	tecnologías a utilizar & \centering1 &  &  & Media \\[.5cm]
+	\centering 14 & Investigación y selección del modelo de base de datos no relacional a utilizar junto a las	tecnologías a utilizar  & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering B - 01 & Scrum team & Análisis y diseño de la aquitectura Web & \centering1 &  &  & Alta \\[.5cm]
+	\centering 14 & Análisis y diseño de la aquitectura Web  & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering B - 02  & Scrum team & Integración de la primera versión de la plataforma web. & \centering1 &  &  & Media \\[.5cm]
+	\centering 1 & Desarrollo de la estructura básica del backend.  & Omar \\[0.5cm]
 	\hline
-	\centering B - 03 & Scrum team & Desarrollo de la estructura básica del backend. & \centering1 &  &  & Media \\[.5cm]
+	\centering 1 & Desarrollo de la estructura	básica del frontend.  & Eduardo \\[0.5cm]
 	\hline
-	\centering B - 04 & Scrum team & Planteamiento de escenarios de los esquemas entidad-relación. & \centering1 &  &  & Baja \\[.5cm]
+	\centering 1 & Agregar servicio backend para registrar un usuario & Omar \\[0.5cm]
 	\hline
-	\centering B - 05 & Scrum team & Desarrollo de la estructura	básica del frontend. & \centering1 &  &  & Media \\[.5cm]
+	\centering 1 & Agregar formulario para captura de datos de registro de un usuario en el frontend. & Eduardo \\[0.5cm]
 	\hline
-	\centering B - 06 & Scrum team & Primera implementación del maquetado frontend. & \centering1 &  &  & Media \\[.5cm]
+	\centering 2 & Agregar servicio backend para recuperar contraseña del usuario. & Omar \\[0.5cm]
 	\hline
-	\centering B - 07 & Scrum team & Interfaz gráfica de la plataforma web. & \centering1 &  &  & Media \\[.5cm]
+	\centering 2 & Agregar servicio backend para envio de email al usuario registrado y de recuperación de contraseña. & Omar \\[0.5cm]
 	\hline
-	\centering C - 01 & Scrum team & Definición de las reglas del modelo	entidad-relación (etapa 1). & \centering1 &  &  & Alta \\[.5cm]
+	\centering 2 & Agregar vista con formulario para recuperación de contraseña del usuario enel frontend. & Eduardo \\[0.5cm]
 	\hline
-	\centering C - 02 & Scrum team & Desarrollo para la edición de diagramas en la plataforma web. & \centering1 &  & & Media \\[.5cm]
+	\centering 2 & Integración de los servicios de registro y recuaperación de contraseña en el frontend & Eduardo \\[0.5cm]
 	\hline
-	\centering C - 03 & Scrum team & Habilitar la carga de un modelo entidad-relación en la plataforma web. & \centering1 &  &  & Media \\[.5cm]
+	\centering 3 & Agregar servicio backend para hacer ilegible la contraseña del usuario en la base de datos. & Omar \\[0.5cm]
 	\hline
-	\centering C - 04 & Scrum team & Agregar elementos básicos para la edición del diagrama E-R. & \centering1 &  &  & Media \\[.5cm]
+	\centering 4 & Planteamiento de escenarios de los esquemas entidad-relación.  & Eduardo \\[0.5cm]
 	\hline
-	\centering C - 05 & Scrum team & Edición y validación del esquema entidad-relación. & \centering1 &  &  & Alta \\[.5cm]
+	\centering 4 & Agregar a la interfaz gráfica de la aplicación web el menú "Entidad-Relaciín". & Eduardo \\[0.5cm]
 	\hline
-	\centering D - 01 & Scrum team & Pruebas de captura de distintos diagramas entidad-relación. & \centering1 &  &  & Baja \\[.5cm]
+	\centering 4 & Agregar iconos de los elementos basicos de un diagrama ER en el diagramador. & Eduardo \\[0.5cm]
 	\hline
-	\centering D - 02 & Scrum team & Transformación del esquema entidad-relación al modelo relacional. & \centering1 &  &  & Alta \\[.5cm]
+	\centering 5 & Agregar servicio backend para guardar un diagrama ER en formato json en la base de datos e integrarlo al frontend. & Omar \\[0.5cm]
 	\hline
-	\centering D - 03 & Scrum team & Guardado del esquema entidad-relación. & \centering1 &  &  & Media \\[.5cm]
+	\centering 5 & Agregar servicio backend para recuperar el diagrama guardado del usuario de la base de datos y regresarlo en formato json.  & Omar \\[0.5cm]
 	\hline
-	\centering D - 04 & Scrum team & Visualización de la primera etapa de transformación en la plataforma web. & \centering1 &  &  & Alta \\[.5cm]
+	\centering 6 & Recuperar el último diagrama del usuario del backend y monstrarlo en el frontend & Eduardo \\[0.5cm]
 	\hline
-	\centering D - 05 & Scrum team & Adición de elementos a la paleta de edición del diagrama E-R. & \centering1 &  &  & Media \\[.5cm]
+	\centering 6 & Manejar el estado de la intefaz web para no perder el diagrama ER que esta editando el usuario. & Eduardo \\[0.5cm]
 	\hline
-	\centering D - 06 & Scrum team & Documento reporte técnico para presentación TT1 & \centering1 &  &  & Alta \\[.5cm]
+	\centering 6 & Definición de las reglas del modelo	entidad-relación. & Eduardo \\[0.5cm]
 	\hline
-	\centering E - 01 & Scrum team & Planteamiento de escenarios del modelo relacional al modelos noSQL & \centering1 &  &  & Media \\[.5cm]
+	\centering 4 & Implementar la edición de diagramas ER en el frontend.  & Eduardo \\[0.5cm]
 	\hline
-	\centering E - 02 & Scrum team & Definición de las reglas de transformación al modelo noSQL & \centering1 &  &  & Alta \\[.5cm]
+	\centering 7 & Habilitar la carga de un archivo en la aplicación web.  & Omar \\[0.5cm]
 	\hline
-	\centering E - 03 & Scrum team & Prueba de transformación de distintos diagramas E-R. & \centering1 &  &  & Baja \\[.5cm]
+	\centering 7 & Agregar la función para validar el contenido del archivo json y pintarlo en el canvas. & Eduardo \\[0.5cm]
 	\hline
-	\centering E - 04 & Scrum team & Conexión de la plataforma con un SGBD. &\centering1 &  &  & Alta \\[.5cm]
+	\centering 8 & Agregar la descarga del diagrama visible en el canvas a un archivo json. & Eduardo \\[0.5cm]
 	\hline
-	\centering E - 05 & Scrum team & Generación de distintos	diagramas E-R & \centering1 &  &  & Media \\[.5cm]
+	\centering 4 & Agregar elementos del modelo ER extendido al diagramador ER.  & Eduardo \\[0.5cm]
 	\hline
-	\centering E - 06 & Scrum team & Lectura del modelo E-R para	visualizar en la plataforma. & \centering1 &  &  & Media \\[.5cm]
+	\centering 9 & Agregar botón de validar al frontend y mostrar loader mientras se procesa el diagrama ER. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering E - 07 & Scrum team & Visualización de la transformación de modelo entidad-relación al modelo relacional. & \centering1 &  &  & Alta \\[.5cm]
+	\centering 9 & Agregar servicio backend para la validación del diagrama entidad-relación. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering F - 01 & Scrum team & Generar pruebas de concepto del esquema noSQL & \centering1 &  &  & Baja \\[.5cm]
+	\centering 9 & implementación de algoritmo para validación del diagrama ER en el backend. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering F - 02 & Scrum team & Agregación de la función de transformación a la plataforma. & \centering1 &  &  & Media \\[.5cm]
+	\centering 9 & Pruebas de captura de distintos diagramas entidad-relación.  & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering F - 03 & Scrum team & Visualización de la segunda etapa de transformación en la plataforma web. & \centering1 &  &  & Alta \\[.5cm]
+	\centering 9 & Pruebas para validar el algoritmo de validación. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering F - 04 & Scrum team & Pruebas de distintos escenarios del modelo relacional al modelo noSQL. & \centering1 &  &  & Baja \\[.5cm]
+	\centering 10 & Agregar servicio al backend para transformación del esquema entidad-relación al modelo relacional.  & Omar \\[0.5cm]
 	\hline
-	\centering F - 05 & Scrum team & Agregar nuevas funciones de visualización a la interfaz gráfica. & \centering1 &  &  & Media \\[.5cm]
+	\centering 10 & Implementación del algoritmo de transformación ER -> relacional & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering F - 06 & Scrum team & Comprobación de la coherencia de la transformación entre bases de datos. & \centering1 &  &  & Media \\[.5cm]
+	\centering 10 & Agregar menú "Relacional" a la intefaz gráfica. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering F - 07 & Scrum team & Transformación del modelo relacional al modelo noSQL seleccionado. & \centering1 &  &  & Alta \\[.5cm]
+	\centering 10 & Prueba de transformación de distintos diagramas E-R al modelo relacional. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering G - 01 & Scrum team & Agregar nuevas funciones de visualización a la interfaz gráfica. & \centering1 &  &  & Media \\[.5cm]
+	\centering 10 & Visualización de la transformación del modelo ER al modelo Relacinal. & Eduardo \\[0.5cm]
 	\hline
-	\centering G - 02 & Scrum team & Comprobación de la coherencia de la transformación entre bases de datos. & \centering1 &  & & Alta \\[.5cm]
+	\centering 14 & Revision de la redacción del reporte técnico para presentación de TT1  & Eduardo \\[0.5cm]
 	\hline
-	\centering G - 03 & Scrum team & Pruebas de persistencia y coherencia de las bases SQL a noSQL(etapa 3) & \centering1 &  &  & Media \\[.5cm]
+	\centering 11 & Agregar servicio backend para la descarga del archivo .sql con las sentencias equivalentes. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering G - 04 & Scrum team & Integración de la visualización a la plataforma. & \centering1 &  &  & Alta \\[.5cm]
+	\centering 11 & Pruebas de coherencia de las sentencias equivalentes de distintos en el SGBD. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering G - 05 & Scrum team & Visualización del modelo relacional al modelo noSQL seleccionado. & \centering1 & &  & Alta \\[.5cm]
+	\centering 12 & Definición de las reglas de transformación al modelo noSQL  & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering H - 01 & Scrum team & Documento reporte técnico para presentación TT2 &\centering1  &  &  & Alta \\[.5cm]
+	\centering 12 & Pruebas de distintos escenarios del modelo relacional al modelo noSQL.  & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering H - 02 & Scrum team & Pruebas de caso de estudio para verificar la correcta transformación y coherencia en los datos. & \centering1 &  &  & Alta \\[.5cm]
+	\centering 12 & Agregar servicio al backend para transformación del esquema relacional al modelo noSQL.  & Omar \\[0.5cm]
+	\hline
+	\centering 12 & Agregar servicio al backend para guardar el modelo noSQL en la base de datos.  & Omar \\[0.5cm]
+	\hline
+	\centering 12 & Agregar menú "No Relacional" a la intefaz gráfica. & Omar \\[0.5cm]
+	\hline
+	\centering 12 & Implementación del algortimo de transformación de modelo relacional al modelo noSQL. & Eduardo \\[0.5cm]
+	\hline
+	\centering 12 & Comprobación de la coherencia de la transformación entre modelos relacional a no relacional.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 13 & Agregar servicio backend para transformación del modelo ER al modelo no relacional. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 13 & Ajustar la interfaz del menu "Entidad-Relación" para mostrar mensaje tranformación la modelo no relacioal. & Omar \\[0.5cm]
+	\hline
+	\centering 13 & Manejar el estado del diagrama ER y redireccionarl al menú "No Relacional" al terminar la tranformación. & Eduardo \\[0.5cm]
+	\hline
+	\centering 13 & Pruebas de caso de estudio para verificar la correcta transformación y coherencia en los datos.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 14 & Revisión de la redacción del reporte técnico para presentación de TT2 & Eduardo \\[0.5cm]
 	\hline
 
 \end{longtable}
