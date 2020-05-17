@@ -3,11 +3,16 @@
 La metodología, es un marco de trabajo usado para estructurar, planificar y controlar el proceso de desarrollo en sistemas de información. En un proyecto de desarrollo de software la metodología ayuda a definir: Quién debe hacer Qué Cuándo y Cómo debe hacerlo. La metodología para el desarrollo de software es un modo sistemático de realizar, gestionar y administrar un proyecto para llevarlo a cabo con altas posibilidades de éxito. Una metodología para el desarrollo de software comprende actividades a seguir para idear, implementar y mantener un producto de software desde que surge la necesidad del producto hasta que se cumple el objetivo por el cual fue creado.[https://www.uladech.edu.pe/images/stories/universidad/documentos/2018/metodologia-desarrollo-software-v001.pdf]
 
 Dentro del campo del desarrollo de software, nos encontramos con dos grupos de metodologías, las tradicionales y las agiles.
+
+
 Las tradicionales, exigen una documentación exhaustiva y se centran en cumplir con el plan del proyecto definido totalmente en la fase inicial del desarrollo del mismo.
+
 
 Dado a que cualquier cambio en el proceso generaba la necesidad de una reconstrucción en la metodología, surgieron las llamadas metodologías ágiles, las cuales permiten realizar cambios en los requerimientos conforme se va desarrollando el proyecto basada en las habilidades del equipo y una buena relación con el usuario mostrando avances funcionales en cortos periodos de tiempo con la posibilidad de que este realice una evaluacion y de ser necesario, sugiera cambios.
 
 Se han propuesto muchos modelos ágiles de proceso y están en uso en toda la industria. Entre ellos se encuentran los siguientes:
+
+
 \begin{itemize}
 	\item Desarrollo adaptativo de software (DAS)
 	\item Scrum
@@ -63,27 +68,35 @@ Scrum se basa en la teoría de control de procesos empírica o empirismo. El emp
 	El Incremento es la suma de todos los elementos de la Lista de Producto completados durante un \textit{sprints} y el valor de los incrementos de todos los Sprints anteriores
 \end{itemize}
 
-La metodología nos permite definir un periodo de hasta un mes para cada sprint y se ha optado por un periodo de 30 días,
-contemplándose un total de ocho sprints, donde al término de cada uno se tendrá un avance del sistema.
+La metodología nos permite definir un periodo de hasta un mes para cada sprint y se ha optado por un periodo de 30 días, contemplándose un total de ocho sprints, donde al término de cada uno se tendrá un avance del sistema.
 
 \subsubsection{Historias de usuario}
 
 De acuerdo con [https://www.scrum.mx/informate/historias-de-usuario], son la técnica por la cuál el usuario especifica de manera general
 los requerimientos que el sistema debe cumplir.
+
+
 Normalmente estas redacciones se llevan a cabo en tarjetas de papel donde se describe de brevemente las funciones que el producto final
-debe poseer, sean requisitos fucionales o no funcionales.\\
-El tratamiento de las historias de ususario en flexible y dinámico, cada una de ellas es lo suficientemente detallada y delimitada para que
-el equipo de desarrollo pueda implementarla durante la duración del sprint. Es habitual que se siga una plantilla para estas tarjetas como la siguiente:\\
-\\
+debe poseer, sean requisitos fucionales o no funcionales.
+
+
+El tratamiento de las historias de ususario en flexible y dinámico, cada una de ellas es lo suficientemente detallada y delimitada para que el equipo de desarrollo pueda implementarla durante la duración del sprint. 
+
+Es habitual que se siga una plantilla para estas tarjetas como la siguiente:
+
 \begin{itemize}
 	\item Como \textbf{<Usuario>}
 	\item Quiero \textbf{<algún objetivo>}
 	\item Para \textbf{<motivo>}
 \end{itemize}
-\\
-Una de sus grandes ventajas es que dado el caso que un usuario no sea lo suficientemente detallista con la historia, esta se puede partir en historias más pequeñas
-antes de el equipo empiece a trabajar en ella.\\
-Un ejemplo de historia de usuario para el desarrollo de este proyecto, siguiento la plantilla seria:\\
+
+
+Una de sus grandes ventajas es que dado el caso que un usuario no sea lo suficientemente detallista con la historia, esta se puede partir en historias más pequeñas antes de el equipo empiece a trabajar en ella.
+
+
+Un ejemplo de historia de usuario para el desarrollo de este proyecto, siguiento la plantilla seria:
+
+
 
 \begin{itemize}
 	\item Como usuario
@@ -91,12 +104,13 @@ Un ejemplo de historia de usuario para el desarrollo de este proyecto, siguiento
 	\item Para tener acceso a sus funciones
 \end{itemize}
 
-Otra forma de darle detalle a las historias de usuario es mediante el añadido de un criterio de aceptación. Un criterio de aceptación es una pruebaque será cierta
-cuando el equipo de desarrollo complete la descripción de la tarjeta.\\
+Otra forma de darle detalle a las historias de usuario es mediante el añadido de un criterio de aceptación. Un criterio de aceptación es una pruebaque será cierta cuando el equipo de desarrollo complete la descripción de la tarjeta.
 
-Siguiendo con esta linea a continuacion se listan las principales historias de usuario que se consideraron para el desarrollo de este trabajo terminal,
-tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otras no se considero necesaria ya que son explicitamente claras.\\
-\hline
+
+Siguiendo con esta linea a continuacion se listan las principales historias de usuario que se consideraron para el desarrollo de este trabajo terminal, tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otras no se considero necesaria ya que son explicitamente claras.
+
+
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 1
 	\item Como usuario
@@ -107,7 +121,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item El usuario recibirá un correo electrónico de confirmación de su alta en el sistema con el correo y contraseña que ingreso para tenerlos de respaldo.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 2
 	\item Como usuario
@@ -119,7 +133,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al ingresar una nueva contraseña, recibirá un correo de confirmación del cambio de contraseña y sus datos permaneceran intactos.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 3
 	\item Como usuario del sistema quiero darme de alta con una contraseña facil de recordar
@@ -133,7 +147,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Antes de guardar la contraseña, esta debera pasar por un metodo que la haga ilegible para el usuario(algun algoritmo de digestion o cifrado).
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 4
 	\item Como usuario quiero poder crear un diagrama entidad-relacióno o diagrama ER arrastrando y soltando elementos de una paleta de iconos
@@ -145,7 +159,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Podra arrastrar y soltar los iconos a un area delimitada para empezar con el diseño de su diagrama.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 5
 	\item Como usuario quiero poder guardar mi último trabajo realizado en el diagramador ER.
@@ -156,14 +170,14 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Antes de almacenar el diagrama en el canvas, se le mostrará un mensaje de confirmación para guardar su diagrama actual.
 	\end{itemize}m
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 6
 	\item Como usuario me gustaría poder ver mi último trabajo que realice
 	\item Cuando seleccione la opción "Entidad-Relación"
 	\item Para poder modificar el diseño.
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 7
 	\item Como usuario quiero tener la opción de cargar un diagrama a partir de un archivo
@@ -176,7 +190,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al contener un información compatible, se mostrará en el canvas el contenido del archivo.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 8
 	\item Como usuario quiero poder descargar el diagrama que este visible en la pagina web
@@ -187,7 +201,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item El archivo generado será de extensión .json con la información necesaria para que el diagramador pueda cargarlo en otro momento.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 9
 	\item Como usuario quiero tener una forma de validar mi diagrama ER
@@ -198,7 +212,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al termino del proceso de validación se le mostrará un mensaje al usuario indicando si el diagrama cumple o no las reglas de un diagrama ER.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 10
 	\item Como usuario en caso de tener un diagrama valido
@@ -211,7 +225,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al terminar el proceso de transformación equivalente se le redirijira al menú "Relacional" donde podra visualizar el equivalente al modelo relacional.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 11
 	\item Como usuario despues de observar el esquema relacional
@@ -219,11 +233,11 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 	\item Para poder crear el mismo esquema de base de datos relacional en un SBGB
 	\item Criterios de aceptación
 	\begin{itemize}
-		\item Las sentencias SQl solo podran ser descargadas en el menú "Relacional" a un archivo con extension .sql dando click a un botón con la leyenda "Descargar SQL".
+		\item Las sentencias SQl solo podran ser descargadas en el menú ``Relacional" a un archivo con extension .sql dando click a un botón con la leyenda ``Descargar SQL".
 		\item Solo podran ser obtenidas las sentencias SQL de un diagrama ER creado y/o validado por el sistema.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 12
 	\item Como usuario una vez observado el equivalente relacional del diagrama ER
@@ -235,7 +249,7 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al termino del proceso de transformación se le redirigirá la menú "No Relacional" donde observará el modelo NR equivalente a su diagrama ER.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 13
 	\item Como usuario quiero poder transformar mi diagrama ER en su equivalente modelo no relacional
@@ -248,18 +262,21 @@ tenga en cuenta que algunas de ellas tiene criterios de aceptación pero en otra
 		\item Al termino del proceso de transformación se le redirigirá la menú "No Relacional" donde observará el modelo NR equivalente a su diagrama ER.
 	\end{itemize}
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item No. 14
 	\item Como usuario me gustaría tener un reporte técnico y
 	\item Quiero que la redacción sea legible y referenciada
 	\item Para compartirlo en el futuro con equipos de desarrollo y ver la posibilidad de agregar nuevas funciones al sistema.
 \end{itemize}
-\hline
+\noindent\rule{\textwidth}{1pt}
 
-\\\\
-Teniendo en cuenta que se esta trabajando con una metodología ágil, estas historias de usuario pueden aumentar o en su defecto dividirse en historias mas pequeñas dependiendo
-de las criterios del equipo de desarrollo durante el proceso de la implementación de cada una de ellas.
+
+
+
+Teniendo en cuenta que se esta trabajando con una metodología ágil, estas historias de usuario pueden aumentar o en su defecto dividirse en historias mas pequeñas dependiendo de las criterios del equipo de desarrollo durante el proceso de la implementación de cada una de ellas.
+
+
 
 
 \subsubsection{Lista de Producto (\textit{Product Backlog})}
@@ -267,6 +284,7 @@ La Lista de Producto es una lista ordenada de todo lo que podría ser necesario 
 
 Se consideran la siguiente lista como el product backlog con las tareas necesarias para complir con todas las historias de usuario mencionadas en la sección anterior.
 Considerando que estas pueden cambiar conforme avancen los sprints y añadirse nuevas tareas.
+
 
 \begin{longtable}{ p{2cm} | p{10cm} | p{2cm} }
 
@@ -284,7 +302,7 @@ Considerando que estas pueden cambiar conforme avancen los sprints y añadirse n
 
 	\hline
 	\hline
-	\caption{Product Backlog}
+	%\caption{Product Backlog}
 	\endlastfoot
 
 	% template row table
@@ -401,5 +419,4 @@ Considerando que estas pueden cambiar conforme avancen los sprints y añadirse n
 	\hline
 	\centering 14 & Revisión de la redacción del reporte técnico para presentación de TT2 & Eduardo \\[0.5cm]
 	\hline
-
 \end{longtable}
