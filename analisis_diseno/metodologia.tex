@@ -1,14 +1,9 @@
 \section{Metodología}
 
-La metodología, es un marco de trabajo usado para estructurar, planificar y controlar el proceso de desarrollo en sistemas de información. En un proyecto de desarrollo de software la metodología ayuda a definir: Quién debe hacer Qué Cuándo y Cómo debe hacerlo. La metodología para el desarrollo de software es un modo sistemático de realizar, gestionar y administrar un proyecto para llevarlo a cabo con altas posibilidades de éxito. Una metodología para el desarrollo de software comprende actividades a seguir para idear, implementar y mantener un producto de software desde que surge la necesidad del producto hasta que se cumple el objetivo por el cual fue creado.[https://www.uladech.edu.pe/images/stories/universidad/documentos/2018/metodologia-desarrollo-software-v001.pdf]
-
-Dentro del campo del desarrollo de software, nos encontramos con dos grupos de metodologías, las tradicionales y las agiles.
+De acuerdo a la bibliografía [[https://www.uladech.edu.pe/images/stories/universidad/documentos/2018/metodologia-desarrollo-software-v001.pdf]]dentro del campo del desarrollo de software, nos encontramos con dos grupos de metodologías, las tradicionales y las agiles.Las tradicionales, suelen ser rigidad en cuando a la documentación exigiendo que sea exhaustiva y centrandose en cumplir con un plan de trabajo establecido en una etapa inicial del proyecto.
 
 
-Las tradicionales, exigen una documentación exhaustiva y se centran en cumplir con el plan del proyecto definido totalmente en la fase inicial del desarrollo del mismo.
-
-
-Dado a que cualquier cambio en el proceso generaba la necesidad de una reconstrucción en la metodología, surgieron las llamadas metodologías ágiles, las cuales permiten realizar cambios en los requerimientos conforme se va desarrollando el proyecto basada en las habilidades del equipo y una buena relación con el usuario mostrando avances funcionales en cortos periodos de tiempo con la posibilidad de que este realice una evaluacion y de ser necesario, sugiera cambios.
+Dado que cualquier cambio en el proceso de una metodologia tradicional genera la necesidad de una reconstrucción del plan de trabajo lo cuál tiene como consecuencia invertir tiempo de desarrollo, surgieron las llamadas metodologías ágiles, las cuales permiten realizar cambios en los requerimientos conforme a los avances en el proyecto tomando en cuenta la habilidades del equipo de desarrollo y una buena relación con el usuario. Esta forma de trabajo permite mostrar avances funcionales en el producto en un periodo de tiempo corto para realizar una evaluación y en caso de ser requerido se sugieran cambios.
 
 Se han propuesto muchos modelos ágiles de proceso y están en uso en toda la industria. Entre ellos se encuentran los siguientes:
 
@@ -25,50 +20,38 @@ Se han propuesto muchos modelos ágiles de proceso y están en uso en toda la in
 \end{itemize}
 
 \subsection{SCRUM}
-Para la factibilidad técnica se realiza una evaluación de las herramientas de hardware  y software que el equipo de trabajo tiene disponible.
 
-Scrum se basa en la teoría de control de procesos empírica o empirismo. El empirismo asegura que el conocimiento procede de la experiencia y de tomar decisiones basándose en lo que se conoce. Scrum emplea un enfoque iterativo e incremental para optimizar la predictibilidad y el control del riesgo.
+De acuedo con la bibliografía ``The Scrum Guide"[https://www.scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-US.pdf#zoom=100] Scrum es un marco de trabajo para problemas complejos y a su vez usado para la entrega de productos incrementales y de máximo valor productivo.
 
-\noindent Los tres pilares que soportan toda la implementación del control de procesos:
+
+
+\noindent La metodología Scrum como se menciona en la bibliografía cuenta con 4 artefactos descritos a continuación:
+
 \begin{itemize}
-	\item Transparencia
-	\item Inspección
-	\item Adaptación
+	\item Lista de Producto (\textit{Product Backlog}):	es el listado de todas las tareas que necesita el proyecto para alcanzar su realización. Al iniciar el desarrollo del
+	proyecto esta lista no se encuentra completa y conforme avanzan los \textit{sprints} se le añaden tareas para solventar las necesidades que	van surgiendo gracias a la retroalimentación del cliente.
+	\item Lista de Pendientes del Sprint (\textit{Sprint Backlog}) : es la lista de tareas seleccionadas del product backlog que se planifica realizar durante el periodo del \textit{sprint} y se definen a los responsables de cada tarea.
+	\item Sprint: el corazón de SCRUM, es un periodo de tiempo determinado, de un mes o menos, donde el equipo completa conjuntos de tareas incluidas en el \textit{backlog} para crear un incremento del producto utilizable.
+	\item Incremento : es la suma de todos los elementos de la lista de producto completados durante un \textit{sprint} unido al valor de los incrementos de los Sprints anteriores. Al finalizar el sprint el nuevo incremento debe estar en condiciones de ser utilizado.
 \end{itemize}
 
-\noindent Scrum prescribe cuatro eventos formales, contenidos dentro del Sprint, para la inspección y adaptación.[K. Schwaber and J. Sutherland, The Scrum Guide, Julio 2016,]
+La metodología nos permite definir un periodo de hasta un mes para cada sprint y se ha optado por un periodo de 30 días, contemplándose un total de ocho sprints, donde al término de cada uno se tendrá un avance del sistema.
+
+\noindent Scrum prescribe cuatro eventos formales, contenidos dentro del Sprint, para la inspección y adaptación del producto.
 \begin{itemize}
-	\item Planificación del Sprint (\textit{Sprint Planning})
-	\item Scrum Diario (\textit{Daily Scrum})
-	\item Revisión del Sprint (\textit{Sprint Review})
-	\item Retrospectiva del Sprint (\textit{Sprint Retrospective})
+	\item Planificación del Sprint (\textit{Sprint Planning}) : es una reunión con todo el equipo SCRUM con una duración máxima de 8 horas para sprint de un mes, en la cual el scrum master es el encargado de que los asistentes entiendan el propósito de dicha reunión.
+	\item Scrum Diario (\textit{Daily Scrum}) : es una reunión de máximo 15 minutos en la cuál el equipo de desarrollo expone sus actividades y planificar las tareas de las proximas 24 horas.
+	\item Revisión del Sprint (\textit{Sprint Review}) : al finalizar cada sprint se lleva a cabo un reunión para la revisión del incremento del producto y en caso de ser necesario realizar ajustes a la lista de producto o product backlog.
+	\item Retrospectiva del Sprint (\textit{Sprint Retrospective}) : es el momento para el equipo SCRUM de pensar el mejoras para el próximo sprint que contribuyan a la colaboración del trabajo colaborativo.
 \end{itemize}
 
 \noindent El Equipo Scrum consiste en los siguientes roles:
 \begin{itemize}
-	\item El Dueño de Producto (\textit{Product Owner}):\\
-	Responsable de maximizar el valor del producto y el trabajo del Equipo de Desarrollo. Es la única persona responsable de gestionar la Lista del Producto (\textit{Product Backlog}).
-	\item El Equipo de Desarrollo (\textit{Development Team}):\\
-	Profesionales que realizan el trabajo de entregar un Incremento de producto “Terminado” que potencialmente se pueda poner en producción al final de cada Sprint. Solo los miembros del Equipo de Desarrollo participan en la creación del Incremento.
-	\item  El Scrum Master:\\
-	Responsable de asegurar que Scrum se entienda y se adopte, asegurándose de que el Equipo Scrum trabaja ajustándose a la teoría, prácticas y reglas de Scrum. Ayuda a las personas externas al Equipo Scrum a entender qué interacciones con el Equipo Scrum pueden ser útiles y cuáles no.
+	\item El Dueño de Producto (\textit{Product Owner}): es la persona responsable de maximizar el valor del producto y el trabajo del Equipo de Desarrollo. Es la única responsable de gestionar la Lista del Producto (\textit{Product Backlog}), cualquier cambio a la lista debe de ser revisada y aprobada por él.
+	\item El Equipo de Desarrollo (\textit{Development Team}): es el conjunto de profesionales que realizan el trabajo para la entrega de un incremento en producto al final de cada Sprint. Son un grupo auto-organizado y multifuncional en donde cada miembro del equipo tiene habilidades especializadas pero la respobilidad de las tareas completadas e incrementos del producto o los retrasos recaen en el equipo como un todo.
+	\item  El Scrum Master: es la persona responsable de asegurar que Scrum es entiendido y adoptado por todos los involucrados en el proyecto, asegurándose de ayudar a las personas externas al Equipo Scrum a entender qué interacciones con el Equipo Scrum pueden ser útiles y cuáles no.
 \end{itemize}
 
-\noindent La metodología Scrum cuenta con los elementos descritos a continuación:
-
-\begin{itemize}
-	\item Lista de Producto (\textit{Product Backlog}):\\
-	Es el listado de todas las tareas que necesita el proyecto para alcanzar su realización. Al iniciar el desarrollo del
-	proyecto esta lista no se encuentra completa y conforme avanzan los \textit{sprints} se le añaden tareas para solventar las necesidades que	van surgiendo gracias a la retroalimentación del cliente.
-	\item Lista de Pendientes del Sprint (\textit{Sprint Backlog}) : \\
-	Es la lista de tareas seleccionadas del product backlog que se planifica realizar durante el periodo del \textit{sprints} y se definen a los responsables de cada tarea.
-	\item Sprint:\\
-	Es un periodo de tiempo determinado donde el equipo completa conjuntos de tareas incluidas en el \textit{backlog}.
-	\item Incremento : \\
-	El Incremento es la suma de todos los elementos de la Lista de Producto completados durante un \textit{sprints} y el valor de los incrementos de todos los Sprints anteriores
-\end{itemize}
-
-La metodología nos permite definir un periodo de hasta un mes para cada sprint y se ha optado por un periodo de 30 días, contemplándose un total de ocho sprints, donde al término de cada uno se tendrá un avance del sistema.
 
 \subsubsection{Historias de usuario}
 
@@ -80,7 +63,7 @@ Normalmente estas redacciones se llevan a cabo en tarjetas de papel donde se des
 debe poseer, sean requisitos fucionales o no funcionales.
 
 
-El tratamiento de las historias de ususario en flexible y dinámico, cada una de ellas es lo suficientemente detallada y delimitada para que el equipo de desarrollo pueda implementarla durante la duración del sprint. 
+El tratamiento de las historias de ususario en flexible y dinámico, cada una de ellas es lo suficientemente detallada y delimitada para que el equipo de desarrollo pueda implementarla durante la duración del sprint.
 
 Es habitual que se siga una plantilla para estas tarjetas como la siguiente:
 
@@ -154,7 +137,7 @@ Siguiendo con esta linea a continuacion se listan las principales historias de u
 	\item Para hacerlo de manera mas facíl e intuitiva.
 	\item Criterios de aceptación
 	\begin{itemize}
-		\item El usuario podra empezar un nuevo diagrama al seleccionar la opción "Entidad-Relación".
+		\item El usuario podra empezar un nuevo diagrama al seleccionar la opción  Eduardo/Omar .
 		\item Tendrá a su disposición un menú de iconos con todos los elementos permitidos en un diagrama ER estandar.
 		\item Podra arrastrar y soltar los iconos a un area delimitada para empezar con el diseño de su diagrama.
 	\end{itemize}
@@ -174,7 +157,7 @@ Siguiendo con esta linea a continuacion se listan las principales historias de u
 \begin{itemize}
 	\item No. 6
 	\item Como usuario me gustaría poder ver mi último trabajo que realice
-	\item Cuando seleccione la opción "Entidad-Relación"
+	\item Cuando seleccione la opción ``Entidad-Relación"
 	\item Para poder modificar el diseño.
 \end{itemize}
 \noindent\rule{\textwidth}{1pt}
@@ -184,7 +167,7 @@ Siguiendo con esta linea a continuacion se listan las principales historias de u
 	\item Para hacer modificación en dicho diagrama y guardarlo de ser necesario.
 	\item Criterios de aceptación
 	\begin{itemize}
-		\item El usuario tendra un botón "cargar" en el menú del diagramador ER para poder importar un archivo con extensión .json
+		\item El usuario tendra un botón ``cargar" en el menú del diagramador ER para poder importar un archivo con extensión .json
 		\item Al importar el archivo, este pasara por un proceso de validación para asegurarse que es un archivo json valido.
 		\item Durante el proceso de validación se verificara que el contenido del archivo es un diagrama compatible con la estructura de los generados por el diagramador ER.
 		\item Al contener un información compatible, se mostrará en el canvas el contenido del archivo.
@@ -197,7 +180,7 @@ Siguiendo con esta linea a continuacion se listan las principales historias de u
 	\item Para poder distribuirlo como yo desee.
 	\item Criterios de aceptación
 	\begin{itemize}
-		\item El usuario dispondrá de un botón "Descargar" en el diagramador ER para obtener un archivo con el contenido del diagrama visible en el canvas.
+		\item El usuario dispondrá de un botón ``Descargar" en el diagramador ER para obtener un archivo con el contenido del diagrama visible en el canvas.
 		\item El archivo generado será de extensión .json con la información necesaria para que el diagramador pueda cargarlo en otro momento.
 	\end{itemize}
 \end{itemize}
@@ -222,7 +205,7 @@ Siguiendo con esta linea a continuacion se listan las principales historias de u
 	\begin{itemize}
 		\item El usuario dispondra de la opción de tranformar al modelo relacional solamente despues de haber validado que el diagrama ER cumple con las reglas.
 		\item Posterior a la validación se le mostrará al ususario en mensaje de confirmación y un botón para disparar el proceso de transformación a su equivalente relacional.
-		\item Al terminar el proceso de transformación equivalente se le redirijira al menú "Relacional" donde podra visualizar el equivalente al modelo relacional.
+		\item Al terminar el proceso de transformación equivalente se le redirijira al menú ``Relacional" donde podra visualizar el equivalente al modelo relacional.
 	\end{itemize}
 \end{itemize}
 \noindent\rule{\textwidth}{1pt}
@@ -245,8 +228,8 @@ Siguiendo con esta linea a continuacion se listan las principales historias de u
 	\item Para poder observar el cambio entre modelos.
 	\item Criterios de aceptación
 	\begin{itemize}
-		\item Al dar click al botón "Transformar a NoSQl" el usuario iniciará el proceso para obtener el equivalente del modelo relacional al modelo NR.
-		\item Al termino del proceso de transformación se le redirigirá la menú "No Relacional" donde observará el modelo NR equivalente a su diagrama ER.
+		\item Al dar click al botón ``Transformar a NoSQl" el usuario iniciará el proceso para obtener el equivalente del modelo relacional al modelo NR.
+		\item Al termino del proceso de transformación se le redirigirá la menú ``No Relacional" donde observará el modelo NR equivalente a su diagrama ER.
 	\end{itemize}
 \end{itemize}
 \noindent\rule{\textwidth}{1pt}
@@ -259,7 +242,7 @@ Siguiendo con esta linea a continuacion se listan las principales historias de u
 		\item El usuario dispondra de la opción de tranformar al modelo relacional solamente despues de haber validado que el diagrama ER cumple con las reglas.
 		\item Posterior a la validación se le mostrará al ususario en mensaje de confirmación y un botón para disparar el proceso de transformación al modelo no relacional o modelo NR.
 		\item Una vez validado el diagrama ER e iniciado el proceso para la transformación al modelo NR se le indicará al usuario que el proceso puede ser tardado ya que primero realizará la transformación al modelo relacional.
-		\item Al termino del proceso de transformación se le redirigirá la menú "No Relacional" donde observará el modelo NR equivalente a su diagrama ER.
+		\item Al termino del proceso de transformación se le redirigirá la menú ``No Relacional" donde observará el modelo NR equivalente a su diagrama ER.
 	\end{itemize}
 \end{itemize}
 \noindent\rule{\textwidth}{1pt}
@@ -284,7 +267,6 @@ La Lista de Producto es una lista ordenada de todo lo que podría ser necesario 
 
 Se consideran la siguiente lista como el product backlog con las tareas necesarias para complir con todas las historias de usuario mencionadas en la sección anterior.
 Considerando que estas pueden cambiar conforme avancen los sprints y añadirse nuevas tareas.
-
 
 \begin{longtable}{ p{2cm} | p{10cm} | p{2cm} }
 
@@ -345,7 +327,7 @@ Considerando que estas pueden cambiar conforme avancen los sprints y añadirse n
 	\hline
 	\centering 4 & Planteamiento de escenarios de los esquemas entidad-relación.  & Eduardo \\[0.5cm]
 	\hline
-	\centering 4 & Agregar a la interfaz gráfica de la aplicación web el menú "Entidad-Relaciín". & Eduardo \\[0.5cm]
+	\centering 4 & Agregar a la interfaz gráfica de la aplicación web el menú ``Entidad-Relación". & Eduardo \\[0.5cm]
 	\hline
 	\centering 4 & Agregar iconos de los elementos basicos de un diagrama ER en el diagramador. & Eduardo \\[0.5cm]
 	\hline
@@ -383,7 +365,7 @@ Considerando que estas pueden cambiar conforme avancen los sprints y añadirse n
 	\hline
 	\centering 10 & Implementación del algoritmo de transformación ER -> relacional & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering 10 & Agregar menú "Relacional" a la intefaz gráfica. & Eduardo/Omar \\[0.5cm]
+	\centering 10 & Agregar menú ``Relacional" a la intefaz gráfica. & Eduardo/Omar \\[0.5cm]
 	\hline
 	\centering 10 & Prueba de transformación de distintos diagramas E-R al modelo relacional. & Eduardo/Omar \\[0.5cm]
 	\hline
@@ -403,7 +385,7 @@ Considerando que estas pueden cambiar conforme avancen los sprints y añadirse n
 	\hline
 	\centering 12 & Agregar servicio al backend para guardar el modelo noSQL en la base de datos.  & Omar \\[0.5cm]
 	\hline
-	\centering 12 & Agregar menú "No Relacional" a la intefaz gráfica. & Omar \\[0.5cm]
+	\centering 12 & Agregar menú ``No Relacional" a la intefaz gráfica. & Omar \\[0.5cm]
 	\hline
 	\centering 12 & Implementación del algortimo de transformación de modelo relacional al modelo noSQL. & Eduardo \\[0.5cm]
 	\hline
@@ -411,9 +393,9 @@ Considerando que estas pueden cambiar conforme avancen los sprints y añadirse n
 	\hline
 	\centering 13 & Agregar servicio backend para transformación del modelo ER al modelo no relacional. & Eduardo/Omar \\[0.5cm]
 	\hline
-	\centering 13 & Ajustar la interfaz del menu "Entidad-Relación" para mostrar mensaje tranformación la modelo no relacioal. & Omar \\[0.5cm]
+	\centering 13 & Ajustar la interfaz del menú ``Entidad-Relación" para mostrar mensaje tranformación la modelo no relacioal. & Omar \\[0.5cm]
 	\hline
-	\centering 13 & Manejar el estado del diagrama ER y redireccionarl al menú "No Relacional" al terminar la tranformación. & Eduardo \\[0.5cm]
+	\centering 13 & Manejar el estado del diagrama ER y redireccionarl al menú ``No Relacional" al terminar la tranformación. & Eduardo \\[0.5cm]
 	\hline
 	\centering 13 & Pruebas de caso de estudio para verificar la correcta transformación y coherencia en los datos.  & Eduardo/Omar \\[0.5cm]
 	\hline
