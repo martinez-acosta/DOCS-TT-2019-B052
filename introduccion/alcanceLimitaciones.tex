@@ -1,39 +1,18 @@
 \section{Alcance y limitaciones}
 
-Se usará la notación oficial en los modelos de datos conceptuales entidad-relación y relacional, es decir, la notación de Chen y la notación de Codd, respectivamente.
-
-
-Para la generación de scripts de bases de datos relacionales se usará el lenguaje de consultas SQL.
-
-
-Asimismo, los scripts generados se probarán con MySQL, ya que es SGBD que se usa en la asignatura de Base de Datos y es con el que están más familiarizados los alumnos.
-
-
-
-Para la transformación del modelo de datos conceptual del modelo entidad-relación al modelo modelo relacional no se realizará ninguna normalización, porque se necesita un esquema no normalizado para la transformación al modelo conceptual de datos NoSQL.
-
-
-Los scripts NoSQL generados por la aplicación solo serán probados y ejecutados en MongoDB, porque es un lenguaje de consultas propias de MongoDB.
-
-
-El usuario podrá acceder con un correo o no válido, teniendo en cuenta de que si no crea su cuenta con un correo válido, no le llegará notificación de correo que le indica que se ha registrado exitosamente junto con su contraseña.
-
-
-El diagramador entidad-relación solo podrá editar elementos del modelo entidad-relación, no se podrá diagramar elementos del modelo entidad-relación extendido, porque este último modelo no es indispensable para el objetivo del proyecto.
-
-
-No se podrá editar visualmente el diagrama generado para el modelo relacional.
-
-
-Tampoco se podrá editar visualmente el diagrama conceptual del modelo NoSQL orientado a documentos.
-
-
-El modelo elegido para desarrollar la propuesta de modelo conceptual será independiente del modelo de datos NoSQL o enfocado en el modelo NoSQL orientado a documentos.
-
-
-Asimismo, aunque la propuesta de modelo conceptual sea independiente del modelo de datos NoSQL, la generación de scripts será únicamente en el modelo de datos orientado a documentos.
-
-
-El grado de partición en el modelo entidad-relación será máximo de dos entidades.
-
-
+\begin{enumerate}
+    \item Se usará la notación oficial en los modelos de datos conceptuales entidad-relación y relacional, es decir, la notación de Chen y la notación de Codd, respectivamente.
+    \item Para la generación de \textit{scripts} de bases de datos relacionales se usará el lenguaje de consultas SQL.
+    \item Asimismo, los \textit{scripts} generados se probarán con MySQL, ya que es RDBMS (\textit{ Database Management System}) que se usa en la asignatura de Base de Datos y es con el que están más familiarizados los alumnos.
+    \item Para la transformación del modelo de datos conceptual del modelo entidad-relación al modelo relacional no se realizará ninguna normalización, porque se necesita un diagrama no normalizado para la transformación al modelo conceptual de datos NoSQL.
+    \item Los \textit{scripts} NoSQL generados por la aplicación solo serán probados y ejecutados en un solo NoSQL RDBMS.
+    \item Respecto al registro de los usuarios, se podrá acceder a la aplicación con un correo válido o uno que no lo sea, teniendo en cuenta de que si no crea su cuenta con un correo válido, no le llegará notificación de correo que le indica que se ha registrado exitosamente junto con su contraseña.
+    \item El diagramador entidad-relación solo podrá editar elementos del modelo entidad-relación, no se podrá diagramar elementos del modelo entidad-relación extendido ni de ningún otro modelo.
+    \item No se podrá editar el diagrama generado para el modelo relacional.
+    \item Tampoco se podrá editar el diagrama conceptual del modelo NoSQL orientado a documentos.
+    \item El modelo elegido para desarrollar la propuesta de modelo conceptual será independiente del modelo de datos NoSQL o enfocado en el modelo NoSQL orientado a documentos.
+    \item Asimismo, aunque la propuesta de modelo conceptual sea independiente del modelo de datos NoSQL, la generación de \textit{scripts} será únicamente en el modelo de datos orientado a documentos.
+    \item El grado de partición en el modelo entidad-relación será máximo de dos entidades.
+    
+    
+\end{enumerate}

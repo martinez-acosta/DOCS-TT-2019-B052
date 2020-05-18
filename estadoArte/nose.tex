@@ -1,21 +1,11 @@
-\section{Schema Design for NoSQL Applications}
-NoSE esta diseñado para ser utilizado en el desarrollo temprano de una aplicación, comienza con un modelo conceptual de los datos requeridos por una aplicación de destino, así como una descripción de cómo la aplicación usará los mismos. Luego recomienda un esquema de bases de datos extensible, es decir, un conjunto de definiciones de familia de columnas optimizadas para aplicación destino y pautas para desarrollar aplicaciones que usan este esquema. 
+\section{NoSE: Schema Design for NoSQL Applications}
+De acuerdo con Michael J. Mior\cite{mior_nose_2017}, NoSE usa un modelo conceptual de los datos y una descripción de cómo se accederán a ellos, que es conocido como \textit{workload} y es usado para generar un modelo físico de una base de datos NoSQL orientado a columnas.
 
 
-Aunque el esquema de este tipo de bases de datos es flexible en el sentido de que la aplicación no necesita definir columnas específicas de antemano, aún es necesario decidir qué familias de columnas existirán en el almacén de datos y qué información codifica cada familia de columnas. Estas opciones son importantes porque el rendimiento de la aplicación depende en gran medida del esquema derivado.  
+Para el esquema generado, NoSE debe tener un modelo conceptual que describa la información que se almacenará, por ello NoSE espera este modelo conceptual en forma de un grafo de entidad.
 
 
-Un esquema para una base de datos extensible consta de un conjunto de definiciones de familia de columnas. Cada familia de columnas tiene un nombre como identificador y su definición incluye los dominios de las llaves de partición, las llaves de agrupación y los valores de columna utilizados en esa familia de columnas.
-Dado un modelo conceptual (opcionalmente con estadísticas que describen la distribución de datos), una carga de trabajo de la aplicación (Workload) y una restricción de espacio opcional, el problema del diseño del esquema es recomendar un esquema tal que:
-\begin{enumerate}
-    \item cada consulta en la carga de trabajo responda usando una o más solicitudes de obtención para agrupar familias en el esquema
-    \item se minimiza el costo total ponderado de responder las consultas, y opcionalmente 
-    \item El tamaño agregado de las familias de columnas recomendadas está dentro de una restricción de espacio dada. Resolver este problema de optimización es el objetivo de nuestro asesor de esquemas. 
-\end{enumerate}
-Dando el modelo conceptual de una aplicación y un Workload,  recomienda un plan específico para obtener una respuesta a la solicitud utilizando el siguiente esquema:
-\begin{enumerate}
-    \item Enumeración de candidatos. Genera un conjunto de familias de columnas candidatas, en función de la carga de trabajo. Al inspeccionar la carga de trabajo, el asesor genera solo candidatos que pueden ser útiles para responder las consultas en la carga de trabajo.
-    \item Planificación de consultas. Genera un espacio de posibles planes de implementación para cada consulta. Estos planes hacen uso de las familias de columnas candidatas producidas en el primer paso.
-    \item Optimización del esquema. Genera un programa entero binario (BIP por sus siglas en ingles binary integer program) a partir de los candidatos y los espacios del plan. Luego, el BIP se entrega a un solucionador estándar que elige un conjunto de familias de columnas que minimiza el costo de responder las consultas.
-    \item Recomendación del plan. Elija un plan único del espacio del plan de cada consulta para ser el recomendado plan de implementación para esa consulta en función de las familias de columnas seleccionadas por el optimizador.        
-\end{enumerate}
+Los grafos de entidad son un tipo restringido del modelo de entidad-relación. Cada cuadro representa un tipo de entidad, cada borde es una relación entre entidades y la cardinalidad asociada de la relación (uno a muchos, uno a uno o muchos a muchos). Las entidades tienen atributos, uno o más de los cuales sirven como clave. 
+
+
+Respecto al \textit{workload}, se describe como un conjunto de consultas parametrizadas y declaraciones de ``actualización". Cada consulta y actualización está asociada con un peso que indica su frecuencia relativa en la carga de trabajo.

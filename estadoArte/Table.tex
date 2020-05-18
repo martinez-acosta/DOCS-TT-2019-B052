@@ -1,78 +1,16 @@
-\subsection{Hackolade}
-Hackolade aplica parte de la teoría de la relación de entidad a bases de datos no  relacionales para representar datos desnormalizados de una manera fácil de usar.
 
-
-Diseño de esquema para:
-
-\begin{itemize}
-	\item Documento: MongoDB, Couchbase, Elasticsearch, Google Firebase y Firestore.
-	\item Grafos: Neo4j, TinkerPop.
-	\item Orientado a columnas: HBase, Cassandra y Datastax.
-	\item Clave-Valor: DynamoDB.
-	\item Multimodelo: Cosmos DB, MarkLogic.
-	\item Análisis de Big Data: Hive, HBase, AWS Glue Data Catalog.
-	\item Formatos de datos: esquema JSON, Avro.
-	\item API REST: Swagger 2, OpenAPI 3, registro de esquema AWS EventBridge.
+\begin{landscape}
 	
-\end{itemize}
-Ventajas:
-\begin{itemize}
-	\item Interfaz de usuario amigable.
-	\item Navegación visual del modelo.
-	\item Edición de vista de árbol de colección gráfica.
-	\item Diseñado específicamente para JSON y el anidamiento de subobjetos.
-	\item Ingeniería inversa y directa de modelos de datos.
-	\item Generar esquemas Mongoose, validador MongoDB, scripts DynamoDB o esquemas otomanos Couchbase.
-	\item Producir documentación legible para humanos en formato HTML o PDF.
-	\item Disponible para Windows, Mac, Linux.
-\end{itemize}
-\subsection{KDM}
-Es una herramienta para automatizar el diseño de esquemas para Cassandra. Simplifica el proceso de modelado de datos, empezando desde el modelo de datos conceptual en una notación familiar de Chen y termina con un  script CQL(Cassandra Query Language).
-
-\subsection{NoSQL Workbench for Amazon DynamoDB}
-
-
-NoSQL Workbench para Amazon DynamoDB es una aplicación multiplataforma para el desarrollo y operaciones de bases de datos modernas y está disponible para Windows y macOS.
-
-
-También es una herramienta visual unificada que proporciona funciones de modelado de datos, visualización de datos y desarrollo de consultas para ayudar a diseñar, crear, consultar y administrar tablas de DynamoDB.
-
-
-Características: 
-
-\begin{enumerate}
-	\item Modelado de datos
-	Puede crear nuevos modelos de datos o diseñar modelos basados en modelos de datos existentes que satisfagan los patrones de acceso a datos de su aplicación. 
-	
-	
-	También puede importar y exportar el modelo de datos diseñado al final del proceso.
-	\item Visualización de datos
-	El visualizador de modelo de datos proporciona un lienzo donde puede asignar consultas y visualizar los patrones de acceso de la aplicación sin tener que escribir código. 
-	
-	
-	Puede agregar datos manualmente a su modelo de datos o importar datos desde MySQL. 
-	\item Gran interfaz gráfica
-	NoSQL Workbench proporciona una rica interfaz gráfica de usuario para que pueda desarrollar y probar consultas. 
-	
-	
-	Puede usar el generador de operaciones para ver, explorar y consultar conjuntos de datos. También admite la proyección, la expresión de condiciones y le permite generar código de muestra en varios idiomas.
-	
-\end{enumerate}
-
-
-\begin{longtable}{  p{3cm}| p{4cm}| p{4cm}| p{4cm} }
+	\begin{longtable}{  p{2.6cm}| p{1.7cm}| l| p{1.8cm}| p{1.7cm}|  p{1.1cm}| p{1.2cm}| p{1.7cm}| p{1.9cm}| p{1.6cm}| p{1.5cm}| p{1.5cm}  }
 		
-		\caption{Software disponible.\label{long}}\\
 		
 		\hline
-		\multicolumn{4}{ c }{Oferta de Software}\\
-		\hline
-		\textbf{Software} & \textbf{KDM} & \textbf{NoSQL Workbench} & \textbf{Hackolade} \\
-		\hline
+		
+		\textbf{Herramienta} & \textbf{Creador} & \textbf{Objetivo} & \textbf{Licencia}& \textbf{Sistema operativo} & \textbf{Publi-cación } & \multicolumn{4}{|c|}{\textbf{Modelo}}  & \multicolumn{2}{|c}{\textbf{Modelado}}\\
+		
 		\endfirsthead
 		
-		\hline
-		\multicolumn{2}{|l|}{Continuación de Tabla \ref{long}}\\
+		\multicolumn{12}{c}{Continuación de Tabla \ref{long}}\\
 		\hline
 		Continuación de tabla\\
 		\hline
@@ -82,27 +20,35 @@ Características:
 		\endfoot
 		
 		\hline
-		\multicolumn{4}{ c }{Fin de Tabla}\\
+		\multicolumn{12}{ c }{Fin de Tabla}\\
 		\hline%\hline
 		\endlastfoot
 		
-		\textbf{Caracteristica} & Herramienta para automatizar el diseño de esquemas para Cassandra. Simplifica un proceso de modelado de datos de extremo a extremo que comienza con un modelo de datos conceptual visualizado en una notación familiar de Chen y termina con un  script CQL  & Herramienta visual unificada para diseñadores de bases de datos, desarrolladores y           administradores; proporciona modelado de datos relacional y orientado a objetos,          desarrollo de sentencias de SQL (Structured Query Language en inglés [6]) y            herramientas de administración integrales para la configuración del servidor, la          administración de usuarios, la copia de seguridad. & Herramienta que aplica parte de la teoría de la relación de entidad a bases de datos no                relacionales para representar datos desnormalizados de una manera fácil de usar \\ 
 		
-		\textbf{Inicio de desarrollo} & 2015 & 2019 & 2017 \\ 
+		&  &  &  &  &  & Concep-tual & Lógico & Fisico &  
+		Transfor-mación entre niveles de abstraccion
+		& Lenguaje & Meto-dología\\
+		\hline
 		
-		textbf{Estatus } & Mejora intermitente & Versión Demo & Finalizado. Desarrolllo constante \\
+		KDM & Andrii Kashliev. & Comercial & Software privativo & Web based GUI & 2018 & E-R & Columnas & Cassandra-DB& Reglas de mapeo. Flujo de trabajo de la aplicación. Patrones de mapeo & Diagramas Chebotko a nivel logico & query-driven\\
 		
-		\textbf{Precio} & Gratuito (pendiente 2020) & Gratuito & Desde 75 euros/Mes \\ 
 		
-		\textbf{Desarrollador } & Andrii Kashliev. Profesor Asistente del Departamento de Informática de la Universidad de	Eastern Michigan
-		 & Oracle Corporation & IntegrIT SA / NV, firma consultora de estrategia de TI y proveedor de software independiente \\
 		
-		\textbf{Plataforma } & Web & Windows y macOS & Windows, Mac, Linux \\
+		Hackolade & IntegrIT SA / NV, & Comercial & Software privativo & Windows, Mac, Linux & 2016 & E-R & Multi-paradigma & Multi-plataforma & reglas de mapeo proceso de  normalización y desnormalización& No definido & model-driven \\
 		
-		\textbf{Manejador de BD } & Columna & Clave valor y documentos & Documento, grafos, columna, llave-valor.\\
+		NoSQL Workbench for Amazon DynamoDB & Amazon & En desarrollo & Software privativo & Windows, Mac & 2019 & E-R & llave- valor & Dynamo-DB & Reglas de mapeo & No definido &  query-driven \\
 		
-		\textbf{Orientación } & Apache Cassandra & DynamoDB & MongoDB, Couchbase, Elasticsearch, Google Firebase and Firestore, Neo4j, TinkerPop, HBase, Cassandra, Datastax, DynamoDB
-		 \\
 		
-%		\textbf{ } & 2 & 3 & 4 \\
+		Mortadelo : A Model-Driven Framework for NoSQL Database Design &  
+		Alfonso de la Vega, Diego García-Saiz, Carlos Blanco, Marta Zorrilla, and Pablo Sánchez & Investigación &  
+		implemen-tación de software bajo licencia libre & - & 2019 & GDM &  Columnas, documento &  
+		Cassandra, MongoDB &  Reglas de mapeo & UML & model-driven  \\
+		
+		NoSE (Schema Design for NoSQL Applications) & Michael J. Mior, Kenneth Salem, Ashraf Aboulnaga and Rui Liu & Investigación & implemen-tación de software bajo licencia libre & - & 2017 & E-R & Columnas & Cassandra & Carga de trabajo. Limitación de espacio & N/A & query-driven \\
+		
+		%&  &  &  &  & &  & 1 & 2 & 3& 1 & 2 \\
+		
 	\end{longtable}
+	
+\end{landscape}
+
