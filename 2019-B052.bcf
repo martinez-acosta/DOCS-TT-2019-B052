@@ -2181,6 +2181,8 @@
     <bcf:citekey order="47">wikipedia_contributors_d3js_2020</bcf:citekey>
     <bcf:citekey order="48">lutz_learning_2013</bcf:citekey>
     <bcf:citekey order="49">wikipedia_django_2020</bcf:citekey>
+    <bcf:citekey order="50">noauthor_stack_nodate</bcf:citekey>
+    <bcf:citekey order="51">martinez-mosquera_modeling_2020</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
