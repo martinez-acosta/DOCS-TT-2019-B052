@@ -1,20 +1,20 @@
-\subsection{Mortadelo}
-De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo está basado en el \textit{model driven}; es decir, que para diseñar bases de datos NoSQL necesita de modelos conceptuales bien definidos que conformen un metamodelo.
+\subsection{Mortadelo: Generic Data Metamodel}
+De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo está basado en el \textit{model driven}; es decir, que para diseñar bases de datos NoSQL necesita de modelos conceptuales bien definidos.
 
 
 Como menciona este autor, un modelo conceptual que especifique solo qué entidades conforman el sistema no es suficiente, porque para los sistemas NoSQL, es clave conocer cómo estas entidades serán consultadas y actualizadas en el día a día de la implementación de la base de datos.
 
 
-Por ello los modelos conceptuales tradicionales han sido complementados con lenguajes específicos para los patrones de acceso a los datos.
+Asimismo, en trabajos como los de Chebotko\cite{chebotko_big_2015}, de Lima\cite{de_lima_workload-driven_2015} o Mior\cite{mior_nose_2017-1} los modelos conceptuales tradicionales, como el modelo entidad-relación o el modelo relacional, son complementados con propuestas para los patrones de acceso a los datos.
 
 
-Lo anterior implica usar dos modelos diferentes pero interrelacionados que añade complejidad al modelado de la base datos. Por esta razón de la Vega propone el Generic Data Model (GDM), que es un metamodelo para el modelo conceptual NoSQL donde la estructura y patrones de acceso están integradas en un mismo modelo conceptual.
+Lo anterior implica usar dos modelos diferentes pero interrelacionados que añade complejidad al modelado de la base datos; por esta razón de la Vega propone el Generic Data Model (GDM), que es un modelo conceptual NoSQL donde la estructura (entitades, atributos, relaciones entre entidades) y patrones de acceso (cómo se consultarán los datos) están integradas en un mismo modelo conceptual.
 
 
-Cabe destacar que el GDM es un modelo conceptual independiente del paradigma NoSQL; es decir, puede representar una base de datos NoSQL de clave-valor, orientado a documentos, orientado a columnas u orientada a grafos.
+Cabe destacar que el GDM es un modelo conceptual independiente del paradigma NoSQL; es decir, puede representar una base de datos NoSQL de clave-valor, orientado a documentos, orientado a columnas u orientado a grafos.
 
 
-Tal como está en la figura ~\ref{img:mortadelo-process}, Mortadelo empieza con el GDM bien construido, genera una tranformación ``modelo a modelo" (M2M) al modelo lógico deseado, ya sea de clave-valor, orientado a documentos, a columnas o a grafos, para posteriormente realizar la generación del modelo físico de la base de datos NoSQL.
+Tal como está en la figura~\ref{img:mortadelo-process}, Mortadelo empieza con un GDM, realiza una tranformación ``modelo a modelo" (M2M) para generar el modelo lógico NoSQL (clave-valor, orientado a documentos, a columnas o a grafos) y realiza una transformación ``modelo a texto" (M2T) para generar el modelo físico NoSQL.
 
 
 \begin{figure}[h!t] 
@@ -23,12 +23,6 @@ Tal como está en la figura ~\ref{img:mortadelo-process}, Mortadelo empieza con 
     \caption{Mortadelo}
     \label{img:mortadelo-process}
 \end{figure}
-
-
-El modelo lógico en el primer paso es una representación intermedia que contiene información específica del paradigma que describen.
-
-
-Finalmente, para el segundo paso de la transformacion el modelo lógico pasa por una transformación ``modelo a texto"  (M2T) que genera el modelo físico del paradigma escogido.
 
 \subsubsection*{Generic Data Metamodel}
 
@@ -48,3 +42,17 @@ El modelo de estructura está definido de manera semejante a la notación UML y 
     \item atributos primitivos: almacenan valores de algún tipo
     \item referencias a otras entidades: las referencias de una entidad pueden tener una cardinalidad variable (1, 2, 4 o ilimitada).
 \end{enumerate}
+
+Las \textit{access queries} representan las consultas que se realizarán en la base de datos. Estas consultas están definidas en el GDM sobre entidades del modelo de estructura. Además, estas consultas están inspiradas en una sintaxis inspirada en SQL; sin embargo, a diferencia de SQL, las consultas en este metamodelo están orientadas a entidades del GDM y podemos navegar a través de las entidades recorriendo sus referencias.
+
+
+Una \textit{Query} es ejecutada sobre una entidad principal que está asociada por un elemento \textit{From}. Cualquier elemento \textit{Reference} desde esa entidad puede ser incluido en la \textit{query} por medio del elemento \textit{Inclusion}. Las inclusiones trabajan de la misma manera que un \textit{join} convencional de una consulta SQL.
+
+
+Asimismo, puede haber referencias recursivas mientras haya elementos \textit{Inclusion} disponibles.
+
+
+El conjunto de atributos de proyección que son obtenidos por la \textit{query} está especificado como una lista elementos del tipo \textit{AttributeSelection}. Esta lista puede contener atributos de la entidad \textit{From} o de la entidad \textit{Inclusion}. La condición de la \textit{query} está expresada con un elemento del tipo \textit{BooleanExpression} que permite describir cualquier restricción deseada. Finalmente, ordenamiento puede ser especificado por un conjunto de elementos del tipo \textit{AttributeSelections} con las entidades \textit{From} y \textit{Inclusion}.
+
+
+Algunos elementos del GDM que tienen como clase base la clase \textit{AnnotableElement} implicando que estos elemtnos pueden ser \textit{annotated} (comentados). El elemento \textit{Annotation} son indicadores de texto que pueden usarse para dar información extra a Mortadelo que podría ser útil para la tranformación de una instancia GDM o un modelo lógico NoSQL. Por ejemplo, \textit{Entities} del GDM pueden incluir la anotación \textit{@highlyUpdated} para indicar a Mortadelo que la entidad anotada recibe muchas operaciones de transacción como \textit{inserts} o \textit{updates}. Además de las \textit{Entities}, los elementos \textit{Queries} y \textit{Features} también pueden ser anotadas.
