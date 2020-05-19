@@ -1,0 +1,5 @@
+de Lima and dos Santos Mello describen una metodología de diseño para transformar un modelo ER a un modelo lógico orientado a documentos para después generar el código de MongoDB. Cabe destacar que los autores denotan la importancia de conocer cómo los datos serán accedidos para diseñar una base de datos NoSQL. Los autores complementan los modelos ER con información acerca de la esperada "application workload", que está implementada como una técnica desde un XML.
+
+
+
+Chebotko 
