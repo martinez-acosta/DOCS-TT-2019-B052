@@ -29,3 +29,22 @@ El modelo lógico en el primer paso es una representación intermedia que contie
 
 
 Finalmente, para el segundo paso de la transformacion el modelo lógico pasa por una transformación ``modelo a texto"  (M2T) que genera el modelo físico del paradigma escogido.
+
+\subsubsection*{Generic Data Metamodel}
+
+Como ya se mencionó y como se puede ver en la figura ~\ref{img:mortadelo-gdm}, el modelo conceptual que propone de la Vega contiene en un mismo modelo los elementos de la estructura y el cómo se realizarán las consultas (\textit{structure model} y \textit{access queries}).
+
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.75\textwidth]{mortadelo/GDM.png}
+    \caption{Mortadelo}
+    \label{img:mortadelo-gdm}
+\end{figure}
+
+El modelo de estructura está definido de manera semejante a la notación UML y la estructura de datos está definida por la especificación de entidades. Estas entidades contienen dos tipos de elementos:
+
+\begin{enumerate}
+    \item atributos primitivos: almacenan valores de algún tipo
+    \item referencias a otras entidades: las referencias de una entidad pueden tener una cardinalidad variable (1, 2, 4 o ilimitada).
+\end{enumerate}
