@@ -101,6 +101,47 @@ En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra 
 \end{itemize}
 
 \paragraph*{Transformación M2M}
+Para generar el modelo lógico orientado a documentos es necesario:
+\begin{enumerate}
+    \item Identificar el número de jerarquías que se necesitan almacenar en la bases de datos
+    \item Determinar cuántos elementos anidados debería tener cada jerarquía.
+\end{enumerate}
+
+Para el primer punto:
+\begin{enumerate}
+    \item Se analizan las \textit{queries} de la instancia del GDM.
+    \item Se seleccionan todas las entidades que estén referenciadas en la instancia de la clase \textit{From}.
+    \item Por cada entidad se crea una \textit{Collection} del modelo lógico orientado a documentos.
+    \item Cada \textit{Collection} tiene un \textit{DocumentType} raíz que almacena la instancia de la clase \textit{Entity} a la que hace referencia.
+\end{enumerate}
+
+Para el segundo punto:
+\begin{enumerate}
+    \item Se analizan las \textit{queries} de la instancia del GDM.
+    \item Se seleccionan todas las entidades que estén referenciadas en la instancia de la clase \textit{From}.
+    \item Se agregan todas las referencias que aparezcan en cada instancia de la clase \textit{Inclusion}.
+    \item Se elabora un \textit{access tree}, este especifica qué entidades son consultadas desde una entidad y a través de qué referencias; en la figura~\ref{img:mortadelo-gdm-logical-model-access-tree} se puede ver el \textit{access tree} de la consulta Q4 de la figura~\ref{img:mortadelo-gdm-logical-model-q4}
+    \item Usando el \textit{access tree} se generan los contenidos de la entidad raíz de la siguiente manera:
+    \begin{enumerate}
+        \item Se añaden todos los atributos de la entidad raíz, ya que aunque se usen por alguna \textit{query} o no, es insignificante el incremento de tamaño y esos atributos pueden ser usados para una posterior escalabilidad en las consultas que se pueden hacer.
+        \item Se procesan todas las referencias de la entidad raíz
+        \item Por cada referencia un nuevo \textit{field} es creado
+    \end{enumerate}
+\end{enumerate}
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-access-tree.png}
+    \caption{Access Tree - Modelo lógico orientado a documentos}
+    \label{img:mortadelo-gdm-logical-model-access-tree}
+\end{figure}
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-q4.png}
+    \caption{Access query Q4}
+    \label{img:mortadelo-gdm-logical-model-q4}
+\end{figure}
 
 \begin{algorithm}
     \SetKwInOut{Input}{Input}
