@@ -5,10 +5,10 @@ De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo está basad
 Como menciona este autor, un modelo conceptual que especifique solo qué entidades conforman el sistema no es suficiente, porque para los sistemas NoSQL, es clave conocer cómo estas entidades serán consultadas y actualizadas en el día a día de la implementación de la base de datos.
 
 
-Asimismo, en trabajos como los de Chebotko\cite{chebotko_big_2015}, de Lima\cite{de_lima_workload-driven_2015} o Mior\cite{mior_nose_2017-1} los modelos conceptuales tradicionales, como el modelo entidad-relación o el modelo relacional, son complementados con propuestas para los patrones de acceso a los datos.
+Asimismo, en trabajos como los de Chebotko\cite{chebotko_big_2015}, de Lima\cite{de_lima_workload-driven_2015} o Mior\cite{mior_nose_2017-1} los modelos conceptuales tradicionales como el modelo entidad-relación o el modelo relacional son complementados con propuestas para los patrones de acceso a los datos.
 
 
-Lo anterior implica usar dos modelos diferentes pero interrelacionados que añade complejidad al modelado de la base datos; por esta razón de la Vega propone el Generic Data Model (GDM), que es un modelo conceptual NoSQL donde la estructura (entitades, atributos, relaciones entre entidades) y patrones de acceso (cómo se consultarán los datos) están integradas en un mismo modelo conceptual.
+Lo anterior implica usar dos modelos diferentes pero interrelacionados que añade complejidad al modelado de la base datos; por esta razón de la Vega propone el Generic Data Metamodel (GDM), que es un modelo conceptual NoSQL donde la estructura (entidades, atributos, relaciones entre entidades) y patrones de acceso (cómo se consultarán los datos) están integradas en un mismo modelo conceptual.
 
 
 Cabe destacar que el GDM es un modelo conceptual independiente del paradigma NoSQL; es decir, puede representar una base de datos NoSQL de clave-valor, orientado a documentos, orientado a columnas u orientado a grafos.
@@ -26,7 +26,7 @@ Tal como está en la figura~\ref{img:mortadelo-process}, Mortadelo empieza con u
 
 \subsubsection*{Generic Data Metamodel}
 
-Como ya se mencionó y como se puede ver en la figura ~\ref{img:mortadelo-gdm}, el modelo conceptual que propone de la Vega contiene en un mismo modelo los elementos de la estructura y el cómo se realizarán las consultas (\textit{structure model} y \textit{access queries}).
+Como se puede ver en la figura~\ref{img:mortadelo-gdm}, el modelo conceptual que propone de la Vega contiene en un mismo modelo con notación UML los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
 
 
 \begin{figure}[h!t] 
@@ -36,23 +36,31 @@ Como ya se mencionó y como se puede ver en la figura ~\ref{img:mortadelo-gdm}, 
     \label{img:mortadelo-gdm}
 \end{figure}
 
-El modelo de estructura está definido de manera semejante a la notación UML y la estructura de datos está definida por la especificación de entidades. Estas entidades contienen dos tipos de elementos:
+A continuación se da una explicación de cada elemento de la figura~\ref{img:mortadelo-gdm} donde la clase \textit{Model} es para indicar que un modelo GDM puede tener n entidades y n consultas donde $n=0,1,...,n$:
 
-\begin{enumerate}
-    \item atributos primitivos: almacenan valores de algún tipo
-    \item referencias a otras entidades: las referencias de una entidad pueden tener una cardinalidad variable (1, 2, 4 o ilimitada).
-\end{enumerate}
-
-Las \textit{access queries} representan las consultas que se realizarán en la base de datos. Estas consultas están definidas en el GDM sobre entidades del modelo de estructura. Además, estas consultas están inspiradas en una sintaxis inspirada en SQL; sin embargo, a diferencia de SQL, las consultas en este metamodelo están orientadas a entidades del GDM y podemos navegar a través de las entidades recorriendo sus referencias.
+\paragraph*{Structure model elements}
 
 
-Una \textit{Query} es ejecutada sobre una entidad principal que está asociada por un elemento \textit{From}. Cualquier elemento \textit{Reference} desde esa entidad puede ser incluido en la \textit{query} por medio del elemento \textit{Inclusion}. Las inclusiones trabajan de la misma manera que un \textit{join} convencional de una consulta SQL.
+\begin{itemize}    
+    
+    \item Clase \textit{Entity}: una \textit{Entity} puede tener \textit{features} y puede ser referenciada directamente solo desde las clases \textit{From} y \textit{Reference}.
+    \item Clase \textit{Feature}: una \textit{Feature} es una clase abstracta, puede ser una \textit{reference} o un \textit{attribute}; asimismo, puede heredar de la clase \textit{AnnotatableElement} para que la instancia de la clase pueda ser comentada con indicadores de texto que proveen sobre información extra para generar el modelo lógico. 
+    \item Clase \textit{Reference}: una \textit{Reference} empieza con la palabra clave ``ref", un nombre de tipo de entidad, una cardinalidad y un nombre de referencia. Por ejemplo: ``ref Category[*] categories" define una referencia llamada \textit{categories}, del tipo de entidad \textit{Category} con una cardinalidad de cero a varios.
+    \item Clase \textit{Attribute}: un \textit{Attribute} contiene un tipo y un identificador de unicidad.
+    \item Clase \textit{AnnotatableElement}: clase abstracta para permitir que una clase contenga anotaciones.
+    \item Clase \textit{Annotation}: es un indicador de texto que proveen sobre información extra para generar el modelo lógico.
+    
+\end{itemize}
+
+\paragraph*{Access queries elements}
 
 
-Asimismo, puede haber referencias recursivas mientras haya elementos \textit{Inclusion} disponibles.
-
-
-El conjunto de atributos de proyección que son obtenidos por la \textit{query} está especificado como una lista elementos del tipo \textit{AttributeSelection}. Esta lista puede contener atributos de la entidad \textit{From} o de la entidad \textit{Inclusion}. La condición de la \textit{query} está expresada con un elemento del tipo \textit{BooleanExpression} que permite describir cualquier restricción deseada. Finalmente, ordenamiento puede ser especificado por un conjunto de elementos del tipo \textit{AttributeSelections} con las entidades \textit{From} y \textit{Inclusion}.
-
-
-Algunos elementos del GDM que tienen como clase base la clase \textit{AnnotableElement} implicando que estos elemtnos pueden ser \textit{annotated} (comentados). El elemento \textit{Annotation} son indicadores de texto que pueden usarse para dar información extra a Mortadelo que podría ser útil para la tranformación de una instancia GDM o un modelo lógico NoSQL. Por ejemplo, \textit{Entities} del GDM pueden incluir la anotación \textit{@highlyUpdated} para indicar a Mortadelo que la entidad anotada recibe muchas operaciones de transacción como \textit{inserts} o \textit{updates}. Además de las \textit{Entities}, los elementos \textit{Queries} y \textit{Features} también pueden ser anotadas.
+\begin{itemize}
+    
+    \item Clase \textit{Query}: una \textit{Query} puede tener solo un elemento de la clase \textit{From}, n elementos de la clase \textit{AttributeSelection}, n elementos de la clase \textit{Inclusion} y tener o no un único elemento de la clase \textit{BooleanExpression}.
+    \item Clase \textit{From}: la clase \textit{From} es la que asocia una clase \textit{Query} con la clase \textit{Entity}; es la clase que permite referenciar un tipo de entidad.
+    \item Clase \textit{AtributeSelection}: la clase \textit{AtributeSelection} es con la que se acceden a los atributos de la \textit{Entity} referenciada por la clase \textit{From} o la clase \textit{Inclusion}.
+    \item Clase \textit{BooleanExpression}: con la clase \textit{BooleanExpression} se puede expresar una expresión booleana para declarar alguna restricción.
+    \item Clase \textit{Inclusion}: con la clase \textit{Inclusion} se puede acceder en una query a los atributos de otras tipos de entidad.
+    
+\end{itemize}
