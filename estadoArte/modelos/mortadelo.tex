@@ -75,7 +75,7 @@ A continuación se da una explicación de cada elemento de la figura~\ref{img:mo
 En la figura~\ref{img:mortadelo-gdm.textual.notation} se puede ver una instancia del modelo conceptual GDM en su notación textual en la que se puede notar que, por ejemplo, en la tercera consulta se accede a los elementos de la entidad \textit{Category} a través del elemento ref de la entidad \textit{Product}.
 
 
-\newpage\subsubsection*{Mortadelo: modelo lógico orientado a documentos}
+\subsubsection*{Mortadelo: modelo lógico orientado a documentos}
 
 Las bases de datos orientadas a documentos tienen como objetivo almacenar jerarquías de objetos que son probables que se consultarán juntas; estas jerarquías de objetos se conocen como documentos y se agrupan en colecciones; asimismo, una colección almacena documentos de la misma entidad y por lo general un documento está compuesto de pares clave-valor y puede contener otros documentos incrustados.
 
@@ -101,6 +101,52 @@ En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra 
 \end{itemize}
 
 \paragraph*{Transformación M2M}
+
+
+
+
+\section*{algoritmo}
+
+
+Un \textit{DocumentType} es la estructura principal que se guardará en la colección.
+Sea $Q$ el conjunto de todas las queries $q_{n}$ en una instancia GDM:
+
+\begin{center}
+    $Q = \{q_{1}, q_{2},..., q_{n}\}$ donde $n=1,2,...$    
+\end{center}
+
+Sea $E_{f}$ el conjunto de entidades formado al consultar el único elemento from de cada $q_n$ ($q_{n.from}$ de $Q$): 
+
+\begin{center}
+    $ E_{f} = \{e_{f1},e_{f2},...,e_{fn}\} $ donde $n=1,2,...$    
+\end{center}
+
+
+Sea $C$ el conjunto de colecciones $c_{n}$ donde cada $c_{n}$ corresponde a un $e_{fn}$ de $E_{f}$ (es decir que por cada $ef_{n}$ se crea un $c_{n}$ en la que cada $c_{n}$ contiene un único elemento \textit{DocumentType}, llamado ``documento raíz"):
+
+\begin{center}
+    $C = \{ c_{1},c_{2},...,c_{n}\}$ donde $n=1,2,...$    
+\end{center}
+
+Finalmente, por cada $c_{n}$ se generan los contenidos de cada documento raíz:
+
+Como cada colección $c_{n}$ es creada a partir de una única entidad $e_{fn}$, se necesita buscar del conjunto $Q$ todas las $q_{n}$ que contengan esa $e_{fn}$ como entidad de búsqueda principal (es decir, que $e_{fn}$ esté en el elemento \textit{from} de la $q_{n}$).
+
+
+Dicho de otra manera, sea el conjunto $Q_{E}$ el subconjunto propio de $Q$ en el que cada $q_{en}$ contiene en su elemento \textit{from} la $e_{fn}$.
+\begin{center}
+    $Q_{E} = \{q_{e1},q_{e2},...,q_{en}\}$ donde $Q_{E} \subseteq Q  | q_{en.from} == e_{fn}$
+\end{center}
+
+Por cada $q_{en}$ se consulta todos sus elementos \textit{including}, a cada elemento \textit{including} le llamamos $r_{n}$ para formar el conjunto $R$ de referencias.
+
+Creamos un árbol de acceso con el conjunto $R$ y con ese árbol de acceso generamos los documentos de cada documento raíz de cada $c_{n}$ que tiene una única $e_{fn}$.
+
+\begin{enumerate}
+    \item Añadimos todos los atributos simples de la $e_{fn}$.
+    \item Cada $r_{n}$ lo añadimos al documento raíz de acuerdo a tres criterios
+\end{enumerate}
+
 Para generar el modelo lógico orientado a documentos es necesario:
 \begin{enumerate}
     \item Identificar el número de jerarquías que se necesitan almacenar en la bases de datos
@@ -162,30 +208,3 @@ Para el segundo punto:
     \caption{Transformación del modelo conceptual GDM al modelo lógico orientado a documentos}
 \end{algorithm}
 
-Un \textit{DocumentType} es la estructura principal que se guardará en la colección.
-
-Sea $Q$ el conjunto de todas las queries $q_{n}$ en una instancia GDM:
-
-
-    $Q = \{q_{1}, q_{2}, q_{3}, q_{4},..., q_{n}\}$ donde $n=1,...$
-
-De cada $q_{n}$ se obtienen las entidades, $e_{n}$, del elemento \textit{From}: 
-
-
-    $ Entidades = \{e_{1},e_{2},...,q_{n}\} $ donde $n=1,...$
-
-
-Por cada $e_{n}$ se crea una única colección $c_{n}$ donde cada $c_{n}$ contiene un único elemento \textit{DocumentType}, llamado ``documento raíz":
-
-
-$Colecciones = \{ c_{1},c_{2},...,c_{n}\}$ donde $n=1,...$
-
-
-Finalmente, por cada $c_{n}$ se generan los contenidos de cada documento raíz:
-
-Como cada colección $c_{n}$ es creada a partir de una única entidad $e_{n}$, se necesita buscar del conjunto $Q$ todas las $q_{n}$ que contengan esa $e_{n}$ como entidad de búsqueda principal (es decir, que $e_{n}$ esté en el elemento \textit{from} de la $q_{n}$).
-
-
-
-
-\subsubsection*{Mortadelo: modelo físico}
