@@ -1,11 +1,240 @@
 \subsection{Mortadelo}
-De acuerdo a Alfonso de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo es un modelo conceptual para el diseño de bases de datos NoSQL. 
+De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo está basado en el \textit{model driven}; es decir, que para diseñar bases de datos NoSQL necesita de modelos conceptuales bien definidos.
 
 
-Asimismo, define un proceso de transformación desde su propuesta de modelo conceptual denotado como Generic Data Model o GDM para generar \textit{scripts} del modelo físco de alguno de los modelos de datos NoSQL (clave-valor, orientado a documentos, orientado a columnas o orientado a grafos). 
+Como menciona este autor, un modelo conceptual que especifique solo qué entidades conforman el sistema no es suficiente, porque para los sistemas NoSQL, es clave conocer cómo estas entidades serán consultadas y actualizadas en el día a día de la implementación de la base de datos.
 
 
-El GDM está compuesto por dos bloques, el primero que contiene la información sobre el dominio de las entidades y sus relaciones (modelo de estructura) y el segundo bloque tiene la definición de cómo se harán las consultas de los datos (consultas de acceso).
+Asimismo, en trabajos como los de Chebotko\cite{chebotko_big_2015}, de Lima\cite{de_lima_workload-driven_2015} o Mior\cite{mior_nose_2017-1} los modelos conceptuales tradicionales como el modelo entidad-relación o el modelo relacional son complementados con propuestas para los patrones de acceso a los datos.
+
+
+Lo anterior implica usar dos modelos diferentes pero interrelacionados que añade complejidad al modelado de la base datos; por esta razón de la Vega propone el Generic Data Metamodel (GDM), que es un modelo conceptual NoSQL donde la estructura (entidades, atributos, relaciones entre entidades) y patrones de acceso (cómo se consultarán los datos) están integradas en un mismo modelo conceptual.
+
+
+Cabe destacar que el GDM es un modelo conceptual independiente del paradigma NoSQL; es decir, puede representar una base de datos NoSQL de clave-valor, orientado a documentos, orientado a columnas u orientado a grafos.
+
+
+Tal como está en la figura~\ref{img:mortadelo-process}, Mortadelo empieza con un GDM, realiza una tranformación ``modelo a modelo" (M2M) para generar el modelo lógico NoSQL y realiza una transformación ``modelo a texto" (M2T) para generar el modelo físico correspondiente.
+
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.75\textwidth]{mortadelo/01.png}
+    \caption{Mortadelo}
+    \label{img:mortadelo-process}
+\end{figure}
+
+\subsubsection*{Mortadelo: modelo conceptual (Generic Data Metamodel)}
+
+Como se puede ver en la figura~\ref{img:mortadelo-gdm}, el modelo conceptual que propone de la Vega contiene en un mismo modelo con notación UML los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
+
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.75\textwidth]{mortadelo/GDM.png}
+    \caption{Mortadelo}
+    \label{img:mortadelo-gdm}
+\end{figure}
+
+A continuación se da una explicación de cada elemento de la figura~\ref{img:mortadelo-gdm} donde la clase \textit{Model} es para indicar que un modelo GDM puede tener n entidades y n consultas donde $n=0,1,...,n$:
+
+\paragraph*{Structure model elements}
+
+
+\begin{itemize}    
+    
+    \item Clase \textit{Entity}: puede tener \textit{features} y solo puede ser referenciada directamente solo desde las clases \textit{From} y \textit{Reference}.
+    \item Clase \textit{Feature}: es una clase abstracta, puede ser una \textit{reference} o un \textit{attribute}; asimismo, puede heredar de la clase \textit{AnnotatableElement} para que la instancia de la clase pueda ser comentada con indicadores de texto que proveen sobre información extra para generar el modelo lógico. 
+    \item Clase \textit{Reference}: empieza con la palabra clave ``ref", un nombre de tipo de entidad, una cardinalidad y un nombre de referencia. Por ejemplo: ``ref Category[*] categories" define una referencia llamada \textit{categories}, del tipo de entidad \textit{Category} con una cardinalidad de cero a varios.
+    \item Clase \textit{Attribute}: contiene un tipo y un identificador de unicidad.
+    \item Clase \textit{AnnotatableElement}: clase abstracta para permitir que una clase contenga anotaciones.
+    \item Clase \textit{Annotation}: es un indicador de texto que proveen sobre información extra para generar el modelo lógico.
+    
+\end{itemize}
+
+\paragraph*{Access queries elements}
+
+
+\begin{itemize}
+    
+    \item Clase \textit{Query}: puede tener solo un elemento de la clase \textit{From}, n elementos de la clase \textit{AttributeSelection}, n elementos de la clase \textit{Inclusion} y tener o no un único elemento de la clase \textit{BooleanExpression}.
+    \item Clase \textit{From}: es la que asocia una clase \textit{Query} con la clase \textit{Entity}; es la clase que permite referenciar un tipo de entidad.
+    \item Clase \textit{AtributeSelection}: es con la que se acceden a los atributos de la \textit{Entity} referenciada por la clase \textit{From} o la clase \textit{Inclusion}.
+    \item Clase \textit{BooleanExpression}: se puede expresar una expresión booleana para declarar alguna restricción.
+    \item Clase \textit{Inclusion}: se puede acceder en una query a los atributos de otras tipos de entidad.
+    
+\end{itemize}
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-textual-notation.png}
+    \caption{Notación textual del GDM}
+    \label{img:mortadelo-gdm.textual.notation}
+\end{figure}
+
+En la figura~\ref{img:mortadelo-gdm.textual.notation} se puede ver una instancia del modelo conceptual GDM en su notación textual en la que se puede notar que, por ejemplo, en la tercera consulta se accede a los elementos de la entidad \textit{Category} a través del elemento ref de la entidad \textit{Product}.
+
+
+\subsubsection*{Mortadelo: modelo lógico orientado a documentos}
+
+Las bases de datos orientadas a documentos tienen como objetivo almacenar jerarquías de objetos que son probables que se consultarán juntas; estas jerarquías de objetos se conocen como documentos y se agrupan en colecciones; asimismo, una colección almacena documentos de la misma entidad y por lo general un documento está compuesto de pares clave-valor y puede contener otros documentos incrustados.
+
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-logical-model-document-oriented.png}
+    \caption{Modelo lógico orientado a documentos de Mortadelo}
+    \label{img:mortadelo-gdm-logical-model-document-oriented}
+\end{figure}
+
+
+En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra el modelo lógico orientado a documentos de la herramienta Mortadelo y a continuación se explica cada clase que conforma el modelo.
+
+
+\begin{itemize}
+    \item Clase \textit{DocumentDataModel}: está compuesta de $n$ \textit{Collections}.
+    \item Clase \textit{Collection}: tiene un nombre que la identifica y en una colección se almacenan documentos que, en general, comparten la misma estructura.
+    \item Clase \textit{DocumentType}: define la estructura de los documentos a guardar con un conjunto de instancias de la clase \textit{Field}.
+    \item Clase \textit{Field}: puede contener instancias de las clases \textit{PrimitiveField} (atributos simples), \textit{ArrayField} (más instancias de la clase \textit{Field}) o \textit{DocumentType} (otras estructuras de documentos), permitiendo guardar elementos anidados.
+    \item Clase \textit{PrimitiveField}: contiene un tipo primitivo de dato
+    \item Clase \textit{ArrayField}: permite anidar más instancias de la clase \textit{Field}
+\end{itemize}
+
+\paragraph*{Transformación M2M}
+
+
+Un \textit{DocumentType} es la estructura principal que se guardará en la colección.
+
+
+Sea $Q$ el conjunto de todas las queries $q_{n}$ en una instancia GDM:
+
+\begin{center}
+    $Q = \{q_{1}, q_{2},..., q_{n}\}$ donde $n=1,2,...$    
+\end{center}
+
+Sea $E_{f}$ el conjunto de entidades formado al consultar el único elemento from de cada $q_n$ ($q_{n.from}$ de $Q$): 
+
+\begin{center}
+    $ E_{f} = \{e_{f1},e_{f2},...,e_{fn}\} $ donde $n=1,2,...$    
+\end{center}
+
+
+Sea $C$ el conjunto de colecciones $c_{n}$ donde cada $c_{n}$ corresponde a un $e_{fn}$ de $E_{f}$ (es decir que por cada $ef_{n}$ se crea un $c_{n}$ en la que cada $c_{n}$ contiene un único elemento \textit{DocumentType}, llamado ``documento raíz"):
+
+\begin{center}
+    $C = \{ c_{1},c_{2},...,c_{n}\}$ donde $n=1,2,...$    
+\end{center}
+
+Finalmente, por cada $c_{n}$ se generan los contenidos de cada documento raíz:
+
+Como cada colección $c_{n}$ es creada a partir de una única entidad $e_{fn}$, se necesita buscar del conjunto $Q$ todas las $q_{n}$ que contengan esa $e_{fn}$ como entidad de búsqueda principal (es decir, que $e_{fn}$ esté en el elemento \textit{from} de la $q_{n}$).
+
+
+Dicho de otra manera, sea el conjunto $Q_{E}$ el subconjunto propio de $Q$ en el que cada $q_{en}$ contiene en su elemento \textit{from} la $e_{fn}$.
+\begin{center}
+    $Q_{E} = \{q_{e1},q_{e2},...,q_{en}\}$ donde $Q_{E} \subseteq Q  | q_{en.from} == e_{fn}$
+\end{center}
+
+Por cada $q_{en}$ se consulta todos sus elementos \textit{including}, a cada elemento \textit{including} le llamamos $r_{n}$ para formar el conjunto $R$ de referencias.
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-access-tree.png}
+    \caption{Access Tree - Modelo lógico orientado a documentos}
+    \label{img:mortadelo-gdm-logical-model-access-tree}
+\end{figure}
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-q4.png}
+    \caption{Access query Q4}
+    \label{img:mortadelo-gdm-logical-model-q4}
+\end{figure}
+
+Creamos un árbol de acceso con el conjunto $R$ y con ese árbol de acceso generamos los documentos de cada documento raíz de cada $c_{n}$ que tiene una única $e_{fn}$. 
+
+
+La figura~\ref{img:mortadelo-gdm-logical-model-access-tree} es un ejemplo del árbol de acceso de la consulta $q_{4}$ de la figura~\ref{img:mortadelo-gdm-logical-model-q4}.
+
+
+Añadimos todos los atributos simples de la $e_{fn}$.
+
+
+Cada $r_{n}$ lo añadimos al documento raíz de acuerdo a 1) la cardinalidad de la referencia y 2) la entidad objetivo de la referencia
+
+
+Si la entidad destino está dentro del árbol de consultas implica que datos de esa entidad serán requeridos en la consulta, por lo que el nuevo \textit{field} deberá ser incluído como un subdocumento o una colección de documentos, dependiendo de su cardinalidad.
+
+En contraparte, si la entidad destino no está en el árbol de consultas, se podría quitar esa referncia, pero se agregará para mejorar la escalabilidad de la base de datos para futuras consultas. Esta referencia tendría el valor del identificador de la entidad referenciada cuando la cardinalidad es 1. Si la cardinalidad es n, será un arreglo de identificadores.
+
+
+Cuando una referencia es tranformada a un subdocumento se vuelve a generar su árbol de acceso en una llamada recursiva para generar sus contenidos.
+
+
+Por último, el autor menciona dos optimizaciones si se quiere reducir el nivel de denormilación, las que se pueden consultar en su investigación\cite{de_la_vega_mortadelo_2020}.
+
+En resumen, el algoritmo quedaría de la forma:
+\begin{algorithm}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    %\underline{function Euclid} $(a,b)$\;
+    \Input{una instancia del modelo GDM, $gdm$}
+    \Output{un modelo lógico orientado a documentos, $ddm$}
+    $mainEntities \gets gdm.queries.collect((q)|q.from);$\\
+    \ForEach{$me \in mainEntities$}{
+        $collection \gets new Collection();$\\
+        $collection.name \gets me.name;$\\
+        $accessTree \gets allQueryPaths(me,gdm.queries);$\\
+        $collection \gets populateDocumentType(collection.root,accessTree);$\\
+        $ddm.collections.add(collection);$
+    }
+    
+    \caption{Transformación del modelo conceptual GDM al modelo lógico orientado a documentos}
+\end{algorithm}
+
+Donde la función populateDocumentType() es otro algoritmo de la forma:
+
+\begin{algorithm}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    %\underline{function Euclid} $(a,b)$\;
+    \Input{Un ``document type", $dt$}
+    \Output{un nodo del arbol de acceso}
+    $ nodeAttributes \gets node.entity.features.select(f|f.isTypeOf(Attribute))\; $\\
+    $ nodeReferences \gets node.entity.features.select(f|f.isTypeOf(Reference))\; $\\
+    \ForEach{$attr \in nodeAttributes$}{
+        $pf \gets new PrimitiveField()\;$\\
+        $pf.name \gets attr.name\;$\\
+        $pf.type \gets attr.type\;$\\
+        $dt.fields.add(pf)\;$\\
+    }
+    \ForEach{$ref \in nodeReferences$}{
+        $targetNode \gets node.arcs.find(a|a.name = ref.name).target\;$\\
+        \uIf{exists(targetNode)}{
+            $baseType \gets new DocumentType()\;$\\
+            $populateDocumentType(baseType,targetNode)\;$\\
+        }
+        \Else{
+            $baseType \gets new PrimitiveField()\;$\\
+            $baseType.type \gets findIdType(ref.entity)\;$\\
+        }
+        $baseType.name \gets ref.name\;$\\
+
+        \uIf{$ref.cardinality$ == 1}{
+            $dt.field.add(baseType)\;$\\
+            
+        }
+        \Else{
+            $arrayField \gets new ArrayField()\;$\\
+            $arrayField.type \gets baseType\;$\\
+            $dt.fields.add(arrayField)\;$
+        }
+        
+    }
+    \caption{Generar el contenido de un \textit{DocumentType} dado un árbol de acceso}
+\end{algorithm}
 
 
 Para la comprobación de su validez, se ha implementado una herramienta que admite la generación de almacenes de datos de columnas con transformaciones concretas para Cassandra, así mismo ofrece soporte preliminar de los basados ​​en documentos.
