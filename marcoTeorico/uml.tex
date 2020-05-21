@@ -1,0 +1,112 @@
+De acuerdo con Wikipedia\cite{wikipedia_diagrama_2020}, un diagrama de clases en Lenguaje Unificado de Modelado (UML) es un tipo de diagrama de estructura estática que describe la estructura de un sistema mostrando las clases del sistema, sus atributos, operaciones (o métodos), y las relaciones entre los objetos.
+
+
+\subsection*{Miembros}
+UML proporciona mecanismos para representar los miembros de la clase, como atributos y métodos, así como información adicional sobre ellos.
+
+
+\subsubsection*{Visibilidad}
+Para especificar la visibilidad de un miembro de la clase (es decir, cualquier atributo o método), se coloca uno de los siguientes signos delante de ese miembro:
+
+\begin{enumerate}
+    \item +	Público
+    \item -	Privado
+    \item \# Protegido
+    \item /	Derivado (se puede combinar con otro)
+    \item ~	Paquete
+\end{enumerate}
+
+\subsubsection*{Ámbitos}
+
+UML especifica dos tipos de ámbitos para los miembros: instancias y clasificadores y estos últimos se representan con nombres subrayados.
+
+\begin{enumerate}
+    \item Los miembros clasificadores se denotan comúnmente como “estáticos” en muchos lenguajes de programación. Su ámbito es la propia clase.
+    \begin{enumerate}
+        \item Los valores de los atributos son los mismos en todas las instancias.
+        \item La invocación de métodos no afecta al estado de las instancias.
+    \end{enumerate}
+    \item Los miembros instancias tienen como ámbito una instancia específica.
+\begin{enumerate}
+    \item Los valores de los atributos pueden variar entre instancias.
+    \item La invocación de métodos puede afectar al estado de las instancias(es decir, cambiar el valor de sus atributos).
+\end{enumerate}
+\end{enumerate}
+Para indicar que un miembro posee un ámbito de clasificador, hay que subrayar su nombre. De lo contrario, se asume por defecto que tendrá ámbito de instancia.
+
+\subsection*{Relaciones}
+Una relación es un término general que abarca los tipos específicos de conexiones lógicas que se pueden encontrar en los diagramas de clases y objetos. UML presenta las siguientes relaciones:
+
+\subsubsection*{Enlace}
+Un enlace es la relación más básica entre objetos.
+
+\subsubsection*{Asociación}
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{uml/01.png}
+    \caption{Asociación}
+    \label{img:uml-asociacion}
+\end{figure}
+
+Una asociación representa a una familia de enlaces. Una asociación binaria (entre dos clases) normalmente se representa con una línea continua. Una misma asociación puede relacionar cualquier número de clases. Una asociación que relacione tres clases se llama asociación ternaria.
+
+A una asociación se le puede asignar un nombre, y en sus extremos se puede hacer indicaciones, como el rol que desempeña la asociación, los nombres de las clases relacionadas, su multiplicidad, su visibilidad, y otras propiedades.
+
+Hay cuatro tipos diferentes de asociación: bidireccional, unidireccional, agregación (en la que se incluye la composición) y reflexiva. Las asociaciones unidireccional y bidireccional son las más comunes.
+
+Por ejemplo, una clase vuelo se asocia con una clase avión de forma bidireccional. La asociación representa la relación estática que comparten los objetos de ambas clases.
+
+\subsubsection*{Agregación}
+
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{uml/02.png}
+    \caption{Agregación}
+    \label{img:uml-agregacion}
+\end{figure}
+
+
+La agregación o agrupación es una variante de la relación de asociación “tiene un”: la agregación es más específica que la asociación. Se trata de una asociación que representa una relación de tipo parte-todo o parte-de.
+
+
+Como se puede ver en la imagen del ejemplo (en inglés), un Profesor 'tiene una' clase a la que enseña.
+
+
+Al ser un tipo de asociación, una agregación puede tener un nombre y las mismas indicaciones en los extremos de la línea. Sin embargo, una agregación no puede incluir más de dos clases; debe ser una asociación binaria.
+
+
+Una agregación se puede dar cuando una clase es una colección o un contenedor de otras clases, pero a su vez, el tiempo de vida de las clases contenidas no tienen una dependencia fuerte del tiempo de vida de la clase contenedora (de el todo). Es decir, el contenido de la clase contenedora no se destruye automáticamente cuando desaparece dicha clase.
+
+
+En UML, se representa gráficamente con un rombo hueco junto a la clase contenedora con una línea que lo conecta a la clase contenida. Todo este conjunto es, semánticamente, un objeto extendido que es tratado como una única unidad en muchas operaciones, aunque físicamente está hecho de varios objetos más pequeños.
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{uml/03.png}
+    \caption{Asociación rombo sin rellenar y composición rombo negro}
+    \label{img:uml-composicion}
+\end{figure}
+
+\subsubsection*{Composición}
+
+La representación en UML de una relación de composición es mostrada con una figura de diamante rellenado del lado del la clase contenedora, es decir al final de la línea que conecta la clase contenido con la clase contenedor.
+
+
+\paragraph*{Diferencias entre Composición y Agregación}
+
+\subparagraph*{Relación de Composición}
+
+\begin{enumerate}
+    \item Cuando intentamos representar un todo y sus partes. Ejemplo, un motor es una parte de un coche.
+    \item Cuando se elimina el contenedor, el contenido también es eliminado. Ejemplo, si eliminamos una universidad eliminamos igualmente sus departamentos.
+\end{enumerate}
+
+
+\subparagraph*{Relación de Agrupación}
+
+\begin{enumerate}
+    \item Cuando representamos las relaciones en un software o base de datos. Ejemplo, el modelo de motor MTR01 es parte del coche MC01. Como tal, el motor MTR01 puede hacer parte de cualquier otro modelo de coche, es decir si eliminamos el coche MC01 no es necesario eliminar el motor pues podemos usarlo en otro modelo.
+    \item Cuando el contenedor es eliminado, el contenido usualmente no es destruido. Ejemplo, un profesor tiene estudiantes, cuando el profesor muere los estudiantes no mueren con él o ella.
+\end{enumerate}
