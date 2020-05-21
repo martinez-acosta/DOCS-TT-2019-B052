@@ -124,7 +124,7 @@ Para el segundo punto:
     \item Usando el \textit{access tree} se generan los contenidos de la entidad raíz de la siguiente manera:
     \begin{enumerate}
         \item Se añaden todos los atributos de la entidad raíz, ya que aunque se usen por alguna \textit{query} o no, es insignificante el incremento de tamaño y esos atributos pueden ser usados para una posterior escalabilidad en las consultas que se pueden hacer.
-        \item Se procesan todas las referencias de la entidad raíz
+        \item Se procesan todas las referencias de la entidad raíz.
         \item Por cada referencia un nuevo \textit{field} es creado
     \end{enumerate}
 \end{enumerate}
@@ -161,5 +161,27 @@ Para el segundo punto:
     
     \caption{Transformación del modelo conceptual GDM al modelo lógico orientado a documentos}
 \end{algorithm}
+
+Sea $Q$ el conjunto de todas las queries $q_{n}$ en una instancia GDM:
+
+
+    $Q = \{q_{1}, q_{2}, q_{3}, q_{4},..., q_{n}\}$ donde $n=0,1,...$
+
+Por cada $q_{n}$ se obtienen las entidades del elemento \textit{From}.
+
+
+    $ Entidades = \{e_{1},e_{2},e_{3},...\} $
+
+
+Por cada $e_{n}$ se crea una colección $c_{n}$ donde cada $c_{n}$ tiene solo un ``\textit{DocumentType} raíz" (un \textit{DocumentType} es la estructura principal que se guardará en la colección)
+
+
+$Colecciones = \{ c_{1},c_{2},...\}$
+
+
+
+
+
+
 
 \subsubsection*{Mortadelo: modelo físico}
