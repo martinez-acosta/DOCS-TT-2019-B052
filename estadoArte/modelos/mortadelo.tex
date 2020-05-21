@@ -162,24 +162,28 @@ Para el segundo punto:
     \caption{Transformación del modelo conceptual GDM al modelo lógico orientado a documentos}
 \end{algorithm}
 
+Un \textit{DocumentType} es la estructura principal que se guardará en la colección.
+
 Sea $Q$ el conjunto de todas las queries $q_{n}$ en una instancia GDM:
 
 
-    $Q = \{q_{1}, q_{2}, q_{3}, q_{4},..., q_{n}\}$ donde $n=0,1,...$
+    $Q = \{q_{1}, q_{2}, q_{3}, q_{4},..., q_{n}\}$ donde $n=1,...$
 
-Por cada $q_{n}$ se obtienen las entidades del elemento \textit{From}.
-
-
-    $ Entidades = \{e_{1},e_{2},e_{3},...\} $
+De cada $q_{n}$ se obtienen las entidades, $e_{n}$, del elemento \textit{From}: 
 
 
-Por cada $e_{n}$ se crea una colección $c_{n}$ donde cada $c_{n}$ tiene solo un ``\textit{DocumentType} raíz" (un \textit{DocumentType} es la estructura principal que se guardará en la colección)
+    $ Entidades = \{e_{1},e_{2},...,q_{n}\} $ donde $n=1,...$
 
 
-$Colecciones = \{ c_{1},c_{2},...\}$
+Por cada $e_{n}$ se crea una única colección $c_{n}$ donde cada $c_{n}$ contiene un único elemento \textit{DocumentType}, llamado ``documento raíz":
 
 
-Por cada $c_{n}$ se generan los contenidos del documento raíz
+$Colecciones = \{ c_{1},c_{2},...,c_{n}\}$ donde $n=1,...$
+
+
+Finalmente, por cada $c_{n}$ se generan los contenidos de cada documento raíz:
+
+Como cada colección $c_{n}$ es creada a partir de una única entidad $e_{n}$, se necesita buscar del conjunto $Q$ todas las $q_{n}$ que contengan esa $e_{n}$ como entidad de búsqueda principal (es decir, que $e_{n}$ esté en el elemento \textit{from} de la $q_{n}$).
 
 
 
