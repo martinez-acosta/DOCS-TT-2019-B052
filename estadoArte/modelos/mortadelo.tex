@@ -103,12 +103,9 @@ En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra 
 \paragraph*{Transformación M2M}
 
 
-
-
-\section*{algoritmo}
-
-
 Un \textit{DocumentType} es la estructura principal que se guardará en la colección.
+
+
 Sea $Q$ el conjunto de todas las queries $q_{n}$ en una instancia GDM:
 
 \begin{center}
@@ -140,41 +137,6 @@ Dicho de otra manera, sea el conjunto $Q_{E}$ el subconjunto propio de $Q$ en el
 
 Por cada $q_{en}$ se consulta todos sus elementos \textit{including}, a cada elemento \textit{including} le llamamos $r_{n}$ para formar el conjunto $R$ de referencias.
 
-Creamos un árbol de acceso con el conjunto $R$ y con ese árbol de acceso generamos los documentos de cada documento raíz de cada $c_{n}$ que tiene una única $e_{fn}$.
-
-\begin{enumerate}
-    \item Añadimos todos los atributos simples de la $e_{fn}$.
-    \item Cada $r_{n}$ lo añadimos al documento raíz de acuerdo a tres criterios
-\end{enumerate}
-
-Para generar el modelo lógico orientado a documentos es necesario:
-\begin{enumerate}
-    \item Identificar el número de jerarquías que se necesitan almacenar en la bases de datos
-    \item Determinar cuántos elementos anidados debería tener cada jerarquía.
-\end{enumerate}
-
-Para el primer punto:
-\begin{enumerate}
-    \item Se analizan las \textit{queries} de la instancia del GDM.
-    \item Se seleccionan todas las entidades que estén referenciadas en la instancia de la clase \textit{From}.
-    \item Por cada entidad se crea una \textit{Collection} del modelo lógico orientado a documentos.
-    \item Cada \textit{Collection} tiene un \textit{DocumentType} raíz que almacena la instancia de la clase \textit{Entity} a la que hace referencia.
-\end{enumerate}
-
-Para el segundo punto:
-\begin{enumerate}
-    \item Se analizan las \textit{queries} de la instancia del GDM.
-    \item Se seleccionan todas las entidades que estén referenciadas en la instancia de la clase \textit{From}.
-    \item Se agregan todas las referencias que aparezcan en cada instancia de la clase \textit{Inclusion}.
-    \item Se elabora un \textit{access tree}, este especifica qué entidades son consultadas desde una entidad y a través de qué referencias; en la figura~\ref{img:mortadelo-gdm-logical-model-access-tree} se puede ver el \textit{access tree} de la consulta Q4 de la figura~\ref{img:mortadelo-gdm-logical-model-q4}
-    \item Usando el \textit{access tree} se generan los contenidos de la entidad raíz de la siguiente manera:
-    \begin{enumerate}
-        \item Se añaden todos los atributos de la entidad raíz, ya que aunque se usen por alguna \textit{query} o no, es insignificante el incremento de tamaño y esos atributos pueden ser usados para una posterior escalabilidad en las consultas que se pueden hacer.
-        \item Se procesan todas las referencias de la entidad raíz.
-        \item Por cada referencia un nuevo \textit{field} es creado
-    \end{enumerate}
-\end{enumerate}
-
 \begin{figure}[h!t] 
     \centering
     \includegraphics[width=0.65\textwidth]{mortadelo/GDM-access-tree.png}
@@ -189,6 +151,29 @@ Para el segundo punto:
     \label{img:mortadelo-gdm-logical-model-q4}
 \end{figure}
 
+Creamos un árbol de acceso con el conjunto $R$ y con ese árbol de acceso generamos los documentos de cada documento raíz de cada $c_{n}$ que tiene una única $e_{fn}$. 
+
+
+La figura~\ref{img:mortadelo-gdm-logical-model-access-tree} es un ejemplo del árbol de acceso de la consulta $q_{4}$ de la figura~\ref{img:mortadelo-gdm-logical-model-q4}.
+
+
+Añadimos todos los atributos simples de la $e_{fn}$.
+
+
+Cada $r_{n}$ lo añadimos al documento raíz de acuerdo a 1) la cardinalidad de la referencia y 2) la entidad objetivo de la referencia
+
+
+Si la entidad destino está dentro del árbol de consultas implica que datos de esa entidad serán requeridos en la consulta, por lo que el nuevo \textit{field} deberá ser incluído como un subdocumento o una colección de documentos, dependiendo de su cardinalidad.
+
+En contraparte, si la entidad destino no está en el árbol de consultas, se podría quitar esa referncia, pero se agregará para mejorar la escalabilidad de la base de datos para futuras consultas. Esta referencia tendría el valor del identificador de la entidad referenciada cuando la cardinalidad es 1. Si la cardinalidad es n, será un arreglo de identificadores.
+
+
+Cuando una referencia es tranformada a un subdocumento se vuelve a generar su árbol de acceso en una llamada recursiva para generar sus contenidos.
+
+
+Por último, el autor menciona dos optimizaciones si se quiere reducir el nivel de denormilación, las que se pueden consultar en su investigación\cite{de_la_vega_mortadelo_2020}.
+
+En resumen, el algoritmo quedaría de la forma:
 \begin{algorithm}
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
@@ -208,3 +193,45 @@ Para el segundo punto:
     \caption{Transformación del modelo conceptual GDM al modelo lógico orientado a documentos}
 \end{algorithm}
 
+Donde la función populateDocumentType() es otro algoritmo de la forma:
+
+\begin{algorithm}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    %\underline{function Euclid} $(a,b)$\;
+    \Input{Un ``document type", $dt$}
+    \Output{un nodo del arbol de acceso}
+    $ nodeAttributes \gets node.entity.features.select(f|f.isTypeOf(Attribute))\; $\\
+    $ nodeReferences \gets node.entity.features.select(f|f.isTypeOf(Reference))\; $\\
+    \ForEach{$attr \in nodeAttributes$}{
+        $pf \gets new PrimitiveField()\;$\\
+        $pf.name \gets attr.name\;$\\
+        $pf.type \gets attr.type\;$\\
+        $dt.fields.add(pf)\;$\\
+    }
+    \ForEach{$ref \in nodeReferences$}{
+        $targetNode \gets node.arcs.find(a|a.name = ref.name).target\;$\\
+        \uIf{exists(targetNode)}{
+            $baseType \gets new DocumentType()\;$\\
+            $populateDocumentType(baseType,targetNode)\;$\\
+        }
+        \Else{
+            $baseType \gets new PrimitiveField()\;$\\
+            $baseType.type \gets findIdType(ref.entity)\;$\\
+        }
+        $baseType.name \gets ref.name\;$\\
+
+        \uIf{$ref.cardinality$ == 1}{
+            $dt.field.add(baseType)\;$\\
+            
+        }
+        \Else{
+            $arrayField \gets new ArrayField()\;$\\
+            $arrayField.type \gets baseType\;$\\
+            $dt.fields.add(arrayField)\;$
+        }
+        
+    }
+    \caption{Generar el contenido de un \textit{DocumentType} dado un árbol de acceso}
+\end{algorithm}
