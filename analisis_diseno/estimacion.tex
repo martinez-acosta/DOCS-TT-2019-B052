@@ -1,121 +1,108 @@
+\subsection{Factibilidas económica}
+
+De acuerdo con \textit{Ingeniería de software, un enfoque práctico}[ref pressman] en su sección de estimación, se utiliza una metrica por puntos de función como se muestra en la tabla \ref{tab:function_point_metrics}. Es por este medio que se calcula(estima) el costo total del proyecto incluyendo los salarios de los desarrolladores que llevaran a cabo la implmentación del sistema asi como los gastos por pagos de servicios que sean necesarios.
+
+\subsubsection{Métricas orientas a la función}
 
 
-\subsection*{Estimación}
-Para la mayoría de los proyectos, el mayor costo es el primer rubro. Debe estimarse el esfuerzo total (en meses-hombre) que es probable se requiera para completar el trabajo de un proyecto. Desde luego, se cuenta con datos limitados para realizar tal valoración, de manera que habrá que hacer la mejor evaluación posible y a continuación agregar contingencia significativa (tiempo y esfuerzo adicionales) en caso de que la estimación inicial sea optimista.
-\subsection{COCOMO II}
-
-El modelo COCOMO (por sus acrónimo en inglés COnstructive COst MOdel) original se convirtió en uno de los modelos de estimación de costo más ampliamente utilizados y estudiados en la industria. Evolucionó hacia un modelo de estimación más exhaustivo, llamado COCOMO II. Como su predecesor, COCOMO II en realidad es una jerarquía de modelos de estimación que aborda las áreas siguientes:\textbf{[Roger S. Pressman, Ph.D. Ingeniería del software UN ENFOQUE PRÁCTICO 7 edición, ed. McGRAW-HILL]}
-\begin{enumerate}
-	\item \textbf{Modelo de composición de aplicación.} Se usa durante las primeras etapas de la ingeniería de software, cuando son primordiales la elaboración de prototipos de las interfaces de usuario, la consideración de la interacción del software y el sistema, la valoración del rendimiento y la evaluación de la madurez de la tecnología.
-	
-	\item \textbf{Modelo de etapa temprana de diseño.} Se usa una vez estabilizados los requisitos y establecida la arquitectura básica del software.
-	
-	\item \textbf{Modelo de etapa postarquitectónica.} Se usa durante la construcción del software.
-\end{enumerate}
+Para este proyecto se considera que todas las funciones identificadas son de complejidad media con excepción de las entradas que tiene la complejidad mas alto del sistema.
 
 
-Como todos los modelos de estimación para software, los modelos COCOMO II requieren información sobre dimensionamiento. Como parte de la jerarquía del modelo, están disponibles tres diferentes opciones de dimensionamiento: puntos objeto, puntos de función y líneas de código fuente.
-
-
-\subsubsection{El modelo de composición de aplicación COCOMO II }
-El esfuerzo necesario para concretar un proyecto de desarrollo de software, cualquiera sea el
-modelo empleado, se expresa en meses/persona (PM) y representa los meses de trabajo de una
-persona fulltime, requeridos para desarrollar el proyecto.\\
-Para derivar una estimación del esfuerzo debemos utilizar la siguiente relación.
-
-
-\[ Esfuerzo_{estimado} = \frac{NOP}{PROD}\]
-
-donde:
-\begin{itemize}
-	\item Esfuerzo estimado (PM) es la estimación del esfuerzo en meses-hombre. 
-	\item NOP es el número de puntos de aplicación en el sistema entregado. 
-	\item PROD es la productividad del punto de aplicación	
-\end{itemize}
-
-
-Para determinar NOP se necesita utilizar el punto de objeto el cual una medida de software indirecta que se calcula usando conteos del número de:
-\begin{enumerate}
-	\item pantallas (en la interfaz de usuario)
-	\item reportes 
-	\item componentes que probablemente se requieran para construir la aplicación.
-\end{enumerate}
-
-Cada instancia de objeto (por ejemplo, una pantalla o reporte) se clasifica en uno de tres niveles de complejidad (simple, medio o difícil), usando criterios sugeridos por Boehm [ Boehm, B., “Anchoring the Software Process”, IEEE Software, vol. 13, núm. 4, julio 1996, pp. 73-82]
-
-
-
-\begin{longtable}{  l | l | l | l | l | l  }	
-	
+\begin{table}
+	\begin{tabular}{|l|l|l|l|l|l|}
 	\hline
-	
-	\textbf{Tipo de objeto } & \textbf{Cantidad } & \multicolumn{3}{|c|}{\textbf{Peso de complejidad}} & \textbf{Subtotal }  \\
-	
-	\endfirsthead
-	
-	\multicolumn{6}{c}{Continuación de Tabla \ref{long}}\\
-	\hline
-	Continuación de tabla\\
-	\hline
-	\endhead
-	
-	\hline
-	\endfoot
-	
-	& & Simple & Media & Difícil &  \\
-	\hline
-	\hline
-	Pantalla & 4 & 1 & 2 & \underline{3} & 12 \\
-	Reporte & 9 & 10 & \underline{5} & 8 & 45 \\
-	Componente & 10 &  &  & 10 & 100 \\
-	\hline
-	\multicolumn{5}{l|}{\textbf{Total OP}}&  157 \\	
-\end{longtable}
-
-Determinado el conteo de puntos de objeto se multiplican el número original de instancias de objeto por el factor de ponderación y se suman para obtener un conteo total de puntos de objeto.
-
-\[ NOP = (Puntos\_de\_objeto)(\frac{100-\%reutilizacion}{100})\]
-
-Dentro de este punto, no se encuentra codigo el cual reutilizar, por lo que:
-
-\[ NOP = (Puntos\_de\_objeto)\]
-\[ NOP = (157)\]
-
-Para la tasa de productividad se utiliza la figura[referenciar tabla], para diferentes niveles de experiencia del desarrollador y de madurez del entorno de desarrollo.
+	\multirow{2}{*}{Parámetro} & \multirow{2}{*}{Cuenta} & \multicolumn{3}{|l|}{Factores de ponderación} & \multirow{2}{*}{Total} \\ \cline{3-5}
+														 &                         & baja       	& media       & alta		       &                        \\ \hline
+	Entradas                   & 6                       & 3            & 4           & 6              & 36                     \\ \hline
+	Salida                     & 5                       & 4            & 5           & 7              & 25                     \\ \hline
+	Tablas                     & 1                       & 3            & 4           & 6              & 4                      \\ \hline
+	Interfaces                 & 4                       & 7            & 10          & 15             & 40                     \\ \hline
+	Consultas                  & 4                       & 5            & 7           & 10             & 28                     \\ \hline
+	Conteo total               &                         &              &             &		             & 133                    \\ \hline
+	\end{tabular}
+	\caption{Cálculo de las métricas por puntos de función}
+	\label{tab:function_point_metrics}
+	\end{table}
 
 
+	\textbf{Fi (i = 1..14)} son factores de ajuste de valor basados en las respuetas de las preguntas de la tabla \ref{tab:questions_adjusment}. Los valores pueden ir de 0 (no importante o aplicable) a 5 (absolutamente esencial).
 
-\begin{longtable}{  l || l | l | l | l | l  }	
-	
-	\hline
-	
-	\textbf{Experiencia del desarrollador } & Muy baja & Baja & Nominal & Alta & Muy alta  \\
-	\hline
-	
-	\endfirsthead
-	
-	\multicolumn{6}{c}{Continuación de Tabla \ref{long}}\\
-	\hline
-	Continuación de tabla\\
-	\hline
-	\endhead
-	
-	\hline
-	\endfoot
-	
-	\textbf{Madurez/ capacidad del entorno } & Muy baja & Baja & Nominal & Alta & Muy alta  \\
-	\hline
-	\textbf{PROD } & 4 & 7 & 10 & 25 & 50 \\
-\end{longtable}
-
-Una vez determinados los nuevos puntos de objeto y la tasa de productividad, se puede calcular una estimación del esfuerzo del proyecto 
-
-\[ Esfuerzo_{estimado} = \frac{NOP}{PROD}\]
-\[ Esfuerzo_{estimado} = \frac{157}{7}\]
-\[ Esfuerzo_{estimado} = 22.42\]
-\[ Esfuerzo_{estimado} = 23 Meses-hombre\]
-
-Una vez obtenidos estos valores, se pueden sumar los costos derivados del desarrollo de software 
+	\begin{table}
+		\begin{tabular}{|p{9cm}|c|}
+		\hline
+		Pregunta                                                                                                                 & Ponderación \\ \hline
+		¿Requiere el sistema métodos de seguridad y recuperación fiables ?                                                       & 3           \\ \hline
+		¿Se requiere comunicación de especializada?                                                                              & 5           \\ \hline
+		¿Existen funciones de procesamiento distribuido?                                                                         & 2           \\ \hline
+		¿Es crítico el rendimiento?                                                                                              & 4           \\ \hline
+		¿Se ejecutará el sistema en un entorno operativo existente y fuertemente utilizado?                                      & 4           \\ \hline
+		¿Requiere el sistema un entrada de datos interactiva?                                                                    & 5           \\ \hline
+		¿Requiere la entrada de datos interactiva que las transacciones de entrada se llevan a cabo sobre múltiples operaciones? & 5           \\ \hline
+		¿Se actualizan los archivos maestros de forma interactiva?                                                               & 3           \\ \hline
+		¿Son complejas las entrada, salidas, archivos o consultas?                                                               & 4           \\ \hline
+		¿Es complejo el procesamiento interno?                                                                                   & 4           \\ \hline
+		¿Se ha diseñado el código para ser reutilizable?                                                                         & 4           \\ \hline
+		¿Están incluidas en el diseño la instalación y conversión?                                                               & 3           \\ \hline
+		¿Se ha diseñado el sistema para soportar múltiples instalaciones en diferentes organizaciones?                           & 4           \\ \hline
+		¿Se ha diseñado el sistema para facilitar los cambios y para ser fácilmente utilizable?                                  & 4           \\ \hline
+		\centering $\sum Fi=$                                                                                                  	 & 54          \\ \hline
+		\end{tabular}
+		\caption{Factores de ajuste}
+		\label{tab:questions_adjusment}
+		\end{table}
 
 
+\subsubsection{Puntos de función}
+
+La fórmula para obtener los punto de función con los factores de ajuste es la siguiente:
+
+
+\begin{center}
+	$
+	PF = conteo\ total *  (0.65 + (0.01 * \sum Fi))
+	$
+
+
+	sustituyendo los valores del conteo total y los factores de ajuste
+
+
+	\begin{equation}
+		PF =  133 *  (0.65 + (0.01 * 54))
+		PF = 158.27 \approx 159
+	\end{equation}
+\end{center}
+
+De lo anterior se obtiene \textbf{159} puntos de función aproximadamente. Una vez obtenidos utilizando la llamada ``Ball-Park'' o ``Estimación Indicativa'' es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyectos. El autor del artículo ``Applied Software Measurement''[ref JONES] Carper Jones propone la siguiente ecuación para determinar el esfuerzo de desarrollo de un proyecto:
+
+
+\begin{center}
+	$
+	Esfuerzo = (\frac{PF}{150})*PF^{0.4}
+	$
+
+
+	Donde:
+
+
+	PF : Puntos de función
+
+
+	Sustituyendo los valores tenemos:
+
+	$
+	Esfuerzo = (\frac{159}{150})*159^{0.4}
+	Esfuerzo = 8.05 meses
+	$
+\end{center}
+
+
+De estos 8.05 meses, considerando un total de 40 horas a la semana de trabajo y  4.34 semanas por mes tenemos un total de horas para el desarrollo y conclusión del proyecto de :
+
+\begin{center}
+	Tiempo de desarrollo = $ 40 * 4.34 * 8.05 $
+	Tiempo de desarrollo = $ 1397.48 \approx 1398 $ horas
+\end{center}
+
+
+Es  decir,  una  única  persona  trabajando  en  el  desarrollo  del  proyecto  debería invertir 1398 horas con una jornada de 8 horas diarias de lunes a viernes hasta su finalización, por lo que si suponemos un equipo de desarrollo de 2 personas con un horario de lunes a viernes de 4 horas diarias en 8.05 meses habría concluido el proyecto.
 
