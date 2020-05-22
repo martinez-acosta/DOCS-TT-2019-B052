@@ -116,3 +116,32 @@ Normalmente, la clave principal de $S$ es una combinación de todas las \textit{
 
 No obstante, si las restricciones de cardinalidad en cualquiera de los tipos de entidad $E$ que participan en $R$ es 1, entonces la clave principal de $S$ no debe incluir el atributo de la \textit{foreign key} que hace referencia a la relación $E'$ correspondiente a $E$.
 
+\subsection*{Correspondencia entre los modelos ER y relacional}
+\begin{center}
+\begin{longtable}{l l l|}
+    \caption{Correspondencia entre los modelos ER y relacional.} \label{tab:long} \\
+    
+    \hline \multicolumn{1}{c}{\textbf{Modelo entidad-relación}} & \multicolumn{1}{c}{\textbf{Modelo relacional}} \\ \hline 
+    \endfirsthead
+    
+    \multicolumn{2}{c}%
+    {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+    \hline \multicolumn{1}{c}{\textbf{Modelo entidad-relación}} & \multicolumn{1}{c}{\textbf{Modelo relacional}} \\ \hline 
+    \endhead
+    
+    \endfoot
+    
+    \hline %\hline
+    \endlastfoot
+    
+    Tipo de entidad & Relación de entidad\\ \hline
+    Tipo de relación $1\colon 1$ o $1\colon N$ & \textit{foreign key} (o relación de relación)\\ \hline
+    Tipo de relación $M\colon N$ & Relación de relación y dos \textit{foreign keys}\\ \hline
+    Tipo de relación n-ary & Relación de relación y $n$ \textit{foreign keys}\\ \hline
+    Atributo simple & Atributo\\ \hline
+    Atributo compuesto & Conjunto de atributos simples\\ \hline
+    Atributo multivalor & Relación y \textit{foreign key}\\ \hline
+    Conjunto de valores & Dominio\\ \hline
+    Atributo clave & Clave principal (o secundaria)\\
+    \end{longtable}
+\end{center}
