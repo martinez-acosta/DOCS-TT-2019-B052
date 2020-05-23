@@ -90,7 +90,36 @@ Este evento es imposible en relaciones superiores al primer grado, pero podría 
 
 Una relación reflejada existe cuando la semántica de una relación permite que una instancia de una entidad se asocie a sí misma a través de la relación.
 
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lllllll}
+    \hline
+    \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Tipo \\ de relación\end{tabular}} & \multirow{2}{*}{}                                             & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Dirección de\\  la relación\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Restricción de \\ participación\end{tabular}}                   & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Restricciones de\\ cardinalidad\end{tabular}} & \multicolumn{2}{l}{Ejemplo}                                                                                                             \\ \cline{6-7} 
+                                                                                 &                                                               &                                                                                      &                                                                                                            &                                                                                          & Relación                                                                  & Roles                                                       \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Simétrica\\ (reflexiva)\end{tabular}              &                                                               & Bidireccional                                                                        & \begin{tabular}[c]{@{}l@{}}Opcional–opcional\\ Obligatoria-obligatoria\end{tabular}                        & \begin{tabular}[c]{@{}l@{}}1-1\\ M-N\end{tabular}                                        & Cónyuge de                                                                & Persona                                                     \\
+    \begin{tabular}[c]{@{}l@{}}Asimétrica\\ (no reflexiva)\end{tabular}          & Jerárquica                                                    & Unidireccional                                                                       & Opcional-opcional                                                                                          & \begin{tabular}[c]{@{}l@{}}1-M\\ 1-1\end{tabular}                                        & \begin{tabular}[c]{@{}l@{}}Supervisa\\ Es supervisado \\ por\end{tabular} & \begin{tabular}[c]{@{}l@{}}Gerente-\\ empleado\end{tabular} \\
+                                                                                 &                                                               &                                                                                      & \begin{tabular}[c]{@{}l@{}}Opcional-opcional\\ Opcional-obligatoria\\ Obligatoria-obligatoria\end{tabular} & M-N                                                                                      & \begin{tabular}[c]{@{}l@{}}Supervisa\\ Es supervisado\\ por\end{tabular}  & \begin{tabular}[c]{@{}l@{}}Gerente\\ Empleado\end{tabular}  \\
+                                                                                 & Circular                                                      & Unidireccional                                                                       & \begin{tabular}[c]{@{}l@{}}Opcional-opcional\\ Obligatoria-obligatoria\end{tabular}                        & 1-1                                                                                      & \begin{tabular}[c]{@{}l@{}}Apoya\\ Es apoyado por\end{tabular}            & Servicio técnico                                            \\
+                                                                                 & \begin{tabular}[c]{@{}l@{}}Jerárquica\\ Circular\end{tabular} & Unidireccional                                                                       & \begin{tabular}[c]{@{}l@{}}Opcional-opcional\\ Opcional-obligatoria\end{tabular}                           & 1-M                                                                                      & \begin{tabular}[c]{@{}l@{}}Apoya\\ Es apoyado por\end{tabular}            & Responsable                                                 \\
+                                                                                 &                                                               &                                                                                      & \begin{tabular}[c]{@{}l@{}}Opcional-opcional\\ Opcional-obligatoria\\ Obligatoria-obligatoria\end{tabular} & M-N                                                                                      & Supervisa                                                                 & \begin{tabular}[c]{@{}l@{}}Gerente-\\ empleado\end{tabular} \\
+                                                                                 & Reflejada                                                     & Unidireccional                                                                       & Opcional-opcional                                                                                          & 1-1                                                                                      & \begin{tabular}[c]{@{}l@{}}Gestiona\\ Se gestiona\end{tabular}            & CEO                                                        
+    \end{tabular}%
+    }
+    \caption{Tipos de relación recursiva válidos según las restricciones de cardinalidad}
+    \label{tab:relaciones}
+    \end{table}
+
+
+    La tabla~\ref{tab:relaciones} resume cada relación recursiva por sus propiedades direccionales, la combinación de restricciones de cardinalidad mínima y máxima, y ejemplos. En nuestros diagramas a lo largo de este En el documento, utilizamos la notación uno (1) y muchos (M) para obtener la máxima cardinalidad, una sola línea para indicar la participación opcional y una línea doble para mostrar la participación obligatoria. Las palabras ``obligatorio'' y ``opcional'' se utilizan en la tabla para indicar la cardinalidad mínima obligatoria (o total) y opcional (o parcial), respectivamente. Además, la notación $|E|$ representa el número de instancias en la entidad $E$.
+
 \subsection{Reglas de decisión para la verificación de validez de relaciones recursivas}
+
+
 
 
 
