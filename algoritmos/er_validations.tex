@@ -1,1 +1,143 @@
-\section{Validaciones entidad-relación}
+\section{Validación estructural diagrama entidad-relación}
+
+De acuerdo con Dullea\cite{dullea_analysis_2003}, un modelo ER está compuesto por entidades, las relaciones entre entidades y restricciones en esas relaciones. 
+
+
+Las entidades pueden estar encadenadas en una serie de entidades y relaciones alternas, o pueden participar singularmente con una o más relaciones. 
+
+
+La conectividad de entidades y relaciones se denomina ruta. Las rutas son los bloques de construcción de nuestro estudio en el análisis de validez estructural.
+
+
+Las rutas definen visualmente la asociación semántica y estructural que cada entidad tiene simultáneamente con todas las demás entidades o consigo misma dentro de la ruta.
+
+Los términos, validez estructural y semántica, se definen de la siguiente manera.
+
+\theoremstyle{definition}
+\begin{definition}{}
+    Un diagrama de entidad-relación es estructuralmente válido solo cuando la consideración simultánea de todas las restricciones estructurales impuestas en el modelo no implica una inconsistencia lógica en ninguno de los posibles estados. Un diagrama de entidad-relación es semánticamente válido solo cuando cada relación representa exactamente el concepto del modelador del dominio del problema. Un diagrama de entidad-relación es válido cuando es válido semántica y estructuralmente.
+\end{definition}
+
+
+En el modelado de datos, la validez se puede clasificar en dos tipos: validez semántica y estructural. Un ERD semánticamente válido muestra la representación correcta del dominio de aplicación que se está modelando.
+
+
+El diagrama debe comunicar exactamente el concepto previsto del entorno tal como lo ve el modelador. Dado que la validez semántica depende de la aplicación, no podemos definir criterios de validez generalizados.
+
+
+Por lo tanto, no se considerará la validez semántica.
+
+
+La validez estructural de un ERD se refiere a si un ERD dado contiene o no construcciones que son contradictorias entre sí. Un ERD con al menos una restricción de cardinalidad inconsistente es estructuralmente inválido.
+
+
+Un ERD representa la semántica de la aplicación en términos de restricciones de cardinalidad máxima y mínima. La fuerza impulsora detrás de la colocación de la restricción de cardinalidad es la semántica del modelo.
+
+
+Cada conjunto de restricciones de cardinalidad en una sola relación debe ser coherente con todas las restricciones restantes en el modelo y en todos los estados posibles
+
+
+Una relación recursiva, es decir, la asociación entre grupos de roles dentro de una sola entidad, se evalúa como un objeto conceptual independiente. 
+
+
+Es semánticamente inválido cuando el concepto no refleja las reglas de negocio definidas por la comunidad de usuarios. 
+
+
+Una relación recursiva es estructuralmente inválida cuando las restricciones de participación y cardinalidad no respaldan la existencia de instancias de datos como lo requiere el usuario y hace que todo el diagrama sea inválido.
+
+
+En general, un diagrama estructuralmente inválido refleja reglas de negocio semánticamente inconsistentes. Para que un modelo sea válido, todas las rutas del modelo también deben ser válidas.
+
+
+\subsection{Relaciones recursivas}
+
+Una relación recursiva se define como una asociación entre instancias a medida que asumen roles dentro de la misma entidad. Los roles juegan un papel importante en el examen de la validez estructural, especialmente para las relaciones recursivas.
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{modeloEntidadRelacion/taxonomia_relaciones_recursivas.png}
+    \caption{Taxonomía de relaciones recursivas}
+    \label{img:taxonomia_relaciones_recursivas}
+\end{figure}
+
+Un rol es la acción o función que desempeñan las instancias de una entidad en una relación.
+En una relación recursiva, un conjunto de instancias puede asumir un solo rol o múltiples roles dentro de la misma relación. 
+
+
+Examinar estos roles permite clasificar todas las relaciones recursivas en asociaciones simétricas o asimétricas, mientras que clasificamos aún más los tipos de relaciones asimétricas en asociaciones jerárquicas, circulares y duplicadas.
+
+
+La clasificación completa de las relaciones recursivas que consideramos en este artículo se muestra en la figura~\ref{img:taxonomia_relaciones_recursivas} como sigue.
+
+
+Una relación recursiva es simétrica o reflexiva cuando todas las instancias que participan en la relación toman un solo papel y el significado semántico de la relación es exactamente el mismo para todas las instancias que participan en la relación independientemente de la dirección en la que se ve. Estos tipos de relación se denominan bidireccionales.
+
+
+Una relación recursiva es asimétrica o no reflexiva cuando hay una asociación entre dos grupos de roles diferentes dentro de la misma entidad y el significado semántico de la relación es diferente dependiendo de la dirección en la que se ven las asociaciones entre los grupos de roles. Estos tipos de relación se denominan unidireccionales.
+
+
+Una relación recursiva es jerárquica cuando un grupo de instancias dentro de la misma entidad se clasifican en calificaciones, órdenes o clases, una encima de otra. Implica un comienzo (o arriba) y un final (o abajo) para el esquema de clasificación de instancias.
+
+
+Una relación recursiva es circular cuando una relación recursiva asimétrica tiene al menos una instancia que no cumple con la jerarquía de clasificación. La relación es unidireccional, ya que se puede ver desde dos direcciones con un significado semántico diferente.
+
+
+Otra pregunta que surge en el modelado de las relaciones recursivas es si una instancia
+puede asociarse consigo mismo. 
+
+
+Este evento es imposible en relaciones superiores al primer grado, pero podría ocurrir en casos especiales de una relación recursiva y llamamos a este evento especial una relación reflejada. 
+
+Una relación reflejada existe cuando la semántica de una relación permite que una instancia de una entidad se asocie a sí misma a través de la relación.
+
+\subsection{Reglas de decisión para la verificación de validez de relaciones recursivas}
+
+
+
+
+\subsection{Generales}
+\begin{enumerate}
+    \item No puede haber elementos sin conectar.
+    \item Tampoco puede haber enlaces sin conectar.
+    \item Solo relación de participación binarias ?????
+\end{enumerate}
+
+
+
+\subsection{Entidad}
+\begin{enumerate}
+    \item Una entidad es válida si tiene atributos, porque no tiene propósito una entidad sin atributos.
+    \item La clave primaria puede ser simple o compuesta.
+    \item La clave primaria no es una clave foranea.
+    \item La clave primaria debe ser un atributo clave asociado a la entidad. (restricción del proyecto, para facilidad)
+    \item Dos entidades solo pueden estar conectadas entre sí mediante una relación.
+    \item Todas las entidades deben tener un atributo clave
+\end{enumerate}
+
+\subsection{Entidad débil}
+\begin{enumerate}
+    \item Un atributo solo puede estar asociado a un solo atributo o a una sola entidad.
+    \item Una entidad débil no puede existir si no tiene una relación con otra entidad.
+\end{enumerate}
+
+\subsection{Atributo}
+
+\begin{enumerate}    
+\item Un atributo solo puede estar asociado a un solo atributo o a una sola entidad.
+\item Un atributo puede ser compuesto.
+\item Un atributo puede ser multivalor.
+\item Un atributo puede ser derivado.
+\item Un atributo debe tener un nombre.
+\item Un atributo no puede usar una relación para asociarse a otro elemento.
+\item Un atributo compuesto solo puede estar asociado a una entidad.
+\item Un atributo derivado solo puede estar asociado a una entidad.
+\end{enumerate}
+
+\subsection{Relación}
+
+\begin{enumerate}
+    \item Una relación solo puede ser entre entidades.
+    \item El grado de participación máximo es dos. (restricción del proyecto)
+    \item Una relación puede ser unaria (recursiva).
+    \item No están permitidas relaciones ternarias o de grado n (resticcion del proyecto)
+\end{enumerate}

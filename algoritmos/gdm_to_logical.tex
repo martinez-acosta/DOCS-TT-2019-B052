@@ -1,6 +1,77 @@
 \section{Generic Data Metamodel a modelo lógico NoSQL}
 
-\begin{algorithm}[H] 
+Un \textit{DocumentType} es la estructura principal que se guardará en la colección.
+
+
+Sea $Q$ el conjunto de todas las queries $q_{n}$ en una instancia GDM:
+
+\begin{center}
+    $Q = \{q_{1}, q_{2},..., q_{n}\}$ donde $n=1,2,...$    
+\end{center}
+
+Sea $E_{f}$ el conjunto de entidades formado al consultar el único elemento from de cada $q_n$ ($q_{n.from}$ de $Q$): 
+
+\begin{center}
+    $ E_{f} = \{e_{f1},e_{f2},...,e_{fn}\} $ donde $n=1,2,...$    
+\end{center}
+
+
+Sea $C$ el conjunto de colecciones $c_{n}$ donde cada $c_{n}$ corresponde a un $e_{fn}$ de $E_{f}$ (es decir que por cada $ef_{n}$ se crea un $c_{n}$ en la que cada $c_{n}$ contiene un único elemento \textit{DocumentType}, llamado ``documento raíz"):
+
+\begin{center}
+    $C = \{ c_{1},c_{2},...,c_{n}\}$ donde $n=1,2,...$    
+\end{center}
+
+Finalmente, por cada $c_{n}$ se generan los contenidos de cada documento raíz:
+
+Como cada colección $c_{n}$ es creada a partir de una única entidad $e_{fn}$, se necesita buscar del conjunto $Q$ todas las $q_{n}$ que contengan esa $e_{fn}$ como entidad de búsqueda principal (es decir, que $e_{fn}$ esté en el elemento \textit{from} de la $q_{n}$).
+
+
+Dicho de otra manera, sea el conjunto $Q_{E}$ el subconjunto propio de $Q$ en el que cada $q_{en}$ contiene en su elemento \textit{from} la $e_{fn}$.
+\begin{center}
+    $Q_{E} = \{q_{e1},q_{e2},...,q_{en}\}$ donde $Q_{E} \subseteq Q  | q_{en.from} == e_{fn}$
+\end{center}
+
+Por cada $q_{en}$ se consulta todos sus elementos \textit{including}, a cada elemento \textit{including} le llamamos $r_{n}$ para formar el conjunto $R$ de referencias.
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-access-tree.png}
+    \caption{Access Tree - Modelo lógico orientado a documentos}
+    \label{img:mortadelo-gdm-logical-model-access-tree}
+\end{figure}
+
+\begin{figure}[h!t] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-q4.png}
+    \caption{Access query Q4}
+    \label{img:mortadelo-gdm-logical-model-q4}
+\end{figure}
+
+Creamos un árbol de acceso con el conjunto $R$ y con ese árbol de acceso generamos los documentos de cada documento raíz de cada $c_{n}$ que tiene una única $e_{fn}$. 
+
+
+La figura~\ref{img:mortadelo-gdm-logical-model-access-tree} es un ejemplo del árbol de acceso de la consulta $q_{4}$ de la figura~\ref{img:mortadelo-gdm-logical-model-q4}.
+
+
+Añadimos todos los atributos simples de la $e_{fn}$.
+
+
+Cada $r_{n}$ lo añadimos al documento raíz de acuerdo a 1) la cardinalidad de la referencia y 2) la entidad objetivo de la referencia
+
+
+Si la entidad destino está dentro del árbol de consultas implica que datos de esa entidad serán requeridos en la consulta, por lo que el nuevo \textit{field} deberá ser incluído como un subdocumento o una colección de documentos, dependiendo de su cardinalidad.
+
+En contraparte, si la entidad destino no está en el árbol de consultas, se podría quitar esa referncia, pero se agregará para mejorar la escalabilidad de la base de datos para futuras consultas. Esta referencia tendría el valor del identificador de la entidad referenciada cuando la cardinalidad es 1. Si la cardinalidad es n, será un arreglo de identificadores.
+
+
+Cuando una referencia es tranformada a un subdocumento se vuelve a generar su árbol de acceso en una llamada recursiva para generar sus contenidos.
+
+
+Por último, el autor menciona dos optimizaciones si se quiere reducir el nivel de denormilación, las que se pueden consultar en su investigación\cite{de_la_vega_mortadelo_2020}.
+
+En resumen, el algoritmo quedaría de la forma:
+\begin{algorithm}
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
 
@@ -19,7 +90,9 @@
     \caption{Transformación del modelo conceptual GDM al modelo lógico orientado a documentos}
 \end{algorithm}
 
-\begin{algorithm}[H] 
+Donde la función populateDocumentType() es otro algoritmo de la forma:
+
+\begin{algorithm}
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
 

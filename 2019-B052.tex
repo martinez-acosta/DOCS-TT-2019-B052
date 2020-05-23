@@ -7,6 +7,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage[linesnumbered,ruled]{algorithm2e}
 \usepackage{float}
 \usepackage{longtable}
@@ -36,6 +37,11 @@
 \setlength{\parskip}{0.5em}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
 
 \usepackage[style=ieee,sorting=none]{biblatex}
 
