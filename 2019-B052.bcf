@@ -2190,10 +2190,13 @@
     <bcf:citekey order="56">the_scrum_guide_definitive_2020</bcf:citekey>
     <bcf:citekey order="57">scrum_mexico_scrum_2020</bcf:citekey>
     <bcf:citekey order="58">manuel_trigas_gallego_metodologiscrum_2020</bcf:citekey>
-    <bcf:citekey order="59">ramez_elmasri_fundamentos_nodate</bcf:citekey>
-    <bcf:citekey order="60">wikipedia_diagrama_2020</bcf:citekey>
-    <bcf:citekey order="61">catherine_m_ricardo_bases_nodate</bcf:citekey>
+    <bcf:citekey order="59">pressman_software_2005</bcf:citekey>
+    <bcf:citekey order="60">abran_applied_2006</bcf:citekey>
+    <bcf:citekey order="61">pedro_galvan_estudio_2020</bcf:citekey>
     <bcf:citekey order="62">ramez_elmasri_fundamentos_nodate</bcf:citekey>
+    <bcf:citekey order="63">wikipedia_diagrama_2020</bcf:citekey>
+    <bcf:citekey order="64">catherine_m_ricardo_bases_nodate</bcf:citekey>
+    <bcf:citekey order="65">ramez_elmasri_fundamentos_nodate</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
