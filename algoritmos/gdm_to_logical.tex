@@ -1,1 +1,61 @@
 \section{Generic Data Metamodel a modelo lógico NoSQL}
+
+\begin{algorithm}[H] 
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    %\underline{function Euclid} $(a,b)$\;
+    \Input{una instancia del modelo GDM, $gdm$}
+    \Output{un modelo lógico orientado a documentos, $ddm$}
+    $mainEntities \gets gdm.queries.collect((q)|q.from);$\\
+    \ForEach{$me \in mainEntities$}{
+        $collection \gets new Collection();$\\
+        $collection.name \gets me.name;$\\
+        $accessTree \gets allQueryPaths(me,gdm.queries);$\\
+        $collection \gets populateDocumentType(collection.root,accessTree);$\\
+        $ddm.collections.add(collection);$
+    }
+    
+    \caption{Transformación del modelo conceptual GDM al modelo lógico orientado a documentos}
+\end{algorithm}
+
+\begin{algorithm}[H] 
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    %\underline{function Euclid} $(a,b)$\;
+    \Input{Un ``document type", $dt$}
+    \Output{un nodo del arbol de acceso}
+    $ nodeAttributes \gets node.entity.features.select(f|f.isTypeOf(Attribute))\; $\\
+    $ nodeReferences \gets node.entity.features.select(f|f.isTypeOf(Reference))\; $\\
+    \ForEach{$attr \in nodeAttributes$}{
+        $pf \gets new PrimitiveField()\;$\\
+        $pf.name \gets attr.name\;$\\
+        $pf.type \gets attr.type\;$\\
+        $dt.fields.add(pf)\;$\\
+    }
+    \ForEach{$ref \in nodeReferences$}{
+        $targetNode \gets node.arcs.find(a|a.name = ref.name).target\;$\\
+        \uIf{exists(targetNode)}{
+            $baseType \gets new DocumentType()\;$\\
+            $populateDocumentType(baseType,targetNode)\;$\\
+        }
+        \Else{
+            $baseType \gets new PrimitiveField()\;$\\
+            $baseType.type \gets findIdType(ref.entity)\;$\\
+        }
+        $baseType.name \gets ref.name\;$\\
+
+        \uIf{$ref.cardinality$ == 1}{
+            $dt.field.add(baseType)\;$\\
+            
+        }
+        \Else{
+            $arrayField \gets new ArrayField()\;$\\
+            $arrayField.type \gets baseType\;$\\
+            $dt.fields.add(arrayField)\;$
+        }
+        
+    }
+    \caption{Generar el contenido de un \textit{DocumentType} dado un árbol de acceso}
+\end{algorithm}
