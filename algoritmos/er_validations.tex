@@ -114,15 +114,91 @@ Una relación reflejada existe cuando la semántica de una relación permite que
     \label{tab:relaciones}
     \end{table}
 
-
-    La tabla~\ref{tab:relaciones} resume cada relación recursiva por sus propiedades direccionales, la combinación de restricciones de cardinalidad mínima y máxima, y ejemplos. En nuestros diagramas a lo largo de este En el documento, utilizamos la notación uno (1) y muchos (M) para obtener la máxima cardinalidad, una sola línea para indicar la participación opcional y una línea doble para mostrar la participación obligatoria. Las palabras ``obligatorio'' y ``opcional'' se utilizan en la tabla para indicar la cardinalidad mínima obligatoria (o total) y opcional (o parcial), respectivamente. Además, la notación $|E|$ representa el número de instancias en la entidad $E$.
-
-\subsection{Reglas de decisión para la verificación de validez de relaciones recursivas}
+La tabla~\ref{tab:relaciones} resume cada relación recursiva por sus propiedades direccionales, la combinación de restricciones de cardinalidad mínima y máxima, y ejemplos. En nuestros diagramas a lo largo de este En el documento, utilizamos la notación uno (1) y muchos (M) para obtener la máxima cardinalidad, una sola línea para indicar la participación opcional y una línea doble para mostrar la participación obligatoria. Las palabras ``obligatorio'' y ``opcional'' se utilizan en la tabla para indicar la cardinalidad mínima obligatoria (o total) y opcional (o parcial), respectivamente. Además, la notación $|E|$ representa el número de instancias en la entidad $E$.
 
 
+A continuación se pone un resumen de las reglas válidas para relaciones unarias y binarias:
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lc}
+    \hline
+    \multicolumn{1}{c}{\multirow{2}{*}{Reglas de validación para relaciones recursivas}}                                                                                                                                                                                                          & \multirow{2}{*}{Ejemplo válido} \\  &                                 \\ \hline
+    & \\ 
+    \begin{tabular}[c]{@{}l@{}}Solo las relaciones recursivas 1:1 con restricciones de cardinalidad mínimas obligatorias-obligatorias u \\ opcionales son estructuralmente válidas. Válido para relaciones simétricas y completamente circular.\end{tabular}                                      &           \begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{images/validezER/tabla1/01.png}\end{minipage}                       \\
+    \begin{tabular}[c]{@{}l@{}}Para las relaciones recursivas 1:M o M:1, la cardinalidad mínima opcional-opcional \\ es estructuralmente válida. Válido solo para relaciones asimétricas.\end{tabular}                                                                                            & \begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{images/validezER/tabla1/02.png}\end{minipage}                                \\
+    \begin{tabular}[c]{@{}l@{}}Para 1:M las relaciones recursivas del tipo jerárquico-circular, \\ la cardinalidad mínima opcional-obligatoria son estructuralmente válidas. \\ Válido solo para relaciones jerárquico-circulares.\end{tabular}                                                   & 
+    \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla1/03.png}
+    \end{minipage}                                \\
+    \begin{tabular}[c]{@{}l@{}}Todas las relaciones recursivas con cardinalidad máxima\\ de muchos a muchos son estructuralmente válidas independientemente de las restricciones\\ mínimas de cardinalidad. Válido para relaciones simétricas, jerárquicas y jerárquicas-circulares.\end{tabular} &  \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla1/04.png}
+    \end{minipage}                                \\                               \\
+    \begin{tabular}[c]{@{}l@{}}Todas las relaciones recursivas con cardinalidad mínima opcional–opcional son estructuralmente válidas.\\ Válido para relaciones simétricas y asimétricas.\end{tabular}                                                                                            &  \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla1/05.png}
+    \end{minipage}                                \\                               \\
+    \multicolumn{1}{c}{Colorarios de validez para relaciones recursivas}                                                                                                                                                                                                                          & Ejemplo no válido               \\
+    \begin{tabular}[c]{@{}l@{}}Todas las relaciones recursivas 1: 1 con restricciones de cardinalidad mínima obligatoria–opcional\\  u opcional-obligatoria son estructuralmente inválidas.\end{tabular}                                                                                          &   \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla1/06.png}
+    \end{minipage}                                \\                              \\
+    \begin{tabular}[c]{@{}l@{}}Todas las relaciones recursivas 1:M o M:1 con restricciones de cardinalidad mínimas\\ obligatorias-obligatorias son estructuralmente inválidas.\end{tabular}                                                                                                       & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla1/07.png}
+    \end{minipage}                                \\            \\
+    \begin{tabular}[c]{@{}l@{}}Todas las relaciones recursivas 1:M o M:1 con restricción de participación obligatoria en ``uno''\\ y una restricción de participación opcional en las ``muchas'' restricciones son estructuralmente inválidas.\end{tabular}                                       & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla1/08.png}
+    \end{minipage}                                \\           
+    \end{tabular}%
+    }
+    \caption{Resumen de reglas de validez para relaciones recursivas con ejemplos}
+    \label{tab:reglas-validez-relaciones-recursivas}
+    \end{table}
 
 
-
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lc}
+    \hline
+    \multicolumn{1}{c}{\multirow{2}{*}{Reglas de validez para relaciones binarias.}}                                                                                                                                                                                                                     & \multirow{2}{*}{Ejemplo válido} \\      
+      & \\ \hline
+      &                                 \\
+    \begin{tabular}[c]{@{}l@{}}Una ruta acíclica que contiene todas las relaciones binarias siempre\\ es estructuralmente válida.\end{tabular}                                                                                                                                                           & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla2/01.png}
+    \end{minipage}                               \\
+    \begin{tabular}[c]{@{}l@{}}Una ruta cíclica que contiene todas las relaciones binarias y\\ una o más relaciones opcional–opcional siempre es\\ estructuralmente válida.\end{tabular}                                                                                                                 & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla2/02.png}
+    \end{minipage}                               \\
+    \begin{tabular}[c]{@{}l@{}}Una ruta cíclica que contiene todas las relaciones binarias y\\ una o más relaciones de muchos a uno con participación opcional\\ del lado ``uno'' siempre es estructuralmente válida.\end{tabular}                                                                       & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla2/03.png}
+    \end{minipage}                               \\
+    \begin{tabular}[c]{@{}l@{}}Una ruta cíclica que contiene todas las relaciones binarias y\\ una o más relaciones de muchos a muchos es siempre estructuralmente válida.\end{tabular}                                                                                                                  & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla2/04.png}
+    \end{minipage}                               \\
+    \begin{tabular}[c]{@{}l@{}}Las rutas cíclicas que contienen al menos un\\ conjunto de relaciones opuestas siempre son válidas.\end{tabular}                                                                                                                                                                                                    & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla2/05.png}
+    \end{minipage}                               \\
+    \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Una ruta cíclica que contiene todas las relaciones binarias uno a uno que son todas obligatorias-obligatorias\\ o al menos una restricción de cardinalidad mínima opcional-opcional siempre es estructuralmente válida.\end{tabular}}                  & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla2/06.png}
+    \end{minipage}                               \\ \hline
+    \multicolumn{1}{c}{Validez corolarios para relaciones binarias} & Ejemplo no válido               \\ 
+    \hline
+    & \\
+    \begin{tabular}[c]{@{}l@{}}Las rutas cíclicas que no contienen relaciones opuestas ni relaciones autoajustables\\  son estructuralmente inválidas y se denominan relaciones circulares.\end{tabular}                                                                                                 & \begin{minipage}{.3\textwidth}
+        \includegraphics[width=\linewidth]{images/validezER/tabla2/07.png}
+    \end{minipage}           \\
+    \begin{tabular}[c]{@{}l@{}}La presencia de una relación "uno a uno obligatorio-obligatorio" no tiene ningún \\ efecto sobre la validez estructural (o invalidez) de una ruta cíclica que contiene otros tipos de relación.\\  (Este corolario se aplica a todas las reglas anteriores).\end{tabular} & \multicolumn{1}{l}{}           
+    \end{tabular}%
+    }
+    \caption{Resumen de reglas de validez para relaciones binarias con ejemplos}
+    \label{tab:reglas-validez-relaciones-binarias}
+    \end{table}
 
 \subsection{Generales}
 \begin{enumerate}
