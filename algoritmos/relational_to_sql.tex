@@ -1,1 +1,17 @@
 \section{Obtención de esquema SQL desde modelo relacional}
+
+Para obtener las sentencias SQL del modelo relacional se seguiran los siguientes pasos:
+
+\begin{enumerate}
+  \item Por cada relación(tabla) del modelo relacional se agrega una sentencia CREATE TABLE seguida del nombre de la relación seguido de sus atributos encerrados entre parentesis.
+  \item Por cada atributo(columna) se crea un campo con su nombre correspondiente y se indica el tipo de dato, para hacerlo mas especifico se le puede añadir alguna de las siguientes caracteriticas:
+  \begin{itemize}
+    \item Los atributos que esten obligados a tener un valor se le agrega la palabra NOT NULL.
+    \item Si la columna tomará un valor por defecto se agrega la instrucción AUTO\_INCREMENT siempre y cuando el tipo de dato sea INTEGER.
+    \item Si la columna es la que identificará a la tabla de forma única en todo el esquema se debe abregar como llave primaria de la tabla.
+  \end{itemize}
+  \item La llave primaria de agrega como un atributo mas con la palabra PRIMARY KEY seguido del nombre de atributo,encerrada entre parentesis, que indentifica de forma unica a la tabla.
+  \item Todos los atributos de la tabla se encuentran encerrados entre los simbolos '(' y ')' separados por comas.
+  \item Al final de la lista de atrubutos de la tabla(despues del parentesis) se agrega el motor de almacenamiento de MySQL , ENGINE=InnoDB (restricción del proyecto)
+
+\end{enumerate}
