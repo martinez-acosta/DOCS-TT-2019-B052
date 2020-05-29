@@ -1,18 +1,37 @@
 \section{Alcance y limitaciones}
 
-\begin{enumerate}
-    \item Se usará la notación oficial en los modelos de datos conceptuales entidad-relación y relacional, es decir, la notación de Chen y la notación de Codd, respectivamente.
-    \item Para la generación de \textit{scripts} de bases de datos relacionales se usará el lenguaje de consultas SQL.
-    \item Asimismo, los \textit{scripts} generados se probarán con MySQL, ya que es el RDBMS (\textit{Database Management System}) que se usa en la asignatura de Base de Datos y es con el que están más familiarizados los alumnos.
-    \item Para la transformación del modelo de datos conceptual del modelo ER al modelo relacional no se realizará ninguna normalización, porque se necesita un diagrama no normalizado para la transformación al modelo conceptual de datos NoSQL.
-    \item Los \textit{scripts} NoSQL generados por la aplicación solo serán probados y ejecutados en un único NoSQL RDBMS.
-    \item Respecto al registro de los usuarios, se podrá acceder a la aplicación con un correo válido o uno que no lo sea, teniendo en cuenta de que si no crea su cuenta con un correo válido, no le llegará notificación de correo que le indica que se ha registrado exitosamente junto con su contraseña.
-    \item El diagramador ER solo podrá editar elementos del modelo entidad-relación, no se podrá diagramar elementos del modelo entidad-relación extendido ni de ningún otro modelo.
-    \item No se podrá editar el diagrama generado para el modelo relacional.
-    \item Tampoco se podrá editar el diagrama conceptual del modelo NoSQL orientado a documentos.
-    \item El modelo elegido para desarrollar la propuesta de modelo conceptual será independiente del modelo de datos NoSQL o enfocado en el modelo NoSQL orientado a documentos.
-    \item Asimismo, aunque la propuesta de modelo conceptual sea independiente del modelo de datos NoSQL, la generación de \textit{scripts} será únicamente en el modelo de datos orientado a documentos.
-    \item El grado de partición en el modelo entidad-relación será máximo de dos entidades.
+De acuerdo con Dullea\cite{dullea_analysis_2003}, un diagrama ER es válido solo si es estructural y semánticamente válido; sin embargo, hasta donde se sabe, en los últimos 17 años no hay estudios sobre la validez semántica de un diagrama ER, porque como expresa Dullea en su trabajo, la validez semántica depende del minimundo que se quiere representar en el diagrama y es imposible definir una métrica generalizada; por ello la validez de un diagrama ER será solo estructuralmente.
+
+
+Se usará la notación oficial en los modelos de datos conceptuales entidad-relación y relacional, es decir, la notación de Chen y la notación de Codd, respectivamente.
+
+
+Para la generación de \textit{scripts} del esquema de datos relacional se usará el lenguaje de consultas SQL.
+
+
+Asimismo, los \textit{scripts} generados se probarán con MySQL porque es el DBMS que se usa en la asignatura de Base de Datos y es con el que están más familiarizados los estudiantes.
+
+
+Para la transformación del modelo ER al esquema del modelo relacional no se realizará ninguna normalización, porque está fuera del alcance para el equipo programar la lógica necesaria y se necesita un diagrama no normalizado para la transformación al modelo conceptual NoSQL.
+
+
+Dado que hay varias propuestas en la literatura sobre modelos conceptuales NoSQL, se optará por usar la propuesta de Alfonso de la Vega\cite{de_la_vega_mortadelo_2020}, ya que el modelo que propone, conocido como Generic Data Metamodel, es un metamodelo conceptual que describe un modelo de datos NoSQL independientemente de si es de clave-valor, orientado a documentos, a columnas o grafos.
+
+
+Los \textit{scripts} NoSQL generados por la aplicación solo serán probados y ejecutados en un único NoSQL DBMS.
+
+
+Se eligirá el modelo de datos orientado a documentos y se usará MongoDB para probar los \textit{scripts} NoSQL generados por la aplicación, porque de acuerdo a Mosquera\cite{martinez-mosquera_modeling_2020}, las de bases de datos orientadas a documentos son las más estudiadas y MongoDB es el NoSQL DBMS más probado para modelado físico en la literatura del tema.
+
+
+Respecto al registro de los usuarios, se podrá acceder a la aplicación con un correo válido o uno que no lo sea, teniendo en cuenta de que si no crea su cuenta con un correo válido, no le llegará notificación de correo que le indica que se ha registrado exitosamente junto con su contraseña.
+
+
+El diagramador ER solo podrá editar elementos del modelo entidad-relación, no se podrá diagramar elementos del modelo entidad-relación extendido ni de ningún otro modelo.
+
+
+No se podrá editar el diagrama generado para el esquema del modelo relacional; tampoco se podrá editar el diagrama conceptual del modelo NoSQL.
+
+
+%El grado de partición en el modelo entidad-relación será máximo de dos entidades.
     
-    
-\end{enumerate}
