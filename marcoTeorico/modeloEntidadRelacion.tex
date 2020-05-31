@@ -1,7 +1,7 @@
 
 \subsection{Modelo entidad-relación}
 
-De acuerdo a Elmasri \cite{ramez_elmasri_fundamentos_nodate}, el modelo entidad-relación, que fue creado y formalizado por Peter Chen en 1976\cite{chen_entity-relationship_nodate}, se utiliza con frecuencia para el diseño conceptual de las aplicaciones de base de datos. 
+De acuerdo a Elmasri \cite{ramez_elmasri_fundamentos_nodate}, el modelo entidad-relación fue creado y formalizado por Peter Chen en 1976\cite{chen_entity-relationship_nodate} y se utiliza con frecuencia para el diseño conceptual de las aplicaciones de base de datos. 
 
 
 En esta sección se describen los conceptos básicos y las restricciones del modelo ER. 
@@ -202,42 +202,32 @@ Nos referiremos a la razón de cardinalidad y a las restricciones de participaci
 
 \subsubsection{Resumen de la notación para los diagramas ER}
 
-\begin{longtable}[l]{ c p{7cm} }
 
-    \caption{Notación para los diagramas ER\label{long}}\\
-    
-    \hline
-    \multicolumn{2}{ c }{Notación para los diagramas ER}\\
-    \hline
-    \multicolumn{1}{c}{Símbolo} & \multicolumn{1}{c}{Significado}\\
-    \hline
-    \endfirsthead
-    
-    \hline
-    \multicolumn{2}{|l|}{Continuación de Tabla \ref{long}}\\
-    \hline
-    Continuación la notación para los diagramas ER\\
-    \hline
-    \endhead
-    
-    \hline
-    \endfoot
-    
-    \hline
-    \multicolumn{2}{ c }{Fin de Tabla}\\
-    \hline%\ 
-    \endlastfoot
-    
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/entidad.png}} & \multicolumn{1}{c}{Entidad}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/entidadDebil.png}} & \multicolumn{1}{c}{Entidad débil}\\
-    \multicolumn{1}{c}{\parbox[c]{7em}{\includegraphics[width=0.5\linewidth]{modeloEntidadRelacion/relacion.png}}} & \multicolumn{1}{c}{Relación}\\
-    \parbox[c]{7em}{\includegraphics[width=0.5\linewidth]{modeloEntidadRelacion/relacionDeIdentificacion.png}} & \multicolumn{1}{c}{Relación de identificación}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/atributo.png}} & \multicolumn{1}{c}{Atributo}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/atributoClave.png}} & \multicolumn{1}{c}{Atributo clave}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/atributoMultivalor.png}} & \multicolumn{1}{c}{Atributo multivalor}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/atributoCompuesto.png}} & \multicolumn{1}{c}{Atributo compuesto}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/atributoDerivado.png}} & \multicolumn{1}{c}{Atributo derivado}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/participacionTotal.png}} & \multicolumn{1}{c}{Participación total}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/razonCardinalidad.png}} & \multicolumn{1}{c}{Razón de cardinalidad}\\
-    \parbox[c]{7em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/restriccionEstructural.png}} & \multicolumn{1}{c}{Restricción estructural}\\
-\end{longtable} 
+La tabla~\ref{tab:notacion-ER} es un resumen de la simbología usada en los diagramas entidad-relación en la que se muestra en la primera columna la representación gráfica y a su lado su significado en el modelo.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}ll@{}}
+    \toprule
+    \multicolumn{2}{l}{Notación de los diagramas entidad-relación}                 \\ \midrule
+    Símbolo & Signficado                                                           \\
+            &                                                                      \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/01.png}}       & Entidad                                                              \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/02.png}}       & Entidad débil                                                        \\
+    \parbox[c]{2em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/03.png}}       & Relación                                                             \\
+    \parbox[c]{2em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/04.png}}       & \begin{tabular}[c]{@{}l@{}}Relación de\\ identificación\end{tabular} \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/05.png}}       & Atributo                                                             \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/06.png}}       & \begin{tabular}[c]{@{}l@{}}Atributo \\ clave\end{tabular}            \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/07.png}}       & \begin{tabular}[c]{@{}l@{}}Atributo\\ multivalor\end{tabular}        \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/08.png}}       & \begin{tabular}[c]{@{}l@{}}Atributo\\ compuesto\end{tabular}         \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/09.png}}       & \begin{tabular}[c]{@{}l@{}}Atributo\\ derivado\end{tabular}          \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/10.png}}       & \begin{tabular}[c]{@{}l@{}}Participación\\ total\end{tabular}        \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/11.png}}       & \begin{tabular}[c]{@{}l@{}}Razón de\\ cardinalidad\end{tabular}      \\
+    \parbox[c]{4em}{\includegraphics[width=\linewidth]{modeloEntidadRelacion/12.png}}       & \begin{tabular}[c]{@{}l@{}}Restricción\\ estructural\end{tabular}   
+    \end{tabular}
+    \caption{Notación del modelo entidad-relación}
+    \label{tab:notacion-ER}
+    \end{table}
+
