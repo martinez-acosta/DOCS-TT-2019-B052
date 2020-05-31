@@ -2,7 +2,7 @@
 
 De acuerdo a la bibliografia de Elmasri\cite{ramez_elmasri_fundamentos_nodate}, el modelo relacional introducido por Ted Codd en 1970\cite{codd_relational_nodate} utiliza el concepto de una relación matemática como bloque de construcción básico y tiene su base teórica en la teoría de conjuntos y la lógica del predicado.
 
-La lógica de predicado, utilizada ampliamente en matemáticas, proporciona un marco en el que una afirmación (declaración de hecho) puede verificarse como verdadera o falsa.
+La lógica de predicado, utilizada ampliamente en matemáticas, proporciona un marco en el que una afirmación (declaración de hecho) se verifica como verdadera o falsa.
 
 
 La teoría de conjuntos es una ciencia matemática que trata con conjuntos o grupos de cosas y se utiliza como base para la manipulación de datos en el modelo relacional.
@@ -14,7 +14,7 @@ El modelo relacional representa la base de datos como una colección de relacion
 Asimismo, cada fila de la tabla representa un hecho que, por lo general, corresponde con una relación o entidad real. El nombre de la tabla y de las columnas se utiliza para ayudar a interpretar el significado de cada uno de los valores de las filas.
 
 
-En terminología formal, una fila recibe el nombre de tupla, una cabecera de columna es un atributo y el nombre de la tabla una relación. El tipo de dato que describe los valores que pueden aparecer en cada columna está representado por un dominio de posibles valores. 
+En terminología formal, una fila recibe el nombre de tupla, una cabecera de columna es un atributo y el nombre de la tabla una relación. El tipo de dato que describe los valores en cada columna está representado por un dominio de posibles valores. 
 
 
 Basado en estos conceptos, el modelo relacional tiene tres componentes bien definidos:
@@ -70,7 +70,7 @@ En el modelo relacional, las claves son importantes porque aseguran que cada fil
 
 También son usadas para establecer relaciones entre tablas y asegurar la integridad de los datos.
 
-Una clave es un atributo o grupo de atributos que pueden identificar los valores de otros atributos. 
+Una clave es un atributo o grupo de atributos que identifican los valores de otros atributos. 
 
 \paragraph*{Clave compuesta}
 Una clave compuesta es una clave que se compone de más de un atributo. Un atributo que forma parte de una clave se denomina atributo clave.
@@ -82,9 +82,9 @@ Un atributo o atributos que identifican de manera única cualquier fila de una t
 \paragraph*{Integridad de dominio}
 La integridad de dominio es la validez de las restricciones que debe cumplir una determinada columna de la tabla.
 \paragraph*{Integridad de entidad}
-Todas las claves principales son únicas, y ninguna clave primaria puede ser nula.
+Todas las claves principales son únicas, y ninguna clave primaria debe ser nula.
 \paragraph*{Integridad referencial}
-Una clave externa puede ser nula siempre que no sea parte de la clave principal de su tabla, o puede tener el valor que coincida con el valor de la clave primaria en una tabla con la que está relacionada (cada valor de clave externa no nula debe hacer referencia a un valor de clave primaria existente).
+Una clave externa es ser nula siempre que no sea parte de la clave principal de su tabla, o tiene el valor que coincida con el valor de la clave primaria en una tabla con la que está relacionada (cada valor de clave externa no nula debe hacer referencia a un valor de clave primaria existente).
 
 \subsubsection{Propiedades de las relaciones}
 \paragraph*{Grado}
@@ -92,7 +92,7 @@ El número de columnas en una tabla se llama grado de la relación. Una relació
 
 
 \paragraph*{Cardinalidad}
-La cardinalidad de una relación es el número de entidades a las que otra entidad puede mapear bajo dicha relación.
+La cardinalidad de una relación es el número de entidades a las que otra entidad mapea dicha relación.
 
 \subsubsection{ACID}
 El modelo relacional en las transacciones cumple con las propiedades de ACID, que es el acrónimo de \textit{Atomicity} (atomicidad), \textit{Consistency} (consistencia), \textit{Isolation} (aislamiento) y \textit{Durability} (durabilidad). 
@@ -112,13 +112,13 @@ Indica la permanencia del estado consistente de la base de datos. Una transacci�
 
 Cuando se completa una transacción, la base de datos debe estar en un estado coherente. Si alguna de las partes de la transacción viola una restricción de integridad, se anula la transacción completa.
 \paragraph*{Aislamiento}
-Significa que los datos utilizados durante la ejecución de una transacción no pueden ser utilizados por una segunda transacción hasta que se complete la primera. 
+Significa que los datos utilizados durante la ejecución de una transacción no es utilizada por una segunda transacción hasta que se complete la primera. 
 
 
-En otras palabras, si la transacción $T_{1}$ se está ejecutando y está utilizando el elemento de datos $X$, ninguna otra transacción puede acceder a ese elemento de datos ($T_{2}...T_{n}$) hasta que finalice $T_{1}$.
+En otras palabras, si la transacción $T_{1}$ se está ejecutando y está utilizando el elemento de datos $X$, ninguna otra transacción accede a ese elemento de datos ($T_{2}...T_{n}$) hasta que finalice $T_{1}$.
 
 
-Esta propiedad es particularmente útil en entornos de bases de datos multiusuario porque varios usuarios pueden acceder y actualizar la base de datos al mismo tiempo.
+Esta propiedad es particularmente útil en entornos de bases de datos multiusuario porque varios usuarios acceden y actualizan la base de datos al mismo tiempo.
 \paragraph*{Durabilidad}
 
-Garantiza que una vez que se realizan y confirman los cambios en la transacción, no se pueden deshacer ni perder, incluso en el caso de una falla del sistema.
+Garantiza que una vez que se realizan y confirman los cambios en la transacción, no se deshacen ni pierden, incluso en el caso de una falla del sistema.

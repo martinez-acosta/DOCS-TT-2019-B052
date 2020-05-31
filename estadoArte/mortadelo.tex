@@ -2,16 +2,10 @@
 De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo está basado en el \textit{model driven}; es decir, que para diseñar bases de datos NoSQL necesita de modelos conceptuales bien definidos.
 
 
-Como menciona este autor, un modelo conceptual que especifique solo qué entidades conforman el sistema no es suficiente, porque para los sistemas NoSQL, es clave conocer cómo estas entidades serán consultadas y actualizadas en el día a día de la implementación de la base de datos.
-
-
-Asimismo, en trabajos como los de Chebotko\cite{chebotko_big_2015}, de Lima\cite{de_lima_workload-driven_2015} o Mior\cite{mior_nose_2017-1} los modelos conceptuales tradicionales como el modelo entidad-relación o el modelo relacional son complementados con propuestas para los patrones de acceso a los datos.
-
-
 Lo anterior implica usar dos modelos diferentes pero interrelacionados que añade complejidad al modelado de la base datos; por esta razón de la Vega propone el Generic Data Metamodel (GDM), que es un modelo conceptual NoSQL donde la estructura (entidades, atributos, relaciones entre entidades) y patrones de acceso (cómo se consultarán los datos) están integradas en un mismo modelo conceptual.
 
 
-Cabe destacar que el GDM es un modelo conceptual independiente del paradigma NoSQL; es decir, puede representar una base de datos NoSQL de clave-valor, orientado a documentos, orientado a columnas u orientado a grafos.
+Cabe destacar que el GDM es un modelo conceptual independiente del paradigma NoSQL; es decir, representa una base de datos NoSQL de clave-valor, orientado a documentos, orientado a columnas u orientado a grafos.
 
 
 Tal como está en la figura~\ref{img:mortadelo-process}, Mortadelo empieza con un GDM, realiza una tranformación ``modelo a modelo'' (M2M) para generar el modelo lógico NoSQL y realiza una transformación ``modelo a texto'' (M2T) para generar el modelo físico correspondiente.
@@ -26,7 +20,7 @@ Tal como está en la figura~\ref{img:mortadelo-process}, Mortadelo empieza con u
 
 \subsubsection*{Mortadelo: modelo conceptual (Generic Data Metamodel)}
 
-Como se puede ver en la figura~\ref{img:mortadelo-gdm}, el modelo conceptual que propone de la Vega contiene en un mismo modelo con notación UML los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
+Como se aprecia en la figura~\ref{img:mortadelo-gdm}, el modelo conceptual que propone de la Vega contiene en un mismo modelo con notación UML los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
 
 
 \begin{figure}[h!t] 
@@ -36,15 +30,15 @@ Como se puede ver en la figura~\ref{img:mortadelo-gdm}, el modelo conceptual que
     \label{img:mortadelo-gdm}
 \end{figure}
 
-A continuación se da una explicación de cada elemento de la figura~\ref{img:mortadelo-gdm} donde la clase \textit{Model} es para indicar que un modelo GDM puede tener n entidades y n consultas donde $n=0,1,...,n$:
+A continuación se da una explicación de cada elemento de la figura~\ref{img:mortadelo-gdm} donde la clase \textit{Model} es para indicar que un modelo GDM tiene n entidades y n consultas donde $n=0,1,...,n$:
 
 \paragraph*{Structure model elements}
 
 
 \begin{itemize}    
     
-    \item Clase \textit{Entity}: puede tener \textit{features} y solo puede ser referenciada directamente solo desde las clases \textit{From} y \textit{Reference}.
-    \item Clase \textit{Feature}: es una clase abstracta, puede ser una \textit{reference} o un \textit{attribute}; asimismo, puede heredar de la clase \textit{AnnotatableElement} para que la instancia de la clase pueda ser comentada con indicadores de texto que proveen sobre información extra para generar el modelo lógico. 
+    \item Clase \textit{Entity}: contiene \textit{features} y solo es referenciada directamente solo desde las clases \textit{From} y \textit{Reference}.
+    \item Clase \textit{Feature}: es una clase abstracta, una \textit{reference}, un \textit{attribute}, o heredar de la clase \textit{AnnotatableElement} para que la instancia de la clase sea comentada con indicadores de texto que proveen sobre información extra para generar el modelo lógico. 
     \item Clase \textit{Reference}: empieza con la palabra clave ``ref'', un nombre de tipo de entidad, una cardinalidad y un nombre de referencia. Por ejemplo: ``ref Category[*] categories'' define una referencia llamada \textit{categories}, del tipo de entidad \textit{Category} con una cardinalidad de cero a varios.
     \item Clase \textit{Attribute}: contiene un tipo y un identificador de unicidad.
     \item Clase \textit{AnnotatableElement}: es una clase abstracta para permitir que una clase contenga anotaciones.
@@ -57,7 +51,7 @@ A continuación se da una explicación de cada elemento de la figura~\ref{img:mo
 
 \begin{itemize}
     
-    \item Clase \textit{Query}: puede tener solo un elemento de la clase \textit{From}, n elementos de la clase \textit{AttributeSelection}, n elementos de la clase \textit{Inclusion} y tener o no un único elemento de la clase \textit{BooleanExpression}.
+    \item Clase \textit{Query}: tiene solo un elemento de la clase \textit{From}, n elementos de la clase \textit{AttributeSelection}, n elementos de la clase \textit{Inclusion} y tener o no un único elemento de la clase \textit{BooleanExpression}.
     \item Clase \textit{From}: asocia una clase \textit{Query} con la clase \textit{Entity}; es la clase que permite referenciar un tipo de entidad.
     \item Clase \textit{AtributeSelection}: accede a los atributos de la \textit{Entity} referenciada por la clase \textit{From} o la clase \textit{Inclusion}.
     \item Clase \textit{BooleanExpression}: expresa una expresión booleana para declarar alguna restricción.
@@ -72,12 +66,12 @@ A continuación se da una explicación de cada elemento de la figura~\ref{img:mo
     \label{img:mortadelo-gdm.textual.notation}
 \end{figure}
 
-En la figura~\ref{img:mortadelo-gdm.textual.notation} se puede ver una instancia del modelo conceptual GDM en su notación textual en la que se puede notar que, por ejemplo, en la tercera consulta se accede a los elementos de la entidad \textit{Category} a través del elemento ref de la entidad \textit{Product}.
+La figura~\ref{img:mortadelo-gdm.textual.notation} es una instancia del modelo conceptual GDM en su notación textual en la que se nota que, por ejemplo, en la tercera consulta se accede a los elementos de la entidad \textit{Category} a través del elemento ref de la entidad \textit{Product}.
 
 
 \subsubsection*{Mortadelo: modelo lógico orientado a documentos}
 
-De acuerdo con de la Vega[8], las bases de datos orientadas a documentos tienen como objetivo almacenar jerarquías de objetos que son probables que se consultarán juntas; estas jerarquías de objetos se conocen como documentos y se agrupan en colecciones; asimismo, una colección almacena documentos de la misma entidad y por lo general un documento está compuesto de pares clave-valor y puede contener otros documentos incrustados.
+De acuerdo con de la Vega[8], las bases de datos orientadas a documentos tienen como objetivo almacenar jerarquías de objetos que son probables que se consultarán juntas; estas jerarquías de objetos se conocen como documentos y se agrupan en colecciones; asimismo, una colección almacena documentos de la misma entidad y por lo general un documento está compuesto de pares clave-valor y contiene otros documentos incrustados.
 
 
 \begin{figure}[h!t] 
@@ -95,7 +89,7 @@ En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra 
     \item Clase \textit{DocumentDataModel}: está compuesta de $n$ \textit{Collections}.
     \item Clase \textit{Collection}: tiene un nombre que la identifica y en una colección se almacenan documentos que, en general, comparten la misma estructura.
     \item Clase \textit{DocumentType}: define la estructura de los documentos a guardar con un conjunto de instancias de la clase \textit{Field}.
-    \item Clase \textit{Field}: puede contener instancias de las clases \textit{PrimitiveField} (atributos simples), \textit{ArrayField} (más instancias de la clase \textit{Field}) o \textit{DocumentType} (otras estructuras de documentos), permitiendo guardar elementos anidados.
+    \item Clase \textit{Field}: tiene instancias de las clases \textit{PrimitiveField} (atributos simples), \textit{ArrayField} (más instancias de la clase \textit{Field}) o \textit{DocumentType} (otras estructuras de documentos), permitiendo guardar elementos anidados.
     \item Clase \textit{PrimitiveField}: contiene un tipo primitivo de dato
     \item Clase \textit{ArrayField}: permite anidar más instancias de la clase \textit{Field}
 \end{itemize}

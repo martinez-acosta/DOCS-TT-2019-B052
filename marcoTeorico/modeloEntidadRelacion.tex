@@ -10,7 +10,7 @@ En esta sección se describen los conceptos básicos y las restricciones del mod
 El objeto básico representado por el modelo ER es una entidad, que es una cosa del mundo real con una existencia independiente.
 
 
-Una entidad puede ser un objeto con una existencia física (por ejemplo, una persona en particular, un coche, una casa o un empleado) o puede ser un objeto con una existencia conceptual (por ejemplo, una empresa, un trabajo o un curso universitario).
+Una entidad es ser un objeto con una existencia física (por ejemplo, una persona en particular, un coche, una casa o un empleado) o un objeto con una existencia conceptual (por ejemplo, una empresa, un trabajo o un curso universitario).
 
 \subsubsection*{Tipo de entidad}
 
@@ -30,31 +30,31 @@ Las entidades que pertenecen a un tipo de entidad débil, se identifican como re
 Este tipo de relación que relaciona un tipo de entidad débil con su propietario lo podemos llamar relación identificativa del tipo de entidad débil. 
 
 
-Un tipo de entidad débil siempre tiene una restricción de participación total (dependencia de existencia) respecto a su relación identificativa, porque una entidad débil no puede identificarse sin una entidad propietaria. No obstante, no toda dependencia de existencia produce un tipo de entidad débil.
+Un tipo de entidad débil siempre tiene una restricción de participación total (dependencia de existencia) respecto a su relación identificativa, porque una entidad débil no se identifica sin una entidad propietaria. No obstante, no toda dependencia de existencia produce un tipo de entidad débil.
 
 
-Un tipo de entidad débil normalmente tiene una clave parcial, que es el conjunto de atributos que pueden identificar sin lugar a dudas las entidades débiles que están relacionadas con la misma entidad propietaria. 
+Un tipo de entidad débil normalmente tiene una clave parcial, que es el conjunto de atributos que identifican sin lugar a dudas las entidades débiles que están relacionadas con la misma entidad propietaria. 
 
 
 En los diagramas ER, tanto el tipo de la entidad débil como la relación identificativa, se distinguen rodeando sus cuadros y rombos mediante unas líneas dobles.
 
 
-El atributo de clave parcial aparece subrayado con una línea discontinua o punteada. Los tipos de entidades débiles se puede representar a veces como atributos complejos (compuestos, multivalor). 
+El atributo de clave parcial aparece subrayado con una línea discontinua o punteada. Los tipos de entidades débiles se representan a veces como atributos complejos (compuestos, multivalor). 
 
 
-En general, se puede definir cualquier cantidad de niveles de tipos de entidad débil; un tipo de entidad propietaria puede ser ella misma un tipo de entidad débil. 
+En general, se define cualquier cantidad de niveles de tipos de entidad débil; un tipo de entidad propietaria puede ser ella misma un tipo de entidad débil. 
 
 
-Además, un tipo de entidad débil puede tener más de un tipo de entidad identificativa y un tipo de relación identificativa de grado superior a dos.
+Además, un tipo de entidad débil tiene más de un tipo de entidad identificativa de ser necesario y un tipo de relación identificativa de grado superior a dos.
 
 \subsubsection{Atributos}
 Cada entidad tiene atributos, que son propiedades particulares que la describen y en el modelo ER hay varios tipos: simple frente a compuesto, monovalor frente a multivalor, almacenado frente a derivado y nulo.
 
 
-\paragraph*{Atributos compuestos frente a atributos simples} Los atributos compuestos se pueden dividir en subpartes más pequeñas que representan atributos más básicos con significados independientes.
+\paragraph*{Atributos compuestos frente a atributos simples} Los atributos compuestos se dividen en subpartes más pequeñas que representan atributos más básicos con significados independientes.
 
 
-Los atributos que no son divisibles se denominan atributos simples o atómicos, mientras que los atributos compuestos pueden forma una jerarquía. 
+Los atributos que no son divisibles se denominan atributos simples o atómicos, mientras que los atributos compuestos forman una jerarquía. 
 
 
 El valor de un atributo compuesto es la concatenación de los valores de sus atributos simples.
@@ -62,14 +62,14 @@ El valor de un atributo compuesto es la concatenación de los valores de sus atr
 \paragraph*{Atributos monovalor y multivalor}  La mayoría de los atributos tienen un solo valor para una entidad en particular; dichos atributos reciben el nombre de monovalor o de un solo valor. 
 
 
-En algunos casos, un atributo puede tener un conjunto de valores para la misma entidad y se denominan multivalor.
+En algunos casos, un atributo tiene un conjunto de valores para la misma entidad y se denominan multivalor.
 
 
-Un atributo multivalor puede tener límites superior e inferior para restringir el número de valores permitidos para cada entidad individual.
+Un atributo multivalor tiene límites superior e inferior para restringir el número de valores permitidos para cada entidad individual.
 
 
 \paragraph*{Atributos almacenados y derivados}
-El atributo derivado puede calcularse u obtenerse a partir de otro atributo, que se denomina almacenado.
+El atributo derivado se calcula u obtiene a partir de otro atributo, que se denomina almacenado.
 
 
 \paragraph*{Atributos complejos}
@@ -78,13 +78,14 @@ Los atributos complejos son los atributos compuestos y multivalor que se anidan 
 
 Podemos representar el anidamiento arbitrario agrupando componentes de un atributo compuesto entre paréntesis () separando los componentes con comas, y mostrando los atributos multivalor entre llaves \{\}. 
 
-Por ejemplo, si una persona puede tener más de una residencia y cada
-residencia puede tener una sola dirección y varios teléfonos, el atributo TlfDir de una persona se puede especificarse Como
+Por ejemplo, si una persona tiene más de una residencia y cada
+residencia una sola dirección y varios teléfonos, el atributo TlfDir de una persona se especifica como:
 
 
 \{TlfDir(\{Tlf(CodÁrea,NumTlf)\},\\
 Dir(DirCalle(Número,Calle,NumApto),\\
 Ciudad,Provincia,CP))\}
+
 
 Los atributos Tlf y Dir son compuestos.
 \paragraph*{Atributos clave de un tipo de entidad}
@@ -94,7 +95,7 @@ Una restricción importante de las entidades de un tipo de entidad es la clave o
 Un tipo de entidad normalmente tiene un atributo cuyos valores son distintos para cada entidad del conjunto de entidades.
 
 
-Los valores de un atributo en que se pueden utilizar para identificar cada entidad inequívocamente se denomina atributo clave.
+Los valores de un atributo en que se utilicen para identificar cada entidad inequívocamente se denomina atributo clave.
 
 
 En la notación diagramática ER cada atributo clave tiene su nombre subrayado dentro del óvalo y algunos tipos de entidad tienen más de un atributo clave. 
@@ -103,7 +104,7 @@ En la notación diagramática ER cada atributo clave tiene su nombre subrayado d
 Un tipo de entidad que carece de clave se le denomina tipo de entidad débil (que se explicará más adelante).
 
 
-\paragraph*{Conjuntos de valores (dominios) de atributos} Cada atributo simple de un tipo de entidad está asociado con un conjunto de valor (o dominio de valores) que especifica el conjunto de los valores que se pueden asignar a ese atributo por cada entidad individual. 
+\paragraph*{Conjuntos de valores (dominios) de atributos} Cada atributo simple de un tipo de entidad está asociado con un conjunto de valor (o dominio de valores) que especifica el conjunto de los valores que se asignen a ese atributo por cada entidad individual. 
 
 
 Los conjuntos de valores no se muestran en los diagramas ER; normalmente se especifican mediante los tipos de datos básicos disponibles en la mayoría de los lenguajes de programación, como entero, cadena, booleano, flotante, tipo enumerado, subrango, etcétera. 
@@ -114,13 +115,13 @@ También se emplean otros tipos de datos adicionales para representar la fecha, 
 \paragraph*{Atributos de los tipos de relación}
 
 
-Los tipos de relación también pueden tener atributos; los atributos de los tipos de relación 1:1 o 1:N se pueden trasladar a uno de los tipos de entidad participantes.
+Los tipos de relación también pueden tener atributos; los atributos de los tipos de relación 1:1 o 1:N se trasladan a uno de los tipos de entidad participantes.
 
 
-En el caso de un tipo de relación 1:N, un atributo de relación solo se puede migrar al tipo de entidad que se encuentra en el lado N de la relación. 
+En el caso de un tipo de relación 1:N, un atributo de relación solo se migra al tipo de entidad que se encuentra en el lado N de la relación. 
 
 
-Para los tipos de relación M:N, algunos atributos pueden determinarse mediante la combinación de entidades participantes en una instancia de relación, no mediante una sola relación. Dichos atributos deben especificarse como atributos de relación.
+Para los tipos de relación M:N, algunos atributos se determinan mediante la combinación de entidades participantes en una instancia de relación, no mediante una sola relación. Dichos atributos deben especificarse como atributos de relación.
 
 \subsubsection{Relaciones}
 
@@ -133,7 +134,7 @@ Como en el caso de los tipos de entidades y los conjuntos de entidades, normalme
 Matemáticamente, el conjunto de relaciones $R$ es un conjunto de instancias de relación $r_i$, donde cada $r_i$ asocia $n$ entidades individuales ($e_1, e_2,..., e_n$) y cada entidad $e_j$ de $r_i$ es un miembro del tipo de entidad $E_j, 1 \leq j \leq n$. Por tanto, un tipo de relación es una relación matemática en $E_1, E_2,..., E_n$.
 
 
-De forma alternativa, se puede definir como un subconjunto del producto cartesiano $E_1 \times E_2,\times ... 	\times E_n$. Se dice que cada uno de los tipos de entidad $E_1, E_2,..., E_n$ participa en el tipo de relación $R$; de forma parecida, cada una de las entidades individuales $e_1, e_2,..., e_n$ se dice que participa en la instancia de relación $r_i = (e_1, e_2,..., e_n)$.
+De forma alternativa, se define como un subconjunto del producto cartesiano $E_1 \times E_2,\times ... 	\times E_n$. Se dice que cada uno de los tipos de entidad $E_1, E_2,..., E_n$ participa en el tipo de relación $R$; de forma parecida, cada una de las entidades individuales $e_1, e_2,..., e_n$ se dice que participa en la instancia de relación $r_i = (e_1, e_2,..., e_n)$.
 
 
 En los diagramas ER, los tipos de relaciones se muestran mediante rombos, conectados a su vez mediante líneas a los rectángulos que representan los tipos de entidad participantes y el nombre de la relación se muestra dentro del rombo.
@@ -141,7 +142,7 @@ En los diagramas ER, los tipos de relaciones se muestran mediante rombos, conect
 
 \paragraph*{Grado de relación, nombres de rol y relaciones recursivas}
 \paragraph*{Grado de un tipo de relación}
-El grado de un tipo de relación es el número de tipos de entidades participantes. Un tipo de relación de grado dos se denomina binario y uno de grado tres ternario. Las relaciones pueden ser generalmente de cualquier grado, pero las más comunes son las relaciones binarias.
+El grado de un tipo de relación es el número de tipos de entidades participantes. Un tipo de relación de grado dos se denomina binario y uno de grado tres ternario. Las relaciones son de cualquier grado, pero las más comunes son las relaciones binarias.
 
 \paragraph*{Nombres de rol y relaciones recursivas}
 Cada tipo de entidad que participa en un tipo de relación juega un papel o rol particular en la relación.
@@ -150,7 +151,7 @@ Cada tipo de entidad que participa en un tipo de relación juega un papel o rol 
 El nombre de rol hace referencia al papel que una entidad participante del tipo de entidad juega en cada instancia de relación y ayuda a explicar el significado de la relación.
 
 
-Los nombres de rol no son técnicamente necesarios en los tipos de relación donde todos los tipos de entidad participantes son distintos, puesto que cada nombre de tipo de entidad participante se puede utilizar como participación.
+Los nombres de rol no son técnicamente necesarios en los tipos de relación donde todos los tipos de entidad participantes son distintos, puesto que cada nombre de tipo de entidad participante se utiliza como participación.
 
 Cuando un tipo de entidad se relaciona consigo misma, se tiene una relación recursiva y es necesario indicar los roles que juegan los miembros en la relación.
 
@@ -158,7 +159,7 @@ Cuando un tipo de entidad se relaciona consigo misma, se tiene una relación rec
 \paragraph*{Restricciones en los tipos de relaciones}
 
 
-Los tipos de relaciones normalmente tienen ciertas restricciones que limitan las posibles combinaciones entre las entidades que pueden participar en el conjunto de relaciones correspondiente.
+Los tipos de relaciones normalmente tienen ciertas restricciones que limitan las posibles combinaciones entre las entidades que participan en el conjunto de relaciones correspondiente.
 
 
 Estas restricciones están determinadas por la situación del minimundo representado por las relaciones. 
@@ -168,22 +169,22 @@ Podemos distinguir dos tipos principales de restricciones de relación: razón d
 
 
 \paragraph*{Razones de cardinalidad para las relaciones binarias}
-La razón de cardinalidad de una relación binaria especifica el número máximo de instancias de relación en las que una entidad puede participar.
+La razón de cardinalidad de una relación binaria especifica el número máximo de instancias de relación en las que una entidad participa.
 
 
 Las posibles razones de cardinalidad para los tipos de relación binaria son 1:1, 1:N, N:1 y M:N.
 \begin{enumerate}
-    \item uno a uno: una relación R de X a Y es uno a uno si cada entidad en X se asocia con cuando mucho una entidad en Y e, inversamente, cada entidad en Y se asocia con cuando mucho una entidad en X.
-    \item uno a muchos: una relación R de X a Y es uno a muchos si cada entidad en X se puede asociar con muchas entidades en Y, pero cada entidad en Y se asocia con cuando mucho una entidad en X. 
-    \item muchos a uno: una relación R de X a Y es muchos a uno si cada entidad en X se asocia con cuando mucho una entidad en Y, pero cada entidad en Y se puede asociar con muchas entidades en X. 
-    \item muchos a muchos: una relación R de X a Y es muchos a muchos si cada entidad en X se puede asociar con muchas entidades en Y y cada entidad en Y se puede asociar con muchas entidades en X. 
+    \item Uno a uno: una relación R de X a Y es uno a uno si cada entidad en X se asocia con cuando mucho una entidad en Y e, inversamente, cada entidad en Y se asocia con cuando mucho una entidad en X.
+    \item Uno a muchos: una relación R de X a Y es uno a muchos si cada entidad en X se asocia con muchas entidades en Y, pero cada entidad en Y se asocia con cuando mucho una entidad en X. 
+    \item Muchos a uno: una relación R de X a Y es muchos a uno si cada entidad en X se asocia con cuando mucho una entidad en Y, pero cada entidad en Y se asocia con muchas entidades en X. 
+    \item Muchos a muchos: una relación R de X a Y es muchos a muchos si cada entidad en X se asocia con muchas entidades en Y y cada entidad en Y se asocia con muchas entidades en X. 
 \end{enumerate}
 
 \paragraph*{Restricciones de participación y dependencias de existencia}
 La restricción de participación especifica si la existencia de una entidad depende de si está relacionada con otra entidad a través de un tipo de relación.
 
 
-Esta restricción especifica el número mínimo de instancias de relación en las que puede participar cada entidad y en ocasiones recibe el nombre de restricción de cardinalidad mínima.
+Esta restricción especifica el número mínimo de instancias de relación en las que participa cada entidad y en ocasiones recibe el nombre de restricción de cardinalidad mínima.
 
 
 Hay dos tipos de restricciones de participación, total y parcial; la participación total también se conoce como dependencia de existencia.
