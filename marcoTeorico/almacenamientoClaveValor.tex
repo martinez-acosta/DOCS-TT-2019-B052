@@ -1,17 +1,19 @@
 \subsubsection{Clave-Valor}
-De acuerdo a la bibliografía de Coronel\cite{coronel_database_nodate} Una base de datos de clave-valor, o almacén de clave-valor, es un paradigma de almacenamiento de datos diseñado para almacenar, recuperar y administrar arreglos asociativos.
+De acuerdo con Coronel\cite{coronel_database_nodate}, una base de datos de clave-valor es un paradigma de modelo de datos diseñado para almacenar, recuperar y administrar arreglos asociativos.
 
 
-Comúnmente se usa un diccionario o tabla hash que contienen una colección de registros anidados, secuenciaa de bits, que se almacenan y se recuperan utilizando una clave que identifica de manera única el registro y se utiliza para encontrar rápidamente los datos dentro de la base de datos.
+Comúnmente se usa un diccionario o tabla \textit{hash} que contiene una colección de registros anidados, secuencias de bits que se almacenan y se recuperan utilizando una clave que identifica de manera única el registro y se utiliza para encontrar rápidamente los datos dentro de la base de datos.
 
 
-No obstante, es responsabilidad de las aplicaciones que hagan uso de este tipo de base de datos interpretar el significado de los datos. No hay claves foráneas y las relaciones no pueden rastrearse entre las claves. Esta simplificación en el RDBMS de clave-valor permite que sean rápidas y escalables.
+No obstante, es responsabilidad de las aplicaciones que hagan uso de este tipo de base de datos interpretar el significado de los datos; no hay claves foráneas y las relaciones no son rastreables entre claves, lo que permite que el DBMS sea rápido y escalable.
 
 
-Los pares de clave-valor generalmente se organizan en \textit{buckets}. Todas las claves dentro un \textit{bucket} deben ser únicas, pero pueden repetirse en otros \textit{buckets} y todas las operaciones, incluidas las consultas, se basan en el \textit{bucket} + la clave.
+Los pares de clave-valor generalmente se organizan en \textit{buckets}. Todas las claves dentro un \textit{bucket} deben ser únicas, pero está permitido que se repitan en otros \textit{buckets} y todas las operaciones se basan en el \textit{bucket} + la clave.
 
 
-\begin{figure}[h!t]
+La figura~\ref{img:claveValor-bucket} es una representación visual de un \textit{bucket} usado en las bases de datos NoSQL de clave-valor.
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{noSQL/bucket.png}
     \caption{\textit{Bucket} en el almacenamiento clave-valor}
@@ -19,9 +21,12 @@ Los pares de clave-valor generalmente se organizan en \textit{buckets}. Todas la
 \end{figure} 
 
 
-Respecto a las operaciones de este tipo de bases de datos, se usan las operaciones de \textit{get}, \textit{store} y \textit{delete}. La operación \textit{get} o \textit{fetch} es usada para obteber el valor de un par. El operador de \textit{store} almacena datos en una clave. Si la combinación de \textit{bucket} + clave no existe, se añade como un nuevo par de clave-valor. En cambio, en caso de existir la combinación de \textit{bucket} + clave, el valor es reemplazado por el nuevo. El operador de \textit{delete} es para eliminar un par de clave-valor.
+Respecto a las operaciones de este tipo de bases de datos, se usan las operaciones de \textit{get}, \textit{store} y \textit{delete}; la operación \textit{get} o \textit{fetch} es usada para obteber el valor de un par; el operador de \textit{store} almacena datos en una clave. 
 
 
-Algunas de las bases de datos de clave-valor populares son Riak, Redis, Memcached DB, Berkeley DB, HamsterDB, Amazon DynamoDB y Project Voldemort (una implementación de código abierto de Amazon DynamoDB)\cite{sadalage_nosql_nodate}.
+Si la combinación de \textit{bucket} + clave no existe, se añade como un nuevo par de clave-valor. En cambio, en caso de existir la combinación de \textit{bucket} + clave, el valor es reemplazado por el nuevo y el operador de \textit{delete} es para eliminar un par de clave-valor.
+
+
+De acuerdo con Sadalge\cite{sadalage_nosql_nodate}, algunas de las bases de datos de clave-valor populares son Riak, Redis, Memcached DB, Berkeley DB, HamsterDB, Amazon DynamoDB y Project Voldemort (una implementación de código abierto de Amazon DynamoDB).
 
 
