@@ -1,19 +1,19 @@
 \section{Kashliev Data Modeler}
-De acuerdo al sitio web de KDM\cite{datafluent_kashliev_2020}, Kashliev Data Modeler es una herramienta de modelado desarrollada el profesor asistente del Departamento de informática de la Universidad del Oeste Michigan Andrii Kashliev, que automatiza el diseño de esquemas para Apache Cassandra, una base de datos NoSQL orientada a columnas. 
+De acuerdo al sitio web de KDM\cite{datafluent_kashliev_2020}, Kashliev Data Modeler es una herramienta de modelado desarrollada el profesor asistente del Departamento de informática de la Universidad del Oeste Michigan, Andrii Kashliev, que automatiza el diseño de esquemas para una base de datos NoSQL orientada a columnas en Apache Cassandra. 
 
 
-Por medio de una aplicación web, KDM ayuda al usuario en el modelado de datos, comenzando con un modelo conceptual ER con consultas asociadas a los datos para generar un modelo físico de datos o \textit{script} CQL (Cassandra Query Language). 
+Por medio de una aplicación web KDM ayuda al usuario comenzando con un modelo conceptual ER más consultas asociadas para generar un modelo lógico y físico de datos o \textit{scripts} CQL (Cassandra Query Language). 
 
 
 KDM automatiza: 
 
 \begin{enumerate}
-    \item El mapeo conceptual a lógico
-    \item El mapeo lógico a físico
-    \item La generación de \textit{script} CQL 
+    \item El mapeo conceptual a lógico.
+    \item El mapeo lógico a físico.
+    \item La generación de \textit{scripts} CQL.
 \end{enumerate}
 
-El modelo de datos usado en KDM es el propuesto por Chebotko\cite{chebotko_big_2015} y por medio de un algoritmo KDM automatiza el proceso de pasar del modelo de datos a un modelo de datos físicos. 
+El modelo conceptual usado en KDM es el propuesto por Chebotko\cite{chebotko_big_2015} y automatiza el proceso de transformación entre los tres niveles de modelos (conceptual, lógico y físico).
 
 
-Además, KDM cuenta con una versión de prueba de tiempo indefinido con características limitadas que permite la generación de un modelo lógico y guardar los proyectos de KDM.
+Además, cuenta con una versión de prueba de tiempo indefinido con características limitadas que permite la generación de un modelo lógico y guardar los proyectos.

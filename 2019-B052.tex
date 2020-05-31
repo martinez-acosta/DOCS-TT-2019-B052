@@ -21,6 +21,7 @@
 \usepackage{lscape}
 \usepackage{graphicx}
 \usepackage{array}% http://ctan.org/pkg/array
+\usepackage[bottom]{footmisc}
 
 \graphicspath{ {images/} }
 
@@ -33,13 +34,15 @@
 \setcounter{tocdepth}{5}
 \setcounter{secnumdepth}{5}
 \pagestyle{fancy}
+\fancyhf{}
 \fancyhead{}
 \fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
 \setlength{\parindent}{2em}
 \setlength{\parskip}{0.5em}
 \renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 
