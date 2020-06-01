@@ -1,25 +1,19 @@
 \subsubsection{Orientado a documentos}
-Una base de datos orientada a documentos es una base de datos NoSQL que almacena datos en documentos etiquetados en pares clave-valor.
+Una base de datos orientada a documentos almacena datos en documentos etiquetados en pares clave-valor; sin embargo, a diferencia de una base de datos clave-valor donde el componente de valor contiene cualquier tipo de datos, una base de datos de documentos siempre almacena un documento en el componente de valor y puede estar en cualquier formato codificado como XML, JSON o BSON.
 
 
-A diferencia de una base de datos clave-valor donde el componente de valor contiene cualquier tipo de datos, una base de datos de documentos siempre almacena un documento en el componente de valor y puede estar en cualquier formato codificado, como XML, JSON o BSON.
-
-
-La figura~\ref{img:documentos-documento} es la representación visual de un \textit{bucket}, donde tiene una clave como identificador único y documentos anidados.
+La figura~\ref{img:documentos-documento} es la representación visual de una colección, donde tiene una clave como identificador único y documentos anidados.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{noSQL/documento.png}
-    \caption{Documento en el almacenamiento de documentos}
+    \caption{Colección en el almacenamiento de documentos}
     \label{img:documentos-documento}
 \end{figure}
-Otra diferencia importante es que si bien las bases de datos clave-valor no intentan comprender el contenido del componente de valor, las bases de datos de documentos sí lo hacen.% Las etiquetas representan porciones de un documento.
+Otra diferencia importante es que si bien las bases de datos clave-valor no intentan comprender el contenido del componente de valor, las bases de datos de documentos sí lo hacen; por ejemplo, hay documentos con etiquetas para identificar qué texto en el documento representa el título, el autor y el cuerpo del documento.
 
 
-Por ejemplo, hay documentos con etiquetas para identificar qué texto en el documento representa el título, el autor y el cuerpo del documento.
-
-
-Dentro del cuerpo del documento, existen etiquetas adicionales para indicar capítulos y secciones. A pesar del uso de etiquetas en los documentos, las bases de datos de documentos se consideran sin esquema, es decir, no imponen una estructura predefinida en los datos almacenados.
+Como se ve en la figura~\ref{img:documentos-documento}, dentro del cuerpo del documento existen etiquetas adicionales para indicar capítulos y secciones; a pesar del uso de etiquetas en los documentos, las bases de datos de documentos se consideran sin esquema, es decir, no imponen una estructura predefinida en los datos almacenados.
 
 
 Para una base de datos de documentos, no tener esquemas significa que aunque todos los documentos tienen etiquetas, no todos tienen las mismas etiquetas, por lo es posible que cada documento tenga su propia estructura.
@@ -28,7 +22,7 @@ Para una base de datos de documentos, no tener esquemas significa que aunque tod
 Las etiquetas en una base de datos de documentos son extremadamente importantes porque son la base de la mayoría de las capacidades adicionales que tienen las bases de datos de documentos sobre las bases de datos clave-valor.
 
 
-Las etiquetas dentro del documento son accesibles para el DBMS, lo que hace posible consultas complejas. Al igual que las bases de datos clave-valor agrupan pares clave-valor en grupos lógicos llamados \textit{buckets}, las bases de datos de documentos agrupan documentos en grupos lógicos llamados colecciones.
+Las etiquetas dentro del documento hacen posible consultas complejas para el DBMS; asimismo, al igual que las bases de datos clave-valor agrupan pares clave-valor en grupos lógicos llamados \textit{buckets}, las bases de datos de documentos agrupan documentos en grupos lógicos llamados colecciones.
 
 
 Si bien es posible recuperar un documento especificando la colección y la clave, también es posible realizar consultas en función del contenido de las etiquetas.
@@ -37,7 +31,7 @@ Si bien es posible recuperar un documento especificando la colección y la clave
 Las bases de datos de documentos tienden a funcionar bajo el supuesto de que un documento es independiente, o sea que no está en diferentes tablas como en una base de datos relacional.
 
 
-Una base de datos de documentos asume que todos los datos relacionados de una orden estén en un solo documento; por lo tanto, cada orden en una colección contendría datos sobre el cliente, el pedido en sí y los productos comprados en esa orden.
+Una base de datos de documentos asume que todos los datos relacionados de una consulta están en un solo documento; por ejemplo, cada consulta en una colección contendría datos sobre el cliente, el pedido en sí y los productos comprados.
 
 
-Las bases de datos de documentos no almacenan relaciones como se hace en el modelo relacional y generalmente no tienen soporte para operaciones como la unión.
+Por último, las bases de datos de documentos no almacenan relaciones como se hace en el modelo relacional y generalmente no tienen soporte para operaciones como la unión.

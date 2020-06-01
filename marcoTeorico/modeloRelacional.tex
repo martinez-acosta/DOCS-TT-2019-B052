@@ -1,45 +1,11 @@
 \subsection{Modelo relacional}
 
-De acuerdo a la bibliografia de Elmasri\cite{ramez_elmasri_fundamentos_nodate}, el modelo relacional introducido por Ted Codd en 1970\cite{codd_relational_nodate} utiliza el concepto de una relación matemática como bloque de construcción básico y tiene su base teórica en la teoría de conjuntos y la lógica del predicado.
+De acuerdo con Elmasri\cite{ramez_elmasri_fundamentos_nodate}, el modelo relacional introducido por Ted Codd en 1970\cite{codd_relational_nodate} utiliza el concepto de una relación matemática como bloque de construcción básico y tiene su base teórica en la teoría de conjuntos y la lógica del predicado.
 
 La lógica de predicado, utilizada ampliamente en matemáticas, proporciona un marco en el que una afirmación (declaración de hecho) se verifica como verdadera o falsa.
 
 
 La teoría de conjuntos es una ciencia matemática que trata con conjuntos o grupos de cosas y se utiliza como base para la manipulación de datos en el modelo relacional.
-
-
-El modelo relacional representa la base de datos como una colección de relaciones. Cuando una relación está pensada como una tabla de valores, cada fila representa una colección de valores relacionados.
-
-
-Asimismo, cada fila de la tabla representa un hecho que, por lo general, corresponde con una relación o entidad real. El nombre de la tabla y de las columnas se utiliza para ayudar a interpretar el significado de cada uno de los valores de las filas.
-
-
-En terminología formal, una fila recibe el nombre de tupla, una cabecera de columna es un atributo y el nombre de la tabla una relación. El tipo de dato que describe los valores en cada columna está representado por un dominio de posibles valores. 
-
-
-Basado en estos conceptos, el modelo relacional tiene tres componentes bien definidos:
-\begin{enumerate}
-    \item Una estructura de datos lógica representada por relaciones.
-    \item Un conjunto de reglas de integridad para garantizar que los datos sean consistentes.
-    \item Un conjunto de operaciones que define cómo se manipulan los datos.
-\end{enumerate}
-\subsubsection{Relaciones}
-\paragraph*{Estructuras de datos relacionales}
-Su usan tablas con relación entre ellas.
-\paragraph*{Tablas}
-En este modelo, las tablas se usan para contener información acerca de los objetos a representar en la base de datos. Al usar los términos del modelo entidad-relación, los conjuntos de entidades y de relaciones se muestran usando tablas.
-
-
-Una relación o esquema de relación se representa como una tabla bidimensional en la que las filas de la tabla corresponden a registros individuales y las columnas corresponden a atributos.
-
-Formalmente, un esquema de relación $R$, denotado por $R(A_1, A_2,..., A_n)$ está constituido por un nombre de relación $R$ y una lista de atributos $A_1, A_2,..., A_n$. 
-
-
-Cada atributo $A_i$ es el nombre de un papel jugado por algún dominio $D$ en el esquema de relación $R$. Se dice que $D$ es el dominio de $A_i$ y se especifica como $dom(A_i)$. 
-
-
-Un esquema de relación se utiliza para describir una relación; se dice que $R$ es el nombre de la misma. El grado de una relación es el número de atributos $n$ de la misma.
-
 
 La figura~\ref{img:modeloRelacional-Tabla} muestra de manera visual el modelo relacional; una tabla en el modelo relacional está compuesto de atributos, tiene un nombre de relación y tiene $n$ tuplas.
 
@@ -50,33 +16,57 @@ La figura~\ref{img:modeloRelacional-Tabla} muestra de manera visual el modelo re
     \caption{Tabla en el modelo relacional}
     \label{img:modeloRelacional-Tabla}
 \end{figure} 
-Cada fila de la tabla corresponde a un registro individual o instancia de entidad. En el modelo relacional cada fila se llama tupla y la tabla que representa una relación tiene las siguientes características:
+Como se observa en la imagen~\ref{img:modeloRelacional-Tabla}, el modelo relacional representa la base de datos como una colección de relaciones, siendo cada relación una tabla de valores, donde cada fila representa una colección de valores relacionados.
+
+
+Asimismo, cada fila de la tabla representa un hecho que, por lo general, corresponde con una relación o entidad real; el nombre de la tabla y de las columnas se utiliza para ayudar a interpretar el significado de cada uno de los valores de las filas.
+
+
+En terminología formal, una fila recibe el nombre de tupla, una cabecera de columna es un atributo y el nombre de la tabla una relación; el tipo de dato que describe los valores en cada columna está representado por un dominio de posibles valores. 
+
+
+Basado en estos conceptos, el modelo relacional tiene tres componentes bien definidos:
+\begin{enumerate}
+    \item Una estructura de datos lógica representada por relaciones.
+    \item Un conjunto de reglas de integridad para garantizar que los datos sean consistentes.
+    \item Un conjunto de operaciones que define cómo se manipulan los datos.
+\end{enumerate}
+\subsubsection{Relaciones}
+
+En este modelo, las tablas se usan para contener información acerca de los objetos a representar en la base de datos.
+
+
+Una relación se representa como una tabla bidimensional en la que las filas de la tabla corresponden a registros individuales y las columnas corresponden a atributos.
+
+Formalmente, un esquema de relación $R$, denotado por $R(A_1, A_2,..., A_n)$ está constituido por un nombre de relación $R$ y una lista de atributos $A_1, A_2,..., A_n$. 
+
+
+Un esquema de relación se utiliza para describir una relación; se dice que $R$ es el nombre de la misma y el grado de una relación es su número de atributos $n$.
+
+
+En el modelo relacional cada fila se llama tupla y la tabla que representa una relación tiene las siguientes características:
 \begin{itemize}
     \item Cada celda de la tabla contiene solo un valor.
-    \item Cada columna tiene un nombre distinto, que es el nombre del atributo que representa.
+    \item Cada columna tiene el nombre del atributo que representa.
     \item Todos los valores en una columna provienen del mismo dominio, pues todos son valores del atributo correspondiente.
     \item Cada tupla o fila es distinta; no hay tuplas duplicadas.
     \item El orden de las tuplas o filas es irrelevante.
 \end{itemize}
 \paragraph*{Relaciones y tablas de bases de datos}   
-Una relación (o estado de relación) $r$ del esquema $R(A_1, A_2,..., A_n)$, también especificado como $r(R)$, es un conjunto de n-tuplas $r={t_1, t_2,..., t_m}$.
+Una relación $r$ del esquema $R(A_1, A_2,..., A_n)$, también especificado como $r(R)$ es un conjunto de n-tuplas $r={t_1, t_2,..., t_m}$.
 
 
-Cada tupla $t$ es una lista ordenada de $n$ valores $t=<v_1, v_2,...,v_n>$, donde $v_i$, $1 \leq i \leq n$, es un elemento de $dom(A_i)$ o un valor especial NULL.
+Cada tupla $t$ es una lista ordenada de $n$ valores $t=<v_1, v_2,...,v_n>$, donde $v_i$, $1 \leq i \leq n$ es un elemento de $dom(A_i)$ o un valor especial nulo.
 
-
-El i-ésimo valor de la tupla $t$, que se corresponde con el atributo $A_i$ , se referencia como $t[A_i]$ o $t[i]$ si se utiliza una notación posicional.
 
 \subsubsection{Claves}
 
-En el modelo relacional, las claves son importantes porque aseguran que cada fila en una tabla sea unívocamente identificable. 
+En el modelo relacional, las claves son importantes porque aseguran que cada fila en una tabla sea unívocamente identificable; son usadas para establecer relaciones entre tablas y asegurar la integridad de los datos.
 
-También son usadas para establecer relaciones entre tablas y asegurar la integridad de los datos.
-
-Una clave es un atributo o grupo de atributos que identifican los valores de otros atributos. 
+Una clave es un atributo o grupo de atributos que identifican los valores de otros atributos y puede ser compuesta, clave o superclave. 
 
 \paragraph*{Clave compuesta}
-Una clave compuesta es una clave que se compone de más de un atributo. Un atributo que forma parte de una clave se denomina atributo clave.
+Una clave compuesta es una clave que se compone de más de un atributo y si forma parte de una clave se denomina atributo clave.
 
 \paragraph*{Superclave}
 Un atributo o atributos que identifican de manera única cualquier fila de una tabla.
@@ -85,42 +75,14 @@ Un atributo o atributos que identifican de manera única cualquier fila de una t
 \paragraph*{Integridad de dominio}
 La integridad de dominio es la validez de las restricciones que debe cumplir una determinada columna de la tabla.
 \paragraph*{Integridad de entidad}
-Todas las claves principales son únicas, y ninguna clave primaria debe ser nula.
+Todas las claves principales son únicas y ninguna clave primaria debe ser nula.
 \paragraph*{Integridad referencial}
-Una clave externa es ser nula siempre que no sea parte de la clave principal de su tabla, o tiene el valor que coincida con el valor de la clave primaria en una tabla con la que está relacionada (cada valor de clave externa no nula debe hacer referencia a un valor de clave primaria existente).
+Una clave externa puede ser nula siempre que no sea parte de la clave principal de su tabla o tiene el valor que coincida con el valor de la clave primaria en una tabla con la que está relacionada.
 
 \subsubsection{Propiedades de las relaciones}
 \paragraph*{Grado}
-El número de columnas en una tabla se llama grado de la relación. Una relación con una sola columna es de grado uno y se llama relación unaria. Una relación con dos columnas se llama binaria, una con tres columnas se llama ternaria y, después de ella, por lo general se usa el término n-aria. El grado de una relación es parte de la intensión de la relación y nunca cambia.
+El número de columnas en una tabla se llama grado de la relación, es parte de la intensión de la relación y nunca cambia; una relación con una sola columna es de grado uno y se llama relación unaria; con dos columnas se llama binaria; con tres columnas se llama ternaria y con más columnas n-aria.
 
 
 \paragraph*{Cardinalidad}
 La cardinalidad de una relación es el número de entidades a las que otra entidad mapea dicha relación.
-
-\subsubsection{ACID}
-El modelo relacional en las transacciones cumple con las propiedades de ACID, que es el acrónimo de \textit{Atomicity} (atomicidad), \textit{Consistency} (consistencia), \textit{Isolation} (aislamiento) y \textit{Durability} (durabilidad). 
-
-\paragraph*{Atomicidad}
-Requiere que se completen todas las operaciones (solicitudes SQL) de una transacción; si no, la transacción se cancela. 
-
-
-Si una transacción $T_{1}$ tiene cuatro solicitudes SQL, las cuatro solicitudes deben completarse con éxito; de lo contrario, se anula toda la transacción.
-
-
-En otras palabras, una transacción se trata como una unidad de trabajo única, indivisible y lógica.
-\paragraph*{Consistencia}
-Indica la permanencia del estado consistente de la base de datos. Una transacción lleva una base de datos de un estado consistente a otro. 
-
-
-Cuando se completa una transacción, la base de datos debe estar en un estado coherente. Si alguna de las partes de la transacción viola una restricción de integridad, se anula la transacción completa.
-\paragraph*{Aislamiento}
-Significa que los datos utilizados durante la ejecución de una transacción no es utilizada por una segunda transacción hasta que se complete la primera. 
-
-
-En otras palabras, si la transacción $T_{1}$ se está ejecutando y está utilizando el elemento de datos $X$, ninguna otra transacción accede a ese elemento de datos ($T_{2}...T_{n}$) hasta que finalice $T_{1}$.
-
-
-Esta propiedad es particularmente útil en entornos de bases de datos multiusuario porque varios usuarios acceden y actualizan la base de datos al mismo tiempo.
-\paragraph*{Durabilidad}
-
-Garantiza que una vez que se realizan y confirman los cambios en la transacción, no se deshacen ni pierden, incluso en el caso de una falla del sistema.

@@ -8,9 +8,6 @@ Comúnmente se usa un diccionario o tabla \textit{hash} que contiene una colecci
 No obstante, es responsabilidad de las aplicaciones que hagan uso de este tipo de base de datos interpretar el significado de los datos; no hay claves foráneas y las relaciones no son rastreables entre claves, lo que permite que el DBMS sea rápido y escalable.
 
 
-Los pares de clave-valor generalmente se organizan en \textit{buckets}. Todas las claves dentro un \textit{bucket} deben ser únicas, pero está permitido que se repitan en otros \textit{buckets} y todas las operaciones se basan en el \textit{bucket} + la clave.
-
-
 La figura~\ref{img:claveValor-bucket} es una representación visual de un \textit{bucket} usado en las bases de datos NoSQL de clave-valor.
 
 \begin{figure}[H]
@@ -21,10 +18,13 @@ La figura~\ref{img:claveValor-bucket} es una representación visual de un \texti
 \end{figure} 
 
 
-Respecto a las operaciones de este tipo de bases de datos, se usan las operaciones de \textit{get}, \textit{store} y \textit{delete}; la operación \textit{get} o \textit{fetch} es usada para obteber el valor de un par; el operador de \textit{store} almacena datos en una clave. 
+Los pares de clave-valor generalmente se organizan en \textit{buckets}; todas las claves dentro un \textit{bucket} deben ser únicas, pero está permitido que se repitan en otros \textit{buckets} y todas las operaciones se basan en el \textit{bucket} + la clave.
 
 
-Si la combinación de \textit{bucket} + clave no existe, se añade como un nuevo par de clave-valor. En cambio, en caso de existir la combinación de \textit{bucket} + clave, el valor es reemplazado por el nuevo y el operador de \textit{delete} es para eliminar un par de clave-valor.
+En este tipo de bases de datos se usan las operaciones de \textit{get}, \textit{store} y \textit{delete}; la operación \textit{get} o \textit{fetch} es usada para obteber el valor de un par; el operador de \textit{store} almacena datos en una clave. 
+
+
+Si la combinación de \textit{bucket} + clave no existe, se añade como un nuevo par de clave-valor; en cambio, si existe la combinación de \textit{bucket} + clave, el valor es reemplazado por el nuevo; el operador de \textit{delete} es para eliminar un par de clave-valor.
 
 
 De acuerdo con Sadalge\cite{sadalage_nosql_nodate}, algunas de las bases de datos de clave-valor populares son Riak, Redis, Memcached DB, Berkeley DB, HamsterDB, Amazon DynamoDB y Project Voldemort (una implementación de código abierto de Amazon DynamoDB).

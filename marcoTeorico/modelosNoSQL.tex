@@ -1,47 +1,5 @@
 \subsection{Modelos NoSQL}
-De acuerdo a la bibliografia de Catherine \cite{cristina_marta_bender_topicos_nodate}, el término NoSQL significa \textit{not only SQL} y se usa para agrupar sistemas de bases de datos diferentes a los relacionales.
+De acuerdo con Catherine \cite{cristina_marta_bender_topicos_nodate}, el término NoSQL significa \textit{Not only SQL} y hay cuatro tipos princpales de bases de datos NoSQL: clave-valor, orientado a columnas, orientado a documentos y orientado a grafos. 
 
 
-Por los nuevos requerimientos en la época actual como disponibilidad total, tolerancia a fallos, almacenamiento de penta bytes de información distribuida en miles de servidores, la necesidad de nodos con escalabilidad horizontal, entre otros, surge la necesidad de sistemas de bases de datos no relacionales.
-
-
-Estos tipos de sistemas no requieren esquemas fijos, son fáciles y rápidos en la instalación, usan lenguajes no declarativos, ofrecen alto rendimiento y disponibilidad, evitan operaciones de junturas, soportan paralelismo y escalan principalmente en forma horizontal soportando estructuras distribuidas que no necesariamente cumplen las propiedades ACID\cite{cristina_marta_bender_topicos_nodate}, sino que se enfocan en el modelo de consistencia de datos BASE.
-
-\subsubsection{Teorema CAP}
-En el  Simposio de Principios de Computación Distribuida (PODC, en inglés) en el año 2000\cite{brewer_towards_2000}, el Dr. Eric Brewer declaró en su presentación que ``en cualquier sistema de datos altamente distribuido hay tres propiedades comúnmente deseables: \textit{Consistency} (consistencia), \textit{Availability} (disponibilidad) y \textit{Partition tolerance} (tolerancia al particionado). Sin embargo, es imposible que un sistema proporcione las tres propiedades al mismo tiempo".
-
-
-El acrónimo CAP representa las tres propiedades deseables:
-
-\paragraph*{Consistencia}
-
-En una base de datos distribuida, la consistencia tiene el papel más importante. Todos los nodos deben ver los mismos datos al mismo tiempo, lo que significa que las réplicas deben actualizarse inmediatamente. Sin embargo, esto implica lidiar con la latencia y los atrasos de la red.
-
-No hay que confundir la consistencia en la gestión de transacciones con la consistencia del teorema CAP. La consistencia de la gestión de transacciones se refiere al resultado cuando la ejecución de una transacción en una base de datos cumple con todas las restricciones de integridad.
-
-
-La consistencia en CAP se basa en la suposición de que todas las transacciones tienen lugar al mismo tiempo en todos los nodos, como si se estuvieran ejecutando en una base de datos de un solo nodo (todos los nodos ven los mismos datos al mismo tiempo).
-
-\paragraph*{Disponibilidad}
-En términos simples, el sistema siempre cumple una solicitud. Ninguna solicitud recibida se pierde y este es un requisito fundamental para todas las organizaciones centradas en la web.
-
-\paragraph*{Tolerancia al particionado}
-El sistema continúa funcionando incluso en caso de falla de un nodo. Esto es equivalente a la transparencia de fallas en bases de datos distribuidas. El sistema fallará solo si fallan todos los nodos.
-
-Aunque el teorema CAP se centra en sistemas basados ​​en la web altamente distribuidos, sus implicaciones están muy extendidas para todos los sistemas distribuidos, incluidas las bases de datos.
-
-
-En los sistemas de bases de datos, las propiedades ACID aseguran que todas las transacciones exitosas den como resultado un estado de base de datos consistente, uno en el que todas las operaciones de datos siempre devuelven los mismos resultados. 
-
-
-Para bases de datos distribuidas centralizadas y pequeñas, la latencia no es un problema, pero para una base de datos altamente distribuida el garantizar transacciones ACID sin pagar un alto precio en latencia de red o en conflictos de datos.
-
-
-La relación entre consistencia y disponibilidad ha generado un nuevo tipo de sistemas de datos distribuidos, diferente al ACID, denominados BASE, \textit{Basically Available} (básicamente disponibles), \textit{Soft state} (estado suave), \textit{Eventually consistent} (eventualmente consistente).
-
-\paragraph*{BASE}
-
-BASE se refiere a un modelo de consistencia de datos en el que los cambios de datos no son inmediatos, sino que se propagan lentamente a través del sistema hasta que todas las réplicas sean consistentes. 
-
-
-En la práctica, la aparición de bases de datos distribuidas NoSQL proporciona un espectro de consistencia que va desde lo altamente consistente (ACID) hasta lo eventualmente consistente (BASE).
+Se usan para agrupar sistemas de bases de datos diferentes a los relacionales y surgieron por los nuevos requerimientos de disponibilidad total, tolerancia a fallos, almacenamiento de penta bytes de información distribuida en miles de servidores, la necesidad de nodos con escalabilidad horizontal, entre otros; a continuación se una breve explicacion de cada modelo de datos NoSQL.
