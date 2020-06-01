@@ -1,36 +1,14 @@
 \subsubsection{Orientado a columnas}
-Este modelo de base de datos se originó con el BigTable de Google. Otras bases de datos orientados a columnas incluyen HBase, Hypertable y Cassandra. 
+De acuerdo con Coronel\cite{coronel_database_nodate}, el modelo de base de datos NoSQL orientado a columnas se originó con el BigTable de Google. 
 
+La figura~\ref{img:familia-columna} representa una familia de columnas; la imagen de arriba es la partición de las diferentes familias de columnas y en la imagen de abajo se nota cada partición individual.
 
-Cassandra comenzó como un proyecto en Facebook, pero Facebook lo lanzó a la comunidad de código abierto, que ha seguido desarrollando a Cassandra en una de las bases de datos orientadas a columnas más populares.
-
-
-
-
-Afortunadamente, las bases de datos de la familia de columnas son conceptualmente simples y conceptualmente lo suficientemente cercanas al modelo relacional para que su comprensión del modelo relacional pueda ayudarlo a comprender el modelo familiar de columnas.
-
-
-El término base de datos orientada a columnas puede referirse a dos conjuntos diferentes de tecnologías que a menudo se confunden entre sí. 
-
-
-En cierto sentido, el término de base de datos orientada a columnas puede usarse para tecnologías de bases de datos relacionales tradicionales que usan almacenamiento enfocado en columnas en lugar de almacenamiento en filas. 
-
-
-Por otro lado, en un sistema de base de datos NoSQL describe un tipo de base de datos que organiza datos en pares nombre-valor donde el nombre actua también como la clave.
-
-
-\begin{figure}[h!t] 
+\begin{figure}[H] 
     \centering
     \includegraphics[width=0.75\textwidth]{noSQL/columna.png}
     \caption{Familia de columnas}
-    \label{img:documentos-columna}
+    \label{img:familia-columna}
 \end{figure}
 
 
-Cada par de clave-valor representa una columna y siempre contiene una fecha que sirve para resolver confiltos de escritura, datos expirados entre otras cosas.
-
-
-
-Al ser una bases de datos NoSQL, no requiere que los datos se ajusten a estructuras predefinidas ni admite SQL para consultas.
-
-
+Las bases de datos de la familia de columnas son parecidas a las relaciones del modelo relacional y organizan datos en pares nombre-valor donde el nombre actua también como la clave. Como se nota en la figura~\ref{img:familia-columna}, un par de clave-valor representa una columna y siempre contiene una fecha que sirve para resolver conflictos de escritura o datos expirados.

@@ -1,10 +1,10 @@
 \subsubsection{Orientado a grafos}
-Una base de datos de grafos es una base de datos NoSQL basada en la teoría de grafos para almacenar datos sobre entornos ricos en relaciones.
+De acuerdo con Coronel\cite{coronel_database_nodate}, una base de datos NoSQL orientada a grafos está basada en la teoría de grafos para almacenar datos con muchas relaciones.
 
 
-La teoría de grafos es un campo matemático y de ciencias de la computación que modela relaciones, o aristas, entre objetos llamados nodos. 
 
-\begin{figure}[h!t] 
+La figura~\ref{img:nosql-grafo} representa un grafo de una bilioteca, donde cada rectángulo es un nodo y están asociados entre sí por relaciones.
+\begin{figure}[H] 
     \centering
     \includegraphics[width=0.75\textwidth]{noSQL/grafo.png}
     \caption{modelo conceptual orientado a grafos}
@@ -12,28 +12,14 @@ La teoría de grafos es un campo matemático y de ciencias de la computación qu
 \end{figure}
 
 
-Modelar y almacenar datos sobre relaciones es el enfoque de las bases de datos de grafos y la teoría en la que se basa es un campo de estudio bien establecido que se remonta a cientos de años. 
+Como se muestra en la figura~\ref{img:nosql-grafo}, los componentes principales de las bases de datos de grafos son nodos, aristas y propiedades; el nodo es una instancia específica de algo sobre lo que queremos mantener datos.
 
 
-Como resultado, la creación de un modelo de base de datos basado en la teoría de grafos proporciona de inmediato una fuente rica de algoritmos y aplicaciones que han ayudado a las bases de datos de grafos a ganar terreno.
+Las propiedades son como atributos; son los datos que necesitamos almacenar sobre el nodo; todos los nodos tienen propiedades como nombre y apellido, pero no todos los nodos deben tener las mismas propiedades.
 
 
-Los componentes principales de las bases de datos de grafos son nodos, aristas y propiedades, como se muestra en la figura ~\ref{img:nosql-grafo}. Un nodo corresponde a la idea de una instancia de entidad relacional.
+Un borde es una relación entre nodos, está representada por una flecha en la figura~\ref{img:nosql-grafo} y es posible que estén en una dirección o ser bidireccionales.
 
 
-El nodo es una instancia específica de algo sobre lo que queremos mantener datos. Cada nodo (círculo) en la figura ~\ref{img:nosql-grafo} representa un solo agente. 
+Para las consultas, la terminología correcta sería atravesar el grafo y los recorridos se enfocan en las relaciones entre nodos, como la ruta más corta y el grado de conexión.
 
-
-Las propiedades son como atributos; son los datos que necesitamos almacenar sobre el nodo. Todos los nodos de agente pueden tener propiedades como nombre y apellido, pero no todos los nodos deben tener las mismas propiedades.
-
-
-Un borde es una relación entre nodos. Los bordes (mostrados como flechas en la figura ~\ref{img:nosql-grafo}) pueden estar en una dirección, o pueden ser bidireccionales.
-
-
-Para las consultas, la terminología correcta sería atravesar el grafo. Las bases de datos de grafos los recorridos se enfocan en las relaciones entre nodos, como la ruta más corta y el grado de conexión.
-
-
-La base de datos de grafos comparte algunas características con otras bases de datos NoSQL en que las bases de datos de grafos no obligan a los datos a ajustarse a estructuras predefinidas, no admiten SQL y están optimizados para proporcionar velocidad de procesamiento, al menos para datos intensivos en relaciones.
-
-
-Sin embargo, otras características clave no se aplican a las bases de datos de grafos. Las bases de datos de grafos no se escalan muy bien a los clústeres debido a las diferencias en los datos agregados.
