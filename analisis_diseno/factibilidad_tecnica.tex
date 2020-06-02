@@ -7,13 +7,23 @@ Mediante esta fase del estudio se determinará si el equipo de desarrollo cuenta
 Este es un elemento importante, ya que debe cumplir con las características de estabilidad, velocidad, seguridad y escalabilidad para soportar la instalación del sistema.
 
 
-A continuación se presentan diferentes alternativas de sistemas operativos que cumplen con las características mencionadas y que son suficientes para albergar el sistema:
+La tabla \ref{tab:options_so} presenta diferentes alternativas de sistemas operativos que cumplen con las características mencionadas y que son suficientes para albergar el sistema:
 
-\begin{itemize}
-    \item Windows server 2019
-    \item Red Hat Entrerprise 8
-    \item Ubuntu server 19.04
-\end{itemize}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+    Nombre                & Licencia                       & Costo                         \\ \hline
+    Microsoft Server 2019 & \multicolumn{1}{c|}{Privativa} & \multicolumn{1}{c|}{972 USD}  \\ \hline
+    Red Hat Enterprise 8  & \multicolumn{1}{c|}{GPL}       & \multicolumn{1}{c|}{349 USD}  \\ \hline
+    \rowcolor[HTML]{66BB6A}
+    Ubuntu Server 19.04   & \multicolumn{1}{c|}{\cellcolor[HTML]{66BB6A}GPL}       & \multicolumn{1}{c|}{\cellcolor[HTML]{66BB6A}gratuito} \\ \hline
+    \end{tabular}
+    \caption{Comparativa de sistemas operativos}
+    \label{tab:options_so}
+    \end{table}
+
+La opción que se utilizará es ubuntu server por el precio del producto además de ser un sistema conocido para el equipo y contar con una comunidad amplia para temas de soporte.
 
 \subsubsection{Lenguaje de desarrollo}
 
@@ -27,14 +37,25 @@ El lenguaje de desarrollo debe de cumplir con las siguientes características:
     \item Contar con algún \textit{framework} web.
 \end{itemize}
 
-A continuación se presenta una lista de lenguajes de desarrollo que cumplen dichas características:
+La tabla \ref{tab:options_lenguage} presenta una Comparativa de lenguajes de desarrollo que cumplen dichas características:
 
-\begin{itemize}
-    \item Java
-    \item Python
-    \item C\#
-    \item Ruby
-\end{itemize}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|c|c|}
+    \hline
+    Nombre & Sistema Operativo & \multicolumn{1}{l|}{Licencia}                       & \multicolumn{1}{l|}{Costo}                            \\ \hline
+    Java   & Multiplataforma   & GPL v2                                              & Gratuito                                              \\ \hline
+    Ruby   & Multiplataforma   & GPL v2                                              & Gratuito                                              \\ \hline
+    C\#    & Microsoft         & GPL                                                 & Gratuito                                              \\ \hline
+    \rowcolor[HTML]{66BB6A}
+    Python & Multiplataforma   & \multicolumn{1}{l|}{\cellcolor[HTML]{66BB6A}GPL v2} & \multicolumn{1}{l|}{\cellcolor[HTML]{66BB6A}Gratuito} \\ \hline
+    \end{tabular}
+    \caption{Comparativa de lenguajes de programación}
+    \label{tab:options_lenguage}
+    \end{table}
+
+
+Además de tener una curva de aprendizaje rápida, se utilizará python por ser un lenguage conocido por el equipo y ofrecer una gran cantidad de bibliotecas para agregar funcionalidades de una forma práctica ahorrando tiempo de desarrollo.
 
 \subsubsection{Sistema gestor de base de datos}
 
@@ -48,29 +69,41 @@ Este es un factor muy importante, ya que determinará cómo se almacenará la in
 \end{itemize}
 
 
-A continuación se presenta una lista de sistemas gestores de bases de datos que cumplen dichas características:
+La lista \ref{tab:tab:options_database} presenta una lista de sistemas gestores de bases de datos que cumplen dichas características:
 
-\begin{itemize}
-    \item MySQL
-    \item MariaDB
-    \item Oracle database
-    \item MongoDB Atlas
-    \item DynamoDB
-    \item Apache Cassandra
-\end{itemize}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|c|c|}
+    \hline
+    Nombre           & Entorno         & \multicolumn{1}{l|}{Licencia} & \multicolumn{1}{l|}{Costo} \\ \hline
+    MySQL            & Multiplataforma & GPL                           & Gratuito                   \\ \hline
+    MariaDB          & Multiplataforma & GPL v2                        & Gratuito                   \\ \hline
+    Oracle Database  & Multiplataforma & OTN                           & 350 USD                    \\ \hline
+    \rowcolor[HTML]{66BB6A}
+    MongoDB Atlas     & Nube            & AGPL v3                       & Gratuito                   \\ \hline
+    DynamoDB         & Nube            & N/D                           & 5.33 USD/mes               \\ \hline
+    Apache Cassandra & Nube            & Apache License v2             & 0.33 UDS/GB                \\ \hline
+    \end{tabular}
+    \caption{Comparativa de sistemas gestores de bases de datos}
+    \label{tab:options_database}
+    \end{table}
+
+
+La base de datos MongoDB atlas ofrece una opción gratuita que cumple con los requerimientos para el desarrollo del proyecto, ademas de la ventaja de estar alojada en la nube para tener una alta disponibilidad de los datos independiente del sistema operativo y entorno de despliegue de la aplicación web.
+
 
 Las características de los equipos de cómputo con los que se dispone actualmente para el desarrollo del sistema se muestran en la tabla \ref{tab:hw_devices}.
 
-\begin{table}
-    \begin{tabular}{|c|c|c|}
+\begin{table}[h!]
+    \begin{tabular}{|c|c|c|c|}
         \hline
-        Equipo & Elemento & Capacidad \\ \hline
-        \multirow{3}{*}{Laptop 1} & Memoria RAM & 8 GB \\
-        & Almacenamiento & 500 GB HDD \\
-        & Procesador & Intel Core i5 6ta gen. \\ \hline
-        \multirow{3}{*}{Laptop 2} & Memoria RAM & 8 GB \\
-        & Almacenamiento & 256 GB SSD \\
-        & Procesador & Intel Core i5 8va gen.\\ \hline
+        Equipo & Elemento & Capacidad & Costo\\ \hline
+        \multirow{3}{*}{Laptop 1} & Memoria RAM & 8 GB & \\
+        & Almacenamiento & 500 GB HDD & \$ 22,500.00\\
+        & Procesador & Intel Core i5 6ta gen. &\\ \hline
+        \multirow{3}{*}{Laptop 2} & Memoria RAM & 8 GB & \\
+        & Almacenamiento & 256 GB SSD & \$ 31,999.00\\
+        & Procesador & Intel Core i5 8va gen. &\\ \hline
     \end{tabular}
     \caption{Equipo de cómputo}
     \label{tab:hw_devices}

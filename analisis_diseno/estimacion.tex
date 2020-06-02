@@ -1,6 +1,6 @@
 \subsection{Factibilidad económica}
 
-De acuerdo con Pressman en \textit{Ingeniería de software, un enfoque práctico}\cite{pressman_software_2005}, en su sección de estimación, se utiliza una métrica por puntos de función como se muestra en la tabla \ref{tab:function_point_metrics}. 
+De acuerdo con Pressman en \textit{Ingeniería de software, un enfoque práctico}\cite{pressman_software_2005}, en su sección de estimación, se utiliza una métrica por puntos de función como se muestra en la tabla \ref{tab:function_point_metrics}.
 
 
 Es por este medio que se calcula o se realiza una estimación del costo total del proyecto, incluyendo los salarios de los desarrolladores que llevarán a cabo la implementación del sistema, así como los gastos por pagos de servicios que sean necesarios.
@@ -11,7 +11,7 @@ Es por este medio que se calcula o se realiza una estimación del costo total de
 Para este proyecto, se considera que todas las funciones identificadas son de complejidad media con excepción de las entradas que tienen la complejidad más alta del sistema.
 
 
-\begin{table}
+\begin{table}[h!]
 	\begin{tabular}{|l|l|l|l|l|l|}
 	\hline
 	\multirow{2}{*}{Parámetro} & \multirow{2}{*}{Cuenta} & \multicolumn{3}{|l|}{Factores de ponderación} & \multirow{2}{*}{Total} \\ \cline{3-5}
@@ -30,7 +30,7 @@ Para este proyecto, se considera que todas las funciones identificadas son de co
 
 	\textbf{Fi (i = 1..14)} son factores de ajuste de valor basados en las respuetas de las preguntas de la tabla \ref{tab:questions_adjusment}. Los valores pueden ir de 0 (no importante o aplicable) a 5 (absolutamente esencial).
 
-	\begin{table}
+	\begin{table}[h!]
 		\begin{tabular}{|p{9cm}|c|}
 		\hline
 		Pregunta                                                                                                                 & Ponderación \\ \hline
@@ -102,6 +102,7 @@ De lo anterior, aproximadamente se obtienen \textbf{159} puntos de función. Una
 De estos 8.05 meses, considerando un total de 40 horas a la semana de trabajo y 4.34 semanas por mes, el total de horas para el desarrollo y conclusión del proyecto se obtiene de esta manera:
 
 \begin{center}
+	Tiempo de desarrollo = horas/semana * semanas/mes * Esfuerzo
 	Tiempo de desarrollo = $ 40 * 4.34 * 8.05 $
 	Tiempo de desarrollo = $ 1397.48 \approx 1398 $ horas
 \end{center}
