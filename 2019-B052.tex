@@ -15,6 +15,7 @@
 \usepackage{tabularx}
 \usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
 \usepackage{fancyhdr}
+%\usepackage[spanish=nohyphenation,mexico=nohyphenation]{hyphsubst}
 \usepackage[spanish,mexico]{babel}
 \usepackage{color}   %May be necessary if you want to color links
 \usepackage{hyperref}
@@ -22,7 +23,11 @@
 \usepackage{graphicx}
 \usepackage{array}% http://ctan.org/pkg/array
 \usepackage[bottom]{footmisc}
-
+\hyphenation{clave-valor}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
 \graphicspath{ {images/} }
 
 

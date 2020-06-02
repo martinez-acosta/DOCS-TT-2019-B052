@@ -1,11 +1,14 @@
-\subsection{Factibilidas económica}
+\subsection{Factibilidad económica}
 
-De acuerdo con Pressman en \textit{Ingeniería de software, un enfoque práctico}\cite{pressman_software_2005}, en su sección de estimación, se utiliza una metrica por puntos de función como se muestra en la tabla \ref{tab:function_point_metrics}. Es por este medio que se calcula(estima) el costo total del proyecto incluyendo los salarios de los desarrolladores que llevaran a cabo la implmentación del sistema asi como los gastos por pagos de servicios que sean necesarios.
-
-\subsubsection{Métricas orientas a la función}
+De acuerdo con Pressman en \textit{Ingeniería de software, un enfoque práctico}\cite{pressman_software_2005}, en su sección de estimación, se utiliza una métrica por puntos de función como se muestra en la tabla \ref{tab:function_point_metrics}. 
 
 
-Para este proyecto se considera que todas las funciones identificadas son de complejidad media con excepción de las entradas que tiene la complejidad mas alto del sistema.
+Es por este medio que se calcula o se realiza una estimación del costo total del proyecto, incluyendo los salarios de los desarrolladores que llevarán a cabo la implementación del sistema, así como los gastos por pagos de servicios que sean necesarios.
+
+\subsubsection{Métricas orientadas a la función}
+
+
+Para este proyecto, se considera que todas las funciones identificadas son de complejidad media con excepción de las entradas que tienen la complejidad más alta del sistema.
 
 
 \begin{table}
@@ -14,7 +17,7 @@ Para este proyecto se considera que todas las funciones identificadas son de com
 	\multirow{2}{*}{Parámetro} & \multirow{2}{*}{Cuenta} & \multicolumn{3}{|l|}{Factores de ponderación} & \multirow{2}{*}{Total} \\ \cline{3-5}
 														 &                         & baja       	& media       & alta		       &                        \\ \hline
 	Entradas                   & 6                       & 3            & 4           & 6              & 36                     \\ \hline
-	Salida                     & 5                       & 4            & 5           & 7              & 25                     \\ \hline
+	Salidas                     & 5                       & 4            & 5           & 7              & 25                     \\ \hline
 	Tablas                     & 1                       & 3            & 4           & 6              & 4                      \\ \hline
 	Interfaces                 & 4                       & 7            & 10          & 15             & 40                     \\ \hline
 	Consultas                  & 4                       & 5            & 7           & 10             & 28                     \\ \hline
@@ -31,15 +34,15 @@ Para este proyecto se considera que todas las funciones identificadas son de com
 		\begin{tabular}{|p{9cm}|c|}
 		\hline
 		Pregunta                                                                                                                 & Ponderación \\ \hline
-		¿Requiere el sistema métodos de seguridad y recuperación fiables ?                                                       & 3           \\ \hline
-		¿Se requiere comunicación de especializada?                                                                              & 5           \\ \hline
+		¿Requiere el sistema métodos de seguridad y recuperación fiables?                                                       & 3           \\ \hline
+		¿Se requiere comunicación especializada?                                                                              & 5           \\ \hline
 		¿Existen funciones de procesamiento distribuido?                                                                         & 2           \\ \hline
 		¿Es crítico el rendimiento?                                                                                              & 4           \\ \hline
 		¿Se ejecutará el sistema en un entorno operativo existente y fuertemente utilizado?                                      & 4           \\ \hline
-		¿Requiere el sistema un entrada de datos interactiva?                                                                    & 5           \\ \hline
-		¿Requiere la entrada de datos interactiva que las transacciones de entrada se llevan a cabo sobre múltiples operaciones? & 5           \\ \hline
+		¿Requiere el sistema una entrada de datos interactiva?                                                                    & 5           \\ \hline
+		¿Requiere la entrada de datos interactiva que las transacciones de entrada se lleven a cabo sobre múltiples operaciones? & 5           \\ \hline
 		¿Se actualizan los archivos maestros de forma interactiva?                                                               & 3           \\ \hline
-		¿Son complejas las entrada, salidas, archivos o consultas?                                                               & 4           \\ \hline
+		¿Son complejas las entradas, salidas, archivos o consultas?                                                               & 4           \\ \hline
 		¿Es complejo el procesamiento interno?                                                                                   & 4           \\ \hline
 		¿Se ha diseñado el código para ser reutilizable?                                                                         & 4           \\ \hline
 		¿Están incluidas en el diseño la instalación y conversión?                                                               & 3           \\ \hline
@@ -54,7 +57,7 @@ Para este proyecto se considera que todas las funciones identificadas son de com
 
 \subsubsection{Puntos de función}
 
-La fórmula para obtener los punto de función con los factores de ajuste es la siguiente:
+La fórmula para obtener los puntos de función con los factores de ajuste es la siguiente:
 
 
 \begin{center}
@@ -63,7 +66,7 @@ La fórmula para obtener los punto de función con los factores de ajuste es la 
 	$
 
 
-	sustituyendo los valores del conteo total y los factores de ajuste
+	Se deben sustituir los valores del conteo total y los factores de ajuste.
 
 
 	\begin{equation}
@@ -72,7 +75,7 @@ La fórmula para obtener los punto de función con los factores de ajuste es la 
 	\end{equation}
 \end{center}
 
-De lo anterior se obtiene \textbf{159} puntos de función aproximadamente. Una vez obtenidos utilizando la llamada ``Ball-Park'' o ``Estimación Indicativa'' es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyectos. El autor del artículo ``Applied Software Measurement''\cite{abran_applied_2006}, Carper Jones propone la siguiente ecuación para determinar el esfuerzo de desarrollo de un proyecto:
+De lo anterior, aproximadamente se obtienen \textbf{159} puntos de función. Una vez obtenidos utilizando la llamada “Ball-Park” o “Estimación Indicativa“, que es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyecto. El autor del artículo \textit{Applied Software Measurement}\cite{abran_applied_2006}, Carper Jones, propone la siguiente ecuación para determinar el esfuerzo de desarrollo de un proyecto:
 
 
 \begin{center}
@@ -84,10 +87,10 @@ De lo anterior se obtiene \textbf{159} puntos de función aproximadamente. Una v
 	Donde:
 
 
-	PF : Puntos de función
+	PF : Puntos de función.
 
 
-	Sustituyendo los valores tenemos:
+	Al sustituir los valores, el resultado es:
 
 	$
 	Esfuerzo = (\frac{159}{150})*159^{0.4}
@@ -96,7 +99,7 @@ De lo anterior se obtiene \textbf{159} puntos de función aproximadamente. Una v
 \end{center}
 
 
-De estos 8.05 meses, considerando un total de 40 horas a la semana de trabajo y  4.34 semanas por mes tenemos un total de horas para el desarrollo y conclusión del proyecto de :
+De estos 8.05 meses, considerando un total de 40 horas a la semana de trabajo y 4.34 semanas por mes, el total de horas para el desarrollo y conclusión del proyecto se obtiene de esta manera:
 
 \begin{center}
 	Tiempo de desarrollo = $ 40 * 4.34 * 8.05 $
@@ -104,5 +107,5 @@ De estos 8.05 meses, considerando un total de 40 horas a la semana de trabajo y 
 \end{center}
 
 
-Es  decir,  una  única  persona  trabajando  en  el  desarrollo  del  proyecto  debería invertir 1398 horas con una jornada de 8 horas diarias de lunes a viernes hasta su finalización, por lo que si suponemos un equipo de desarrollo de 2 personas con un horario de lunes a viernes de 4 horas diarias en 8.05 meses habría concluido el proyecto.
+Por ejemplo, una sola persona trabajando en el desarrollo del proyecto debería invertir 1398 horas con una jornada de 8 horas diarias de lunes a viernes hasta su finalización, por lo que si un equipo de desarrollo es de 2 personas con un horario de lunes a viernes de 4 horas diarias, el proyecto concluiría en 8.05 meses.
 
