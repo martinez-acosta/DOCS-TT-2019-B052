@@ -1,76 +1,61 @@
 \subsection{Style Sheet Language: CSS vs SASS}
-De acuerdo con Wikipedia\cite{wikipedia_contributors_style_2020}, un \textit{style sheet language} es un lenguaje que representa los estilos o elementos visuales de documentos estructurados.
+De acuerdo con Lie\cite{lie_cascading_2005}, un \textit{style sheet language} es un lenguaje que representa los estilos o elementos visuales de documentos estructurados.
 
 \subsubsection*{CSS}
-De acuerdo a la documentación de la W3C\cite{noauthor_what_nodate}, Cascading Style Sheets, CSS, o hojas de estilo en cascada, es un lenguaje de diseño gráfico para definir y crear la presentación de un documento estructurado escrito en un lenguaje de marcado.
+De acuerdo a la documentación de la W3C\cite{noauthor_what_nodate}, Cascading Style Sheets (CSS, o hojas de estilo en cascada) es un lenguaje de diseño gráfico para definir y crear la presentación de un documento estructurado escrito en un lenguaje de marcado.
 
 
-CSS está diseñado principalmente para marcar la separación del contenido del documento y la presentación del mismo, con características como las capas o layouts, los colores y las fuentes.
+La separación entre el contenido del documento y la presentación busca mejorar la accesibilidad, proveer más flexibilidad y control, permitir que varios documentos HTML compartan un mismo estilo usando una sola hoja de estilos separada en un archivo .css, reducir la complejidad y la repetición de código.
 
 
-La separación entre el contenido del documento y la presentación busca mejorar la accesibilidad, proveer más flexibilidad y control, permitir que varios documentos HTML compartan un mismo estilo usando una sola hoja de estilos separada en un archivo .css y reducir la complejidad y la repetición de código en la estructura del documento.
+La especificación CSS describe un esquema prioritario para determinar qué reglas de estilo se aplican si más de una regla coincide para un elemento en particular; estas reglas son aplicadas con un sistema llamado de cascada, de modo que las prioridades son calculadas y asignadas a las reglas, así que los resultados son predecibles.
 
 
-La especificación CSS describe un esquema prioritario para determinar qué reglas de estilo se aplican si más de una regla coincide para un elemento en particular. Estas reglas son aplicadas con un sistema llamado de cascada, de modo que las prioridades son calculadas y asignadas a las reglas, así que los resultados son predecibles.
+La especificación CSS es mantenida por el World Wide Web Consortium; el tipo MIME \textit{text/css} está registrado para su uso por CSS descrito en el RFC 23185​. 
 
 
-La especificación CSS es mantenida por el World Wide Web Consortium (W3C). El MIME type text/css está registrado para su uso por CSS descrito en el RFC 23185​. El W3C proporciona una herramienta de validación de CSS gratuita para los documentos CSS.
+CSS se ha creado en varios niveles y perfiles, donde cada nivel de CSS se construye sobre el anterior, generalmente añadiendo funciones al nivel previo.
 
 
-
-CSS se ha creado en varios niveles y perfiles. Cada nivel de CSS se construye sobre el anterior, generalmente añadiendo funciones al nivel previo.
-
-
-Los perfiles son, generalmente, parte de uno o varios niveles de CSS definidos para un dispositivo o interfaz particular. Actualmente, pueden usarse perfiles para dispositivos móviles, impresoras o televisiones.
+La última versión del estándar, CSS3.1, está dividida en varios documentos separados, llamados ``módulos''; cada módulo añade nuevas funcionalidades a las definidas en CSS2, de manera que se preservan las anteriores para mantener la compatibilidad.
 
 
-La última versión del estándar, CSS3.1, está dividida en varios documentos separados, llamados ``módulos".
+Los trabajos en CSS3.1 comenzaron a la vez que se publicó la recomendación oficial de CSS2 y su primeros borradores fueron liberados en junio de 1999.
 
 
-Cada módulo añade nuevas funcionalidades a las definidas en CSS2, de manera que se preservan las anteriores para mantener la compatibilidad.
+Debido a la modularización de CSS3.1, diferentes módulos están en diferentes estados de su desarrollo,​ hay alrededor de cincuenta módulos publicados,​ tres de ellos se convirtieron en recomendaciones oficiales de la W3C en 2011: ``selectores'', ``espacios de nombres'' y ``color''.
 
 
-Los trabajos en el CSS3.1 comenzaron a la vez que se publicó la recomendación oficial de CSS2 y los primeros borradores de CSS3.1 fueron liberados en junio de 1999.
+Respecto al soporte de los navegadores web, cada navegador web usa un motor de renderizado para renderizar páginas web y el soporte de CSS no es exactamente igual en ninguno de los motores de renderizado; ya que los navegadores no aplican el CSS correctamente, muchas técnicas de programación han sido desarrolladas para ser aplicadas por un navegador específico (comúnmente conocida esta práctica como \textit{CSS hacks} o \textit{CSS filters}).
 
-
-Debido a la modularización del CSS3.1, diferentes módulos pueden encontrarse en diferentes estados de su desarrollo,​ de forma que hay alrededor de cincuenta módulos publicados,​ tres de ellos se convirtieron en recomendaciones oficiales de la W3C en 2011: ``Selectores", ``Espacios de nombres", y ``Color".
-
-
-Respecto al soporte de los navegadores web, cada navegador web usa un motor de renderizado para renderizar páginas web, y el soporte de CSS no es exactamente igual en ninguno de los motores de renderizado. Ya que los navegadores no aplican el CSS correctamente, muchas técnicas de programación han sido desarrolladas para ser aplicadas por un navegador específico (comúnmente conocida esta práctica como \textit{CSS hacks} o \textit{CSS filters}).
-
-
-Además, CSS3 definen muchas queries, entre las cuales se provee la directiva @supports que permite a los desarrolladores especificar navegadores con soporte para alguna función en específico directamente en el CSS3.1​. 
 
 \subsubsection*{Sass}
 
-De acuerdo a la documentación de Sass\cite{noauthor_documentation_nodate}, Sass es un lenguaje de preprocesado que genera hojas de estilo en cascada (CSS) y consta de dos sintaxis.
+De acuerdo con la documentación de Sass\cite{noauthor_documentation_nodate}, Sass es un lenguaje de preprocesado que genera hojas de estilo en cascada (CSS) y consta de dos sintaxis.
 
 \subsubsection*{Características}
 
 \paragraph*{Variables}
-Las variables comienzan con un signo de dólar y la asignación de valor se realiza con dos puntos.
+Las variables comienzan con un signo de dólar y la asignación de valor se realiza con dos puntos y permite 4 tipos de datos:
 
-SassScript permite 4 tipos de datos:6​
 \begin{enumerate}
     \item Números (incluyendo las unidades).
     \item Strings (con comillas o sin ellas).
-    \item Colores (código, o nombre).
+    \item Colores (código o nombre).
     \item Booleanos.
 \end{enumerate}
-Las variables pueden ser resultados o argumentos de varias funciones disponibles. Durante el proceso de traducción, los valores de las variables son insertados en el documento CSS de salida.
+Las variables son resultados o argumentos de varias funciones disponibles.
 
 \paragraph*{Anidamiento}
-CSS soporta anidamiento lógico, pero los bloques de código no son anidados. Sass permite que el código anidado sea insertado dentro de cualquier otro bloque.3
+CSS soporta anidamiento lógico, pero los bloques de código no son anidados; Sass permite que el código anidado sea insertado dentro de cualquier otro bloque.
 
 
 \paragraph*{Mixins}
 
-Como CSS no soporta \textit{mixins}, cualquier código duplicado debe ser repetido en cada lugar. Un \textit{mixin} en Sass es una sección de código que contiene código Sass. 
+Como CSS no soporta \textit{mixins}, cualquier código duplicado debe ser repetido en cada lugar; un \textit{mixin} en Sass es una sección de código que contiene código Sass. 
 
 
-Cada vez que se llama un \textit{mixin} en el proceso de conversión el contenido del mismo es insertado en el lugar de la llamada. Los \textit{mixin} permiten una solución limpia a las repeticiones de código, así como una forma fácil de alterar el mismo.
-
-
+Cada vez que se llama un \textit{mixin} en el proceso de conversión, el contenido del mismo es insertado en el lugar de la llamada; los \textit{mixin} permiten una solución limpia a las repeticiones de código, así como una forma fácil de alterar el mismo.
 
 \subsubsection*{Elección}
 
