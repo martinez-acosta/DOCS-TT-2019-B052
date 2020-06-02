@@ -1,0 +1,38 @@
+\subsection{MySQL vs MongoDB}
+\subsubsection*{MongoDB}
+De acuerdo con su documentación oficial\cite{mongodb_mongodb_2020}, MongoDB (del inglés humongous, ``enorme'') es un sistema de base de datos NoSQL, orientado a documentos y de código abierto.
+
+
+En lugar de guardar los datos en tablas, tal y como se hace en las bases de datos relacionales, MongoDB guarda estructuras de datos BSON (una especificación similar a JSON) con un esquema dinámico, haciendo que la integración de los datos en ciertas aplicaciones sea más fácil y rápida.
+
+\paragraph*{Características}
+\begin{enumerate}
+    \item Consultas \textit{ad hoc}: MongoDB soporta la búsqueda por campos, consultas de rangos y expresiones regulares.
+    \item Indexación: es posible que cualquier campo en un documento de MongoDB sea indexado, al igual que es posible hacer índices secundarios. 
+    \item Replicación: MongoDB soporta el tipo de replicación primario-secundario. 
+    \item Balanceo de carga: MongoDB escala de forma horizontal usando el concepto de \textit{sharding}.
+    \item Almacenamiento de archivos: MongoDB es utilizado como un sistema de archivos, aprovechando su capacidad para el balanceo de carga y la replicación de datos en múltiples servidores. 
+    \item Agregación: MongoDB proporciona un framework de agregación que permite realizar operaciones similares a la operación \textit{group by} de SQL.
+\end{enumerate}
+
+
+\subsubsection*{MySQL}
+
+De acuerdo con su documentación oficial\cite{mysql_mysql_2020}, MySQL es un gestor de base de datos relacionales de código abierto con un modelo cliente-servidor.
+
+
+Archiva datos en tablas separadas en lugar de guardar todos los datos en un gran archivo, permitiendo tener mayor velocidad y flexibilidad; estas tablas están relacionadas de formas definidas, por lo que se hace posible combinar distintos datos en varias tablas y conectarlos.
+
+\paragraph*{Características}
+\begin{enumerate}
+    \item Permite escojer múltiples motores de almacenamiento para cada tabla.
+    \item Agrupación de transacciones, pudiendo reunirlas de forma múltiple desde varias conexiónes con el fin de incrementar el número de transacciones por segundo.
+    \item Conectividad segura.
+    \item Ejecución de transacciones y uso de claves foráneas.
+    \item Presenta un amplio subconjunto del lenguaje SQL.
+\end{enumerate}
+
+\subsubsection*{Elección}
+
+De acuerdo con Mosquera\cite{martinez-mosquera_modeling_2020}, MongoDB es la base de datos NoSQL orientada a documentos más popular y usada en los \textit{papers} de investigación; por ello el equipo ha decidido usar MongoDB como base de datos.
+

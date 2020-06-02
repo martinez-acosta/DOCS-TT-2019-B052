@@ -1,0 +1,39 @@
+\subsection{Bibliotecas JavaScript para diagramado: GoJS vs Fabric.js vs D3.js}
+\subsubsection*{GoJS}
+De acuerdo con la documentación de GoJS\cite{noauthor_gojs_nodate}, GoJS es una biblioteca de JavaScript y TypeScript para crear diagramas interactivos; permite crear todo tipo de diagramas, desde diagramas de flujo y organigramas hasta diagramas industriales altamente específicos, diagramas SCADA y BPMN, diagramas médicos como genogramas y diagramas de modelos de brotes. 
+
+
+Ofrece muchas funciones para la interactividad del usuario, como arrastrar y soltar, copiar y pegar, edición de texto, información sobre herramientas, menús contextuales, diseños automáticos, plantillas, enlace de datos y modelos, gestión de estado, paletas, descripciones generales, controladores de eventos, comandos, herramientas extensibles para operaciones personalizadas y animaciones personalizables.
+
+
+Está escrita en TypeScript y puede usarse como una biblioteca de JavaScript o incorporarse a su proyecto desde fuentes de TypeScript; normalmente se ejecuta completamente en el navegador, renderizando a un elemento HTML Canvas o SVG sin ningún requisito del lado del servidor.
+
+
+\subsubsection*{Fabric.js}
+
+De acuerdo con la documentación de Fabric\cite{noauthor_fabric_2020}, Fabric.js es una biblioteca de JavaScript que proporciona un modelo para trabajar sobre un canvas HTML5 para poder agregar objetos como rectas, circunferencias, rectángulos, etc.
+
+\paragraph*{Caracteristicas}
+\begin{enumerate}
+    \item Drag \& Drop integrado en cada objeto de Fabric.js
+    \item Permite la especialización de clases para crear objetos personalizados.
+\end{enumerate}
+
+
+\subsubsection*{D3.js}
+
+De acuerdo con la documentación de D3\cite{d3_d3js_2020}, D3.js es una biblioteca de JavaScript para producir infogramas dinámicos e interactivos en navegadores web. 
+
+\paragraph*{Caracteristicas}
+\begin{enumerate}
+    \item Selecciones: es posible la selección de elementos del documento HTML y asignarle propiedades.
+    \item Transiciones:  permiten interpolar en el tiempo valores de atributos, lo que produce cambios visuales en los infogramas.
+    \item Asociación de datos: se asocia a cada elemento un objeto SVG con propiedades (forma, colores, valores) y comportamientos (transiciones, eventos).
+\end{enumerate}
+
+\subsubsection*{Elección}
+
+Se llevó a la práctica en el prototipo funcional las tres opciones antes expuestas junto con algunas otras y se decidió usar GoJS para el proyecto por ser la biblioteca JavaScript más completa para diagramado y que genera los diagramas con un JSON simple para parsear esos datos y realizar la conversión.
+
+
+
