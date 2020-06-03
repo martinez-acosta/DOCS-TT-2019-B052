@@ -2,12 +2,12 @@
 
 De acuerdo con Pressman\cite{pressman_software_2005}, el punto de función es una ``unidad de medida'' para expresar la cantidad de funcionalidad comercial que un sistema de información (como producto) proporciona a un usuario; los puntos de función se utilizan para calcular una medición de tamaño funcional (FSM) de \textit{software}.
 
-Como señala Pressman en su libro, se utiliza una métrica por puntos de función para realizar una estimación del costo total del proyecto, incluyendo los salarios de los desarrolladores que harán la implementación del sistema, así como los gastos por pagos de servicios que sean necesarios como se muestra en la tabla \ref{tab:function_point_metrics}. 
+Como señala Pressman en su libro, se utiliza una métrica por puntos de función para realizar una estimación del costo total del proyecto, incluyendo los salarios de los desarrolladores que harán la implementación del sistema, así como los gastos por pagos de servicios que sean necesarios como se muestra en la tabla \ref{tab:function_point_metrics}.
 
 \subsubsection*{Métricas orientadas a la función}
 
 
-Para este proyecto, se considera que todas las funciones identificadas son de complejidad media con excepción de las entradas que tienen la complejidad más alta del sistema.
+La tabla \ref{tab:function_point_metrics} muestra la podenración para el calculo de los puntos de funcion sin ajustar,  para este proyecto, se considera las funciones identificadas multiplicadas por la ponderación marcada en color verde para obtener el total.
 
 
 \begin{table}[H]
@@ -16,33 +16,33 @@ Para este proyecto, se considera que todas las funciones identificadas son de co
 	\hline
 	\multirow{2}{*}{Parámetro} & \multirow{2}{*}{Cuenta} & \multicolumn{3}{|l|}{Factores de ponderación} & \multirow{2}{*}{Total} \\ \cline{3-5}
 														 &                         & baja       	& media       & alta		       &                        \\ \hline
-	Entradas                   & 6                       & 3            & 4           & 6              & 36                     \\ \hline
-	Salidas                     & 5                       & 4            & 5           & 7              & 25                     \\ \hline
-	Tablas                     & 1                       & 3            & 4           & 6              & 4                      \\ \hline
-	Interfaces                 & 4                       & 7            & 10          & 15             & 40                     \\ \hline
-	Consultas                  & 4                       & 5            & 7           & 10             & 28                     \\ \hline
-	Conteo total               &                         &              &             &		             & 133                    \\ \hline
+	Entradas                   & 6                       & 3            & 4           & \cellcolor[HTML]{66BB6A} 6              & 36 \\ \hline
+	Salidas                     & 5                       & 4            & \cellcolor[HTML]{66BB6A} 5           & 7              & 25 \\ \hline
+	Tablas                     & 1                       & 3            &\cellcolor[HTML]{66BB6A} 4           & 6              & 4 \\ \hline
+	Interfaces                 & 4                       & 7            &\cellcolor[HTML]{66BB6A} 10          & 15             & 40 \\ \hline
+	Consultas                  & 4                       & 5            &\cellcolor[HTML]{66BB6A} 7           & 10             & 28 \\ \hline
+	Conteo total               &                         &              &             &		    $ \sum $         &\cellcolor[HTML]{66BB6A} 133 \\ \hline
 	\end{tabular}
 	\caption{Cálculo de las métricas por puntos de función}
 	\label{tab:function_point_metrics}
 	\end{table}
 
 
-	\textbf{Fi (i = 1..14)} son factores de ajuste de valor basados en las respuetas de las preguntas de la tabla \ref{tab:questions_adjusment}. Los valores pueden ir de 0 (no importante o aplicable) a 5 (absolutamente esencial).
+	\textbf{Fi (i = 1..14)} son los factores de ajuste de valor para los puntos de función obtenidos anteriormente basados en las respuetas de las preguntas de la tabla \ref{tab:questions_adjusment}. Los valores pueden ir de 0 (no importante o aplicable) a 5 (absolutamente esencial).
 
-	\begin{table}
+	\begin{table}[H]
 		\begin{tabular}{|p{9cm}|c|}
 		\hline
 		Pregunta                                                                                                                 & Ponderación \\ \hline
-		¿Requiere el sistema métodos de seguridad y recuperación fiables?                                                       & 3           \\ \hline
-		¿Se requiere comunicación especializada?                                                                              & 5           \\ \hline
+		¿Requiere el sistema métodos de seguridad y recuperación fiables?                                                        & 3           \\ \hline
+		¿Se requiere comunicación especializada?                                                                             		 & 5           \\ \hline
 		¿Existen funciones de procesamiento distribuido?                                                                         & 2           \\ \hline
 		¿Es crítico el rendimiento?                                                                                              & 4           \\ \hline
 		¿Se ejecutará el sistema en un entorno operativo existente y fuertemente utilizado?                                      & 4           \\ \hline
-		¿Requiere el sistema una entrada de datos interactiva?                                                                    & 5           \\ \hline
+		¿Requiere el sistema una entrada de datos interactiva?                                                                   & 5           \\ \hline
 		¿Requiere la entrada de datos interactiva que las transacciones de entrada se lleven a cabo sobre múltiples operaciones? & 5           \\ \hline
 		¿Se actualizan los archivos maestros de forma interactiva?                                                               & 3           \\ \hline
-		¿Son complejas las entradas, salidas, archivos o consultas?                                                               & 4           \\ \hline
+		¿Son complejas las entradas, salidas, archivos o consultas?                                                              & 4           \\ \hline
 		¿Es complejo el procesamiento interno?                                                                                   & 4           \\ \hline
 		¿Se ha diseñado el código para ser reutilizable?                                                                         & 4           \\ \hline
 		¿Están incluidas en el diseño la instalación y conversión?                                                               & 3           \\ \hline
@@ -60,29 +60,29 @@ Para este proyecto, se considera que todas las funciones identificadas son de co
 La fórmula para obtener los puntos de función con los factores de ajuste es la siguiente:
 
 \begin{equation} \label{eq:cap4-00.01}
-	\mathrm{PF} = \mathrm{conteo\ total} *  (0.65 + (0.01 * \sum F_i)) 
+	\mathrm{PF} = \mathrm{conteo\ total} *  (0.65 + (0.01 * \sum F_i))
 \end{equation}
-	
+
 De \eqref{eq:cap4-00.01} se deben sustituir los valores del conteo total y los factores de ajuste:
 
 \begin{equation} \label{eq:cap4-00.02}
 	\mathrm{PF} =  133 *  (0.65 + (0.01 * 54))
 \end{equation}
 \begin{equation} \label{eq:cap4-00.03}
-	\mathrm{PF} = 158.27 \approx 159
+	\mathrm{PF} = 158.27 \approx 159 \mathrm{puntos de función ajustados}
 \end{equation}
-	
-		
-De lo anterior, aproximadamente se obtienen \textbf{159} puntos de función; una vez obtenidos utilizando la llamada ``Ball-Park'' o ``Estimación Indicativa'', que es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyecto.
+
+
+De lo anterior, aproximadamente se obtienen \textbf{159} puntos de función ajustados; una vez obtenidos utilizando la llamada ``Ball-Park'' o ``Estimación Indicativa'', que es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyecto.
 
 
 De acuerdo con Carper\cite{abran_applied_2006}, la siguiente ecuación determina el esfuerzo de desarrollo de un proyecto:
 
 
 \begin{equation} \label{eq:cap4-01}
-	\mathrm{Esfuerzo} = (\frac{\mathrm{PF}}{150})*\mathrm{PF}^{0.4} 
+	\mathrm{Esfuerzo} = (\frac{\mathrm{PF}}{150})*\mathrm{PF}^{0.4}
 \end{equation}
-donde \eqref{eq:cap4-01} $\mathrm{PF}$ son puntos de función; al sustituir los valores en \eqref{eq:cap4-01}:
+donde \eqref{eq:cap4-01} $\mathrm{PF}$ son puntos de función ajustados; al sustituir los valores en \eqref{eq:cap4-01}:
 
 \begin{equation} \label{eq:cap4-02}
 	\mathrm{Esfuerzo} = (\frac{159}{150})*159^{0.4}
@@ -90,21 +90,28 @@ donde \eqref{eq:cap4-01} $\mathrm{PF}$ son puntos de función; al sustituir los 
 \begin{equation} \label{eq:cap4-03}
 	\mathrm{Esfuerzo} = 8.05 \; \mathrm{meses}
 \end{equation}
-	
 
 
 
-Los 8.05 meses de \eqref{eq:cap4-03}; considerando un total de 40 horas a la semana de trabajo y 4.34 semanas por mes, el total de horas para el desarrollo y conclusión del proyecto se obtiene de esta manera:
+
+Los 8.05 meses de \eqref{eq:cap4-03}; considerando un total de 40 horas a la semana de trabajo y 4.34 semanas por mes, el total de horas para el desarrollo y conclusión del proyecto se obtiene con la siguiente fórmula:
 
 \begin{equation} \label{eq:cap4-04}
-	\mathrm{Tiempo\; de\; desarrollo} =  40 * 4.34 * 8.05 
+	\mathrm{Tiempo\; de\; desarrollo} =  \mathrm{horas/semana} * \mathrm{semanas/mes} * \mathrm{esfuerzo}
+\end{equation}
+
+al sustituir los valores en \eqref{eq:cap4-04} tenemos:
+
+
+\begin{equation} \label{eq:cap4-05}
+	\mathrm{Tiempo\; de\; desarrollo} =  40 * 4.34 * 8.05
 \end{equation}
 
 \begin{equation} \label{eq:cap4-05}
 	\mathrm{Tiempo\; de\; desarrollo} =  1397.48 \approx 1398\;  \mathrm{horas}
 \end{equation}
 
-	
+
 
 
 
