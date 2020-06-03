@@ -1,70 +1,69 @@
 \subsection{Factibilidad técnica}
 
-Mediante esta fase del estudio se determinará si el equipo de desarrollo cuenta con los recursos técnicos necesarios para la realización del sistema propuesto. Esto se realiza considerando la disponibilidad de los recursos tanto de \textit{hardware}, \textit{software} y recurso humano.
+De acuerdo con Pressman\cite{pressman_software_2005}, este estudio determina si el equipo de desarrollo cuenta con los recursos técnicos necesarios para la realización del sistema propuesto; esto se realiza considerando la disponibilidad de los recursos tanto de \textit{hardware}, \textit{software} y recurso humano.
 
-\subsubsection{Sistema operativo}
+\subsubsection*{Sistema operativo}
+
+De acuerdo con Stallings\cite{stallings_operating_2012}, un sistema operativo es el \textit{software} principal o conjunto de programas de un sistema informático que gestiona los recursos de \textit{hardware} y provee servicios a los programas de aplicación de \textit{software}, ejecutándose en modo privilegiado respecto de los restantes.
+
 
 Este es un elemento importante, ya que debe cumplir con las características de estabilidad, velocidad, seguridad y escalabilidad para soportar la instalación del sistema.
 
 
-A continuación se presentan diferentes alternativas de sistemas operativos que cumplen con las características mencionadas y que son suficientes para albergar el sistema:
+A continuación se presentan diferentes sistemas operativos que cumplen con las características mencionadas y que son suficientes para albergar el sistema:
 
 \begin{itemize}
-    \item Windows server 2019
-    \item Red Hat Entrerprise 8
-    \item Ubuntu server 19.04
+    \item Windows: es un grupo de varias familias de sistemas operativos gráficos patentados, son desarrollados y comercializados por Microsoft; cada familia atiende a un determinado sector de la industria informática\cite{wilson_about_2015}.
+    \item GNU/Linux: es una familia de sistemas operativos tipo Unix de código abierto basados en el núcleo de Linux creado por Linus Torvalds\cite{love_linux_2010}.
 \end{itemize}
 
-\subsubsection{Lenguaje de desarrollo}
+El sistema operativo elegido para el desarrollo de la propuesta de solución es GNU/Linux porque es de libre acceso, es gratuito y los integrantes del equipo tienen experencia con este sistema.
 
-El lenguaje de desarrollo debe de cumplir con las siguientes características:
 
-\begin{itemize}
-    \item Soporte para conexión a base de datos.
-    \item Facilidad para el desarrollo.
-    \item En continua mejora.
-    \item Fácil de administrar.
-    \item Contar con algún \textit{framework} web.
-\end{itemize}
+\subsubsection*{Lenguaje de desarrollo}
+
+De acuerdo con Aaby\cite{aaby_introduction_1996}, un lenguaje de programación es un lenguaje formal (es decir, un lenguaje con reglas gramaticales definidas) que le proporciona a una persona, en este caso el programador, la capacidad de escribir una serie de instrucciones o secuencias de órdenes en forma de algoritmos con el fin de controlar el comportamiento físico o lógico de una computadora, de manera que es posible obtener diversas clases de datos o ejecutar determinadas tareas.
+
+
+Se valora que el lenguaje de programación para el desarrollo de la propuesta de solución debe tener soporte para conexión a base de datos, sea posible usarlo para el desarrollo, sea vigente (que esté en continua mejora), sea fácil de administrar y se integre con algún \textit{framework} web.
+
 
 A continuación se presenta una lista de lenguajes de desarrollo que cumplen dichas características:
 
 \begin{itemize}
-    \item Java
-    \item Python
-    \item C\#
-    \item Ruby
+    \item Java: es un lenguaje de programación de propósito general que está basado en clases, orientado a objetos y diseñado para tener la menor cantidad posible de dependencias de implementación; su objetivo es permitir seguir el  \textit{write once, run anywhere}\cite{joy_java_2000}.
+    \item Python: es un lenguaje de programación interpretado, de alto nivel y de propósito general; la filosofía de diseño de Python enfatiza la legibilidad del código con su uso notable de espacios en blanco significativos; Sus construcciones de lenguaje y su enfoque orientado a objetos tienen como objetivo ayudar a los programadores a escribir código claro y lógico para proyectos de pequeña y gran escala\cite{van_rossum_python_2007}.
+    \item C\#: es un lenguaje de programación multiparadigma de propósito general como imperativo, declarativo, funcional, genérico, orientado a objetos y orientado a componentes\cite{hejlsberg_c_2003}.
+    \item Ruby: es un lenguaje de programación interpretado, de alto nivel y de propósito general; se escribe dinámicamente y utiliza recolección de basura; es compatible con múltiples paradigmas de programación, incluida la programación orientada a objetos y funcional\cite{flanagan_ruby_2008}.
 \end{itemize}
 
-\subsubsection{Sistema gestor de base de datos}
+El lenguaje de programación Python se ha elegido para desarrollar la propuesta de solución; para más detalles revise la sección~\ref{ref:python}.
 
-Este es un factor muy importante, ya que determinará cómo se almacenará la información del sistema, por lo tanto debe cumplir con las siguientes características:
+\subsubsection*{Sistema gestor de base de datos}
 
-\begin{itemize}
-    \item Escalable.
-    \item Seguro.
-    \item Contar con soporte para grandes cantidades de información.
-    \item Contar con soporte para conexión con distintos lenguajes de programación.
-\end{itemize}
+De acuerdo con Connolly\cite{connolly_database_2005}, es un sistema de \textit{software} que permite a los usuarios definir, crear, mantener y controlar el acceso a la base de datos.
+
+
+Este es un factor muy importante, ya que determinará cómo se almacenará la información del sistema, por lo tanto debe ser escalable, seguro, contar con soporte para grandes cantidades de información y soporte para conexión con distintos lenguajes de programación.
 
 
 A continuación se presenta una lista de sistemas gestores de bases de datos que cumplen dichas características:
 
 \begin{itemize}
-    \item MySQL
-    \item MariaDB
-    \item Oracle database
-    \item MongoDB Atlas
-    \item DynamoDB
-    \item Apache Cassandra
+    \item MySQL: es un sistema de gestión de bases de datos relacionales de código abierto\cite{dubois_mysql_1999}.
+    \item MongoDB: es un gestor de bases de datos orientado a documentos y utiliza documentos similares a JSON con esquemas opcionales\cite{banker_mongodb_2011}.
 \end{itemize}
 
-Las características de los equipos de cómputo con los que se dispone actualmente para el desarrollo del sistema se muestran en la tabla \ref{tab:hw_devices}.
+El gestor de base de datos que se ha elegido para desarrollar la propuesta de solución es MongoDB; para más detalles revise la sección~\ref{ref:databases}.
 
-\begin{table}
+
+La tabla \ref{tab:hw_devices} muestra las características de los equipos de cómputo con los que el equipo dispone; la primera columna hace referencia a cada equipo del que se dispone; la siguiente hace referencia a qué elementos contiene y la tercera columna sus especificaciones.
+
+\begin{table}[H]
+    \centering
     \begin{tabular}{|c|c|c|}
         \hline
-        Equipo & Elemento & Capacidad \\ \hline
+        Equipos & Elementos & Especificaciones \\ \hline
         \multirow{3}{*}{Laptop 1} & Memoria RAM & 8 GB \\
         & Almacenamiento & 500 GB HDD \\
         & Procesador & Intel Core i5 6ta gen. \\ \hline
@@ -72,7 +71,7 @@ Las características de los equipos de cómputo con los que se dispone actualmen
         & Almacenamiento & 256 GB SSD \\
         & Procesador & Intel Core i5 8va gen.\\ \hline
     \end{tabular}
-    \caption{Equipo de cómputo}
+    \caption{Equipos de cómputo con los que se cuenta}
     \label{tab:hw_devices}
 \end{table}
 

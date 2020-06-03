@@ -1,17 +1,17 @@
 \subsection{Factibilidad económica}
 
-De acuerdo con Pressman en \textit{Ingeniería de software, un enfoque práctico}\cite{pressman_software_2005}, en su sección de estimación, se utiliza una métrica por puntos de función como se muestra en la tabla \ref{tab:function_point_metrics}. 
+De acuerdo con Pressman\cite{pressman_software_2005}, el punto de función es una ``unidad de medida'' para expresar la cantidad de funcionalidad comercial que un sistema de información (como producto) proporciona a un usuario; los puntos de función se utilizan para calcular una medición de tamaño funcional (FSM) de \textit{software}.
 
+Como señala Pressman en su libro, se utiliza una métrica por puntos de función para realizar una estimación del costo total del proyecto, incluyendo los salarios de los desarrolladores que harán la implementación del sistema, así como los gastos por pagos de servicios que sean necesarios como se muestra en la tabla \ref{tab:function_point_metrics}. 
 
-Es por este medio que se calcula o se realiza una estimación del costo total del proyecto, incluyendo los salarios de los desarrolladores que llevarán a cabo la implementación del sistema, así como los gastos por pagos de servicios que sean necesarios.
-
-\subsubsection{Métricas orientadas a la función}
+\subsubsection*{Métricas orientadas a la función}
 
 
 Para este proyecto, se considera que todas las funciones identificadas son de complejidad media con excepción de las entradas que tienen la complejidad más alta del sistema.
 
 
-\begin{table}
+\begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|l|l|l|l|}
 	\hline
 	\multirow{2}{*}{Parámetro} & \multirow{2}{*}{Cuenta} & \multicolumn{3}{|l|}{Factores de ponderación} & \multirow{2}{*}{Total} \\ \cline{3-5}
@@ -55,56 +55,57 @@ Para este proyecto, se considera que todas las funciones identificadas son de co
 		\end{table}
 
 
-\subsubsection{Puntos de función}
+\subsubsection*{Puntos de función}
 
 La fórmula para obtener los puntos de función con los factores de ajuste es la siguiente:
 
+\begin{equation} \label{eq:cap4-00.01}
+	\mathrm{PF} = \mathrm{conteo\ total} *  (0.65 + (0.01 * \sum F_i)) 
+\end{equation}
+	
+De \eqref{eq:cap4-00.01} se deben sustituir los valores del conteo total y los factores de ajuste:
 
-\begin{center}
-	$
-	PF = conteo\ total *  (0.65 + (0.01 * \sum Fi))
-	$
-
-
-	Se deben sustituir los valores del conteo total y los factores de ajuste.
-
-
-	\begin{equation}
-		PF =  133 *  (0.65 + (0.01 * 54))
-		PF = 158.27 \approx 159
-	\end{equation}
-\end{center}
-
-De lo anterior, aproximadamente se obtienen \textbf{159} puntos de función. Una vez obtenidos utilizando la llamada “Ball-Park” o “Estimación Indicativa“, que es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyecto. El autor del artículo \textit{Applied Software Measurement}\cite{abran_applied_2006}, Carper Jones, propone la siguiente ecuación para determinar el esfuerzo de desarrollo de un proyecto:
+\begin{equation} \label{eq:cap4-00.02}
+	\mathrm{PF} =  133 *  (0.65 + (0.01 * 54))
+\end{equation}
+\begin{equation} \label{eq:cap4-00.03}
+	\mathrm{PF} = 158.27 \approx 159
+\end{equation}
+	
+		
+De lo anterior, aproximadamente se obtienen \textbf{159} puntos de función; una vez obtenidos utilizando la llamada ``Ball-Park'' o ``Estimación Indicativa'', que es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyecto.
 
 
-\begin{center}
-	$
-	Esfuerzo = (\frac{PF}{150})*PF^{0.4}
-	$
+De acuerdo con Carper\cite{abran_applied_2006}, la siguiente ecuación determina el esfuerzo de desarrollo de un proyecto:
 
 
-	Donde:
+\begin{equation} \label{eq:cap4-01}
+	\mathrm{Esfuerzo} = (\frac{\mathrm{PF}}{150})*\mathrm{PF}^{0.4} 
+\end{equation}
+donde \eqref{eq:cap4-01} $\mathrm{PF}$ son puntos de función; al sustituir los valores en \eqref{eq:cap4-01}:
+
+\begin{equation} \label{eq:cap4-02}
+	\mathrm{Esfuerzo} = (\frac{159}{150})*159^{0.4}
+\end{equation}
+\begin{equation} \label{eq:cap4-03}
+	\mathrm{Esfuerzo} = 8.05 \; \mathrm{meses}
+\end{equation}
+	
 
 
-	PF : Puntos de función.
 
+Los 8.05 meses de \eqref{eq:cap4-03}; considerando un total de 40 horas a la semana de trabajo y 4.34 semanas por mes, el total de horas para el desarrollo y conclusión del proyecto se obtiene de esta manera:
 
-	Al sustituir los valores, el resultado es:
+\begin{equation} \label{eq:cap4-04}
+	\mathrm{Tiempo\; de\; desarrollo} =  40 * 4.34 * 8.05 
+\end{equation}
 
-	$
-	Esfuerzo = (\frac{159}{150})*159^{0.4}
-	Esfuerzo = 8.05 meses
-	$
-\end{center}
+\begin{equation} \label{eq:cap4-05}
+	\mathrm{Tiempo\; de\; desarrollo} =  1397.48 \approx 1398\;  \mathrm{horas}
+\end{equation}
 
+	
 
-De estos 8.05 meses, considerando un total de 40 horas a la semana de trabajo y 4.34 semanas por mes, el total de horas para el desarrollo y conclusión del proyecto se obtiene de esta manera:
-
-\begin{center}
-	Tiempo de desarrollo = $ 40 * 4.34 * 8.05 $
-	Tiempo de desarrollo = $ 1397.48 \approx 1398 $ horas
-\end{center}
 
 
 Por ejemplo, una sola persona trabajando en el desarrollo del proyecto debería invertir 1398 horas con una jornada de 8 horas diarias de lunes a viernes hasta su finalización, por lo que si un equipo de desarrollo es de 2 personas con un horario de lunes a viernes de 4 horas diarias, el proyecto concluiría en 8.05 meses.
