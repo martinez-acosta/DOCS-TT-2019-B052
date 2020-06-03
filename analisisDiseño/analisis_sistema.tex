@@ -1,0 +1,363 @@
+\section{Análisis del sistema}
+
+\subsection{Historias de usuario}
+
+De acuerdo con Scrum México\cite{scrum_mexico_scrum_2020}, las historias de usuario es la técnica por la que el usuario especifica de manera general los requerimientos que el sistema debe cumplir.
+
+
+Normalmente estas redacciones se llevan a cabo en tarjetas de papel donde se describen brevemente las funciones que el producto final debe poseer, ya sean requisitos fucionales o no.
+
+
+El tratamiento de las historias de usuario es flexible y dinámico, cada una de ellas es lo suficientemente detallada y delimitada para que el equipo de desarrollo pueda implementarla durante la duración del \textit{sprint}.
+
+
+Es habitual que se siga una plantilla para estas tarjetas, como la que se expone a continuación:
+
+\begin{itemize}
+	\item Como \textbf{<Usuario>}
+	\item Quiero \textbf{<algún objetivo>}
+	\item Para \textbf{<motivo>}
+\end{itemize}
+
+
+Una de sus grandes ventajas, dado el caso de que un usuario no sea lo suficientemente detallista con la historia, es que esta se puede partir en historias más pequeñas antes de que el equipo empiece a trabajar en ella.
+
+
+Este es un ejemplo de historia de usuario para el desarrollo:
+
+\begin{itemize}
+	\item Como usuario,
+	\item quiero poder ingresar al sistema con mi correo y contraseña
+	\item para tener acceso a sus funciones.
+\end{itemize}
+
+
+Otra forma de darle detalle a las historias de usuario es mediante el añadido de un criterio de aceptación. Un criterio de aceptación es una prueba que será cierta cuando el equipo de desarrollo complete la descripción de la tarjeta.
+
+
+A continuación se listan las principales historias de usuario que se consideraron para el desarrollo de la propuesta de solución; tenga en cuenta que algunas de ellas tienen criterios de aceptación pero en otras no se consideró necesarias porque son explícitamente claras.
+
+
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 1
+	\item Como usuario
+	\item quiero poder ingresar al sistema con mi correo y contraseña
+	\item para tener acceso a sus funciones.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario recibirá un correo electrónico de confirmación de su alta en el sistema con el correo y contraseña que ingresó para tenerlos de respaldo.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 2
+	\item Como usuario
+	\item quiero poder recuperar mi contraseña en caso de olvidarla
+	\item para no perder el trabajo realizado en el sistema.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario podrá ingresar una nueva contraseña siempre y cuando recuerde el correo electrónico con el que se dio de alta en el sistema.
+		\item al ingresar una nueva contraseña, recibirá un correo de confirmación del cambio de contraseña y sus datos permanecerán intactos.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 3
+	\item Como usuario del sistema, quiero darme de alta con una contraseña facil de recordar
+	\item pero que esté segura en la base de datos
+	\item para no tener comprometidos los diagramas que yo pueda generar en el sistema.
+
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item asegurarse que el usuario ingrese una contraseña de al menos 8 caracteres.
+		\item se le solicitará al usuario que ingrese 2 veces la misma contraseña para asegurarse que le es fácil recordarla y que efectivamente es la misma.
+		\item antes de guardar la contraseña, esta deberá pasar por un método que la haga ilegible para el usuario (algún algoritmo de digestión o cifrado).
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 4
+	\item Como usuario quiero poder crear un diagrama ER arrastrando y soltando elementos de una “paleta”
+	\item para hacerlo de manera mas fácil e intuitiva.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario podrá empezar un nuevo diagrama al seleccionar la opción de “diagramador ER”.
+		\item tendrá a su disposición una paleta con los elementos permitidos en un diagrama ER estándar.
+		\item podrá arrastrar y soltar los elementos de la paleta a un área delimitada para empezar con el diseño de su diagrama.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 5
+	\item Como usuario quiero poder guardar mi último trabajo realizado en el diagramador ER
+	\item para poder consultarlo en otro momento.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item dispondrá de un botón para poder guardar en la base de datos el diagrama que esté creando o editando.
+		\item antes de almacenar el diagrama en el \textit{canvas} o zona de diagramado, se le mostrará un mensaje de confirmación para guardar su diagrama actual.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 6
+	\item Como usuario me gustaría poder ver el último trabajo que realicé
+	\item cuando seleccione la opción “Entidad-Relación”
+	\item para poder modificar el diseño.
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 7
+	\item Como usuario quiero tener la opción de cargar un diagrama a partir de un archivo
+	\item para hacer modificación de dicho diagrama y guardarlo de ser necesario.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario tendra un botón “cargar” en el menú del diagramador ER para poder importar un archivo con extensión .json.
+		\item al importar el archivo, este pasará por un proceso de validación para asegurarse que es un archivo .json válido.
+		\item durante el proceso de validación, se verificará que el contenido del archivo es un diagrama compatible con la estructura de los generados por el diagramador ER.
+		\item al contener información compatible, se mostrará en la zona de diagramado el contenido del archivo.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 8
+	\item Como usuario quiero poder descargar el diagrama que esté visible en la página web
+	\item para poder distribuirlo como yo desee.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario dispondrá de un botón “Descargar” en el diagramador ER para obtener un archivo con el contenido del diagrama visible en la zona de diagramado.
+		\item el archivo generado será de extensión .json con la información necesaria para que el diagramador pueda cargarlo en otro momento.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 9
+	\item Como usuario quiero tener una forma de validar mi diagrama ER
+	\item porque es importante saber si el diagrama que estoy creando es un diagrama válido del modelo ER.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario tendrá disponible un botón que al darle clic iniciará un proceso de validación del diagrama actual en la zona de diagramado.
+		\item al término del proceso de validación, se le mostrará un mensaje al usuario indicando si el diagrama cumple o no las reglas del modelo ER.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 10
+	\item Como usuario, en caso de tener un diagrama ER válido,
+	\item me gustaría poder tranformar el diagrama ER en su versión del modelo relacional
+	\item para poder ver el equivalente del diagrama ER en el modelo Relacional.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario dispondrá de la opción de tranformar al modelo relacional solamente después de haber validado que el diagrama ER cumple con las reglas.
+		\item posterior a la validación, se le mostrará al usuario un mensaje de confirmación y un botón para disparar el proceso de transformación a su equivalente relacional.
+		\item al terminar el proceso de transformación equivalente, se le redirijira al menú “Relacional” donde podrá visualizar el equivalente al modelo relacional.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 11
+	\item Como usuario, después de observar el diagrama relacional,
+	\item quiero poder obtener las sentencias SQL equivalentes
+	\item para poder crear el esquema de base de datos relacional en un SBGB.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item las sentencias SQl solo podrán ser descargadas en el menú “Relacional” a un archivo con extension .sql dando clic a un botón con la leyenda “Descargar SQL”.
+		\item solo se obtendrán las sentencias SQL de un diagrama ER creado y/o validado por el sistema.
+	\end{itemize}
+\end{itemize}
+%\noindent\rule{\textwidth}{1pt}
+%\begin{itemize}
+	%\item N.° 12
+	%\item Como usuario, una vez observado el equivalente relacional del diagrama ER,
+	%\item quiero poder iniciar el proceso de transformación al modelo no relacional
+	%\item para poder observar el cambio entre modelos.
+	%\item Criterios de aceptación:
+	%\begin{itemize}
+		%\item al dar clic al botón “Transformar a NoSQl”, el usuario iniciará el proceso para obtener el equivalente del modelo relacional al modelo NR.
+		%\item al término del proceso de transformación, se le redirigirá al menú “No Relacional” donde observará el modelo NoSQL equivalente a su diagrama ER.
+%	\end{itemize}
+%\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 13
+	\item Como usuario quiero poder transformar mi diagrama ER en su equivalente modelo concepcual NoSQL
+	\item para poder observar el cambio entre modelos.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario dispondrá de la opción de tranformar al modelo NoSQL solamente después de haber validado que el diagrama ER cumple con las reglas.
+		\item posterior a la validación, se le mostrará al usuario un mensaje de confirmación y un botón para disparar el proceso de transformación al modelo conceptual NoSQL.
+		\item una vez validado el diagrama ER e iniciado el proceso para la transformación al modelo conceptual NoSQL, se le indicará al usuario que el proceso tardará un tiempo.
+		\item al término del proceso de transformación, se le redirigirá al menú “No Relacional” donde observará el modelo conceptual NoSQL equivalente a su diagrama ER.
+	\end{itemize}
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 14
+	\item Como usuario quiero poder obtener el \textit{script} desde el modelo conceptual NoSQL
+	\item para poder generar la base de datos en un gestor de base de datos NoSQL orientado a documentos.
+	\item Criterios de aceptación:
+	\begin{itemize}
+		\item el usuario dispondrá de la opción de obtener el \textit{script} solamente después de haber validado que el diagrama ER cumple con las reglas.
+		\item Posterior a la validación, se le mostrará al usuario un mensaje de confirmación y un botón para disparar el proceso de generación de \textit{scripts} para el gestor de base de datos orientado a documentos.
+		\item una vez empezado el proceso de generación de \textit{scripts}, se le indicará al usuario que el proceso tardará un tiempo.
+		\item al término del proceso de transformación, se le redirigirá al menú “No Relacional” donde observará los \textit{scripts} NoSQL.
+	\end{itemize}
+\end{itemize}
+
+\noindent\rule{\textwidth}{1pt}
+\begin{itemize}
+	\item N.° 15
+	\item Como usuario me gustaría tener un reporte técnico y
+	\item quiero que la redacción sea legible y referenciada
+	\item para compartirlo en el futuro con equipos de desarrollo y ver la posibilidad de agregar nuevas funciones al sistema.
+\end{itemize}
+\noindent\rule{\textwidth}{1pt}
+
+
+
+
+Teniendo en cuenta que se está trabajando con una metodología ágil, estas historias de usuario pueden aumentar o en su defecto dividirse en historias más pequeñas dependiendo de los criterios del equipo de desarrollo durante el proceso de la implementación de cada historia.
+
+
+
+
+\subsection{Lista de producto}
+
+De acuerdo a Trigas Gallego\cite{manuel_trigas_gallego_metodologiscrum_2020}, la lista de producto es una lista ordenada de todo lo que sería necesario en el producto y es la fuente de requisitos para cualquier cambio a realizarse en el mismo. Enumera todas las características, funcionalidades, requisitos, mejoras y correcciones que constituyen cambios a realizarse en el producto para entregas futuras.
+
+
+Se considera la siguiente lista como la lista de producto con las tareas necesarias para cumplir con todas las historias de usuario mencionadas en la sección anterior, considerando que es posible que cambien conforme avancen los \textit{sprints} y así añadir nuevas tareas.
+
+
+\begin{longtable}{ p{2cm} | p{10cm} | p{2cm} }
+
+	\hline
+	N.° de Historia de Usuario & Requerimiento/Tarea & Responsable \\[0.5cm]
+	\hline
+	\hline
+
+	\endfirsthead
+
+	\multicolumn{3}{c}{Continuación de tabla de lista de producto }\\
+	\hline
+	\hline
+	\endhead
+
+	\hline
+	\hline
+	\caption{Lista de producto}
+	\endlastfoot
+
+	% template row table
+	% \centering & & & \\[0.5cm]
+	% \hline
+
+	\centering 14 & Investigación de bases de datos relacionales. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 14 & Redacción y selección de las tecnologías a utilizar para el desarrollo de la plataforma.  & Eduardo \\[0.5cm]
+	\hline
+	\centering 14 & Investigación de bases de datos relacionales.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 14 & Redacción de bases de datos relacionales en el documento técnico.  & Eduardo \\[0.5cm]
+	\hline
+	\centering 14 & Investigación de bases de datos no relacionales.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 14 & Redacción de bases de datos no relacionales en el documento técnico.  & Eduardo \\[0.5cm]
+	\hline
+	\centering 14 & Investigación y selección del modelo de base de datos no relacional a utilizar junto a las tecnologías a utilizar.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 14 & Análisis y diseño de la aquitectura web.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 1 & Desarrollo de la estructura básica del \textit{backend}.  & Omar \\[0.5cm]
+	\hline
+	\centering 1 & Desarrollo de la estructura básica del \textit{frontend}.  & Eduardo \\[0.5cm]
+	\hline
+	\centering 1 & Agregar servicio \textit{backend} para registrar un usuario. & Omar \\[0.5cm]
+	\hline
+	\centering 1 & Agregar formulario para captura de datos de registro de un usuario en el \textit{frontend}. & Eduardo \\[0.5cm]
+	\hline
+	\centering 2 & Agregar servicio \textit{backend} para recuperar contraseña del usuario. & Omar \\[0.5cm]
+	\hline
+	\centering 2 & Agregar servicio \textit{backend} para envío de correo al usuario registrado y de recuperación de contraseña. & Omar \\[0.5cm]
+	\hline
+	\centering 2 & Agregar vista con formulario para recuperación de contraseña del usuario en el \textit{frontend}. & Eduardo \\[0.5cm]
+	\hline
+	\centering 2 & Integración de los servicios de registro y recuperación de contraseña en el \textit{frontend}. & Eduardo \\[0.5cm]
+	\hline
+	\centering 3 & Agregar servicio \textit{backend} para hacer ilegible la contraseña del usuario en la base de datos. & Omar \\[0.5cm]
+	\hline
+	\centering 4 & Planteamiento de escenarios de los esquemas entidad-relación.  & Eduardo \\[0.5cm]
+	\hline
+	\centering 4 & Agregar a la interfaz gráfica de la aplicación web el menú “Entidad-Relación”. & Eduardo \\[0.5cm]
+	\hline
+	\centering 4 & Agregar íconos de los elementos basicos de un diagrama ER en el diagramador. & Eduardo \\[0.5cm]
+	\hline
+	\centering 5 & Agregar servicio \textit{backend} para guardar un diagrama ER en formato JSON en la base de datos e integrarlo al \textit{frontend}. & Omar \\[0.5cm]
+	\hline
+	\centering 5 & Agregar servicio \textit{backend} para recuperar el diagrama guardado del usuario de la base de datos y regresarlo en formato JSON.  & Omar \\[0.5cm]
+	\hline
+	\centering 6 & Recuperar el último diagrama del usuario del \textit{backend} y monstrarlo en el \textit{frontend}. & Eduardo \\[0.5cm]
+	\hline
+	\centering 6 & Manejar el estado de la intefaz web para no perder el diagrama ER que está editando el usuario. & Eduardo \\[0.5cm]
+	\hline
+	\centering 6 & Definición de las reglas del modelo entidad-relación. & Eduardo \\[0.5cm]
+	\hline
+	\centering 4 & Implementar la edición de diagramas ER en el \textit{frontend}.  & Eduardo \\[0.5cm]
+	\hline
+	\centering 7 & Habilitar la carga de un archivo en la aplicación web.  & Omar \\[0.5cm]
+	\hline
+	\centering 7 & Agregar la función para validar el contenido del archivo .json y pintarlo en la zona de diagramado. & Eduardo \\[0.5cm]
+	\hline
+	\centering 8 & Agregar la descarga del diagrama visible en la zona de diagramado a un archivo .json. & Eduardo \\[0.5cm]
+	\hline
+	\centering 9 & Agregar botón de validar al \textit{frontend} y mostrar el \textit{loader} mientras se procesa el diagrama ER. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 9 & Agregar servicio \textit{backend} para la validación del diagrama entidad-relación. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 9 & implementación de algoritmo para validación del diagrama ER en el \textit{backend}. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 9 & Pruebas de captura de distintos diagramas entidad-relación.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 9 & Pruebas para validar el algoritmo de validación. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 10 & Agregar servicio al \textit{backend} para transformación del esquema entidad-relación al modelo relacional.  & Omar \\[0.5cm]
+	\hline
+	\centering 10 & Implementación del algoritmo de transformación ER -> relacional & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 10 & Agregar menú relacional a la intefaz gráfica. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 10 & Prueba de transformación de distintos diagramas ER al modelo relacional. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 10 & Visualización de la transformación del modelo ER al modelo relacional. & Eduardo \\[0.5cm]
+	\hline
+	\centering 14 & Revision de la redacción del reporte técnico para presentación de TT1  & Eduardo \\[0.5cm]
+	\hline
+	\centering 11 & Agregar servicio \textit{backend} para la descarga del archivo .sql con las sentencias equivalentes. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 11 & Pruebas de coherencia de las sentencias equivalentes de distintos en el SGBD. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 12 & Definición de las reglas de transformación al modelo NoSQL.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 12 & Pruebas de distintos escenarios del modelo relacional al modelo NoSQL.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 12 & Agregar servicio al \textit{backend} para transformación del esquema relacional al modelo NoSQL.  & Omar \\[0.5cm]
+	\hline
+	\centering 12 & Agregar servicio al \textit{backend} para guardar el modelo NoSQL en la base de datos.  & Omar \\[0.5cm]
+	\hline
+	\centering 12 & Agregar menú no relacional a la intefaz gráfica. & Omar \\[0.5cm]
+	\hline
+	\centering 12 & Implementación del algortimo de transformación de modelo relacional al modelo conceptual NoSQL. & Eduardo \\[0.5cm]
+	\hline
+	\centering 12 & Comprobación de la coherencia de la transformación entre modelos relacional a no relacional.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 13 & Agregar servicio \textit{backend} para transformación del modelo ER al modelo no relacional. & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 13 & Ajustar la interfaz del menú ER para mostrar mensaje de tranformación al modelo NoSQL. & Omar \\[0.5cm]
+	\hline
+	\centering 13 & Manejar el estado del diagrama ER y redireccionar al menú no relacional al terminar la tranformación. & Eduardo \\[0.5cm]
+	\hline
+	\centering 13 & Pruebas de caso de estudio para verificar la correcta transformación y coherencia de los datos.  & Eduardo/Omar \\[0.5cm]
+	\hline
+	\centering 14 & Revisión de la redacción del reporte técnico para presentación de TT2 & Eduardo \\[0.5cm]
+	\hline
+\end{longtable}
