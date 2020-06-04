@@ -1,7 +1,7 @@
 \subsubsection{Modelo entidad-relación a relacional}
-Elmasri\cite{ramez_elmasri_fundamentos_nodate} propone un algoritmo en siete pasos para convertir las estructuras de un modelo ER básico con tipos de entidades fuertes y débiles, relaciones binarias con distintas restricciones estructurales, relaciones n-ary y atributos (simples, compuestos y multivalor) en relaciones.
+De acuerdo con la propuesta de Elmasri\cite{ramez_elmasri_fundamentos_nodate}, un algoritmo en siete pasos basta para convertir las estructuras de un modelo ER básico con tipos de entidades fuertes y débiles, relaciones binarias con distintas restricciones estructurales, relaciones de grado n y atributos (simples, compuestos y multivalor) en relaciones; a continuación se explica cada paso del algoritmo:
 
-\subsection*{Paso 1: Mapeado de los tipos de entidad regulares}
+\paragraph*{Paso 1: Mapeado de los tipos de entidad regulares}
 Por cada entidad (fuerte) regular $E$ del esquema ER cree una relación $R$ que incluya todos los atributos simples de $E$.
 
 
@@ -13,11 +13,7 @@ Si la clave elegida de $E$ es compuesta, el conjunto de los atributos simples qu
 
 Si durante el diseño conceptual se identificaron varias claves para $E$, la información que describe los atributos que forman cada clave adicional conserva su orden para especificar las claves (únicas) secundarias de la relación $R$. 
 
-
-El conocimiento sobre las claves también es necesario para la indexación y otros tipos de análisis.
-
-
-\subsection*{Paso 2: Mapeado de los tipos de entidad débiles}
+\paragraph*{Paso 2: Mapeado de los tipos de entidad débiles}
 Por cada tipo de entidad débil $W$ del esquema ER con el tipo de entidad propietario $E$, cree una relación $R$ e incluya todos los atributos simples (o componentes simples de los atributos compuestos) de $W$ como atributos de $R$. 
 
 
@@ -30,67 +26,65 @@ La clave principal de $R$ es la combinación de las claves principales del o de 
 Si hay un tipo de entidad débil $E_{2}$ cuyo propietario también es un tipo de entidad débil $E_{1}$, $E_{1}$ debe asignarse antes que $E_{2}$ para determinar primero su clave principal.
 
 
-\subsection*{Paso 3: Mapeado de los tipos de relación 1:1 binaria}
+\paragraph*{Paso 3: Mapeado de los tipos de relación 1:1 binaria}
 
-Por cada tipo de relación 1:1 binaria $R$ del esquema ER, identifique las relaciones $S$ y $T$ que corresponden a los tipos de entidad que participan en $R$. Hay tres metodologías posibles: (1) la metodología de la foreign key, (2) la metodología de la relación mezclada y (3) la metodología de referencia cruzada o relación de relación. La primera metodología es la más útil y la que debe seguirse salvo que se den ciertas condiciones especiales, como las que explicamos a continuación:
+Por cada tipo de relación 1:1 binaria $R$ del esquema ER, identifique las relaciones $S$ y $T$ que corresponden a los tipos de entidad que participan en $R$; hay tres metodologías posibles: (1) la metodología de la foreign key, (2) la metodología de la relación mezclada y (3) la metodología de referencia cruzada o relación de relación; la primera metodología es la más útil y la que debe seguirse salvo que se den ciertas condiciones especiales, como las que se explican a continuación:
 
 \begin{enumerate}
     \renewcommand\labelenumi{\bfseries\theenumi}
-    \item \textbf{Metodología de la \textit{foreign key}}: seleccione una de las relaciones (por ejemplo, $S$) e incluya como \textit{foreign key} en $S$ la clave principal de $T$. Lo mejor es elegir un tipo de entidad con participación total en $R$ en el papel de $S$. Incluya todos los tributos simples (o los componentes simples de los atributos compuestos) del tipo de relación 1:1 $R$ como atributos de $S$.
+    \item \textbf{Metodología de la \textit{foreign key}}: seleccione una de las relaciones (por ejemplo, $S$) e incluya como \textit{foreign key} en $S$ la clave principal de $T$; lo mejor es elegir un tipo de entidad con participación total en $R$ en el papel de $S$. Incluya todos los tributos simples (o los componentes simples de los atributos compuestos) del tipo de relación 1:1 $R$ como atributos de $S$.
     
-    \item \textbf{Metodología de la relación mezclada}:  una asignación alternativa de un tipo de relación 1:1 es posible al mezclar los dos tipos de entidad y la relación en una sola relación. Esto puede ser apropiado cuando las dos participaciones son totales.
+    \item \textbf{Metodología de la relación mezclada}:  una asignación alternativa de un tipo de relación 1:1 es posible al mezclar los dos tipos de entidad y la relación en una sola relación. 
     
-    \item \textbf{Metodología de referencia cruzada o relación de relación}: consiste en configurar una tercera relación $R$ con el propósito de crear una referencia cruzada de las claves principales de las relaciones $S$ y $T$ que representan los tipos de entidad. Como veremos, esta metodología es necesaria para las relaciones $M:N$ binarias. La relación $R$ se denomina relación de relación (y, en algunas ocasiones, tabla de búsqueda), porque cada tupla de $R$ representa una instancia de relación que relaciona una tupla de $S$ con otra de $T$.
+    \item \textbf{Metodología de referencia cruzada o relación de relación}: consiste en configurar una tercera relación $R$ con el propósito de crear una referencia cruzada de las claves principales de las relaciones $S$ y $T$ que representan los tipos de entidad; como se verá, esta metodología es necesaria para las relaciones M:N binarias; la relación $R$ se denomina relación de relación (y, en algunas ocasiones, tabla de búsqueda), porque cada tupla de $R$ representa una instancia de relación que relaciona una tupla de $S$ con otra de $T$.
 \end{enumerate}
 
-\subsection*{Paso 4: Mapeado de tipos de relaciones 1:N binarias}
-Por cada relación $1:N$ binaria regular $R$, identifique la relación $S$ que representa el tipo de entidad participante en el lado $N$ del tipo de relación. 
+\paragraph*{Paso 4: Mapeado de tipos de relaciones 1:N binarias}
+Por cada relación 1:N binaria regular $R$, identifique la relación $S$ que representa el tipo de entidad participante en el lado $N$ del tipo de relación. 
 
 
-Incluya como \textit{foreign key} en $S$ la clave principal de la relación $T$ que representa el otro tipo de entidad participante en $R$; hacemos esto porque cada instancia de entidad en el lado $N$ está relacionada, a lo sumo, con una instancia de entidad del lado 1 del tipo de relación. 
+Incluya como \textit{foreign key} en $S$ la clave principal de la relación $T$ que representa el otro tipo de entidad participante en $R$, porque cada instancia de entidad en el lado $N$ está relacionada, a lo sumo, con una instancia de entidad del lado 1 del tipo de relación. 
 
 
-Incluya cualesquiera atributos simples (o componentes simples de los atributos compuestos) del tipo de relación $1:N$ como atributos de $S$.
+Incluya cualesquiera atributos simples (o componentes simples de los atributos compuestos) del tipo de relación 1:N como atributos de $S$.
 
 
 De nuevo, una metodología alternativa es la opción de relación de relación (referencia cruzada), como en el
 caso de las relaciones 1:1 binarias. 
 
 
-Creamos una relación $R$ separada cuyos atributos son las claves de $S$ y $T$, y cuya clave principal es la misma que la clave de $S$. Esta opción puede utilizarse si pocas tuplas de $S$ participan en la relación para evitar excesivos valores NULL en la \textit{foreign key}.
+Se crea una relación $R$ separada cuyos atributos son las claves de $S$ y $T$, y cuya clave principal es la misma que la clave de $S$; esta opción puede utilizarse si pocas tuplas de $S$ participan en la relación para evitar excesivos valores nulos en la \textit{foreign key}.
 
 
-\subsection*{Paso 5: Mapeado de tipos de relaciones M:N binarias}
+\paragraph*{Paso 5: Mapeado de tipos de relaciones M:N binarias}
 
-Por cada tipo de relación $M:N$ binaria $R$ cree una nueva relación $S$ para representar a R.
+Por cada tipo de relación M:N binaria $R$ cree una nueva relación $S$ para representar a R.
 
 
 Incluya como atributos de la \textit{foreign key} en $S$ las claves principales de las relaciones que representan los tipos de entidad participantes; su combinación formará la clave principal de $S$.
 
 
-Incluya también cualesquiera atributos simples del tipo de relación $M:N$ (o los componentes simples de los atributos compuestos) como atributos de $S$.
+Incluya también cualesquiera atributos simples del tipo de relación M:N (o los componentes simples de los atributos compuestos) como atributos de $S$.
 
 
-No podemos representar un tipo de relación $M:N$ con un atributo de \textit{foreign key} en una de las relaciones participantes (como hicimos para los tipos de relación $1:1$ o $1:N$) debido a la razón de cardinalidad $M:N$; debemos crear una relación de relación $S$ separada.
+No es posible representar un tipo de relación M:N con un atributo de \textit{foreign key} en una de las relaciones participantes (como se hizo para los tipos de relación 1:1 o 1:N) debido a la razón de cardinalidad M:N; se deben crear una relación de relación $S$ separada.
 
-Siempre podemos asignar las relaciones $1:1$ o $1:N$ de un modo similar a las relaciones $M:N$ utilizando la metodología de la referencia cruzada (relación de relación), como explicamos anteriormente. 
+Siempre es posible asignar relaciones 1:1 o 1:N de un modo similar a las relaciones M:N utilizando la metodología de la referencia cruzada (relación de relación). 
 
 
-Esta alternativa es particularmente útil cuando existen pocas instancias de relación, a fin de evitar valores NULL en las \textit{foreign keys}.
+Esta alternativa es particularmente útil cuando existen pocas instancias de relación, a fin de evitar valores nulos en las \textit{foreign keys}.
 
 
 En este caso, la clave principal de la relación de relación sólo será una de las \textit{foreign keys} que hace referencia a las relaciones de entidad participantes. 
 
 
-Para una relación $1:N$, la clave principal de la relación de relación será la \textit{foreign key} que hace referencia a la relación de la entidad en el lado $N$.
+Para una relación 1:N, la clave principal de la relación de relación será la \textit{foreign key} que hace referencia a la relación de la entidad en el lado $N$.
 
 
-En una relación $1:1$, cada \textit{foreign key} se puede utilizar como la clave principal de la relación de relación, siempre y cuando no haya entradas NULL en la relación.
+En una relación 1:1, cada \textit{foreign key} es posible de utilizar como la clave principal de la relación de relación, siempre y cuando no haya entradas nulas en la relación.
 
 
-
-
-\subsection*{Paso 6: Mapeado de atributos multivalor}
+\paragraph*{Paso 6: Mapeado de atributos multivalor}
 
 Por cada atributo multivalor $A$, cree una nueva relación $R$.
 
@@ -98,17 +92,17 @@ Por cada atributo multivalor $A$, cree una nueva relación $R$.
 Esta relación incluirá un atributo correspondiente a $A$, más el atributo clave principal $K$ (como \textit{foreign key} en $R$) de la relación que representa el tipo de entidad o tipo de relación que tiene $A$ como un atributo.
 
 
-La clave principal de $R$ es la combinación de $A$ y $K$. Si el atributo multivalor es compuesto, incluimos sus componentes simples.
+La clave principal de $R$ es la combinación de $A$ y $K$; si el atributo multivalor es compuesto, se incluyen sus componentes simples.
 
 
-\subsection*{Paso 7: Mapeado de los tipos de relación n-ary}
-Por cada tipo de relación n-ary $R$, donde $n > 2$, cree una nueva relación $S$ para representar $R$.
+\paragraph*{Paso 7: Mapeado de los tipos de relación de grado n}
+Por cada tipo de relación de grado n $R$, donde $n > 2$, cree una nueva relación $S$ para representar $R$.
 
 
 Incluya como atributos de la \textit{foreign key} en $S$ las claves principales de las relaciones que representan los tipos de entidad participantes. 
 
 
-Incluya también cualesquiera atributos simples del tipo de relación n-ary (o los componentes simples de los atributos compuestos) como atributos de $S$.
+Incluya también cualesquiera atributos simples del tipo de relación de grado n (o los componentes simples de los atributos compuestos) como atributos de $S$.
 
 
 Normalmente, la clave principal de $S$ es una combinación de todas las \textit{foreign keys} que hacen referencia a las relaciones que representan los tipos de entidad participantes.
@@ -117,31 +111,18 @@ Normalmente, la clave principal de $S$ es una combinación de todas las \textit{
 No obstante, si las restricciones de cardinalidad en cualquiera de los tipos de entidad $E$ que participan en $R$ es 1, entonces la clave principal de $S$ no debe incluir el atributo de la \textit{foreign key} que hace referencia a la relación $E'$ correspondiente a $E$.
 
 \subsection*{Correspondencia entre los modelos ER y relacional}
-\begin{center}
-\begin{longtable}{l l l|}
-    \caption{Correspondencia entre los modelos ER y relacional.} \label{tab:long} \\
-    
-    \hline \multicolumn{1}{c}{\textbf{Modelo entidad-relación}} & \multicolumn{1}{c}{\textbf{Modelo relacional}} \\ \hline 
-    \endfirsthead
-    
-    \multicolumn{2}{c}%
-    {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
-    \hline \multicolumn{1}{c}{\textbf{Modelo entidad-relación}} & \multicolumn{1}{c}{\textbf{Modelo relacional}} \\ \hline 
-    \endhead
-    
-    \endfoot
-    
-    \hline %\hline
-    \endlastfoot
-    
-    Tipo de entidad & Relación de entidad\\ \hline
-    Tipo de relación $1\colon 1$ o $1\colon N$ & \textit{foreign key} (o relación de relación)\\ \hline
-    Tipo de relación $M\colon N$ & Relación de relación y dos \textit{foreign keys}\\ \hline
-    Tipo de relación n-ary & Relación de relación y $n$ \textit{foreign keys}\\ \hline
-    Atributo simple & Atributo\\ \hline
-    Atributo compuesto & Conjunto de atributos simples\\ \hline
-    Atributo multivalor & Relación y \textit{foreign key}\\ \hline
-    Conjunto de valores & Dominio\\ \hline
-    Atributo clave & Clave principal (o secundaria)\\
-    \end{longtable}
-\end{center}
+
+%\begin{tabular}{l l }[H]
+%    \centering
+%    \hline \multicolumn{1}{c}{\textbf{Modelo entidad-relación}} & \multicolumn{1}{c}{\textbf{Modelo relacional}} \\ 
+%    Tipo de entidad & Relación de entidad\\ \hline
+%    Tipo de relación $1\colon 1$ o $1\colon N$ & \textit{foreign key} (o relación de relación)\\ \hline
+%    Tipo de relación $M\colon N$ & Relación de relación y dos \textit{foreign keys}\\ \hline
+%    Tipo de relación de grado n & Relación de relación y $n$ \textit{foreign keys}\\ \hline
+%    Atributo simple & Atributo\\ \hline
+%    Atributo compuesto & Conjunto de atributos simples\\ \hline
+%    Atributo multivalor & Relación y \textit{foreign key}\\ \hline
+%    Conjunto de valores & Dominio\\ \hline
+%    Atributo clave & Clave principal (o secundaria)\\
+%    \caption{Correspondencia entre los modelos ER y relacional.} \label{tab:modelos-er-relacional} \\
+%\end{tabular}

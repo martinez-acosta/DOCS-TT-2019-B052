@@ -46,6 +46,33 @@ Para responder estas preguntas se expone la factibilidad técnica, factibilidad 
 \input{analisisDiseño/analisis_sistema}
 %seccion algoritmos
 \subsection{Algoritmos para el desarrollo del sistema}
+
+De acuerdo con Cormen~\cite{cormen_introduction_2009}, un algoritmo es cualquier procedimiento computacional definido que toma algún valor, o conjunto de valores, como entrada y produce algún valor, o conjunto de valores, como salida; por lo tanto, un algoritmo es una secuencia de pasos computacionales que transforman la entrada en la salida.
+
+
+En esta sección se describen los algoritmos a implementar; se empieza con el algoritmo para la validación estructural diagrama entidad-relación; se sigue con algoritmo para el mapeo modelo entidad-relación a relacional; después está la obtención de esquema SQL desde modelo relacional, el mapeo modelo entidad-relación a Generic Data Metamodel; el mapeo del Generic Data Metamodel a modelo lógico NoSQL y se finaliza con el algoritmo para el modelo lógico NoSQL a modelo físico en MongoDB.
+
+%Respecto al algoritmo 1, en la literatura sobre validez estructural de un diagrama ER hay pocos trabajos, en específico solo hemos encontrado dos: el de Daniel L. Moody, Metrics for Evaluating the Quality of Entity Relationship Models - 1998 y el de James Dullea An analysis of structural validity in entity-relationship modeling  - 2003. Para la redacción del algoritmo nos hemos apoyado en el trabajo de Dullea.
+
+%Respecto al algoritmo 2, hemos usado la propuesta de Elmasri que está en su libro Fundamentos de Sistemas de Bases de Datos.
+
+%Del algoritmo 3, nos estamos basando en la guía de implementación de MySQL para realizar la obtención de las sentencias SQL a partir del modelo conceptual del modelo relacional, porque MySQL es el SGBD que utilizaremos.
+
+%Del algoritmo 4, este es el más problemático, dado que no hay a día hoy algoritmo de mapeo en la literatura, porque la propuesta del Generic Data Metamodel es muy nueva (2018 & 2020).
+
+%La primera versión del paper donde sale este metamodelo conceptual NoSQL es del 2018 por parte de la Vega, García-Saiz & compañía. Hay una segunda revisión del paper accesible desde diciembre de 2019 con algunas actualizaciones y publicado en abril de 2020.
+
+%Seguimos pensando y redactando este algoritmo, pero lo que ya sabemos es:
+%Necesita estar basado en querys como el trabajo de Chebotko.
+%input: modelo ER & output: Generic Data Metamodel
+%Las relaciones del modelo ER son referencias en el Generic Data Metamodel
+%Además, para apoyarnos en redactar este algoritmo tenemos los trabajos de Chebotko - 2015 (que realiza un mapeo de un diagrama ER + consultas a un modelo lógico orientado a columnas) y el trabajo de Lima & Santos Mello - 2016 (que realiza el mapeo de un modelo ER + workload a un modelo lógico orientado a documentos).
+
+%Del algoritmo 5, vamos a usar el algoritmo que de la Vega propone en Mortadelo: Automatic generation of NoSQL stores from platform-independent data models - 2020, en el que realiza la transformación de una instancia del GDM a un modelo lógico orientado a documentos.
+
+%Finalmente, respecto al algoritmo 6. utilizando la propuesta de la Vega para obtener el modelo lógico NoSQL(M2M) obtendremos el modelo físico (M2T) adaptado a los lineamiento del SGDB NoSQL de MongoDB.
+
+
 \input{analisisDiseño/algoritmos/er_validations.tex}
 \input{analisisDiseño/algoritmos/er_to_relational.tex}
 \input{analisisDiseño/algoritmos/relational_to_sql.tex}

@@ -2217,10 +2217,11 @@
     <bcf:citekey order="81">pressman_software_2005</bcf:citekey>
     <bcf:citekey order="82">scrum_mexico_scrum_2020</bcf:citekey>
     <bcf:citekey order="83">manuel_trigas_gallego_metodologiscrum_2020</bcf:citekey>
-    <bcf:citekey order="84">dullea_analysis_2003</bcf:citekey>
-    <bcf:citekey order="85">ramez_elmasri_fundamentos_nodate</bcf:citekey>
-    <bcf:citekey order="86">de_la_vega_mortadelo_2020</bcf:citekey>
-    <bcf:citekey order="87">wikipedia_diagrama_2020</bcf:citekey>
+    <bcf:citekey order="84">cormen_introduction_2009</bcf:citekey>
+    <bcf:citekey order="85">dullea_analysis_2003</bcf:citekey>
+    <bcf:citekey order="86">ramez_elmasri_fundamentos_nodate</bcf:citekey>
+    <bcf:citekey order="87">de_la_vega_mortadelo_2020</bcf:citekey>
+    <bcf:citekey order="88">wikipedia_diagrama_2020</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
