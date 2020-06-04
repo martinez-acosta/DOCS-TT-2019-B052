@@ -2,12 +2,7 @@
 
 De acuerdo con Pressman\cite{pressman_software_2005}, el punto de función es una ``unidad de medida'' para expresar la cantidad de funcionalidad comercial que un sistema de información (como producto) proporciona a un usuario; los puntos de función se utilizan para calcular una medición de tamaño funcional (FSM) de \textit{software}.
 
-Como señala Pressman en su libro, se utiliza una métrica por puntos de función para realizar una estimación del costo total del proyecto, incluyendo los salarios de los desarrolladores que harán la implementación del sistema, así como los gastos por pagos de servicios que sean necesarios como se muestra en la tabla \ref{tab:function_point_metrics}.
-
-\subsubsection*{Métricas orientadas a la función}
-
-
-La tabla \ref{tab:function_point_metrics} muestra la podenración para el calculo de los puntos de funcion sin ajustar,  para este proyecto, se considera las funciones identificadas multiplicadas por la ponderación marcada en color verde para obtener el total.
+La tabla \ref{tab:function_point_metrics} muestra la ponderación para el cálculo de los puntos de función sin ajustar; para este proyecto se consideran las funciones identificadas multiplicadas por la ponderación marcada en color verde para obtener el total.
 
 
 \begin{table}[H]
@@ -25,12 +20,20 @@ La tabla \ref{tab:function_point_metrics} muestra la podenración para el calcul
 	\end{tabular}
 	\caption{Cálculo de las métricas por puntos de función}
 	\label{tab:function_point_metrics}
-	\end{table}
+\end{table}
 
 
-	\textbf{Fi (i = 1..14)} son los factores de ajuste de valor para los puntos de función obtenidos anteriormente basados en las respuetas de las preguntas de la tabla \ref{tab:questions_adjusment}. Los valores pueden ir de 0 (no importante o aplicable) a 5 (absolutamente esencial).
+Como señala Pressman en su libro, se utiliza una métrica por puntos de función para realizar una estimación del costo total del proyecto, incluyendo los salarios de los desarrolladores que harán la implementación del sistema, así como los gastos por pagos de servicios que sean necesarios como se muestra en la tabla \ref{tab:function_point_metrics}.
+
+\subsubsection*{Métricas orientadas a la función}
+
+
+
+La tabla~\ref{tab:questions_adjusment} muestra una serie de preguntas y respuestas; cada respuesta tiene una ponderación, $F_i$, que va de $i ={1..14}$ y representan los factores de ajuste de valor para los puntos de función; asimismo, los valores pueden ir de 0 (no importante o aplicable) a 5 (absolutamente esencial).
+
 
 	\begin{table}[H]
+		\centering
 		\begin{tabular}{|p{9cm}|c|}
 		\hline
 		Pregunta                                                                                                                 & Ponderación \\ \hline
@@ -57,10 +60,10 @@ La tabla \ref{tab:function_point_metrics} muestra la podenración para el calcul
 
 \subsubsection*{Puntos de función}
 
-La fórmula para obtener los puntos de función con los factores de ajuste es la siguiente:
+La fórmula para obtener los puntos de función, $\mathrm{PF}$, con los factores de ajuste de la tabla~\ref{tab:questions_adjusment} es la siguiente:
 
 \begin{equation} \label{eq:cap4-00.01}
-	\mathrm{PF} = \mathrm{conteo\ total} *  (0.65 + (0.01 * \sum F_i))
+	\mathrm{PF} = \mathrm{conteo\; total} *  (0.65 + (0.01 * \sum F_i))
 \end{equation}
 
 De \eqref{eq:cap4-00.01} se deben sustituir los valores del conteo total y los factores de ajuste:
@@ -69,20 +72,17 @@ De \eqref{eq:cap4-00.01} se deben sustituir los valores del conteo total y los f
 	\mathrm{PF} =  133 *  (0.65 + (0.01 * 54))
 \end{equation}
 \begin{equation} \label{eq:cap4-00.03}
-	\mathrm{PF} = 158.27 \approx 159 \mathrm{puntos de función ajustados}
+	\mathrm{PF} = 158.27 \approx 159 \mathrm{\;puntos\; ajustados}
 \end{equation}
 
 
-De lo anterior, aproximadamente se obtienen \textbf{159} puntos de función ajustados; una vez obtenidos utilizando la llamada ``Ball-Park'' o ``Estimación Indicativa'', que es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyecto.
-
-
-De acuerdo con Carper\cite{abran_applied_2006}, la siguiente ecuación determina el esfuerzo de desarrollo de un proyecto:
+De \eqref{eq:cap4-00.03} aproximadamente se obtienen 159 puntos de función ajustados; una vez obtenidos utilizando la llamada \textit{ball-park} (o estimación indicativa), que es la técnica de macro-estimación que se utiliza en situaciones de falta de información sobre el proyecto y de acuerdo con Carper\cite{abran_applied_2006}, la siguiente ecuación determina el esfuerzo de desarrollo de un proyecto:
 
 
 \begin{equation} \label{eq:cap4-01}
 	\mathrm{Esfuerzo} = (\frac{\mathrm{PF}}{150})*\mathrm{PF}^{0.4}
 \end{equation}
-donde \eqref{eq:cap4-01} $\mathrm{PF}$ son puntos de función ajustados; al sustituir los valores en \eqref{eq:cap4-01}:
+donde $\mathrm{PF}$ son puntos de función ajustados y al sustituir los valores en \eqref{eq:cap4-01}:
 
 \begin{equation} \label{eq:cap4-02}
 	\mathrm{Esfuerzo} = (\frac{159}{150})*159^{0.4}
@@ -100,7 +100,7 @@ Los 8.05 meses de \eqref{eq:cap4-03}; considerando un total de 40 horas a la sem
 	\mathrm{Tiempo\; de\; desarrollo} =  \mathrm{horas/semana} * \mathrm{semanas/mes} * \mathrm{esfuerzo}
 \end{equation}
 
-al sustituir los valores en \eqref{eq:cap4-04} tenemos:
+Al sustituir los valores en \eqref{eq:cap4-04} tenemos:
 
 
 \begin{equation} \label{eq:cap4-05}

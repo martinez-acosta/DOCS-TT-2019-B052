@@ -1,37 +1,43 @@
 \subsection{Costos de desarrollo}
 
-De acuerdo con \textit{Software Guru}\cite{pedro_galvan_estudio_2020}, en una publicación que recopila los datos de salarios en el área de desarrollo de \textit{software} para febrero de 2020, un desarrollador con 0 a 2 años de experiencia, como es el caso de un estudiante, tiene en un salario de \$ 15 000 mensuales en una jornada completa, considerando que este proyecto contempla jornadas de medio tiempo (4 horas) de lunes a viernes, se reduce la cifra antes mencionada. Teniendo en cuenta estos datos y un periodo de 9 meses, que es el tiempo aproximado de duración del proyecto, el costo total por salarioss para el equipo de desarrollo está desglosado en la tabla \ref{tab:devs_salary}.
+De acuerdo con \textit{Software Guru}\cite{pedro_galvan_estudio_2020}, en una publicación que recopila los datos de salarios en el área de desarrollo de \textit{software} para febrero de 2020, un desarrollador con 0 a 2 años de experiencia, como es el caso de un estudiante de nivel superior, tiene en un salario de 15 000 mxn mensuales en una jornada completa.
+
+
+La tabla~\ref{tab:devs_salary} muestra un desglose del costo total de salarios del personal del proyecto, empezando por el costo semanal aproximado por integrante, su costo mensual aproximado y el monto total.
 
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|c|}
     \hline
-        Concepto & Costo Aprox. Semanal & Costo Aprox. Mensual & Monto total \\ \hline
-        Salario & 1850 & 7500 & 67500 \\ \hline
+        Concepto & \begin{tabular}[c]{@{}l@{}}Costo semanal\\ aproximado\end{tabular} & \begin{tabular}[c]{@{}l@{}}Costo mensual\\ aproximado\end{tabular}& Monto total \\ \hline
+        Salario & 1850 mxn & 7500 mxn & 67 500 mxn\\ \hline
     \end{tabular}
     \caption{Costos del personal}
     \label{tab:devs_salary}
 \end{table}
 
+Teniendo en cuenta que este proyecto contempla jornadas de medio tiempo (4 horas) de lunes a viernes por un periodo de 9 meses, que es el tiempo aproximado de duración del proyecto, el costo total por salarios para el equipo de desarrollo está desglosado en la tabla~\ref{tab:devs_salary}.
 
-Considerado a 2 personas en el equipo de desarrollo y un periodo de 9 meses(se agrego un mes mas para el caso de estudio) utilizando los salarios de la tabla \ref{tab:devs_salary} tenemos que los gastos totales se obtienen con la siguiente fórmula:
+
+Considerado a 2 personas en el equipo de desarrollo y un periodo de 9 meses(se agrego un mes más para el caso de estudio) y utilizando los salarios de la tabla~\ref{tab:devs_salary}, tenemos que los gastos totales se obtienen con la siguiente fórmula:
 
 \begin{equation} \label{eq:cap4-07}
-	\mathrm{salarios} =  \mathrm{No\; de\; integrantes} * \mathrm{salario/mes} * \mathrm{tiempo\; de\; desarrollo}  {pesos mexicanos}
+	\mathrm{salarios} =  \mathrm{No.\; de\; integrantes} * \mathrm{salario/mes} * \mathrm{tiempo\; de\; desarrollo}  \mathrm{\;mxn}
 \end{equation}
 
-sustituyendo los calores en \eqref{eq:cap4-07}
+Sustituyendo los valores en \eqref{eq:cap4-07}
 
 \begin{equation} \label{eq:cap4-08}
-	\mathrm{salarios} =  2 * 7500 * 9  {pesos mexicanos}
+	\mathrm{salarios} =  2 * 7500 * 9  \mathrm{\;mxn}
 \end{equation}
 
 
-Esto da como resultado un total final de \$ 135 000 por los salarios de los 2 integrantes del equipo de desarrollo. Se tomaron en cuenta 9 meses para todos los gastos, un mes extra a lo obtenido en estimación para utilizarse en el caso de estudio del sistema una vez concluido.
+Esto da como resultado un total final de 135 000 mxn por los salarios de los 2 integrantes del equipo de desarrollo; se tomaron en cuenta 9 meses para todos los gastos, un mes extra a lo obtenido en estimación para utilizarse en el caso de estudio del sistema una vez concluido.
 
-Los gastos por pagos de licencia de \textit{software} quedan excluidos, ya que las tecnologías seleccionadas son libres o gratuitas, lo cual no supone un costo para su uso. De igual manera, esto se encuentra simplificado en la tabla \ref{tab:sw_licences}.
 
-\begin{table}
+La tabla~\ref{tab:sw_licences} muestra los costos del \textit{software} usado en el proyecto y la tabla~\ref{tab:services_costs} los costos de servicios usados para el mismo. 
+
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|c|}
     \hline
@@ -44,9 +50,8 @@ Los gastos por pagos de licencia de \textit{software} quedan excluidos, ya que l
     \label{tab:sw_licences}
 \end{table}
 
-Otros gastos necesarios son los pagos por servicios requeridos listados en la tabla \ref{tab:services_costs}.
 
-\begin{table}
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|c|}
     \hline
@@ -60,26 +65,43 @@ Otros gastos necesarios son los pagos por servicios requeridos listados en la ta
     \label{tab:services_costs}
 \end{table}
 
+
+Los gastos por pagos de licencia de \textit{software} quedan excluidos, ya que las tecnologías seleccionadas son libres o gratuitas, lo cual no supone un costo para su uso; de igual manera, esto se encuentra simplificado en la tabla \ref{tab:sw_licences}; otros gastos necesarios son los pagos por servicios requeridos están listados en la tabla \ref{tab:services_costs}.
+
 Habiendo realizado la suma de todas las cantidades antes mencionadas, el total final se obtine de la siguiente manera:
 
-\begin{equation} \label{eq:cap4-09}
-    \mathrm{servicio_totales} = \mathrm{servicios_por_mes} * \mathrm{tiempo_de_desarrollo} {pesos mexicanos}
-    \mathrm{servicio_totales} = 5391 * 9 {pesos mexicanos}
-    \mathrm{servicio_totales} = 48 519.00 {pesos mexicanos}
+\begin{equation} \label{eq:cap4-09.00}
+    \mathrm{servicio\; totales} = \mathrm{servicios\; por\; mes} * \mathrm{tiempo\; de\; desarrollo} \mathrm{\;mxn}
 \end{equation}
 
-\begin{equation} \label{eq:cap4-10}
-    \mathrm{Gastos\; totales} = \mathrm{salarios} + \mathrm{servicios\; totales} + \mathrm{costos_de_equipo_de_compumto}
-    \mathrm{Gastos\; totales} = 135 000 + 48 519 + 54 500
-    \mathrm{Gastos\; totales} = 238 019 {pesos mexicanos}
+\begin{equation} \label{eq:cap4-09.01}
+    \mathrm{servicio\; totales} = 5391 * 9 \mathrm{\;mxn}
 \end{equation}
 
-\begin{center}
+\begin{equation} \label{eq:cap4-09.02}
+    \mathrm{servicio\; totales} = 48 519.00 \mathrm{\;mxn}
+\end{equation}
 
-	salarios = 135 000.00
-	servicios = (2250 + 3141) * 9 = 48 519.00
+\begin{equation} \label{eq:cap4-10.00}
+    \mathrm{Gastos\; totales} = \mathrm{salarios} + \mathrm{servicios\; totales} + \mathrm{\;costos\;de\;equipos}
+\end{equation}
 
-	Gastos totales = 135 000.00 + 48 519.00 = 183 519.00 pesos mexicanos.
+\begin{equation} \label{eq:cap4-10.01}
+    \mathrm{Gastos\; totales} = 135 000 + 48 519 + 54 500 \mathrm{\;mxn}
+\end{equation}
 
-\end{center}
+\begin{equation} \label{eq:cap4-10.02}
+    \mathrm{Gastos\; totales} = 238 019 \mathrm{\;mxn}
+\end{equation}
 
+\begin{equation} \label{eq:cap4-11.00}
+    \mathrm{salarios} = 135 000.00 \mathrm{\;mxn}
+\end{equation}
+
+\begin{equation} \label{eq:cap4-11.01}
+    \mathrm{servicios} = (2250 + 3141) * 9 = 48 519.00
+\end{equation}
+
+\begin{equation} \label{eq:cap4-11.02}
+    \mathrm{Gastos\; totales} = 135 000.00 + 48 519.00 = 183 519.00 \mathrm{\;mxn}
+\end{equation}
