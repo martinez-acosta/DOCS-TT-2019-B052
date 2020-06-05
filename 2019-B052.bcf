@@ -2220,8 +2220,9 @@
     <bcf:citekey order="84">cormen_introduction_2009</bcf:citekey>
     <bcf:citekey order="85">dullea_analysis_2003</bcf:citekey>
     <bcf:citekey order="86">ramez_elmasri_fundamentos_nodate</bcf:citekey>
-    <bcf:citekey order="87">de_la_vega_mortadelo_2020</bcf:citekey>
-    <bcf:citekey order="88">wikipedia_diagrama_2020</bcf:citekey>
+    <bcf:citekey order="87">mysql_mysql_2020</bcf:citekey>
+    <bcf:citekey order="88">de_la_vega_mortadelo_2020</bcf:citekey>
+    <bcf:citekey order="89">wikipedia_diagrama_2020</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

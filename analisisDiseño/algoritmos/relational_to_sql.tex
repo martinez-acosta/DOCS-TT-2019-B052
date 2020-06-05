@@ -1,16 +1,17 @@
 \subsubsection{Obtención de esquema SQL desde modelo relacional}
 
 
-Las sentencias SQL que generará la aplicación web son especificamente para el gestor MySQL, por lo cual de acuerdo a su guia de sintaxis [https://manuales.guebs.com/mysql-5.0/sql-syntax.html] para obtener las sentencias SQL del modelo relacional se seguiran los siguientes pasos:
+De acuerdo con la sintaxis de la documentación de MySQL\cite{mysql_mysql_2020}, para obtener esquema SQL del modelo relacional se realizarán los siguientes pasos:
 
 \begin{enumerate}
-  \item Por cada relación(tabla) del modelo relacional se agrega una sentencia CREATE TABLE seguida del nombre de la relación seguido de sus atributos encerrados entre paréntesis.
-  \item Por cada atributo(columna) se crea un campo con su nombre correspondiente y se indica el tipo de dato, para hacerlo mas especifico se le puede añadir alguna de las siguientes caracteriticas:
+  \item Por cada relación (tabla) del modelo relacional se agrega una sentencia CREATE TABLE, seguida del nombre de la relación y de sus atributos encerrados entre paréntesis.
+  \item Por cada atributo (columna) se crea un campo con su nombre correspondiente y se indica el tipo de dato, para hacerlo más específico, se le puede añadir alguna de las siguientes caracteriticas:
   \begin{itemize}
-    \item Los atributos que esten obligados a tener un valor se le agrega la palabra NOT NULL.
-    \item Si la columna tomará un valor por defecto se agrega la instrucción AUTO\_INCREMENT siempre y cuando el tipo de dato sea INTEGER.
-    \item Si la columna es la que identificará a la tabla de forma única en todo el esquema se debe agregar como llave primaria de la tabla.
+    \item Los atributos que estén obligados a tener un valor se les agrega la palabra NOT NULL.
+    \item Si la columna tomará un valor por defecto, se agrega la instrucción AUTO\_INCREMENT siempre y cuando el tipo de dato sea INTEGER.
+    \item Si la columna es la que identificará la tabla de forma única en todo el esquema, se debe agregar como llave primaria de la tabla.
   \end{itemize}
-  \item La llave primaria de agrega como un atributo mas con la palabra PRIMARY KEY seguido del nombre de atributo,encerrada entre paréntesis, que indentifica de forma unica a la tabla.
+  \item La llave primaria se agrega como un atributo más con la palabra PRIMARY KEY, seguido del nombre de atributo (encerrada entre paréntesis) que indentifica de forma única a la tabla.
   \item Todos los atributos de la tabla se encuentran encerrados entre paréntesis separados por comas.
-  \item Al final de la lista de atrubutos de la tabla(despues del parentesis) se agrega el motor de almacenamiento de MySQL , ENGINE=InnoDB (restricción del proyecto
+  \item Al final de la lista de atrubutos de la tabla (después del parentesis) se agrega el motor de almacenamiento: MySQL,ENGINE=InnoDB.
+\end{enumerate}
