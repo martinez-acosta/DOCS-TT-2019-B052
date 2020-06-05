@@ -1,77 +1,111 @@
-\subsubsection{Generic Data Metamodel a modelo lógico NoSQL}
-
-Un \textit{DocumentType} es la estructura principal que se guardará en la colección.
-
-
-Sea $Q$ el conjunto de todas las queries $q_{n}$ en una instancia GDM:
-
-\begin{center}
-    $Q = \{q_{1}, q_{2},..., q_{n}\}$ donde $n=1,2,...$    
-\end{center}
-
-Sea $E_{f}$ el conjunto de entidades formado al consultar el único elemento from de cada $q_n$ ($q_{n.from}$ de $Q$): 
-
-\begin{center}
-    $ E_{f} = \{e_{f1},e_{f2},...,e_{fn}\} $ donde $n=1,2,...$    
-\end{center}
+\subsubsection{Generic Data Metamodel a modelo lógico NoSQL}\label{alg:gdm-to-logic}
+De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, las bases de datos orientadas a documentos tienen como objetivo almacenar jerarquías de objetos que son probables que se consultarán juntas.
 
 
-Sea $C$ el conjunto de colecciones $c_{n}$ donde cada $c_{n}$ corresponde a un $e_{fn}$ de $E_{f}$ (es decir que por cada $ef_{n}$ se crea un $c_{n}$ en la que cada $c_{n}$ contiene un único elemento \textit{DocumentType}, llamado ``documento raíz"):
-
-\begin{center}
-    $C = \{ c_{1},c_{2},...,c_{n}\}$ donde $n=1,2,...$    
-\end{center}
-
-Finalmente, por cada $c_{n}$ se generan los contenidos de cada documento raíz:
-
-Como cada colección $c_{n}$ es creada a partir de una única entidad $e_{fn}$, se necesita buscar del conjunto $Q$ todas las $q_{n}$ que contengan esa $e_{fn}$ como entidad de búsqueda principal (es decir, que $e_{fn}$ esté en el elemento \textit{from} de la $q_{n}$).
+Estas jerarquías de objetos se conocen como documentos y se agrupan en colecciones; asimismo, una colección almacena documentos de la misma entidad y por lo general un documento está compuesto de pares clave-valor y contiene otros documentos incrustados.
 
 
-Dicho de otra manera, sea el conjunto $Q_{E}$ el subconjunto propio de $Q$ en el que cada $q_{en}$ contiene en su elemento \textit{from} la $e_{fn}$.
-\begin{center}
-    $Q_{E} = \{q_{e1},q_{e2},...,q_{en}\}$ donde $Q_{E} \subseteq Q  | q_{en.from} == e_{fn}$
-\end{center}
+\paragraph*{Modelo lógico orientado a documentos}
 
-Por cada $q_{en}$ se consulta todos sus elementos \textit{including}, a cada elemento \textit{including} le llamamos $r_{n}$ para formar el conjunto $R$ de referencias.
+En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra el modelo lógico orientado a documentos propuesto por Alfonso de la Vega.
 
-\begin{figure}[h!t] 
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-logical-model-document-oriented.png}
+    \caption{Modelo lógico orientado a documentos propuesto por Alfonso de la Vega}
+    \label{img:mortadelo-gdm-logical-model-document-oriented}
+\end{figure}
+
+A continuación se explica cada clase que conforma el modelo de la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented}:
+
+\begin{itemize}
+    \item Clase \textit{document data model}: está compuesta de $n$ \textit{collections}.
+    \item Clase \textit{collection}: tiene un nombre que la identifica y en una colección se almacenan documentos que, en general, comparten la misma estructura.
+    \item Clase \textit{document type}: define la estructura de los documentos a guardar con un conjunto de instancias de la clase \textit{field}; es la estructura principal que se guardará en cada colección.
+    \item Clase \textit{field}: tiene instancias de las clases \textit{primitive field} (atributos simples), \textit{array field} (más instancias de la clase \textit{field}) o \textit{document type} (otras estructuras de documentos), permitiendo guardar elementos anidados.
+    \item Clase \textit{primitive field}: contiene un tipo primitivo de dato.
+    \item Clase \textit{array field}: permite anidar más instancias de la clase \textit{field}.
+\end{itemize}
+
+
+La figura~\ref{img:mortadelo-gdm1} muestra el Generic Data Metamodel, que está compuesto por clases interrelacionadas entre sí con notación UML y consta de dos secciones principales: los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.75\textwidth]{mortadelo/GDM.png}
+    \caption{Generic Data Metamodel}
+    \label{img:mortadelo-gdm1}
+\end{figure}
+
+
+
+Sea $\mathrm{Queries}$ el conjunto de todas las queries $q_{n}$ en una instancia GDM como la de la figura~\ref{img:mortadelo-gdm1}:
+
+\begin{equation} \label{eq:cap4.3.3.5-00}
+    \mathrm{Queries} = \{q_{1}, q_{2},..., q_{n}\}\; \mathrm{donde}\; q_{n}\;\epsilon\;\mathrm{Queries}\; \mathrm{y}\; n=1,2,...
+\end{equation}
+
+
+Sea $\mathrm{Entities_{consulted}}$ el conjunto de entidades que son consultadas en una instancia GDM como la de la figura~\ref{img:mortadelo-gdm1} (es decir, las entidades que están asociadas a la clase \textit{query} desde un elemento \textit{from}): 
+
+
+\begin{equation} \label{eq:cap4.3.3.5-01}
+    \mathrm{Entities_{consulted}} = \{e_{c1},e_{c2},...,e_{cn}\}\; \mathrm{donde}\; e_{cn}\;\epsilon\;\mathrm{Entities_{consulted}}\; \mathrm{y}\; n=1,2,...
+\end{equation}
+
+Sea $\mathrm{Collections}$ el conjunto de colecciones $c_{n}$ donde cada $c_{n}$ corresponde a una entidad consultada:
+
+\begin{equation} \label{eq:cap4.3.3.5-02}
+    \mathrm{Collections} = \{c_{1},c_{2},...,c_{n}\}\; \mathrm{donde}\; c_{n}\;\epsilon\;\mathrm{Collections}\; \mathrm{y}\; n=1,2,...
+\end{equation}
+
+
+% $e_{fn}$ de $E_{f}$ (es decir que por cada $ef_{n}$ se crea un $c_{n}$ en la que cada $c_{n}$ contiene un único elemento \textit{DocumentType}, llamado ``documento raíz''):
+
+
+Por cada $c_{n}$ en \eqref{eq:cap4.3.3.5-02} se generan los contenidos de cada documento raíz.
+
+
+La figura~\ref{img:mortadelo-gdm-logical-model-access-tree} es un ejemplo del árbol de acceso de la consulta $q_{4}$ de la figura~\ref{img:mortadelo-gdm-logical-model-q4}; está formado por el único elemento \textit{from} de la consulta y con los elementos \textit{including} se forma el árbol, donde las aristas son los identificadores de cada \textit{including}.
+
+
+La figura~\ref{img:mortadelo-gdm-logical-model-q4} es una consulta en el GDM en modo texto.
+
+
+\begin{figure}[H] 
     \centering
     \includegraphics[width=0.65\textwidth]{mortadelo/GDM-access-tree.png}
     \caption{Access Tree - Modelo lógico orientado a documentos}
     \label{img:mortadelo-gdm-logical-model-access-tree}
 \end{figure}
 
-\begin{figure}[h!t] 
+
+\begin{figure}[H] 
     \centering
     \includegraphics[width=0.65\textwidth]{mortadelo/GDM-q4.png}
     \caption{Access query Q4}
     \label{img:mortadelo-gdm-logical-model-q4}
 \end{figure}
 
-Creamos un árbol de acceso con el conjunto $R$ y con ese árbol de acceso generamos los documentos de cada documento raíz de cada $c_{n}$ que tiene una única $e_{fn}$. 
+
+Por cada $q_{n}$ en \eqref{eq:cap4.3.3.5-00} se obtiene primero su único elemento \textit{from} y después todos los elementos \textit{including} para generar un árbol de acceso como el de la figura~\ref{img:mortadelo-gdm-logical-model-access-tree}.
 
 
-La figura~\ref{img:mortadelo-gdm-logical-model-access-tree} es un ejemplo del árbol de acceso de la consulta $q_{4}$ de la figura~\ref{img:mortadelo-gdm-logical-model-q4}.
+Añadimos al documento raíz todos los atributos simples de su entidad correspondiente; nótese que se está analizando tanto la instancia de la clase \textit{entity} y el árbol de acceso creado.
 
 
-Añadimos todos los atributos simples de la $e_{fn}$.
+Si el elemento ``ref'' de la \textit{entity} está en el árbol de acceso, se necesita saber su cardinalidad y la entidad objetivo de esa referencia.
 
 
-Cada $r_{n}$ lo añadimos al documento raíz de acuerdo a 1) la cardinalidad de la referencia y 2) la entidad objetivo de la referencia
-
-
-Si la entidad destino está dentro del árbol de consultas implica que datos de esa entidad serán requeridos en la consulta, por lo que el nuevo \textit{field} deberá ser incluído como un subdocumento o una colección de documentos, dependiendo de su cardinalidad.
-
-En contraparte, si la entidad destino no está en el árbol de consultas, se podría quitar esa referncia, pero se agregará para mejorar la escalabilidad de la base de datos para futuras consultas. Esta referencia tendría el valor del identificador de la entidad referenciada cuando la cardinalidad es 1. Si la cardinalidad es n, será un arreglo de identificadores.
-
-
-Cuando una referencia es tranformada a un subdocumento se vuelve a generar su árbol de acceso en una llamada recursiva para generar sus contenidos.
+Si la entidad objetivo está en el árbol de acceso, los datos de esa referencia se incluyen como un subdocumento y se llama recursivamente la función para generar el contenido de este subdocumento; por el contrario, en caso de que la referencia no esté en el árbol de acceso, se incluye la referencia como un identificador si la cardinalidad es 1 o como un arreglo de referencias cuando la carnidad es $n$.
 
 
 Por último, el autor menciona dos optimizaciones si se quiere reducir el nivel de denormilación, las que se pueden consultar en su investigación\cite{de_la_vega_mortadelo_2020}.
 
 En resumen, el algoritmo quedaría de la forma:
-\begin{algorithm}
+\begin{algorithm}[H]
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
 
@@ -92,7 +126,7 @@ En resumen, el algoritmo quedaría de la forma:
 
 Donde la función populateDocumentType() es otro algoritmo de la forma:
 
-\begin{algorithm}
+\begin{algorithm}[H]
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
 

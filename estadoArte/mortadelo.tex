@@ -1,12 +1,11 @@
 \section{Mortadelo}
-De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo está basado en el \textit{model driven}; es decir que para diseñar bases de datos NoSQL necesita de modelos conceptuales bien definidos.
+De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo está basado en el \textit{model driven}; es decir que para diseñar bases de datos NoSQL necesita de modelos conceptuales definidos.
 
 
 Lo anterior implica usar dos modelos diferentes pero interrelacionados que añaden complejidad al modelado de la base datos; por esta razón de la Vega propone el GDM (Generic Data Metamodel), que es un modelo conceptual NoSQL donde la estructura (entidades, atributos, relaciones entre entidades) y patrones de acceso (cómo se consultarán los datos) están integradas en un mismo modelo conceptual.
 
 
 Cabe destacar que el GDM es un modelo conceptual independiente del paradigma NoSQL, por lo que puede representar una base de datos NoSQL de clave-valor, orientado a documentos, orientado a columnas u orientado a grafos.
-
 
 La figura~\ref{img:mortadelo-process} muestra los tres pasos principales de Mortadelo, empezando desde la izquierda con su propuesta de modelo conceptual NoSQL, el Generic Data Metamodel, siguiendo con una representación de los modelos lógicos orientado a columnas o documentos en los que realiza ``modelo a modelo'' (M2M) para generar el modelo lógico, para finalizar una transformación ``modelo a texto'' (M2T) con el modelo físico de cada modelo lógico, respectivamente.
 
@@ -17,7 +16,6 @@ La figura~\ref{img:mortadelo-process} muestra los tres pasos principales de Mort
     \caption{Mortadelo}
     \label{img:mortadelo-process}
 \end{figure}
-
 \subsubsection*{Mortadelo: modelo conceptual (Generic Data Metamodel)}
 
 La figura~\ref{img:mortadelo-gdm} muestra el Generic Data Metamodel, que está compuesto por clases interrelacionadas entre sí con notación UML\footnote{La simbología usada en los diagramas de clase UML está en el apéndice.} y consta de dos secciones principales: los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
@@ -75,34 +73,5 @@ La figura~\ref{img:mortadelo-gdm.textual.notation} es una instancia del modelo c
 \end{figure}
 
 
-
-\subsubsection*{Mortadelo: modelo lógico orientado a documentos}
-
-De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, las bases de datos orientadas a documentos tienen como objetivo almacenar jerarquías de objetos que son probables que se consultarán juntas.
-
-
-Estas jerarquías de objetos se conocen como documentos y se agrupan en colecciones; asimismo, una colección almacena documentos de la misma entidad y por lo general un documento está compuesto de pares clave-valor y contiene otros documentos incrustados.
-
-
-En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra el modelo lógico orientado a documentos de la herramienta Mortadelo y a continuación se explica cada clase que conforma el modelo.
-
-
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-logical-model-document-oriented.png}
-    \caption{Modelo lógico orientado a documentos de Mortadelo}
-    \label{img:mortadelo-gdm-logical-model-document-oriented}
-\end{figure}
-
-
-\begin{itemize}
-    \item Clase \textit{document data model}: está compuesta de $n$ \textit{collections}.
-    \item Clase \textit{collection}: tiene un nombre que la identifica y en una colección se almacenan documentos que, en general, comparten la misma estructura.
-    \item Clase \textit{document type}: define la estructura de los documentos a guardar con un conjunto de instancias de la clase \textit{field}.
-    \item Clase \textit{field}: tiene instancias de las clases \textit{primitive field} (atributos simples), \textit{array field} (más instancias de la clase \textit{field}) o \textit{document type} (otras estructuras de documentos), permitiendo guardar elementos anidados.
-    \item Clase \textit{primitive field}: contiene un tipo primitivo de dato
-    \item Clase \textit{array field}: permite anidar más instancias de la clase \textit{field}
-\end{itemize}
-
-
-Como se ha mostrado, Mortadelo es quizá la herramienta más completa de las estudiadas y Alfonso de la Vega expone en su \textit{paper} no solo el modelado conceptual, lógico y físico de una base de datos NoSQL, sino también explica a detalle los algoritmos usados con casos de uso.
+Para más detalles sobre su modelo lógico orientado a documentos y algoritmos asociados, visite la sección~\ref{alg:gdm-to-logic}.
+%Como se ha mostrado, Mortadelo es quizá la herramienta más completa de las estudiadas y Alfonso de la Vega expone en su \textit{paper} no solo el modelado conceptual, lógico y físico de una base de datos NoSQL, sino también explica a detalle los algoritmos usados con casos de uso.

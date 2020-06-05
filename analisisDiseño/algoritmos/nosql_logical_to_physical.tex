@@ -1,26 +1,26 @@
 \subsubsection{Modelo lógico NoSQL a modelo físico en MongoDB}
 
 
-De acuerdo con la documentación de mongodb [https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/], se puede escribir un script para crear un esquema(schema)  de base de datos en un archivo con extensión .js y con el contenido de los datos en formato JSON valido. Para generar el schema completo se deben seguir los siguientes pasos:
+De acuerdo con la documentación de MongoDB\cite{mongodb_mongodb_2020}, se puede escribir un \textit{script} para crear un esquema  de base de datos en un archivo con extensión .js y con el contenido de los datos en formato JSON válido; para generar el esquema completo se deben seguir los siguientes pasos:
 
 
 \begin{enumerate}
     \item Crear un archivo con extensión .js.
     \item Abrir el archivo con los permisos de lectura y escritura para poder añadir contenido.
-    \item Agregar al archivo una linea con la instrucción \textit{conn = new Mongo();}.
-    \item Agregar una nueva linea al archivo .js con la instrucción \textit{db = conn.getDB(`DB\_NAME');} esto creara una base de datos con el nombre que se le indique en caso de que no exista.
-    \item Agregar al archivo la instrucción \textit{db.dropDatabase()} para eliminar todos los registros del esquema de la base de datos en caso de que esta exista y así evitar datos erróneos.
-    \item Agregar una linea con la instrucción \textit{db.createCollection(`COLLECTION\_N');} por cada entidad del GDM, donde \textit{COLLECTION\_N} es sustituido por el nombre de la entidad.
-    \item Agregar una linea con el nombre de un elemento de la primera colección seguida de un signo igual (=) y un caracter de llave `\{'.
-    \item Agregar una linea por cada atributo simple de la entidad del GDM con la instrucción \textit{``ATTR\_NAME'' : ``DEFAULT\_VALUE''}, sustituyendo \textit{ATTR\_NAME} por el nombre de cada atributo y \textit{DEFAULT\_VALUE} por un valor por defecto que corresponda al tipo de dato del atributo.
-    \item Agrear una linea con el caracter `\}', para indicar el cierre del objeto JSON.
+    \item Agregar al archivo una línea con la instrucción \textit{conn = new Mongo();}.
+    \item Agregar una nueva línea al archivo .js con la instrucción \textit{db = conn.getDB(`DB\_NAME');} esto creará una base de datos con el nombre que se le indique en caso de que no exista.
+    \item Agregar al archivo la instrucción \textit{db.dropDatabase()} para eliminar todos los registros del esquema de la base de datos en caso de que existan y así evitar datos erróneos.
+    \item Agregar una línea con la instrucción \textit{db.createCollection(`COLLECTION\_N');} por cada entidad del GDM, donde \textit{COLLECTION\_N} es sustituido por el nombre de la entidad.
+    \item Agregar una línea con el nombre de un elemento de la primera colección seguida de un signo igual (=) y un carácter de llave `\{'.
+    \item Agregar una línea por cada atributo simple de la entidad del GDM con la instrucción \textit{``ATTR\_NAME'':``DEFAULT\_VALUE''}, sustituyendo \textit{ATTR\_NAME} por el nombre de cada atributo y \textit{DEFAULT\_VALUE} por un valor por defecto que corresponda al tipo de dato del atributo.
+    \item Agrear una línea con el carácter `\}', para indicar el cierre del objeto JSON.
 \end{enumerate}
 
 
-Los pasos del 1 al 5 serían suficientes para generar un esquema de base de datos vació en mongoDB, solamente debe ejecutarse el archivo con el comando \textit{mongo file.js}, se puede comprobar que todo es correcto entrando a la consola de mongodb y revisar los esquemas disponibles con el comando \textit{show dbs;}.
+Los pasos del 1 al 5 son suficientes para generar un esquema de base de datos vacío en MongoDB, solamente debe ejecutarse el archivo con el comando \textit{mongo file.js} y se puede comprobar que todo es correcto entrando a la consola de MongoDB y revisar los esquemas disponibles con el comando \textit{show dbs;}.
 
 
-Los incisos posteriores generan un objeto de prueba para cada colección de datos, esto se hace principalmente para visualizar un elemento en cada colección de lo contrario solamente se apreciarían colecciones vacias en mongoDB,y estas  pueden almacenar todo tipo de información siempre y cuando se trate de un objeto JSON valido.
+Los incisos posteriores generan un objeto de prueba para cada colección de datos, esto se hace principalmente para visualizar un elemento en cada colección; de lo contrario solamente se apreciarían colecciones vacías en MongoDB y estas pueden almacenar todo tipo de información siempre y cuando se trate de un objeto JSON válido.
 
 
-Finalmente una vez verificada que la estrucuctura es correcta se deben truncar todas las colecciones y de esta manera tener un esquema de la base de datos NoSQL sin registros y empezar a almacenar los documentos. Esto se logra con la instrucción \textit{db.COLLECTION\_NAME.remove(\{\})} sustituyendo  \textit{COLLECTION\_NAME} por cada uno de los nombres de las colecciones.
+Finalmente, una vez verificada que la estrucuctura es correcta, se deben truncar todas las colecciones y de esta manera tener un esquema de la base de datos NoSQL sin registros y empezar a almacenar los documentos; esto se logra con la instrucción \textit{db.COLLECTION\_NAME.remove(\{\})} sustituyendo \textit{COLLECTION\_NAME} por cada uno de los nombres de las colecciones.
