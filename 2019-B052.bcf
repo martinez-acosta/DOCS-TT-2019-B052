@@ -2226,7 +2226,8 @@
     <bcf:citekey order="90">dullea_analysis_2003</bcf:citekey>
     <bcf:citekey order="91">ramez_elmasri_fundamentos_nodate</bcf:citekey>
     <bcf:citekey order="92">chebotko_big_2015</bcf:citekey>
-    <bcf:citekey order="93">wikipedia_diagrama_2020</bcf:citekey>
+    <bcf:citekey order="93">fowler_brief_2003</bcf:citekey>
+    <bcf:citekey order="94">fowler_brief_2003</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
