@@ -41,7 +41,7 @@ UML especifica dos tipos de ámbitos para los miembros: instancias y clasificado
     \item Los miembros instancias tienen como ámbito una instancia específica.
 \begin{enumerate}
     \item Los valores de los atributos pueden variar entre instancias.
-    \item La invocación de métodos puede afectar al estado de las instancias(es decir, cambiar el valor de sus atributos).
+    \item La invocación de métodos afecta al estado de las instancias (es decir, cambiar el valor de sus atributos).
 \end{enumerate}
 \end{enumerate}
 Para indicar que un miembro posee un ámbito de clasificador, hay que subrayar su nombre; de lo contrario, se asume por defecto que tendrá ámbito de instancia.
@@ -56,7 +56,7 @@ La figura~\ref{img:uml-composicion} muestra una  asociación y composición entr
 
 
 \paragraph*{Relaciones}
-Una relación es un término general que abarca los tipos específicos de conexiones lógicas que se pueden encontrar en los diagramas de clases y objetos. UML presenta las siguientes relaciones:
+Una relación es un término general que abarca los tipos específicos de conexiones lógicas que se encuentran en los diagramas de clases y objetos. UML presenta las siguientes relaciones:
 
 \paragraph*{Enlace}
 Un enlace es la relación más básica entre objetos.
@@ -72,9 +72,9 @@ Un enlace es la relación más básica entre objetos.
     \label{img:uml-asociacion}
 \end{figure}
 
-Una asociación como la de la figura~\ref{img:uml-asociacion} representa una familia de enlaces; una asociación binaria (entre dos clases) normalmente se representa con una línea continua; una misma asociación puede relacionar cualquier número de clases y una asociación que relacione tres clases se llama asociación ternaria.
+Una asociación como la de la figura~\ref{img:uml-asociacion} representa una familia de enlaces; una asociación binaria (entre dos clases) normalmente se representa con una línea continua; una misma asociación relaciona cualquier número de clases y una asociación que relacione tres clases se llama asociación ternaria.
 
-A una asociación se le puede asignar un nombre y en sus extremos se puede hacer indicaciones, como el rol que desempeña la asociación, los nombres de las clases relacionadas, su multiplicidad, su visibilidad, y otras propiedades.
+A una asociación se le asigna un nombre y en sus extremos se hacen indicaciones, como el rol que desempeña la asociación, los nombres de las clases relacionadas, su multiplicidad, su visibilidad, y otras propiedades.
 
 Hay cuatro tipos diferentes de asociación: bidireccional, unidireccional, agregación (en la que se incluye la composición) y reflexiva; las asociaciones unidireccional y bidireccional son las más comunes.
 
@@ -110,7 +110,7 @@ En UML, como está en la figura~\ref{img:uml-agregacion} se representa gráficam
 
 \subsubsection*{Composición}
 
-La representación en UML de una relación de composición es mostrada con una figura de diamante rellenado del lado del la clase contenedora, es decir al final de la línea que conecta la clase contenido con la clase contenedor.
+La representación en UML de una relación de composición es mostrada con una figura~\ref{img:uml-composicion} como un diamante rellenado del lado del la clase contenedora, es decir al final de la línea que conecta la clase contenido con la clase contenedora.
 
 
 \paragraph*{Diferencias entre Composición y Agregación}
@@ -118,14 +118,14 @@ La representación en UML de una relación de composición es mostrada con una f
 \subparagraph*{Relación de Composición}
 
 \begin{enumerate}
-    \item Cuando intentamos representar un todo y sus partes. Ejemplo, un motor es una parte de un coche.
-    \item Cuando se elimina el contenedor, el contenido también es eliminado. Ejemplo, si eliminamos una universidad eliminamos igualmente sus departamentos.
+    \item Cuando intentamos representar un todo y sus partes.
+    \item Cuando se elimina el contenedor, el contenido también es eliminado.
 \end{enumerate}
 
 
 \subparagraph*{Relación de Agrupación}
 
 \begin{enumerate}
-    \item Cuando representamos las relaciones en un software o base de datos. Ejemplo, el modelo de motor MTR01 es parte del coche MC01. Como tal, el motor MTR01 puede hacer parte de cualquier otro modelo de coche, es decir si eliminamos el coche MC01 no es necesario eliminar el motor pues podemos usarlo en otro modelo.
-    \item Cuando el contenedor es eliminado, el contenido usualmente no es destruido. Ejemplo, un profesor tiene estudiantes, cuando el profesor muere los estudiantes no mueren con él o ella.
+    \item Cuando representamos las relaciones en un \textit{software} o base de datos. 
+    \item Cuando el contenedor es eliminado, el contenido usualmente no es destruido.
 \end{enumerate}
