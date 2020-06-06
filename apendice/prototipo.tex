@@ -3,7 +3,7 @@
 Para probar el prototipo funcional de la propuesta de solución se puede consultar el código fuente y un \textit{live demo} de la aplicación.
 
 
-El \textit{front end} (Nuxt/JS/GoJS) lo puede consultar en \href{https://github.com/martinez-acosta/TT-2019-B052}{repo front}, el \textit{back end} (Python/Flask) en \href{https://github.com/omaraparicio07/api-tt-2019-b052}{repo back}, el documento de TT (Latex) en \href{https://github.com/martinez-acosta/DOCS-TT-2019-B052}{repo documento} y el \textit{live demo} está disponible en \href{https://serene-haibt-2239b4.netlify.app/}{dirección}.
+El \textit{front end} (Nuxt/JS/GoJS) lo puede consultar en \href{https://github.com/martinez-acosta/TT-2019-B052}{repositorio front}, el \textit{back end} (Python/Flask) en \href{https://github.com/omaraparicio07/api-tt-2019-b052}{repositorio back}, el documento de TT (Latex) en \href{https://github.com/martinez-acosta/DOCS-TT-2019-B052}{repositorio documento} y el \textit{live demo} está disponible en \href{https://serene-haibt-2239b4.netlify.app/}{dirección}.
 
 
 El \textit{live demo} del \textit{front end} se está usando el \textit{deploy} automático en Netlify de la rama master y el código de desarrollo está en dev. 
@@ -15,9 +15,64 @@ Asimismo, en la página de GitHub del proyecto de \textit{front end} es posible 
 El \textit{live demo} del \textit{back end} se está usando el \textit{deploy} automático en Heroku de la rama master y el código de desarrollo está en las ramas \textit{feature}.
 
 
-Para probar la aplicación, es necesario darse de alta en la aplicación, pero el equipo se ha tomado la molestia de crear credenciales temporales para los sinodales, directores y el maestro de seguimiento y para los correos temporales de las cuentas se ha usado el servicio de: \href{https://temp-mail.org/es/}{temp-mail}.
+Para probar la aplicación, es necesario darse de alta en la aplicación, pero el equipo se ha tomado la molestia de crear credenciales temporales para los sinodales, directores y el maestro de seguimiento; para los correos temporales de las cuentas se ha usado el servicio de: \href{https://temp-mail.org/es/}{temp-mail}.
+
+\subsection*{Front end}
+
+De acuerdo con el sitio de Netlify~\cite{netlify_netlify_nodate}, ofrece funcionalidad HTTPS para todos sus sitios, tiene una mitigación activa en contra de ataques DDoS, todo su tráfico está cifrado en redes TLS y \textit{tokens} están cifrados.
+
+De acuerdo con el sitio de JWT~\cite{jwt_web_2020}, un JSON Web Token (JWT) es un estándar abierto (RFC 7519) que define una forma compacta y autónoma para transmitir información de forma segura entre las partes como un objeto JSON.
 
 
-De acuerdo con el sitio de Netlify~\cite{netlify_netlify_nodate}, ofrece funcional HTTPS para todos sus sitios, tiene una mitigación activa en contra de ataques DDoS, todo su tráfico está cifrado en redes TLS y \textit{tokens} están cifrados.
+Esta información se puede verificar y confiar porque está firmada digitalmente; los JWT se firman usando un clave denominada ``secreto'' (con el algoritmo HMAC) o un par de claves pública/privada usando RSA o ECDSA.
+
+Aunque los JWT se pueden cifrar para proporcionar también secreto entre las partes, los \textit{jwt web tokens} se enfocan en \textit{tokens} firmados; los \textit{tokens} firmados pueden verificar la integridad de los reclamos que contiene, mientras que los \textit{tokens} cifrados ocultan esos reclamos de otras partes; cuando los \textit{tokens} se firman utilizando pares de claves públicas / privadas, la firma también certifica que solo la parte que posee la clave privada es la que la firmó.
+
+
+Para la autenticación del usuarios se usan \textit{web tokens}.
+
+La figura~\ref{img:prototipo-welcome} muestra la pantalla de bienvenida de la aplicación, donde el mensaje de iniciar sesión o registarse es visible si el usuario no ha iniciado sesión.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.50\textwidth]{prototipo/welcome.png}
+    \caption{Pantalla de bienvenida}
+    \label{img:prototipo-welcome}
+\end{figure}
+
+La figura~\ref{img:prototipo-login} muestra la pantalla de inicio de seión de la aplicación, donde se pide el correo y la contraseña para iniciar sesión.
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.50\textwidth]{prototipo/login.png}
+    \caption{Pantalla de login}
+    \label{img:prototipo-login}
+\end{figure}
+La figura~\ref{img:prototipo-signup} muestra el formulario de registro de la aplicación; para la validación de los campos se ha usado Vuelidate y muestra mensajes de error en caso de que algún campo esté rellenado incorrectamente.
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.50\textwidth]{prototipo/signup.png}
+    \caption{Pantalla de alta de usuario}
+    \label{img:prototipo-signup}
+\end{figure}
+La figura~\ref{img:prototipo-er} muestra la vista del diagramador entidad-relación básico, del lado izquierdo están los botones para guardar y cargar un diagrama en formato .json válido para la aplicación; en la segunda columna está la zona de diagramado para crear un diagrama entidad-relación y del lado derecho está la paleta de elementos donde están los elementos de un diagrama entidad-relación básico; en la parte de abajo está el JSON equivalente del diagrama que está en la zona de diagramado y a su izquierda está un menú para modificar algunas propiedades de los elementos del diagramador.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.50\textwidth]{prototipo/er.png}
+    \caption{Pantalla del diagramador entidad-relación}
+    \label{img:prototipo-er}
+\end{figure}
+
+
+
+Las figuras~\ref{img:prototipo-welcome},~\ref{img:prototipo-login},~\ref{img:prototipo-signup} y~\ref{img:prototipo-er} son capturas de pantalla del prototipo de la propuesta de solución, como es de notar el prototipo permite editar, guardar y cargar un diagrama entidad-relación básico.
+
+
+\subsection*{Back end}
+
 
 De acuerdo con el sitio de Heroku~\cite{heroku_heroku_2020}, 

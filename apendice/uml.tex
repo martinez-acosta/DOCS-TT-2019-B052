@@ -93,10 +93,10 @@ Hay cuatro tipos diferentes de asociación: bidireccional, unidireccional, agreg
 La agregación o agrupación como la de la figura~\ref{img:uml-agregacion} es una variante de la relación de asociación ``tiene un'': la agregación es más específica que la asociación; se trata de una asociación que representa una relación de tipo parte-todo o parte-de.
 
 
-Al ser un tipo de asociación, una agregación puede tener un nombre y las mismas indicaciones en los extremos de la línea; sin embargo, una agregación no puede incluir más de dos clases, debe ser una asociación binaria.
+Al ser un tipo de asociación, una agregación es posible que tenga un nombre y las mismas indicaciones en los extremos de la línea; sin embargo, una agregación no debe incluir más de dos clases, debe ser una asociación binaria.
 
 
-Una agregación se puede dar cuando una clase es una colección o un contenedor de otras clases, pero a su vez, el tiempo de vida de las clases contenidas no tienen una dependencia fuerte del tiempo de vida de la clase contenedora (de el todo). 
+Una agregación es posible que se dé cuando una clase es una colección o un contenedor de otras clases, pero a su vez, el tiempo de vida de las clases contenidas no tienen una dependencia fuerte del tiempo de vida de la clase contenedora (de el todo). 
 
 
 En UML, como está en la figura~\ref{img:uml-agregacion} se representa gráficamente con un rombo hueco junto a la clase contenedora con una línea que lo conecta a la clase contenida; todo este conjunto es, semánticamente, un objeto extendido que es tratado como una única unidad en muchas operaciones, aunque físicamente está hecho de varios objetos más pequeños.
@@ -118,7 +118,7 @@ La representación en UML de una relación de composición es mostrada con una f
 \subparagraph*{Relación de Composición}
 
 \begin{enumerate}
-    \item Cuando intentamos representar un todo y sus partes.
+    \item Cuando se intenta representar un todo y sus partes.
     \item Cuando se elimina el contenedor, el contenido también es eliminado.
 \end{enumerate}
 
@@ -126,6 +126,6 @@ La representación en UML de una relación de composición es mostrada con una f
 \subparagraph*{Relación de Agrupación}
 
 \begin{enumerate}
-    \item Cuando representamos las relaciones en un \textit{software} o base de datos. 
+    \item Cuando se representan las relaciones en un \textit{software} o base de datos. 
     \item Cuando el contenedor es eliminado, el contenido usualmente no es destruido.
 \end{enumerate}
