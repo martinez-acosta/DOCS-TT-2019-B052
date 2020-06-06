@@ -6,7 +6,7 @@ El prototipo funcional de la propuesta de solución usa para la autenticación d
 El \textit{front end} (Nuxt/JS/GoJS) lo puede consultar en \href{https://github.com/martinez-acosta/TT-2019-B052}{repositorio front}, el \textit{back end} (Python/Flask) en \href{https://github.com/omaraparicio07/api-tt-2019-b052}{repositorio back}, el documento de TT (Latex) en \href{https://github.com/martinez-acosta/DOCS-TT-2019-B052}{repositorio documento} y el \textit{live demo} está disponible en \href{https://serene-haibt-2239b4.netlify.app/}{dirección}.
 
 
-El \textit{live demo} del \textit{front end} se está usando el \textit{deploy} automático en Netlify de la rama master y el código de desarrollo está en dev. 
+El \textit{live demo} del \textit{front end} se está usando el \textit{deploy} automático en Netlify de la rama master y el código de desarrollo está en dev.
 
 
 Asimismo, en la página de GitHub del proyecto de \textit{front end} es posible encontrar de manera breve un resumen del propósito de la aplicación web, estado actual del proyecto, tecnologías usadas y cosas que faltan por implementar.
@@ -31,7 +31,7 @@ Aunque los JWT se pueden cifrar para proporcionar también secreto entre las par
 
 La figura~\ref{img:prototipo-welcome} muestra la pantalla de bienvenida de la aplicación, donde el mensaje de iniciar sesión o registarse es visible si el usuario no ha iniciado sesión.
 
-\begin{figure}[H] 
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{prototipo/welcome.png}
     \caption{Pantalla de bienvenida}
@@ -41,7 +41,7 @@ La figura~\ref{img:prototipo-welcome} muestra la pantalla de bienvenida de la ap
 La figura~\ref{img:prototipo-login} muestra la pantalla de inicio de sesión de la aplicación, donde se pide el correo y la contraseña para iniciar sesión.
 
 
-\begin{figure}[H] 
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{prototipo/login.png}
     \caption{Pantalla de login}
@@ -50,7 +50,7 @@ La figura~\ref{img:prototipo-login} muestra la pantalla de inicio de sesión de 
 La figura~\ref{img:prototipo-signup} muestra el formulario de registro de la aplicación; para la validación de los campos se ha usado Vuelidate y muestra mensajes de error en caso de que algún campo esté rellenado incorrectamente.
 
 
-\begin{figure}[H] 
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{prototipo/signup.png}
     \caption{Pantalla de alta de usuario}
@@ -58,7 +58,7 @@ La figura~\ref{img:prototipo-signup} muestra el formulario de registro de la apl
 \end{figure}
 La figura~\ref{img:prototipo-er} muestra la vista del diagramador entidad-relación básico, del lado izquierdo están los botones para guardar y cargar un diagrama en formato .json válido para la aplicación; en la segunda columna está la zona de diagramado para crear un diagrama entidad-relación y del lado derecho está la paleta de elementos donde están los elementos de un diagrama entidad-relación básico; en la parte de abajo está el JSON equivalente del diagrama que está en la zona de diagramado y a su derecha está un menú para modificar algunas propiedades de los elementos del diagramador.
 
-\begin{figure}[H] 
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.50\textwidth]{prototipo/er.png}
     \caption{Pantalla del diagramador entidad-relación}
@@ -73,4 +73,27 @@ Las figuras~\ref{img:prototipo-welcome},~\ref{img:prototipo-login},~\ref{img:pro
 \subsection*{Back end}
 
 
-De acuerdo con el sitio de Heroku~\cite{heroku_heroku_2020}, 
+De acuerdo con el sitio de Heroku~\cite{heroku_heroku_2020}, la plataforma ofrece distintos mecanismos para la seguridad de los proyectos alojadas en ella, dentro de estas se encuentra el uso de defecto del protocolo HTTPS lo que asegura el cidrado de los datos a traves de la red.
+
+
+De igual manera ofrece un constante escaneo de las aplicaciones en búsqueda de vulnerabilidades para mitigar los ataques DDOS, además de utilizar la infraestructura de la empresa Amazon las cuales se encuentran acreditadas por diversos estándares de seguridad. Esto da la confianza para que la aplicación Flask se ejecute de manera segura y tener salvaguardados los datos de los usuarios.
+
+
+Los métodos o funciones implementadas en la aplicación flask constan de un CRUD(Create,Read,Update,Delete) para el manejo de usuarios , métodos para el manejo de la sesión del usuario así como la recuperación de contraseña entre otras que se describen a continuación.
+
+\begin{itemize}
+    \item create\_user : método para crear una nueva cuenta de usuario, recibe como parámetros en el cuerpo de la petición HTTP un email y una contraseña.
+    \item validate\_email : método que recibe como parámetro una cadena y valida que esta cadena compra con la expresión regular para un correo electrónico.
+    \item send\_email: método que recibe como parámetros un dirección de correo electrónico, contraseña, nombre de usuario y un valor booleano, y envía un correo de bienvenida o recuperación de contraseña. El valor booleano sirve para identificar si se trata de un registro de usuario o una recuperación de contraseña.
+    \item update\_user : método que recibe como parámetro un objeto de tipo User, con los valores que se desean asignar a un usuario ya existente.
+    \item delete\_user : método que recibe como parámetro una cadena que corresponde al email de un usuario existente y elimina todos los registros asociados a ese usuario.
+    \item get\_user : método que recibe como parámetro  una cadena que corresponde al email de un usuario existente y revuelve un objeto de tipo User con todos sus datos.
+    \item get\_users : método que no recibe parámetros y que regresa un listado de todos los usuarios, para utilizar este método debe de proporcionarse en el cuerpo de la petición HTTP un token de autorización válido.
+    \item token\_required : función privada para validar que en los encabezados de la petición HTTP se encuentre un atributo \textit{AUTHORIZATION} que es del tipo clave valor y contenga como valor un token válido para el sistema, esta función sirve para decorar/anotar otras funciones y no tener que repetir esa validación para cada petición que requiera autorización de usuario.
+    \item login : método que recibe como parámetro en el cuerpo de la petición HTTP un cadena con el email y otra con la contraseña, realiza una busqueda en la base de datos y válida si los datos corresponden a un usuario, en caso de ser encontrarlo regresa como un JWT para manejar la sesión del usuario en las futuras peticiones.
+    \item save\_diagram : método que recibe parámetros en el cuerpo de la petición HTTP un objeto de tipo JSON con el contenido del diagrama ER y lo almacena en la base de datos.
+    \item last\_diagram : método que no recibe parámetros y devuelve el diagrama ER de asociado al usuario en sesión.
+\end{itemize}
+
+
+De acuerdo con el sitio de MongoDB[https://www.mongodb.com/cloud/atlas], es una plataforma de base de datos alojada en la nube  que garantiza la disponibilidad, escalabilidad y cumplimiento de estándares de seguridad.Es por este motivos que el almacenamiento de los datos esta a cargo de este servicio, ofreciendo la conectividad con la aplicación Flask ya que Heroku permite la conexión con los servicios de MongDB Atlas. y la configuración para la conexión no cambia si se esta realizando pruebas en un ambiente local antes de poner disponible los últimos cambios al público.
