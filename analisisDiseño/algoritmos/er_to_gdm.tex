@@ -1,23 +1,56 @@
-\subsubsection{Modelo entidad-relación a Generic Data Metamodel}
+\subsubsection{Modelo entidad-relación básico a Generic Data Metamodel}
 
-%\begin{enumerate}
-%    \item Por cada entidad se crea una clase entidad correspondiente en el GDM. 
-%   \item Por cada atributo se crea un clase atributo correspondiente y se indica su tipo.
-%   \item Por cada relación se crea una referencia correspondiente.
-%    \item Con cada referencia se crea una \textit{query} básica.
-%\end{enumerate}
-
-El algoritmo necesita ser basado en querys como el de Chebotko.
+Se ha decidido que el algoritmo debe ser basado en \textit{querys} como el de Chebotko; por ello para obtener consultas válidas, debe existir una ruta en el modelo entidad-relación básico que permita llegar desde la entidad n a la entidad m recorriendo las rutas del diagrama.
 
 
-input: modelo entidad-relacion
+La figura~\ref{img:simple-access-pattern} muestra el boceto de la consulta simple a implementar, está inspirada en el trabajo de Chebotko; cada consulta tiene un nombre, la columna \textit{find} representa el atributo a buscar respecto a los diferentes atributos de la columna \textit{given}. En la parte de abajo está un campo para poner una descripción breve de la consulta y botones para limpiar los respectivos campos de la consulta. En la figura \textit{User} y \textit{Artifact} son entidades y \textit{id} e \textit{email} son atributos de sus respectivas entidades.
 
 
-output: ¿modelo orientado a documentos o GDM?
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.75\textwidth]{simple_access_patterns.png}
+    \caption{Consulta básica}
+    \label{img:simple-access-pattern}
+\end{figure}
 
 
-¿Qué definición del modelo orientado a documentos se usará? ¿El del GDM o el de De Lima?
+El algoritmo por entrada tiene una instancia del modelo conceptual entidad-relacíon básico $+$ consultas básicas como las de la figura~\ref{img:simple-access-pattern} y de salida una instancia del modelo GDM.
 
 
-¿Cómo convertir las relaciones?
-Hay reglas para convertir las relaciones en bloques del documento orientado a objetos.
+La definición del modelo orientado a documentos será la usada por Alfonso de la Vega en su publicación sobre el GDM.
+
+
+Se crean primero los elementos de consultas del GDM a partir de las consultas básicas de la instancia del modelo entidad-relación básico como las de la figura~\ref{img:simple-access-pattern}:
+
+
+\begin{enumerate}
+    \item Por cada consulta se crea un elemento de la clase \textit{query} asignando el nombre de la consulta a realizar.
+    \item Se crea un elemento \textit{select} con los parámetros de la columna \textit{given} del diagrama entidad-relación básico.
+    \item Se crea el elemento \textit{from} desde la primera entidad en la que se realiza la consulta.
+    \item Se recorre la ruta del diagrama entidad-relación básico y se van añadiendo cada entidad del recorrido como un elemento \textit{including} con el nombre de la relación como referencia.
+    \item Finalmente, se crea un elemento de la clase \textit{boolean expression} para contener la expresión booleana de la consulta.
+\end{enumerate}
+
+
+Para los elementos del \textit{structure model elements} del GDM:
+
+\begin{enumerate}
+    \item Por cada entidad se crea una clase entidad correspondiente en el GDM. 
+    \item Por cada atributo se crea un clase atributo correspondiente y se indica su tipo.
+    \item Por cada relación se crea una referencia correspondiente.
+\end{enumerate}
+
+%El algoritmo necesita ser basado en querys como el de Chebotko.
+
+
+%input: modelo entidad-relacion
+
+
+%output: ¿modelo orientado a documentos o GDM?
+
+
+% ¿Qué definición del modelo orientado a documentos se usará? ¿El del GDM o el de De Lima?
+
+
+% ¿Cómo convertir las relaciones?
+% Hay reglas para convertir las relaciones en bloques del documento orientado a objetos.
