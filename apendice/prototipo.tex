@@ -6,7 +6,7 @@ El prototipo funcional de la propuesta de solución usa para la autenticación d
 El \textit{front end} (Nuxt/JS/GoJS) lo puede consultar en \href{https://github.com/martinez-acosta/TT-2019-B052}{repositorio front}, el \textit{back end} (Python/Flask) en \href{https://github.com/omaraparicio07/api-tt-2019-b052}{repositorio back}, el documento de TT (Latex) en \href{https://github.com/martinez-acosta/DOCS-TT-2019-B052}{repositorio documento} y el \textit{live demo} está disponible en \href{https://serene-haibt-2239b4.netlify.app/}{dirección}.
 
 
-El \textit{live demo} del \textit{front end} se está usando el \textit{deploy} automático en Netlify de la rama master y el código de desarrollo está en dev.
+El \textit{live demo} del \textit{front end} está usando el \textit{deploy} automático en Netlify de la rama master y el código de desarrollo está en dev.
 
 
 Asimismo, en la página de GitHub del proyecto de \textit{front end} es posible encontrar de manera breve un resumen del propósito de la aplicación web, estado actual del proyecto, tecnologías usadas y cosas que faltan por implementar.
@@ -26,7 +26,7 @@ De acuerdo con el sitio de JWT~\cite{jwt_web_2020}, un JSON Web Token (JWT) es u
 
 Esta información se puede verificar y confiar porque está firmada digitalmente; los JWT se firman usando un clave denominada ``secreto'' (con el algoritmo HMAC) o un par de claves pública/privada usando RSA o ECDSA.
 
-Aunque los JWT se pueden cifrar para proporcionar también secreto entre las partes, los \textit{jwt web tokens} se enfocan en \textit{tokens} firmados; los \textit{tokens} firmados pueden verificar la integridad de los reclamos que contiene, mientras que los \textit{tokens} cifrados ocultan esos reclamos de otras partes; cuando los \textit{tokens} se firman utilizando pares de claves públicas / privadas, la firma también certifica que solo la parte que posee la clave privada es la que la firmó.
+Aunque los JWT se pueden cifrar para proporcionar ``secreto'' entre las partes, los \textit{jwt web tokens} se enfocan en \textit{tokens} firmados; los \textit{tokens} firmados pueden verificar la integridad de los reclamos que contiene, mientras que los \textit{tokens} cifrados ocultan esos reclamos de otras partes; cuando los \textit{tokens} se firman utilizando pares de claves públicas / privadas, la firma también certifica que solo la parte que posee la clave privada es la que la firmó.
 
 
 La figura~\ref{img:prototipo-welcome} muestra la pantalla de bienvenida de la aplicación, donde el mensaje de iniciar sesión o registarse es visible si el usuario no ha iniciado sesión.
@@ -89,11 +89,11 @@ Los métodos o funciones implementadas en la aplicación \textit{flask} constan 
     \item delete\_user: método que recibe como parámetro una cadena que corresponde al \textit{email} de un usuario existente y elimina todos los registros asociados a ese usuario.
     \item get\_user: método que recibe como parámetro una cadena que corresponde al \textit{email} de un usuario existente y devuelve un objeto de tipo \textit{user} con todos sus datos.
     \item get\_users: método que no recibe parámetros y que regresa un listado de todos los usuarios; para utilizar este método debe proporcionarse en el cuerpo de la petición HTTP un \textit{token} de autorización válido.
-    \item token\_required: función privada para validar que en los encabezados de la petición HTTP se encuentre un atributo \textit{AUTHORIZATION} que es del tipo clave valor y contenga como valor un \textit{token} válido para el sistema; esta función sirve para decorar/anotar otras funciones y no tener que repetir esa validación para cada petición que requiera autorización de usuario.
-    \item login: método que recibe como parámetro en el cuerpo de la petición HTTP un cadena con el \textit{email} y otra con la contraseña; realiza una búsqueda en la base de datos y valida si los datos corresponden a un usuario; de ser ese el caso, regresa un JWT para manejar la sesión del usuario en las futuras peticiones.
+    \item token\_required: función privada para validar que en los encabezados de la petición HTTP se encuentre un atributo \textit{AUTHORIZATION} que es del tipo clave-valor y contenga como valor un \textit{token} válido para el sistema; esta función sirve para decorar/anotar otras funciones y no tener que repetir esa validación para cada petición que requiera autorización de usuario.
+    \item login: método que recibe como parámetro en el cuerpo de la petición HTTP una cadena con el \textit{email} y otra con la contraseña; realiza una búsqueda en la base de datos y valida si los datos corresponden a un usuario; de ser ese el caso, regresa un JWT para manejar la sesión del usuario en las futuras peticiones.
     \item save\_diagram: método que recibe parámetros en el cuerpo de la petición HTTP un objeto de tipo JSON con el contenido del diagrama ER y lo almacena en la base de datos.
     \item last\_diagram: método que no recibe parámetros y devuelve el diagrama ER de asociado al usuario en sesión.
 \end{itemize}
 
 
-De acuerdo con el sitio de MongoDB\cite{mongodb_mongodb_2020}, MongoDB es una plataforma de base de datos alojada en la nube que garantiza la disponibilidad, escalabilidad y cumplimiento de estándares de seguridad; por estos motivos que el almacenamiento de los datos está a cargo de este servicio, ofreciendo la conectividad con la aplicación Flask, ya que Heroku permite la conexión con los servicios de MongoDB Atlas; la configuración para la conexión no cambia si se están realizando pruebas en un ambiente local antes de exponer los últimos cambios al público.
+De acuerdo con el sitio de MongoDB\cite{mongodb_mongodb_2020}, MongoDB es una plataforma de base de datos alojada en la nube que garantiza la disponibilidad, escalabilidad y cumplimiento de estándares de seguridad; por estos motivos es que el almacenamiento de los datos está a cargo de este servicio, ofreciendo la conectividad con la aplicación Flask, ya que Heroku permite la conexión con los servicios de MongoDB Atlas; la configuración para la conexión no cambia si se están realizando pruebas en un ambiente local antes de exponer los últimos cambios al público.

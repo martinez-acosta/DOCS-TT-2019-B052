@@ -2,12 +2,12 @@
 De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, Mortadelo está basado en el \textit{model driven}; es decir que para diseñar bases de datos NoSQL necesita de modelos conceptuales definidos.
 
 
-Lo anterior implica usar dos modelos diferentes pero interrelacionados que añaden complejidad al modelado de la base datos; por esta razón de la Vega propone el GDM (Generic Data Metamodel), que es un modelo conceptual NoSQL donde la estructura (entidades, atributos, relaciones entre entidades) y patrones de acceso (cómo se consultarán los datos) están integradas en un mismo modelo conceptual.
+Lo anterior implica usar dos modelos diferentes pero interrelacionados que añaden complejidad al modelado de la base datos; por esta razón de la Vega propone el GDM (\textit{Generic Data Metamodel}), que es un modelo conceptual NoSQL donde la estructura (entidades, atributos, relaciones entre entidades) y patrones de acceso (cómo se consultarán los datos) están integradas en un mismo modelo conceptual.
 
 
 Cabe destacar que el GDM es un modelo conceptual independiente del paradigma NoSQL, por lo que puede representar una base de datos NoSQL de clave-valor, orientado a documentos, orientado a columnas u orientado a grafos.
 
-La figura~\ref{img:mortadelo-process} muestra los tres pasos principales de Mortadelo, empezando desde la izquierda con su propuesta de modelo conceptual NoSQL, el Generic Data Metamodel, siguiendo con una representación de los modelos lógicos orientado a columnas o documentos en los que realiza ``modelo a modelo'' (M2M) para generar el modelo lógico, para finalizar una transformación ``modelo a texto'' (M2T) con el modelo físico de cada modelo lógico, respectivamente.
+La figura~\ref{img:mortadelo-process} muestra los tres pasos principales de Mortadelo, empezando desde la izquierda con su propuesta de modelo conceptual NoSQL, el \textit{Generic Data Metamodel}, siguiendo con una representación de los modelos lógicos orientado a columnas o documentos en los que realiza ``modelo a modelo'' (M2M) para generar el modelo lógico, para finalizar una transformación ``modelo a texto'' (M2T) con el modelo físico de cada modelo lógico, respectivamente.
 
 
 \begin{figure}[H] 
@@ -18,7 +18,7 @@ La figura~\ref{img:mortadelo-process} muestra los tres pasos principales de Mort
 \end{figure}
 \subsubsection*{Mortadelo: modelo conceptual (Generic Data Metamodel)}
 
-La figura~\ref{img:mortadelo-gdm} muestra el Generic Data Metamodel, que está compuesto por clases interrelacionadas entre sí con notación UML\footnote{La simbología usada en los diagramas de clase UML está en el apéndice.} y consta de dos secciones principales: los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
+La figura~\ref{img:mortadelo-gdm} muestra el \textit{Generic Data Metamodel}, que está compuesto por clases interrelacionadas entre sí con notación UML\footnote{La simbología usada en los diagramas de clase UML está en el apéndice.} y consta de dos secciones principales: los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
 
 
 %Como se aprecia en la figura~\ref{img:mortadelo-gdm}, el modelo conceptual que propone de la Vega contiene en un mismo modelo con notación UML los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).

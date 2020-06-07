@@ -10,22 +10,18 @@ De acuerdo con Fowler\cite{fowler_brief_2003}, un diagrama de clases describe lo
 Los diagramas de clase también muestran las propiedades y operaciones de una clase y las restricciones que se aplican a la forma en que se conectan los objetos.
 
 
-UML usa el término característica como un término general que cubre las propiedades y operaciones de una clase.
-
-
-\subsubsection*{Miembros}
-UML proporciona mecanismos para representar los miembros de la clase, como atributos y métodos, así como información adicional sobre ellos.
+UML usa el término característica como un término general que cubre las propiedades y operaciones de una clase; proporciona mecanismos para representar los miembros de la clase, como atributos y métodos, así como información adicional sobre ellos.
 
 
 \paragraph*{Visibilidad}
 Para especificar la visibilidad de un miembro de la clase (es decir, cualquier atributo o método), se coloca uno de los siguientes signos delante de ese miembro:
 
 \begin{enumerate}
-    \item +	Público
-    \item -	Privado
-    \item \# Protegido
-    \item /	Derivado (se puede combinar con otro)
-    \item \~ \;	Paquete
+    \item +	Público.
+    \item -	Privado.
+    \item \# Protegido.
+    \item /	Derivado (se puede combinar con otro).
+    \item \~ \;	Paquete.
 \end{enumerate}
 
 \paragraph*{Ámbitos}
@@ -52,7 +48,7 @@ La figura~\ref{img:uml-asociacion} es una asociación entre dos clases, la clase
 
 La figura~\ref{img:uml-agregacion} es una agregación entre dos clases, la clase \textit{Professor} y la clase \textit{Class} donde la cardinalidad es una a muchos.
 
-La figura~\ref{img:uml-composicion} muestra una  asociación y composición entre clases, la clase Almacen está asociada a la clase Cuentas y con la clase Cliente hay una relación de composición.
+La figura~\ref{img:uml-composicion} muestra una  asociación y composición entre clases, la clase Almacén está asociada a la clase Cuentas y con la clase Cliente hay una relación de composición.
 
 
 \paragraph*{Relaciones}
@@ -74,7 +70,7 @@ Un enlace es la relación más básica entre objetos.
 
 Una asociación como la de la figura~\ref{img:uml-asociacion} representa una familia de enlaces; una asociación binaria (entre dos clases) normalmente se representa con una línea continua; una misma asociación relaciona cualquier número de clases y una asociación que relacione tres clases se llama asociación ternaria.
 
-A una asociación se le asigna un nombre y en sus extremos se hacen indicaciones, como el rol que desempeña la asociación, los nombres de las clases relacionadas, su multiplicidad, su visibilidad, y otras propiedades.
+A una asociación se le asigna un nombre y en sus extremos se hacen indicaciones, como el rol que desempeña la asociación, los nombres de las clases relacionadas, su multiplicidad, su visibilidad y otras propiedades.
 
 Hay cuatro tipos diferentes de asociación: bidireccional, unidireccional, agregación (en la que se incluye la composición) y reflexiva; las asociaciones unidireccional y bidireccional son las más comunes.
 
@@ -96,7 +92,7 @@ La agregación o agrupación como la de la figura~\ref{img:uml-agregacion} es un
 Al ser un tipo de asociación, una agregación es posible que tenga un nombre y las mismas indicaciones en los extremos de la línea; sin embargo, una agregación no debe incluir más de dos clases, debe ser una asociación binaria.
 
 
-Una agregación es posible que se dé cuando una clase es una colección o un contenedor de otras clases, pero a su vez, el tiempo de vida de las clases contenidas no tienen una dependencia fuerte del tiempo de vida de la clase contenedora (de el todo). 
+Una agregación es posible que se dé cuando una clase es una colección o un contenedor de otras clases, pero a su vez, el tiempo de vida de las clases contenidas no tienen una dependencia fuerte del tiempo de vida de la clase contenedora (del todo). 
 
 
 En UML, como está en la figura~\ref{img:uml-agregacion} se representa gráficamente con un rombo hueco junto a la clase contenedora con una línea que lo conecta a la clase contenida; todo este conjunto es, semánticamente, un objeto extendido que es tratado como una única unidad en muchas operaciones, aunque físicamente está hecho de varios objetos más pequeños.
@@ -110,7 +106,7 @@ En UML, como está en la figura~\ref{img:uml-agregacion} se representa gráficam
 
 \subsubsection*{Composición}
 
-La representación en UML de una relación de composición es mostrada en la figura~\ref{img:uml-composicion} como un diamante rellenado del lado del la clase contenedora, es decir, al final de la línea que conecta la clase contenido con la clase contenedora.
+La representación en UML de una relación de composición es mostrada en la figura~\ref{img:uml-composicion} como un diamante rellenado del lado de la clase contenedora, es decir, al final de la línea que conecta la clase contenido con la clase contenedora.
 
 
 \paragraph*{Diferencias entre Composición y Agregación}
