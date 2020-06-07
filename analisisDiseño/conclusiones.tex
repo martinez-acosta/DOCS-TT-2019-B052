@@ -22,25 +22,28 @@ A continuación están las respuestas (con preguntas incluidas) de la sección~\
 
 
 \begin{enumerate}
-    \item ¿El sistema contribuye a los objetivos generales de la organización?\\ Sí, ya que la misión en ESCOM es formar profesionales líderes en saberes de ingeniería, tecnología y ciencias, de la computación, con una visión globalizada; así como contribuir con investigación y desarrollo tecnológico para el crecimiento del país; por lo que la propuesta de solución contribuye directamente a la visión de la ESCOM.
+    \item ¿El sistema contribuye a los objetivos generales de la organización?\\ Sí, ya que la misión en ESCOM es formar profesionales líderes en saberes de ingeniería, tecnología y ciencias de la computación con una visión globalizada; así como contribuir con investigación y desarrollo tecnológico para el crecimiento del país; por lo que la propuesta de solución contribuye directamente a la visión de la ESCOM.
     \item ¿Se puede implementar el sistema dentro del cronograma y el presupuesto utilizando las tecnologías actuales? \\Es posible, tal como se muestra en la sección~\ref{ref:factibilidad-tecnica}, se cuenta con las tecnologías para el desarrollo del producto y el esfuerzo es ajustado para el equipo de desarrollo, pero queda en los límites del tiempo establecido en el cronograma; además de ser desarrollado con una metodología ágil que ofrece productos funcionales por cada iteración.
     \item ¿Se puede integrar el sistema con otros sistemas que se utilizan?\\ Sí, el sistema es integrable a otros sistemas por estar disponible en la web; por ejemplo, puede integrarse directamente en la asignatura de Bases de Datos como una opción más para el modelado de diagramas ER con la ventaja de tener el acercamiento a los modelos no relacionales de manera práctica.
 \end{enumerate}
 
 
-Como se ha mencionado en el documento, se ha considerado Scrum como metodología para desarrollar la propuesta de solución porque el proyecto requiere de entregas regulares de su avance para realizar modificaciones con ayuda de la retroalimentación constante del cliente, en este caso las directoras del proyecto.
+Como se ha mencionado en el documento, se ha considerado Scrum como metodología para desarrollar la propuesta de solución, porque el proyecto requiere de entregas regulares de su avance para realizar modificaciones con ayuda de la retroalimentación constante del cliente, en este caso las directoras del proyecto.
 
 
 Esto otorga beneficios como poder responder con flexibilidad, adaptación a los requisitos de cliente, estrechar la relación con el mismo y mantener al equipo motivado con pequeñas entregas funcionales del producto; además, tomando en cuenta la experiencia del equipo, esta forma de trabajo permite mostrar avances funcionales en el producto en un periodo de tiempo corto para realizar una evaluación y en caso de ser requerido se sugieran cambios.
 
 
-De la sección de algoritmos, para la validez estructural de un diagrama entidad-relación se hace uso del trabajo de Dullea~\cite{dullea_analysis_2003} para el análisis de las relaciones unirias y binarias; además se propone restricciones para las entidades, atributos y relaciones del modelo entidad-relación básico.
+De la sección de algoritmos, para la validez estructural de un diagrama entidad-relación se hace uso del trabajo de Dullea~\cite{dullea_analysis_2003} para el análisis de las relaciones unarias y binarias; además, se proponen restricciones para las entidades, atributos y relaciones del modelo entidad-relación básico.
 
 
 Del mapeo modelo entidad-relación básico a modelo relacional se ha optado por usar la propuesta de Elmasri~\cite{ramez_elmasri_fundamentos_nodate}; para la obtención del esquema SQL se ha decidido parsear el modelo lógico relacional obtenido por el algoritmo anterior y se indica en la sección~\ref{sec:esquema-sql} las reglas básicas para implementar el algoritmo en el DBMS MySQL.
 
 
 Para el algoritmo de mapeo entre el modelo entidad-relación y el GDM se ha optado por proponer consultas similares al trabajo de Chebotko\cite{chebotko_big_2015} para generar las consultas del GDM; asimismo, las relaciones en el modelo entidad-relación son referencias en el GDM y una consulta válida en el modelo entidad-relación es toda consulta que permita llegar a un atributo de una entidad $Y$ desde una entidad $X$ recorriendo las rutas del diagrama entidad-relación.
+
+
+Para generar el modelo lógico orientado a documentos a partir del GDM se hace uso del algoritmo propuesto por Alfonso de la Vega, en el que se generan árboles de acceso de las consultas en el GDM para generar los documentos anidados en el modelo lógico orientado a documentos.
 
 
 Finalmente, para obtener el esquema de sentencias en MongoDB se da una serie de pasos en la sección~\ref{sec:logico-documentos-fisico} para implementar el algoritmo.
