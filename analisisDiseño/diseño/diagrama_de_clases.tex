@@ -1,26 +1,26 @@
 \section{Diagrama de clases}
 
-De acuerdo con el sitio de visual paradigm (https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-class-diagram/) el diagrama de clases es un modelo conceptual que permite visualizar la estructura de las clases de un sistema, sus atributos , métodos  y las relaciones entre objetos.
+De acuerdo con Visual Paradigm~\cite{visual_paradigm_visual_2020}, el diagrama de clases es un modelo conceptual que permite visualizar la estructura de las clases de un sistema, sus atributos, métodos y las relaciones entre objetos.
 
 
-El diagrama de clases de proyecto se muestra en la figura \ref{img:classes_diagram}; en la cual se aprecia la clase dominante \textit{usuario}, y son el resto de las clases quienes dependen de esta.
+El diagrama de clases de la propuesta de solución se muestra en la figura~\ref{img:classes_diagram}; en la cual se aprecia la clase dominante \textit{usuario} y las demás clases dependen de esta.
 
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{diseño/diagrama_de_clases.png}
-  \caption{Diagrama de clases.}
+  \caption{Diagrama de clases}
   \label{img:classes_diagram}
 \end{figure}
 
-Podemos interpretar el significado del diagrama de clases leyendo los puntos de la siguiente manera:
+Es posible interpretar el significado del diagrama de clases de la figura~\ref{img:classes_diagram} leyendo los puntos de la siguiente manera:
 
 \begin{itemize}
   \item El usuario es la clase principal.
   \item Existe una agregación entre Usuario y DiagramaER.
-  \item El ModeloGDM es parte del ModeloLogicoNoSQL. El ModeloGDM puede existir por si mismo.
-  \item El GDM depende del DiagramaER, sin embargo, el DiagramaER no depende del GDM.
+  \item El ModeloGDM es parte del ModeloLogicoNoSQL; el ModeloGDM puede existir por sí mismo.
+  \item El GDM depende del DiagramaER; sin embargo, el DiagramaER no depende del GDM.
   \item La ConsultaDeAccessoSimple depende del Diagrama ER.
-  \item El ModeloLogicoRelaciona depende del DiagramaRelacional.
+  \item El ModeloLogicoRelacional depende del DiagramaRelacional.
 \end{itemize}
 

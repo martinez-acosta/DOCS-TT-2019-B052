@@ -1,0 +1,16 @@
+\section{Diagrama de la base de datos}
+Como MongoDB es una base de datos NoSQL orientada a documentos, los datos se almacenan en documentos JSON; teniendo en cuenta el diagrama de clases de la figura~\ref{img:classes_diagram}, se aprecia que las relaciones son por composición de 1 a 1 y la clase dominante es Usuario, es decir, las clases DiagramaER, DiagramaRelacional y DiagramaNoSQL no pueden existir si no existe una clase Usuario asociada a ellas.
+
+
+Por esto la mejor manera de almacenar los datos es en documentos anidados, donde el documento principal es el usuario y este contendrá los documentos de las otras clases; en la figura \ref{img:database_schema} se representa la relación por composición de las clases de la figura~\ref{img:classes_diagram}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{diseño/diagrama_DB.png}
+    \caption{Diagrama de la base de datos.}
+    \label{img:database_schema}
+\end{figure}
+
+
+De esta manera se puede asegurar el comportamiento del diagrama de clases, porque al eliminar un usuario internamente se eliminan los diagramas asociados a este; es por este motivo que el usuario debe estar 100 \% seguro al momento de eliminar su cuenta, ya que será imposible recuperar los diagramas que haya realizado un vez completada la acción.

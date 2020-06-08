@@ -2226,12 +2226,18 @@
     <bcf:citekey order="90">dullea_analysis_2003</bcf:citekey>
     <bcf:citekey order="91">ramez_elmasri_fundamentos_nodate</bcf:citekey>
     <bcf:citekey order="92">chebotko_big_2015</bcf:citekey>
-    <bcf:citekey order="93">fowler_brief_2003</bcf:citekey>
-    <bcf:citekey order="94">fowler_brief_2003</bcf:citekey>
-    <bcf:citekey order="95">netlify_netlify_nodate</bcf:citekey>
-    <bcf:citekey order="96">jwt_web_2020</bcf:citekey>
-    <bcf:citekey order="97">heroku_heroku_2020</bcf:citekey>
-    <bcf:citekey order="98">mongodb_mongodb_2020</bcf:citekey>
+    <bcf:citekey order="93">pressman_software_2005</bcf:citekey>
+    <bcf:citekey order="94">visual_paradigm_visual_2020</bcf:citekey>
+    <bcf:citekey order="95">pressman_software_2005</bcf:citekey>
+    <bcf:citekey order="96">pressman_software_2005</bcf:citekey>
+    <bcf:citekey order="97">pop_designing_2014</bcf:citekey>
+    <bcf:citekey order="98">pope_cookbook_1988</bcf:citekey>
+    <bcf:citekey order="99">fowler_brief_2003</bcf:citekey>
+    <bcf:citekey order="100">fowler_brief_2003</bcf:citekey>
+    <bcf:citekey order="101">netlify_netlify_nodate</bcf:citekey>
+    <bcf:citekey order="102">jwt_web_2020</bcf:citekey>
+    <bcf:citekey order="103">heroku_heroku_2020</bcf:citekey>
+    <bcf:citekey order="104">mongodb_mongodb_2020</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
