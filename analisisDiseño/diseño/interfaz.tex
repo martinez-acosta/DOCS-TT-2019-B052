@@ -1,0 +1,71 @@
+\section{Interfaz de usuario}
+
+En esta sección se muestran las imágenes del prototipo funcional de la propuesta de solución junto a una breve descripción de cada una de las pantallas.
+
+\subsection{Pantalla de inicio}
+
+la figura \ref{img:app_home} muestra la pantalla inicial que el usuario observa apenas entra a la dirección \ref{https://serene-haibt-2239b4.netlify.app/}. Donde tiene la opción de registrarse o iniciar sesión en caso de haberlo hecho anteriormente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/home.png}
+    \caption{Pantalla inicial.}
+    \label{img:app_home}
+\end{figure}
+
+\subsection{Pantalla de registro}
+
+la figura \ref{img:app_register} cuenta con un formulario para el registro de un usuario nuevo, se deben llenar todos los datos cumpliendo una serie de reglas entre ellas:
+
+\begin{itemize}
+    \item La contraseña debe tener al menos 6 caracteres.
+    \item Se solicita que repitan la contraseña en otro campo y deben coincidir.
+    \item Se debe colocar un email valido.
+\end{itemize}
+
+Una vez llenado los datos solicitados y al dar click en el botón `submit', el usuario recibirá un correo de bienvenida en la dirección de email que proporciono. Al finalizar el proceso de registro del usuario en la base de datos será redirigido automáticamente a la pantalla del diagramador entidad-relación.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/register.png}
+    \caption{Pantalla de registro.}
+    \label{img:app_register}
+\end{figure}
+
+\subsection{Pantalla de login}
+
+la figura \ref{img:app_login} cuenta con un formulario para que el usuario ingrese el email y contraseña que proporcionó en el momento de su registro. una vez que esl sistema valide la existencia del usuario en la base de datos será redirigido automáticamente a la pantalla del diagramador entidad-relación.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/login.png}
+    \caption{Pantalla de login.}
+    \label{img:app_login}
+\end{figure}
+
+
+\subsection{Pantalla del diagramador entidad-relación}
+
+la figura \ref{img:app_diagrammerER} muestra lo que visualiza el usuario una vez que concluyo su registro o inicio sesión. Donde puede apreciar las herramientas para crear/editar un diagrama entidad-relación, además de la zona de trabajo conocida como canvas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/er_diagramer.png}
+    \caption{Pantalla del diagramador entidad-relación.}
+    \label{img:app_diagrammerER}
+\end{figure}
+
+\subsection{Pantalla del diagrama relacional}
+
+la figura \ref{img:app_diagrammerER} muestra el diagrama relacional equivalente del diagrama entidad-relación que el usuario genero en la pantalla anterior. Este diagrama solo es visible después de haber pasado por el proceso de validación para el diagrama entidad-relación.
+
+
+En esta pantalla el usuario solo podrá visualizar el diagrama relacional, la edición del diagrama esta deshabilitada ya que no es propósito de este trabajo terminal esta funcionalidad.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/diagram_relational.png}
+    \caption{Pantalla del diagrama relacional.}
+    \label{img:app_diagrammerER}
+\end{figure}
+

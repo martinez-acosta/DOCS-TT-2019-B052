@@ -1,0 +1,45 @@
+\section{Arquitectura del sistema}
+
+De acuerdo con Pressman\cite{pressman_software_2005} en su sección Diseño de la arquitectura , el diseño arquitectónico de un software es la representación de los componentes o módulos del sistema y cómo estos interactúan entre sí. En esta sección se muestra que diseño arquitectónico utilizará el sistema como parte de su implementación.
+
+\subsection{Arquitectura cliente-servidor}
+
+La arquitectura cliente servidor es un modelo de diseño del software compuesta por 2 partes, el clientes, es quien solicita información por medio de una petición y el servidor quien se encarga de proveer los datos que le son requeridos. Las aplicaciones web utilizan frecuentemente este modelo teniendo como clientes a un navegador web y el servidor es quien provee la información que solicitante, pudiendo atender a más de un cliente al mismo tiempo.
+
+La figura \ref{img:arq_client_server} describe la arquitectura cliente servidor del sistema.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{diseño/cliente_servidor.png}
+    \caption{Arquitectura cliente-servidor.}
+    \label{img:arq_client_server}
+\end{figure}
+
+
+En la imagen anterior se observa que para poder hacer uso del sistema el usuario debe contar con un dispositivo capaz de ejecutar una navegador web, como una computadora o teléfono inteligente( smartphone). El servidor será una computadora que se encuentra en un instancia de la nube la cual contiene los requisitos necesarios para el funcionamiento del sistema como son: el sistema operativo GNU/Linux, el servidor web gunicorn, las aplicaciones flask y nuxt, conexión a internet y una configuración de red   que permita la comunicación con la base de datos MongoDB.
+
+
+\subsection{Patrón de diseñó MVC}
+
+De acuerdo con Dragos-Paul Pop \cite{dragos_2014} en su trabajo \textit{`Designing an MVC Model for Rapid Web Application Development'}, el patrón MVC fue concevido por primera vez en la década de los 70 en la empresa Xerox Parc. y su principal propósito era  cerrar la brecha entre el modelo mental del usuario y el modelo digital de las aplicaciones en una computadora.
+
+
+Más tarde el paradigma MVC fue descrito por  Krasner y Pope\cite{pope_1988} donde destacan que se pueden obtener enormes beneficios si se piensa en la modularidad de las aplicaciones. El patrón se divide en 3 partes principalmente: el modelo, la vista y el controlador los cuales se describen adelante.
+
+\begin{itemize}
+    \item El modelo: es el dominio principal de la aplicación, es quien se encarga del manejo de los datos  y toda la lógica del negocio, es decir, no tiene que tener conocimiento sobre la interfaz gráfica ya sea una aplicación web, de escritorio o móvil. Idealmente el modelo debe ser independiente de la plataforma en que se ejecuta.
+    \item La vista : contiene todos los elementos visibles al usuario y en contra parte al modelo, esta no debe tener conocimiento de la lógica del negocio de la aplicación. Sus responsabilidades deben limitarse a definir la estructura y apariencia de los datos presentados en la interfaz gráfica.
+    \item El controlador : es el intermediario entre la vista y el modelo, es quien gestiona el flujo de la aplicación por medio de la comunicación entre los otros 2 componentes.
+\end{itemize}
+
+La figura \ref{img:mvc_implementation} describe la implementación del patrón MVC en la propuesta de solución junto a las tecnologías utilizadas en cada componente del paradigma. Como se aprecia la vista queda a cargo del framework Nuxt quien es el encargado del renderizado de la interfaz gráfica para el usuario mostrando elementos como el formulario de login y el diagramador entidad-relación.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{diseño/patron_mvc.png}
+  \caption{Esquema MVC.}
+  \label{img:mvc_implementation}
+\end{figure}
+
+
+De igual manera el framework flask será el encargado del rol de controlador, es decir, quién llevará a cabo al comunicación de los datos que el usuario proporcione en la vista para transformarlos en algo que el modelo pueda entender como el guardado del objeto json del diagrama entidad-relación para ser almacenado en la base de datos. Finalmente el modelo queda a cargo del lenguaje python para el manejo de los datos y el encargado de mantener la comunicación con la base de datos, pudiéndose apoyar en bibliotecas de terceros como el propio framework flask para transformar los datos de la lógica de negocio y convertirlos en algo que la vista pueda mostrar al usuario.
