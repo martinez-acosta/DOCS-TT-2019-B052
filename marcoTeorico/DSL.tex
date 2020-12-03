@@ -1,7 +1,29 @@
-\subsubsection{Lenguaje específico de dominio}
-De acuerdo con Fowler \cite{fowler_domain-specific_2010}, un DSL puede ser interno o externo. Un DSL interno utiliza un subconjunto de las instrucciones de un lenguaje de programación existente para declarar la sintaxis del DSL. Por otro lado, un DSL externo es un lenguaje independiente del lenguaje al que se transformará.
+\subsection{Lenguaje específico de dominio}
+De acuerdo con Fowler \cite{fowler_domain-specific_2010}, un lenguaje específico de dominio (en inglés \textit{domain specific language}) es un lenguaje de programación dedicado a un dominio en partícular (un dominio puede ser en el contexto de un banco, o de una aplicación web, o de consultas de bases de datos), porque representa un problema específico y provee una técnica para solucionar una situación particular. 
 
-\paragraph*{Metodología de diseño}
+Hay dos tipos de lenguajes en un lenguaje DSL:
+
+\begin{enumerate}
+  \item DSL: el lenguaje en el que es escrito un DSL.
+  \item Lenguaje del host: el lenguaje en el que es ejecutado y procesado el DSL.
+\end{enumerate}
 
 
-\paragraph*{Implementación}
+Asimismo, un DSL es externo si es un lenguaje diferente al lenguaje del host, pero es interno si el lenguaje DSL es solo un subconjunto de instrucciones del lenguaje del host.
+\subsubsection*{Metodología de diseño}
+
+Debido a que un DSL puede ser externo se necesitan de herramientas existentes o desarrollar las herramientas que permitan al lenguaje host interpretar el DSL externo.
+
+De acuerdo con Deursen\cite{van_deursen_domain-specific_2000}, un DSL se puede diseñar en los siguientes pasos:
+\begin{enumerate}
+  \item Identificar el problema de dominio
+  \item Reunir información relevante sobre el problema de dominio escogido.
+  \item Crear una gramática que exprese semánticamente el problema de dominio.
+  \item Desarrollar un compilador que traduzca programas del lenguaje DSL al lenguaje host.
+\end{enumerate} 
+
+\subsubsection*{Implementación}
+
+Desarrollar un intérprete o un compilador es el enfoque clásico para implementar un nuevo lenguaje, aunque se pueden utilizar herramientas de compilación estándar o herramientas dedicadas a la implementación de DSL como Draco, ASF + SDF o Xtext.
+
+La principal ventaja de desarrollar un compilador o intérprete es que la implementación está completamente adaptada al DSL y no es necesario hacer concesiones en cuanto a notación o tipos de datos. Por otra parte, un problema importante es el costo de desarrollar un compilador o intérprete desde cero, y la falta de reutilización de otras implementaciones\cite{van_deursen_domain-specific_2000}.
