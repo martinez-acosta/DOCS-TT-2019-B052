@@ -44,7 +44,7 @@ La figura~\ref{img:app_login} cuenta con un formulario para que el usuario ingre
 \end{figure}
 
 
-\subsection*{Pantalla del diagramador entidad-relación}
+\subsection*{Pantallas del diagramador entidad-relación}
 
 La figura~\ref{img:app_diagrammerER} muestra lo que visualiza el usuario una vez que concluyó su registro o inició sesión; se puede apreciar las herramientas para crear/editar un diagrama entidad-relación, además de la zona de trabajo conocida como \textit{canvas}.
 
@@ -55,17 +55,64 @@ La figura~\ref{img:app_diagrammerER} muestra lo que visualiza el usuario una vez
     \label{img:app_diagrammerER}
 \end{figure}
 
-\subsection*{Pantalla del diagrama relacional}
 
-La figura~\ref{img:app_diagrammerER} muestra el diagrama relacional equivalente del diagrama entidad-relación que el usuario generó en la figura~\ref{img:app_diagrammerER}; este diagrama solo es visible después de haber pasado por el proceso de validación para el diagrama entidad-relación.
-
-
-En la figura~\ref{img:app_diagrammerRelational} se ve que el usuario solo podrá visualizar el diagrama relacional, la edición del diagrama está deshabilitada, ya que no está funcionalidad no está contemplada en la propuesta de solución.
+La figura~\ref{img:app_errorDiagram} muestra los errores del diagrama entidad-relación después que el usuario hace click en el  botón ``validar diagrama'', en caso que el diagrama no cumpla con las reglas mencionadas en la sección \ref{cap:validationER}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{interfaz/diagram_relational.png}
-    \caption{Pantalla del diagrama relacional}
-    \label{img:app_diagrammerRelational}
+    \includegraphics[width=0.75\textwidth]{interfaz/invalid_diagramER.png}
+    \caption{Pantalla de erroresal validar un diagrama.}
+    \label{img:app_errorDiagram}
 \end{figure}
 
+La figura~\ref{img:app_validDiagram} muestra el modal que el usuario visualiza después de hacer click en el botón ``validar diagrama'' y este cumple con todas las reglas de validación estructural.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/valid_diagramER.png}
+    \caption{Pantalla de erroresal validar un diagrama.}
+    \label{img:app_validDiagram}
+\end{figure}
+
+\subsection*{Pantallas de las sentencias SQL equivalentes}
+
+La figura~\ref{img:app_sqlSentences} muestra las pantallas del módulo de obtención de las sentencias equivalentes del diagrama que el usuario generó en la figura~\ref{img:app_diagrammerER}; este paso solo es posible después de haber pasado por el proceso de validación para el diagrama entidad-relación.
+Del lado derecho en la figura~\ref{img:app_sqlScript} se aprecia el código en el lenguaje SQL necesario para crear la base de datos relacional en el sistema gestor de base de datos MySQL, y del lado izquierdo en la figura~\ref{img:app_dbName} se muestra el modal que el usuario visualiza al hacer click en el botón ``Obtener sentencias SQL'' en el cual deberá colocar el nombre que tendrá la base de datos a generar.
+
+Si el usuario necesita exportar el script de sql a un archivo, cuenta con un botón en la parte superior para realizar esta acción.
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{interfaz/sql_sentences.png}
+        \caption{Sentencencias SQL equivalentes al diagram ER.}
+        \label{img:app_sqlScript}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{interfaz/get_sql_sentences.png}
+        \caption{Modal para nombrar la base de datos sql.}
+        \label{img:app_dbName}
+      \end{subfigure}
+    \caption{Pantallas de las sentencias SQL equivalentes al diagrama ER.}
+    \label{img:app_sqlSentences}
+\end{figure}
+
+\subsection*{Pantallas de las consultas de acceso}
+
+La figura~\ref{img:app_simpleQuery} es lo que el usuario visualiza al ingresar a este módulo, este paso solo es posible después de haber pasado por el proceso de validación para el diagrama entidad-relación. Es aquí donde puede agregar las consultas de acceso que desea que sea utilicen en el proceso de tranformación al modelo noSQL teniendo del lado izquierdo el diagrama ER en modo de solo lectura y al hacer click derecho en los atributos clave de una entidad vusualizará un menú con las opciones para generar dicha consulta.
+
+Las consultas de acceso pueden ser tantas con crea necesitarlas como se aprecia en la figura~\ref{img:app_multipleQueries}, es importante mencionar que puede agregar tantos elementos al apartado ``Respecto al atributo'' como quiera pero debe existir al menos un elemento en el apartado ``Encontrar'' para que la consulta tenga sentido.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{interfaz/queries_simple.png}
+    \caption{Pantalla para agregar una consulta de acceso.}
+    \label{img:app_simpleQuery}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{interfaz/queries_multiple.png}
+    \caption{Pantalla con multiples consultas de acceso.}
+    \label{img:app_multipleQueries}
+\end{figure}
