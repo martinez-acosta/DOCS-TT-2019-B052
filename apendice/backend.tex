@@ -1,0 +1,63 @@
+\subsection*{Back end}
+
+
+De acuerdo con el sitio de Heroku~\cite{heroku_heroku_2020}, la plataforma ofrece distintos mecanismos para la seguridad de los proyectos alojadas en ella, dentro de estas se encuentra el uso por defecto del protocolo HTTPS, que asegura el cifrado de los datos en la Internet.
+
+
+De igual manera ofrece un constante escaneo de las aplicaciones en búsqueda de vulnerabilidades para mitigar los ataques DDoS, además de utilizar la infraestructura de la empresa Amazon, las cuales se encuentran acreditadas por diversos estándares de seguridad; esto da la confianza para que la aplicación Flask se ejecute de manera segura y tener salvaguardados los datos de los usuarios.
+
+
+Los métodos o funciones implementadas en la aplicación \textit{flask} constan de un CRUD (\textit{Create, Read, Update, Delete}) para el manejo de usuarios entre otras para lograr la funcionalidad completa del proyecto. Para la mantener separado el proyecto front-end y los servicos web se utilizó  la herramienta \textit{flask\_restplus} la cual utiliza la interfaz de swagger para diseñar, crear, documentación y utilizar servicios web \textit{RESTful}, de esta manera los desarrolladores y usuarios pueden probar los servicios sin la necesidad del proyecto mostrado en \href{https://serene-haibt-2239b4.netlify.app}{netlify} o alguna herramienta para realizar peticiones rest como \href{https://www.postman.com/downloads/}{postman}, \href{https://install.advancedrestclient.com/install}{Advanced REST client}, etc. , la figura~\ref{img:swaggerApi} muestra la vista que el usuario pude ver al entrar en la aplicación \href{https://api-tt-2019-b052.herokuapp.com}{heroku}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{apiFlask/api_swagger_home.png}
+  \caption{Pantalla inicial con la interfaz swagger}
+  \label{img:swaggerApi}
+\end{figure}
+
+
+Para mantener la seguridad de los datos de los usuarios la mayoria de los servicios expuesto necesitan de de un token de autenticación para poder realizar operaciones de modificación o consulta, esto se logra habilidanto la característica de logueo para la interfaz swagger, donde se solicita un token para poder realizar peticiones que contienen datos del usuario. la figura~\ref{img:tokenSwagger} muestra la ventana para ingresar el token de autenticación de usuario generado por el endpoint \textit{login} de la figura~\ref{img:loginApi} con un usuario previamente registrado.
+
+\begin{figure}[H]
+  \begin{subfigure}[b]{0.49\textwidth}
+      \includegraphics[width=\textwidth]{apiFlask/token_swagger.png}
+      \caption{Solicitud de token de autenticación.}
+      \label{img:tokenSwagger}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+      \includegraphics[width=\textwidth]{apiFlask/login_api.png}
+      \caption{Generación del token de autenticación.}
+      \label{img:loginApi}
+    \end{subfigure}
+    \caption{Login y autenticación en el api.}
+\end{figure}
+
+Para la construcción de la aplicación se creo la estructura mostrada en la figura~\ref{img:apiStructure} donde la carpeta \textit{config} contiene un archivo con el nombre \textit{app.conf} con las variables de configuración de la aplicación como son la llave secreta para validar el \textit{JWT}, las credenciales para conexión a la base de datos, un usuario de pruebas y característica de la interfaz swagger, mientras que el archivo \textit{database.py} es una clase singleton para mantener una sola instancia de conexión a la base de datos para toda la aplicación.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{apiFlask/api_structure.png}
+  \caption{Estructura del proyecto backend.}
+  \label{img:apiStructure}
+\end{figure}
+
+Las carpetas \textit{apis y service} contiene toda la lógica de negocio para las operaciones como son la creación de usuario, recuperación de la contraseña, la obtención de sentencias SQL, etc. El archivo \textit{server.py} es el encargado de cargar la configuración y ejecutar el servidor de flask para poner en marcha la aplicación, mientras que el archivo \textit{util.py} contiene los métodos para validar la dirección de correo electrónico y el envío de correos utilizando el servidor \textit{SMTP} de google.
+
+A continuación se listan los endpoints creados para los servicios web junto a una breve descripción de cada uno de ellos:
+
+\begin{itemize}
+    \item /user (POST): Crea un nuevo usuario, requiere de un nombre de usuario, un email valido y no registrdo en la aplicación y una contraseña que será cifrada.
+    \item /user (GET): Recupera un listado de todos los usuarios registrados de la aplicación.
+    \item /user/{email} (GET): Recupera al información de un usuario en especifico, requiere de un email valido y registrado en la aplicación.
+    \item /login (POST): Genera un token de autenticación de usuario, requiere de un email y la contraseña de un usuario registrado en la aplicación.
+    \item /login (PUT): Cambios la contraseña de un usuarios, requiere el email de un usuario registrado y la nueva contraseña que será cifrada para actualizarla en la base de datos al usuario asociado.
+    \item /diagram (POST): Guarda un diagrama en la base de datos, requiere de un diagrama en formato json para asociarlo al usuario asociado al token de autenticación.
+    \item /diagram (GET): Recupera el diagrama asociado a un usuario, requiere de un token de autenticación para determinar el usuario del cual recuperar su diagrama.
+    \item /relational (POST): Transforma un diagram ER a un script sql, requiere de un diagrama en formato js para obtener las sentencias SQL equivalentes.
+    \item /relational/validate (POST): Valida la estructura un diagrama ER, requiere de un diagrama en formato js para aplicar las reglas de validación de la sección \ref{cap:validationER} y determinar si el diagrama es valido o en su defecto mostrar los errores que este presenta.
+\end{itemize}
+
+
+De acuerdo con el sitio de MongoDB\cite{mongodb_mongodb_2020}, MongoDB es una plataforma de base de datos alojada en la nube que garantiza la disponibilidad, escalabilidad y cumplimiento de estándares de seguridad; por estos motivos es que el almacenamiento de los datos está a cargo de este servicio, ofreciendo la conectividad con la aplicación Flask, ya que Heroku permite la conexión con los servicios de MongoDB Atlas; la configuración para la conexión no cambia si se están realizando pruebas en un ambiente local antes de exponer los últimos cambios al público.

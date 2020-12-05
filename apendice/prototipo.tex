@@ -70,30 +70,5 @@ La figura~\ref{img:prototipo-er} muestra la vista del diagramador entidad-relaci
 Las figuras~\ref{img:prototipo-welcome},~\ref{img:prototipo-login},~\ref{img:prototipo-signup} y~\ref{img:prototipo-er} son capturas de pantalla del prototipo de la propuesta de solución, como es de notar el prototipo permite editar, guardar y cargar un diagrama entidad-relación básico.
 
 
-\subsection*{Back end}
+\input{apendice/backend.tex}
 
-
-De acuerdo con el sitio de Heroku~\cite{heroku_heroku_2020}, la plataforma ofrece distintos mecanismos para la seguridad de los proyectos alojadas en ella, dentro de estas se encuentra el uso por defecto del protocolo HTTPS, que asegura el cifrado de los datos en la Internet.
-
-
-De igual manera ofrece un constante escaneo de las aplicaciones en búsqueda de vulnerabilidades para mitigar los ataques DDoS, además de utilizar la infraestructura de la empresa Amazon, las cuales se encuentran acreditadas por diversos estándares de seguridad; esto da la confianza para que la aplicación Flask se ejecute de manera segura y tener salvaguardados los datos de los usuarios.
-
-
-Los métodos o funciones implementadas en la aplicación \textit{flask} constan de un CRUD (\textit{Create, Read, Update, Delete}) para el manejo de usuarios, métodos para el manejo de la sesión del usuario, así como la recuperación de contraseña entre otras que se describen a continuación:
-
-\begin{itemize}
-    \item create\_user: método para crear una nueva cuenta de usuario, recibe como parámetros en el cuerpo de la petición HTTP un \textit{email} y una contraseña.
-    \item validate\_email: método que recibe como parámetro una cadena y la valida con una expresión regular para un correo electrónico.
-    \item send\_email: método que recibe como parámetros una dirección de correo electrónico, contraseña, nombre de usuario y un valor booleano; envía un correo de bienvenida o recuperación de contraseña; el valor booleano sirve para identificar si se trata de un registro de usuario o una recuperación de contraseña.
-    \item update\_user: método que recibe como parámetro un objeto de tipo \textit{user} con los valores que se desean asignar a un usuario ya existente.
-    \item delete\_user: método que recibe como parámetro una cadena que corresponde al \textit{email} de un usuario existente y elimina todos los registros asociados a ese usuario.
-    \item get\_user: método que recibe como parámetro una cadena que corresponde al \textit{email} de un usuario existente y devuelve un objeto de tipo \textit{user} con todos sus datos.
-    \item get\_users: método que no recibe parámetros y que regresa un listado de todos los usuarios; para utilizar este método debe proporcionarse en el cuerpo de la petición HTTP un \textit{token} de autorización válido.
-    \item token\_required: función privada para validar que en los encabezados de la petición HTTP se encuentre un atributo \textit{AUTHORIZATION} que es del tipo clave-valor y contenga como valor un \textit{token} válido para el sistema; esta función sirve para decorar/anotar otras funciones y no tener que repetir esa validación para cada petición que requiera autorización de usuario.
-    \item login: método que recibe como parámetro en el cuerpo de la petición HTTP una cadena con el \textit{email} y otra con la contraseña; realiza una búsqueda en la base de datos y valida si los datos corresponden a un usuario; de ser ese el caso, regresa un JWT para manejar la sesión del usuario en las futuras peticiones.
-    \item save\_diagram: método que recibe parámetros en el cuerpo de la petición HTTP un objeto de tipo JSON con el contenido del diagrama ER y lo almacena en la base de datos.
-    \item last\_diagram: método que no recibe parámetros y devuelve el diagrama ER de asociado al usuario en sesión.
-\end{itemize}
-
-
-De acuerdo con el sitio de MongoDB\cite{mongodb_mongodb_2020}, MongoDB es una plataforma de base de datos alojada en la nube que garantiza la disponibilidad, escalabilidad y cumplimiento de estándares de seguridad; por estos motivos es que el almacenamiento de los datos está a cargo de este servicio, ofreciendo la conectividad con la aplicación Flask, ya que Heroku permite la conexión con los servicios de MongoDB Atlas; la configuración para la conexión no cambia si se están realizando pruebas en un ambiente local antes de exponer los últimos cambios al público.
