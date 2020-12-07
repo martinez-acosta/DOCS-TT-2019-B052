@@ -1,0 +1,38 @@
+\subsection{Sentencias SQL}
+De acuerdo con los objetivos específicos de la sección~\ref{sec:objSpecifics}, se implementó la obtención de sentencias SQL desde el modelo entidad-relación. Para revisar el algoritmo asociado, por favor, revise la sección~\ref{sec;desarrollo-sql}. 
+\begin{code}
+    \captionof{listing}{Diagrama GoJS}
+    \label{code:sentencias-sql}
+    \begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{js}
+getSentencesSQL() {
+    const diagram = this.currentDiagram
+    this.$store
+      .dispatch('axiosER/convertToSQL', {
+        diagram,
+        dbName: this.db_name
+      })
+      .then((response) => {
+        this.sentences = response.data
+      })
+      .catch((error) => {
+        if (error.response.status === 500) {
+          this.$snotify.warning(
+            '¡Algo ocurrió! No fue posible obtener las sentencias SQ del diagrama, intente más tarde.'
+          )
+        }
+      })
+    this.convertToSQLDialog = false
+  },
+  downloadScript() {
+    const scriptData = encodeURIComponent(this.sentences)
+    this.urlFile = `data:text/plain;charset=utf-8,${scriptData}` // application/sql
+    const dbname = this.db_name ? this.db_name : 'tt2019-B052'
+    this.scriptName = dbname + '.sql'
+    this.$snotify.success('Archivo descargado. ')
+  }
+
+\end{minted}
+\end{code}
+
+
+El fragmento de código~\ref{code:sentencias-sql} obtiene el evento \textit{listener} del botón obtener sentencias SQL y realiza una llamada por medio de Axios al \textit{back end}. Posteriormente, recibe el esquema de sentencias SQL y lo muestra al usuario para que pueda descargarlo y probarlo en MySQL.

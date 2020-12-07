@@ -20,21 +20,24 @@ En lo que resta del capítulo se muestra cómo se implementa cada una de los obj
 
 Finalmente, se explican fragmentos del código fuente del \textit{front end} y del \textit{back end}. 
 
+
+\input{desarrollo/front/frontend}
+\input{desarrollo/front/diagramadoER}
+\input{desarrollo/front/consultasAcceso}
+\input{desarrollo/front/sentenciasSQL}
+\input{desarrollo/front/diagramadoNoSQL}
+\input{desarrollo/backend}
+
 \section{Algoritmos}
 Como se mencionó en la sección~\ref{sec:analisis-algoritmos}, un algoritmo es cualquier procedimiento computacional definido que toma algún valor, o conjunto de valores, como entrada y produce algún valor, o conjunto de valores, como salida; por lo tanto, un algoritmo es una secuencia de pasos computacionales que transforman la entrada en la salida.
 
 
 En esta sección se describen cómo se implementan los algoritmos de la sección~\ref{sec:analisis-algoritmos}, empezando con el algoritmo para la validación estructural diagrama entidad-relación; se sigue con algoritmo para el mapeo modelo entidad-relación a relacional; después está la obtención de esquema SQL desde modelo relacional, el mapeo modelo entidad-relación a \textit{Generic Data Metamodel}; el mapeo del \textit{Generic Data Metamodel} a modelo lógico NoSQL y se finaliza con el algoritmo para el modelo lógico NoSQL a modelo físico en MongoDB.
-\input{desarrollo/validaciónER}
-\input{desarrollo/transformacionSQL}
-\input{desarrollo/er-to-gdm}
-\input{desarrollo/transformacionM2M}
+\input{desarrollo/algoritmos/validaciónER}
+\input{desarrollo/algoritmos/transformacionSQL}
+\input{desarrollo/algoritmos/er-to-gdm}
+\input{desarrollo/algoritmos/transformacionM2M}
 \subsection{Transformación del modelo lógico orientado a documentos a MongoDB}
 
-\input{desarrollo/frontend}
-\input{desarrollo/diagramadoER}
-\input{desarrollo/consultasAcceso}
-\input{desarrollo/sentenciasSQL}
-\input{desarrollo/diagramadoNoSQL}
-\input{desarrollo/backend}
+
 \section{Conclusiones}
