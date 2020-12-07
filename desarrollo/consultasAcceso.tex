@@ -1,1 +1,77 @@
 \subsection{Consultas de acceso}
+
+El módulo de consultas de acceso está implementado en Nuxt, haciendo uso de Vuex para guardar un arreglo dinámico de las consultas de acceso que hace el usuario. Cabe destacar que se programó toda la lógica para manejar la reactividad del modulo, porque Vue no es capaz de detectar cambios de un arreglo y actualizar la vista automaticamente~\cite{noauthor_vue_2020}.
+
+
+\SetupFloatingEnvironment{listing}{name=Código fuente}
+
+\begin{code}
+\captionof{listing}{Listener y escucha para las consultas de acceso}
+\label{code:queries}
+\begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{js}
+
+givenValue(type) {
+      const diagram = this.myDiagram
+      // Siempre se empieza una transacción en GoJS indicando que se hará una modificación al estado del diagrama
+      diagram.startTransaction('given value')
+      diagram.selection.each((node) => {
+        if (node instanceof go.Node) {
+          const data = { ...node.data }
+
+          
+          // Solo se mostrará el menú contextual si es un atributo
+          if (
+            data.type === 'keyAttribute' ||
+            data.type === 'derivedAttribute' ||
+            data.type === 'compositeAttribute' ||
+            data.type === 'attribute'
+          ) {
+              // Una vez que tengamos un nodo atributo, nos interesa saber con qué nodo está conectado, así que obtenemos esa información
+            const nodoConectado = { ...this.getConnectedNode(node) }
+            Promise.all([
+              this.$store.dispatch(
+                'vuexQueries/pushConnectedNode',
+                nodoConectado
+              ),
+              this.$store.dispatch('vuexQueries/pushNode', data)
+            ]).finally(() => {
+              switch (type) {
+                  // Una vez que obtengamos el nodo conectado a nuestro atributo, emitimos el evento givenValue para indicar que es un atributo de búsqueda en la consulta de acceso
+                case 'givenValue':
+                  this.$nuxt.$emit('emitGivenValue')
+                  break
+                case 'givenRange':
+                  this.$nuxt.$emit('emitGivenRange')
+                  break
+                case 'givenSet':
+                  this.$nuxt.$emit('emitGivenSet')
+                  break
+              }
+            })
+          }
+        }
+      })
+      diagram.commitTransaction('value obtained')
+      diagram.currentTool.stopTool()
+    }
+
+/*************Evento de escucha***********************/
+this.$nuxt.$on('emitGivenValue', () => {
+  const nodo = this.nodoObtenido
+  const nodoConectado = this.nodoConectado
+
+  this.$store
+    .dispatch('vuexQueries/pushGivenEntry', {
+      name: nodoConectado.text + '.' + nodo.text,
+      type: 'value',
+      tab: this.currentTab,
+      nodo: this.nodoObtenido,
+      nodoConectado: this.nodoConectado
+    })
+    .then(this.forceRerender())
+})
+
+\end{minted}
+\end{code}
+
+Como se muestra en el código fuente de~\ref{code:diagram-gojs}, una consulta está hecha por un evento \textit{emit} y un evento \textit{listener}; el evento \textit{emit} indica que un nuevo atributo se va buscar y ese atributo es el que recibe el evento \textit{listener} para agregarlo al arreglo correspondiente de la lista de arreglos.

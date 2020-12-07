@@ -1,6 +1,19 @@
 
 \section{Front end}
 
+
+Como se especificó en la sección~\ref{ref:sec-nuxt-framework}, el \textit{web framework} a utilizar es Nuxt; Nuxt usa un  ``ciclo de vida'' para cada componente Vue y se muestra en la figura~\ref{img:nuxt-lifecycle}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{nuxt/lifecycle-vue.png}
+    \caption{Ciclo de vida de Vue/Nuxt}
+    \label{img:nuxt-lifecycle}
+  \end{figure}
+  
+Por la reactividad de Nuxt/Vue y la necesidad de implementar GoJS por sobre Nuxt/Vue, todas las instancias de GoJS se crean en el \textit{hook mounted} y se restaura el estado de cada componente usando Vuex; se eliminan todos los escuchas necesarios y se limpian los componentes de ser necesario en el \textit{hook beforeDestroy}.
+
+
 De acuerdo con el sitio de Netlify~\cite{netlify_netlify_nodate}, Netlify ofrece funcionalidad HTTPS para todos sus sitios, tiene una mitigación activa en contra de ataques DDoS, todo su tráfico está cifrado en redes TLS y los \textit{tokens} están cifrados.
 
 De acuerdo con el sitio de JWT~\cite{jwt_web_2020}, un JSON Web Token (JWT) es un estándar abierto (RFC 7519) que define una forma compacta y autónoma para transmitir información de forma segura entre las partes como un objeto JSON.

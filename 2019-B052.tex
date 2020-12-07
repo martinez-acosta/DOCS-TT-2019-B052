@@ -24,6 +24,9 @@
 \usepackage{graphicx}
 \usepackage{array}% http://ctan.org/pkg/array
 \usepackage[newfloat]{minted}
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Código fuente}
+
 \usepackage[bottom]{footmisc}
 \hyphenation{clave-valor}
 \tolerance=1
@@ -93,7 +96,7 @@
 \input{analisisDiseño/main}
 \chapter{Diseño del sistema}
 \input{analisisDiseño/diseño/main}
-\chapter{Desarrollo de la propuesta de solución}
+\chapter{Desarrollo del sistema}
 \input{desarrollo/main}
 \appendix
 \chapter{Apéndice}

@@ -4,7 +4,7 @@ La propuesta de solución usa para la autenticación de usuarios \textit{web tok
 El \textit{front end} (Nuxt/JS/GoJS) lo puede consultar en \href{https://github.com/martinez-acosta/TT-2019-B052}{repositorio front}, el \textit{back end} (Python/Flask) en \href{https://github.com/omaraparicio07/api-tt-2019-b052}{repositorio back}, el documento de TT (Latex) en \href{https://github.com/martinez-acosta/DOCS-TT-2019-B052}{repositorio documento} y el \textit{live demo} está disponible en \href{https://serene-haibt-2239b4.netlify.app/}{dirección}.
 
 
-El \textit{live demo} del \textit{front end} está usando el \textit{deploy} automático en Netlify de la rama master y el código de desarrollo está en dev.
+El \textit{live demo} del \textit{front end} está usando el \textit{deploy} automático en Netlify de la rama master y el código de desarrollo está en la rama dev o en las ramas \textit{feature}.
 
 
 Asimismo, en la página de GitHub del proyecto de \textit{front end} es posible encontrar de manera breve un resumen del propósito de la aplicación web, estado actual del proyecto, tecnologías usadas y cosas que faltan por implementar.
@@ -16,7 +16,9 @@ El \textit{live demo} del \textit{back end} está usando el \textit{deploy} auto
 Para probar la aplicación, es necesario darse de alta en la aplicación, pero el equipo se ha tomado la molestia de crear credenciales temporales para los sinodales, directores y el maestro de seguimiento (las cuentas de usuario y contraseñas se hicieron llegar a cada uno de los involucrados); para los correos temporales de las cuentas se ha usado el servicio de: \href{https://temp-mail.org/es/}{temp-mail}.
 
 
-Asmimismo, en este capítulo se muestra cómo se implementa cada una de los objetivos~\ref{sec:objSpecifics} de la propuesta de solución usando los algoritmos de la sección~\ref{sec:analisis-algoritmos}, empezando por la tranformación del diagrama entidad-relación al esquema relacional de sentencias SQL, la transformación modelo a modelo y modelo a texto del modelo NoSQL, y se da una explicación de la propuesta de solución. 
+En lo que resta del capítulo se muestra cómo se implementa cada una de los objetivos~\ref{sec:objSpecifics} de la propuesta de solución usando los algoritmos de la sección~\ref{sec:analisis-algoritmos}, empezando por la tranformación del diagrama entidad-relación al esquema relacional de sentencias SQL, la transformación modelo a modelo y modelo a texto del modelo NoSQL.
+
+Finalmente, se explican fragmentos del código fuente del \textit{front end} y del \textit{back end}. 
 
 \section{Algoritmos}
 Como se mencionó en la sección~\ref{sec:analisis-algoritmos}, un algoritmo es cualquier procedimiento computacional definido que toma algún valor, o conjunto de valores, como entrada y produce algún valor, o conjunto de valores, como salida; por lo tanto, un algoritmo es una secuencia de pasos computacionales que transforman la entrada en la salida.
@@ -25,8 +27,8 @@ Como se mencionó en la sección~\ref{sec:analisis-algoritmos}, un algoritmo es 
 En esta sección se describen cómo se implementan los algoritmos de la sección~\ref{sec:analisis-algoritmos}, empezando con el algoritmo para la validación estructural diagrama entidad-relación; se sigue con algoritmo para el mapeo modelo entidad-relación a relacional; después está la obtención de esquema SQL desde modelo relacional, el mapeo modelo entidad-relación a \textit{Generic Data Metamodel}; el mapeo del \textit{Generic Data Metamodel} a modelo lógico NoSQL y se finaliza con el algoritmo para el modelo lógico NoSQL a modelo físico en MongoDB.
 \input{desarrollo/validaciónER}
 \input{desarrollo/transformacionSQL}
-\subsection{Transformación modelo entidad-relación con consultas a una instancia GDM}
-\subsection{Transformación de una instancia GDM al modelo lógico orientado a documentos}
+\input{desarrollo/er-to-gdm}
+\input{desarrollo/transformacionM2M}
 \subsection{Transformación del modelo lógico orientado a documentos a MongoDB}
 
 \input{desarrollo/frontend}
@@ -35,3 +37,4 @@ En esta sección se describen cómo se implementan los algoritmos de la sección
 \input{desarrollo/sentenciasSQL}
 \input{desarrollo/diagramadoNoSQL}
 \input{desarrollo/backend}
+\section{Conclusiones}

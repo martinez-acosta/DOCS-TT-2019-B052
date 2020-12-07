@@ -2473,10 +2473,11 @@
     <bcf:citekey order="113">netlify_netlify_nodate</bcf:citekey>
     <bcf:citekey order="114">jwt_web_2020</bcf:citekey>
     <bcf:citekey order="115">shahzad_review_2016</bcf:citekey>
-    <bcf:citekey order="116">heroku_heroku_2020</bcf:citekey>
-    <bcf:citekey order="117">mongodb_mongodb_2020</bcf:citekey>
-    <bcf:citekey order="118">fowler_brief_2003</bcf:citekey>
+    <bcf:citekey order="116">noauthor_vue_2020</bcf:citekey>
+    <bcf:citekey order="117">heroku_heroku_2020</bcf:citekey>
+    <bcf:citekey order="118">mongodb_mongodb_2020</bcf:citekey>
     <bcf:citekey order="119">fowler_brief_2003</bcf:citekey>
+    <bcf:citekey order="120">fowler_brief_2003</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

@@ -1,13 +1,12 @@
 \subsection{Diagramado del modelo entidad-relación}
 De acuerdo con Shahzad~\cite{shahzad_review_2016}, GoJS es una biblioteca de JavaScript para implementar diagramas interactivos y visualizaciones en plataformas y navegadores web modernos. 
 
-\newenvironment{code}{\captionsetup{type=listing}}{}
-\SetupFloatingEnvironment{listing}{name=Código fuente}
+
 
 \begin{code}
 \captionof{listing}{Diagrama GoJS}
 \label{code:diagram-gojs}
-\begin{minted}[linenos,tabsize=2,breaklines]{js}
+\begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{js}
     // Definimos el diagrama
     this.myDiagram = $(
        go.Diagram,
@@ -42,8 +41,109 @@ De acuerdo con Shahzad~\cite{shahzad_review_2016}, GoJS es una biblioteca de Jav
          'undoManager.isEnabled': true
        }
      )
+
+      /*******************Enlaces*************************/
+      this.myDiagram.linkTemplate = $(
+        go.Link, // definición de un enlace
+        {
+          selectionAdorned: true,
+          selectionAdornmentTemplate: linkSelectionAdornmentTemplate,
+          layerName: 'Foreground',
+          reshapable: true,
+          routing: go.Link.AvoidsNodes,
+          curve: go.Link.JumpOver
+        },
+        $(
+          go.Shape, 
+          { isPanelMain: true, stroke: 'parcial' },
+          new go.Binding('stroke', 'participacion', (f) => {
+            console.log(f)
+            return f === '' ? 'parcial' : 'total'
+          }),
+          new go.Binding(
+            'pathPattern',
+            'participacion',
+            this.convertPathPatternToShape
+          )
+        ),
+        $(
+          go.TextBlock, // la cardinalidad del enlace
+          {
+            text: '',
+            textAlign: 'center',
+            font: 'bold 14px sans-serif',
+            stroke: '#1967B3',
+            editable: true,
+            segmentOffset: new go.Point(0, -10),
+            segmentOrientation: go.Link.OrientUpright
+          },
+          new go.Binding('text', 'cardinality').makeTwoWay()
+        )
+      )
+      /*******************Paleta*************************/
+      model: new go.GraphLinksModel([
+        {
+          type: 'entity',
+          text: 'Entidad',
+          figure: 'Rectangle',
+          dataType: 'varchar',
+          fill: 'white'
+        },
+        {
+          type: 'weakEntity',
+          text: 'Entidad débil',
+          figure: 'FramedRectangle',
+          dataType: 'varchar',
+          fill: 'white'
+        },
+        {
+          type: 'relation',
+          text: 'Relación',
+          figure: 'Diamond',
+          dataType: 'varchar',
+          fill: 'white'
+        },
+        {
+          type: 'weakRelation',
+          text: 'Relación débil',
+          figure: 'weakDiamond',
+          dataType: 'varchar',
+          fill: 'white'
+        },
+        {
+          type: 'attribute',
+          text: 'Atributo',
+          figure: 'Ellipse',
+          dataType: 'varchar',
+          fill: 'white'
+        },
+        {
+          type: 'keyAttribute',
+          text: 'clave',
+          figure: 'Ellipse',
+          dataType: 'varchar',
+          isUnderline: true,
+          fill: 'white'
+        },
+        {
+          type: 'derivedAttribute',
+          text: 'derivado',
+          figure: 'Ellipse',
+          dataType: 'varchar',
+          fill: 'white',
+          strokeDashArray: [4, 2]
+        },
+        {
+          type: 'multivalueAttribute',
+          text: 'multivalor',
+          figure: 'FramedEllipse',
+          dataType: 'varchar',
+          fill: 'white'
+        }
+      ])
  \end{minted}
 \end{code}
 
 
-Como se especificó en la sección~\ref{ref:sec-gojs}, el diagrama se implementó en GoJS y el código fuente~\ref{code:diagram-gojs} muestra una instancia de cómo se configura el \textit{canvas} del diagramador.
+Como se especificó en la sección~\ref{ref:sec-gojs}, el diagrama se implementó en GoJS y parte del código fuente en~\ref{code:diagram-gojs} muestra una instancia de cómo se configura el \textit{canvas} del diagramador, los enlaces entre nodos y la definición de la paleta de elementos; como se nota todos son objetos \textit{json} desde su creación y para la manipulación de los objetos se hace uso de las bibliotecas integradas de GoJS para \textit{json}.
+
