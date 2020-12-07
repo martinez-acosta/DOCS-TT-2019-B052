@@ -1,40 +1,49 @@
 \subsection{Diagramado del modelo entidad-relación}
 De acuerdo con Shahzad~\cite{shahzad_review_2016}, GoJS es una biblioteca de JavaScript para implementar diagramas interactivos y visualizaciones en plataformas y navegadores web modernos. 
 
-Asimismo, como se especificó en la sección 
-\begin{minted}{js}
-   // Definimos el diagrama
-   this.myDiagram = $(
-      go.Diagram,
-      'myDiagramDiv', 
-      {
-        grid: $(go.Panel, 'Grid'),
-        'draggingTool.dragsLink': false,
-        'draggingTool.isGridSnapEnabled': true,
-        'linkingTool.isUnconnectedLinkValid': false,
-        'linkingTool.portGravity': 10,
-        'relinkingTool.isUnconnectedLinkValid': false,
-        'relinkingTool.portGravity': 10,
-        'relinkingTool.fromHandleArchetype': $(go.Shape, 'Diamond', {
-          segmentIndex: 0,
-          cursor: 'pointer',
-          desiredSize: new go.Size(8, 8),
-          fill: 'tomato',
-          stroke: 'darkred'
-        }),
-        'relinkingTool.toHandleArchetype': $(go.Shape, 'Diamond', {
-          segmentIndex: -1,
-          cursor: 'pointer',
-          desiredSize: new go.Size(8, 8),
-          fill: 'darkred',
-          stroke: 'tomato'
-        }),
-        'linkReshapingTool.handleArchetype': $(go.Shape, 'Diamond', {
-          desiredSize: new go.Size(7, 7),
-          fill: 'lightblue',
-          stroke: 'deepskyblue'
-        }),
-        'undoManager.isEnabled': true
-      }
-    )
-\end{minted}
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Código fuente}
+
+\begin{code}
+\captionof{listing}{Diagrama GoJS}
+\label{code:diagram-gojs}
+\begin{minted}[linenos,tabsize=2,breaklines]{js}
+    // Definimos el diagrama
+    this.myDiagram = $(
+       go.Diagram,
+       'myDiagramDiv', 
+       {
+         grid: $(go.Panel, 'Grid'),
+         'draggingTool.dragsLink': false,
+         'draggingTool.isGridSnapEnabled': true,
+         'linkingTool.isUnconnectedLinkValid': false,
+         'linkingTool.portGravity': 10,
+         'relinkingTool.isUnconnectedLinkValid': false,
+         'relinkingTool.portGravity': 10,
+         'relinkingTool.fromHandleArchetype': $(go.Shape, 'Diamond', {
+           segmentIndex: 0,
+           cursor: 'pointer',
+           desiredSize: new go.Size(8, 8),
+           fill: 'tomato',
+           stroke: 'darkred'
+         }),
+         'relinkingTool.toHandleArchetype': $(go.Shape, 'Diamond', {
+           segmentIndex: -1,
+           cursor: 'pointer',
+           desiredSize: new go.Size(8, 8),
+           fill: 'darkred',
+           stroke: 'tomato'
+         }),
+         'linkReshapingTool.handleArchetype': $(go.Shape, 'Diamond', {
+           desiredSize: new go.Size(7, 7),
+           fill: 'lightblue',
+           stroke: 'deepskyblue'
+         }),
+         'undoManager.isEnabled': true
+       }
+     )
+ \end{minted}
+\end{code}
+
+
+Como se especificó en la sección~\ref{ref:sec-gojs}, el diagrama se implementó en GoJS y el código fuente~\ref{code:diagram-gojs} muestra una instancia de cómo se configura el \textit{canvas} del diagramador.
