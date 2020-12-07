@@ -1,21 +1,21 @@
 \subsection{Transformación entre modelos}
 De acuerdo con Kapferer\cite{kapferer_model_2019}, hay diferentes tipos de transformaciones entre modelos, siendo las más importantes endógena/exógena, \textit{in-place/out-place} y horizontal/vertical. 
 
-\subsubsection{Endógena vs exógena}
+\subsubsection*{Endógena vs exógena}
 Para comparar las transformaciones del modelo, se debe hacer una primera distinción importante entre las transformaciones de un mismo lenguaje y las transformaciones entre diferentes lenguajes; una transformación se llama endógena si un modelo se transforma en otro modelo en el mismo lenguaje o metamodelo. Por otro lado, una transformación se denomina exógena si el modelo de origen y de destino no están representados en el mismo lenguaje.
 
 
 Usualmente, Las transformaciones endógenas son optimizaciones o refactorizaciones donde se mejoran ciertos atributos de calidad de un modelo manteniendo el lenguaje de representación y la semántica; un ejemplo de transformación exógena podría ser la migración de un programa de un lenguaje a otro.
 
-\subsubsection{In-place vs out-place}
+\subsubsection*{In-place vs out-place}
 
 Esta distinción se refiere únicamente a las transformaciones endógenas. Una transformación endógena se denomina \textit{in-place} si el modelo de origen y el de destino son el mismo, lo que significa que la transformación opera directamente en el modelo de entrada. Si una transformación endógena utiliza un modelo como fuente, pero crea o cambia otro modelo, implicando que hay más de un modelo en juego se denomina \textit{out-place}. Las transformaciones exógenas siempre son \textit{out-place}.
 
-\subsubsection{Horizontal vs vertical}
+\subsubsection*{Horizontal vs vertical}
 
 Esta distinción entre transformaciones de modelos se refiere al nivel de abstracción. Si el modelo de origen y destino de una transformación se encuentran en el mismo nivel de abstracción, se denomina horizontal, mientras que las transformaciones entre diferentes niveles de abstracción se denominan verticales.
 
-\subsubsection{Transformación modelo a modelo y modelo a texto}
+\subsubsection*{Transformación modelo a modelo y modelo a texto}
 
 
 De acuerdo con Scherp\cite{scherp_framework_2013}, una transformación de modelo se define con un lenguaje de transformación que generalmente proporciona una definición de reglas de transformación.

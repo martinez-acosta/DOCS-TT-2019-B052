@@ -11,6 +11,7 @@ If you want to compile this project in VSCode with the extension LaTeX Workshop 
       "name": "xelatex",
       "command": "xelatex",
       "args": [
+        "-shell-escape",
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
@@ -21,11 +22,23 @@ If you want to compile this project in VSCode with the extension LaTeX Workshop 
       "name": "biber",
       "command": "biber",
       "args": ["%DOCFILE%"]
-    }
+    },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",                
+                "-file-line-error",
+                "%DOC%"
+            ]
+        }
   ],
   "latex-workshop.latex.recipes": [
     {
       "name": "xelatex -> biber -> xelatex*2",
+      //"name": "xelatex",
       "tools": [
         "xelatex",
         "biber",

@@ -1,19 +1,19 @@
-\subsection{Validación del diagrama entidad-relación}
+\subsection{Validación estructural del diagrama entidad-relación}
 
-Antes de cualquier proceso de tranformación del diagrama generado, este debe pasar por un proceso de validación para asegurar que cumple con las reglas listadas en la sección \ref{cap:validationER}. Es importante para que cumplir con los objetivos del proyecto que este sea el primer paso a realizar ya que no tiene sentido obtener el modelo NoSQL de un diagrama no válido, de igual manera las sentencias SQL equivalentes pueden ser generadas pero no se asegura la coherensia de la estructura de la base de datos relacional resultante.
+Para cumplir con los objetivos del proyecto es importante que la validación estructural de la sección~\ref{cap:validationER} sea el primer paso a realizar, ya que no tiene sentido obtener el modelo NoSQL de un diagrama no válido; de igual manera, las sentencias SQL equivalentes pueden ser generadas, pero sin una validación estructural no se asegura la coherencia de la estructura de la base de datos relacional resultante.
 
 \paragraph*{Validaciones generales}
 
-Para este punto es necesario comprobar que todos los elementos del diagrama se encuentran conectados entre si y no existen conexiones libres. Para eso debemos recorrer todos los las conexiones en la propiedad \textit{linksDataArrray} del objeto json \textit{diagram} y comprobar que existen los elementos \textit{'from'} y \textit{'to'} en cada uno de los nodos de esta lista. En caso de encontrarse ambas propiedades en alguno de los nodos indica que es una conexión libre y se agrega a una lista de conexiones libres que será mostrada al usuario para corregir esos detalles.
+Para este punto es necesario comprobar que todos los elementos del diagrama se encuentran conectados entre sí y no existen conexiones libres; para eso debemos recorrer todas las conexiones en la propiedad \textit{linksDataArrray} del objeto \textit{json diagram} y comprobar que existen los elementos \textit{'from'} y \textit{'to'} en cada uno de los nodos de esta lista. En caso de encontrarse ambas propiedades en alguno de los nodos, indica que es una conexión libre y se agrega a una lista de conexiones libres que será mostrada al usuario para corregir esos detalles.
 
-Recorrer la propiedad \textit{nodeDataArrray} del objeto json \textit{diagram} para obtener los identificadores del cada elemento del diagrama y buscarlo en la lista \textit{linksDataArrray} permite asegurar que todos los elementos se encuentran conectados entre si. En caso de no encontrar el identidicador del elemento en la lista de conexiones, se agrega a una lista de elementos desconecados que será mostrada al usuario para corregir esos detalles.
+Recorrer la propiedad \textit{nodeDataArrray} del objeto \textit{json diagram} para obtener los identificadores del cada elemento del diagrama y buscarlo en la lista \textit{linksDataArrray} permite asegurar que todos los elementos se encuentran conectados entre sí. En caso de no encontrar el identidicador del elemento en la lista de conexiones, se agrega a una lista de elementos desconecados que será mostrada al usuario para corregir esos detalles.
 
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de conexiones libres, $unconnectedLinks$}
   $linksList \gets diagram['linksDataArrray']$\\
   \ForEach{$link \in linksList:$}{
@@ -29,7 +29,7 @@ Recorrer la propiedad \textit{nodeDataArrray} del objeto json \textit{diagram} p
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de elementos sin conexión, $unconnectedElements$}
   $linksList \gets diagram['linksDataArrray']$\\
   $itemsList \gets diagram['nodeDataArrray']$\\
@@ -47,13 +47,13 @@ Recorrer la propiedad \textit{nodeDataArrray} del objeto json \textit{diagram} p
 
 \paragraph*{Validaciones en las entidades}
 
-Para esta paso es necesario comprobar que toda entidad en la propiedad \textit{nodeDataArrray} del objeto json \textit{diagram} cuente con al menos un elemento atributo, un atributo del tipo clave, que no se encuentre conectado a otra entidad de forma directa. Para esto se realiza un proceso similar a la busqueda de elementos desconecados, con la excepción que se requieren los identificadores de los elementos de tipo atributo, en caso de no encontrar  elementos  del tipo atributo o un atributo clave la entidad se agrega a una lista de entidades sin atributos, de la misma forma si se encuentran conexiones directas entre atributos se genera una lista con las entidades conectadas ambas listas seran mostradas al usuario para corregir esos detalles.
+Para este paso es necesario comprobar que toda entidad en la propiedad \textit{nodeDataArrray} del objeto \textit{json diagram} cuente con al menos un elemento atributo del tipo clave o del tipo simple que no se encuentre conectado a otra entidad de forma directa. Para esto se realiza un proceso similar a la busqueda de elementos desconecados, con la excepción que se requieren los identificadores de los elementos de tipo atributo, en caso de no encontrar elementos del tipo atributo o un atributo clave, la entidad se agrega a una lista de entidades sin atributos, de la misma forma, si se encuentran conexiones directas entre atributos, se genera una lista con las entidades conectadas, porque ambas listas seran mostradas al usuario para corregir esos detalles.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de entidades sin atributos o sin clave primaria, $entitiesWithoutAttrs$}
   $entitiesWithAttrs \gets diagram['nodeDataArrray']$\\
   \ForEach{$entity \in entitiesWithAttrs:$}{
@@ -72,7 +72,7 @@ Para esta paso es necesario comprobar que toda entidad en la propiedad \textit{n
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de entidades conectadas directamente, $connetionBetweenEntities$}
   $linksList \gets diagram['linksDataArrray']$\\
   $entitiesKeyList \gets diagram['nodeDataArrray']$\\
@@ -87,13 +87,13 @@ Para esta paso es necesario comprobar que toda entidad en la propiedad \textit{n
 
 \paragraph*{Validaciones en los atributos}
 
-Los atributos solo pueden tener una conexion a una entidad o a una relación, no se pueden asociar a mas de un elemento o entre si mismos de forma directa. Para compronar estos puntos es necesario inspecionar la propiedad \textit{nodeDataArrray} del objeto json \textit{diagram} en conjunto son la propiedad \textit{linksDataArrray} para determinar las conexiones entre elementos, en caso de encontrar una conexion directa entre atributos agregarlo a una lista de conexión entre atributos, de la misma forma si el identificador del atributo es encotrado en mas de una ocasion en los nodos de \textit{linksDataArrray} entonces indica que el atributo esta conectado a mas de un elemento, por lo que se agrega a una lista de atributo con multiconexiones para mostrar ambas listas al usuario y que pueda corregir esos detalles.
+Los atributos solo pueden tener una conexion a una entidad o a una relación, no se pueden asociar a más de un elemento o entre sí mismos de forma directa. Para compronar estos puntos es necesario inspecionar la propiedad \textit{nodeDataArrray} del objeto \textit{json diagram} en conjunto con la propiedad \textit{linksDataArrray} para determinar las conexiones entre elementos. En caso de encontrar una conexion directa entre atributos, agregarlo a una lista de conexión entre atributos. De la misma forma, si el identificador del atributo es encontrado en más de una ocasión en los nodos de \textit{linksDataArrray}, entonces indica que el atributo está conectado a más de un elemento, por lo que se agrega a una lista de atributo con multiconexiones para mostrar ambas listas al usuario y que pueda corregir esos detalles.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de atributos con conexiones multiples, $attrMulticonnections$}
   $linksList \gets diagram['linksDataArrray']$\\
   $attrsKeyList \gets diagram['nodeDataArrray']$\\
@@ -111,13 +111,13 @@ Los atributos solo pueden tener una conexion a una entidad o a una relación, no
 
 \paragraph*{Validaciones en las relaciones}
 
-Las relaciones del diagrama esta limitadas por una restricción de la propuesta de solición, esta no permite relaciones de grado superior a 2 y por obvias razones no tiene caso que exista una relación con una sola conexión. Esto no es lo mismo que las relaciones unarias o recursivas, para que una relación pueda ser considerada recursiva deben existir 2 conexiones en la propiedad \textit{linksDataArrray} del objeto json \textit{diagram}, en ambas deben existir el identificador de la relación y la entidad, por lo tanto la validación puede limitarse a comprobar que los elementos del tipo relación en el diagrama cuenten con maximo 2 nodos en \textit{linksDataArrray}, de ser encontrado una relación con menos o mas conexiones se agrega a una lista de relaciones invalidas que se muestra al usuario para que pueda corregir esos detalles.
+Las relaciones del diagrama están limitadas por una restricción de la propuesta de solución, esta no permite relaciones de grado superior a 2 y por obvias razones no tiene caso que exista una relación con una sola conexión. Esto no es lo mismo que las relaciones unarias o recursivas, para que una relación pueda ser considerada recursiva deben existir 2 conexiones en la propiedad \textit{linksDataArrray} del objeto \textit{json diagram}, en ambas deben existir el identificador de la relación y la entidad, por lo tanto la validación puede limitarse a comprobar que los elementos del tipo relación en el diagrama cuenten con maximo 2 nodos en \textit{linksDataArrray}. De ser encontrado una relación con menos o más conexiones, se agrega a una lista de relaciones inválidas que se muestra al usuario para que pueda corregir esos detalles.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de relaciones invalidas, $invalidrelationship$}
   $linksList \gets diagram['linksDataArrray']$\\
   $relationsKeyList \gets diagram['nodeDataArrray']$\\

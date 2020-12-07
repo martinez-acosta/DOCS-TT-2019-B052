@@ -1,6 +1,8 @@
-\subsection{Tranformación del diagrama entidad-relación a sentencias SQL}
+\subsection{Tranformación del diagrama entidad-relación al modelo relacional y generar las sentencias SQL}
 
-Para lograr la transformación del modelo entidad-relación generado con el diagramador del proyecto se implemento el algoritmo de 7 pasos descrito en la sección \ref{sec:erToSQL}, a excepción del paso siete que por restricciones autoimpuestas en la propuesta de solución del proyecto no aplica. El séptimo paso hace referencia a la transformación de relaciones de grado 3 o superior, pero el diagramador no permite relaciones de grado 3 o superior por lo cual este paso es omitido.
+Para lograr la transformación del modelo entidad-relación del diagramador de la propuesta de solución al modelo relacional, se implementó el algoritmo de 7 pasos descrito en la sección \ref{sec:erToSQL}, a excepción del paso siete que por restricciones autoimpuestas en la propuesta de solución del proyecto no aplica. El séptimo paso hace referencia a la transformación de relaciones de grado 3 o superior, pero el diagramador no permite relaciones de grado 3 o superior, por lo cual este paso es omitido.
+
+Cabe destacar que por simplicidad se implementó en un solo algoritmo la transformación del modelo entidad-relación al modelo relacional y la genración de las sentencias SQL a partir del modelo relacional.
 
 \paragraph*{Paso 1: Mapeado de los tipos de entidad regulares}
 
@@ -8,7 +10,7 @@ Para lograr la transformación del modelo entidad-relación generado con el diag
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de entidades con sus atributos, $entityWithAttrs$}
   $entities \gets diagram['nodeDataArrray']$\\
   $attrsList \gets diagram['nodeDataArrray']$\\
@@ -25,7 +27,7 @@ Para lograr la transformación del modelo entidad-relación generado con el diag
   \caption{Asociar entidades con sus atributos.}
 \end{algorithm}
 
-Para cada entidad fuerte en la propiedad \textit{nodeDataArrray} del objeto json \textit{diagram}, se asocian a cada uno de los atributos simples con los que tiene una conexión directa en la propiedad \textit{linksDataArrray} del objeto json \textit{diagram}.
+Para cada entidad fuerte en la propiedad \textit{nodeDataArrray} del objeto \textit{json diagram}, se asocian a cada uno de los atributos simples con los que tiene una conexión directa en la propiedad \textit{linksDataArrray} del objeto \textit{json} \textit{diagram}.
 
 \paragraph*{Paso 2: Mapeado de los tipos de entidad débiles}
 
@@ -33,7 +35,7 @@ Para cada entidad fuerte en la propiedad \textit{nodeDataArrray} del objeto json
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de entidades débiles con sus atributos, $weakEntityWithAttrs$}
   $weakEntities \gets diagram['nodeDataArrray']$\\
   $attrsList \gets diagram['nodeDataArrray']$\\
@@ -50,17 +52,17 @@ Para cada entidad fuerte en la propiedad \textit{nodeDataArrray} del objeto json
   \caption{Asociar entidades débiles con sus atributos.}
 \end{algorithm}
 
-En caso que el objeto json \textit{diagram} cuente con entidades débiles se debe seguir el mismo proceso para asociar sus atributos, si este cuenta con un atributo clave parcial este debe formar parte del atributo clave de la relación con la entidad fuerte asociada.
+En caso de que el objeto \textit{json diagram} cuente con entidades débiles, se debe seguir el mismo proceso para asociar sus atributos. Si este cuenta con un atributo clave parcial, este debe formar parte del atributo clave de la relación con la entidad fuerte asociada.
 
 \paragraph*{Paso 3: Mapeado de los tipos de relación 1:1 binaria}
 
-Para realizar esto primero creamos una lista que contenga las relaciones 1:1 con los identificadores de las entidades que la conforman así como la cardinalidad que debe ser igual a 1. Para el manejo de este tipo de relaciones existen tres metodologías de las cuales se utiliza la metodología de la \textit{llave foránea}, posteriormente se procede a agregar el atributo clave de la entidad \textit{S} a los atributos de la entidad \textit{T} como llave foránea. 
+Primero creamos una lista que contenga las relaciones 1:1 con los identificadores de las entidades que la conforman así como la cardinalidad que debe ser igual a 1. Para el manejo de este tipo de relaciones existen tres metodologías de las cuales se utiliza la metodología de la clave foránea, posteriormente se procede a agregar el atributo clave de la entidad \textit{S} a los atributos de la entidad \textit{T} como clave foránea. 
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de relaciones 1:1 con los identificadores de las entidades participantes, $relations1\_1$}
   $linksList \gets diagram['linksDataArrray']$\\
     \ForEach{$link \in linksList:$}{
@@ -76,7 +78,7 @@ Para realizar esto primero creamos una lista que contenga las relaciones 1:1 con
   \SetKwInOut{Output}{Salida}
 
   \Input{una lista de relaciones 1:1 binaria, $relations1\_1$}
-  \Output{una lista de entidades con atributos y llaves foráneas, $entiesWithAttrs$}
+  \Output{una lista de entidades con atributos y claves foráneas, $entiesWithAttrs$}
     \ForEach{$relation \in relations1\_1:$}{
       $entity_S \gets entiesWithAttrs[relationKey[0]]$\\
       $entity_T \gets entiesWithAttrs[relationKey[1]]$\\
@@ -89,13 +91,13 @@ Para realizar esto primero creamos una lista que contenga las relaciones 1:1 con
 
 \paragraph*{Paso 4: Mapeado de tipos de relaciones 1:N binarias}
 
-Para realizar esto primero creamos una lista que contenga las relaciones 1:N con los identificadores de las entidades que la conforman así como la cardinalidad (1 ó N). Para el manejo de este tipo de relaciones se debe identificar a la entidad con el tipo de participación \textit{N} a la cual se le debe agregar como llave foránea el atributo clave del otro lado de la participación en la relación, esto se debe a que cada instancia de entidad del lado de participación \textit{N} esta relacionado, a lo sumo, con una ínica instancia de la entidad con participación 1 de la relación.
+Primero creamos una lista que contenga las relaciones 1:N con los identificadores de las entidades que la conforman así como la cardinalidad (1 o N). Para el manejo de este tipo de relaciones se debe identificar a la entidad con el tipo de participación \textit{N} a la que se le debe agregar como clave foránea el atributo clave del otro lado de la participación en la relación, esto se debe a que cada instancia de entidad del lado de participación \textit{N} esta relacionado, a lo sumo, con una única instancia de la entidad con participación 1 de la relación.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de relaciones 1:N con los identificadores de las entidades participantes, $relations1\_N$}
   $linksList \gets diagram['linksDataArrray']$\\
     \ForEach{$link \in linksList:$}{
@@ -111,7 +113,7 @@ Para realizar esto primero creamos una lista que contenga las relaciones 1:N con
   \SetKwInOut{Output}{Salida}
 
   \Input{una lista de relaciones 1:N binaria, $relations1\_N$}
-  \Output{una lista de entidades con atributos y llaves foráneas, $entiesWithAttrs$}
+  \Output{una lista de entidades con atributos y claves foráneas, $entiesWithAttrs$}
     \ForEach{$relation \in relations1\_1:$}{
       \If{$(link['cardinality'] = N :$}{
         $entity_S \gets entiesWithAttrs[relationKey$\\
@@ -127,13 +129,13 @@ Para realizar esto primero creamos una lista que contenga las relaciones 1:N con
 
 \paragraph*{Paso 5: Mapeado de tipos de relaciones N:M binarias}
 
-Para realizar esto primero creamos una lista que contenga las relaciones N:M con los identificadores de las entidades que la conforman así como la cardinalidad(N ó N). Para el manejo de este tipo de relaciones se debe crear una nueva entidad S y agregar todos los atributos simples o compuestos con los que se tengan una conexión. Adicionalmente se deben agregar los atributos claves de las entidades participantes de la relación como claves foráneas de la nueva relación S, de la misma forma la combinación de estas claves foráneas formaran el atributo clave de la nueva entidad S.
+Creamos una lista que contenga las relaciones N:M con los identificadores de las entidades que la conforman así como la cardinalidad(N o N). Para el manejo de este tipo de relaciones se debe crear una nueva entidad S y agregar todos los atributos simples o compuestos con los que se tengan una conexión. Adicionalmente, se deben agregar los atributos claves de las entidades participantes de la relación como claves foráneas de la nueva relación S, de la misma forma la combinación de estas claves foráneas formaran el atributo clave de la nueva entidad S.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de relaciones 1:N con los identificadores de las entidades participantes, $relationsM\_N$}
   $linksList \gets diagram['linksDataArrray']$\\
     \ForEach{$link \in linksList:$}{
@@ -149,7 +151,7 @@ Para realizar esto primero creamos una lista que contenga las relaciones N:M con
   \SetKwInOut{Output}{Salida}
 
   \Input{una lista de relaciones N:N binaria, $relationsN\_M$}
-  \Output{una entidad con atributos y llaves foráneas, $entiesWithAttrs$}
+  \Output{una entidad con atributos y claves foráneas, $entiesWithAttrs$}
     $attrsList \gets diagram['nodeDataArrray']$
     $linksList \gets diagram['linksDataArrray']$
     \ForEach{$relation \in relationsN\_M:$}{
@@ -168,13 +170,13 @@ Para realizar esto primero creamos una lista que contenga las relaciones N:M con
 
 \paragraph*{Paso 6: Mapeado de atributos multivalor}
 
-Para realizar esto primero creamos una lista que contenga las entidades del tipo multivalor, por cada atributo multivalor E se debe crear una nueva entidad R el cual tendrá como atributos un atributo de la entidad E y el atributo clave de la entidad S de la relación relación como llave foránea.
+Para realizar esto primero creamos una lista que contenga las entidades del tipo multivalor, por cada atributo multivalor E se debe crear una nueva entidad R el cual tendrá como atributos un atributo de la entidad E y el atributo clave de la entidad S de la relación relación como clave foránea.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
   \SetKwInOut{Output}{Salida}
 
-  \Input{una instancia del diagram ER en formato json, $diagram$}
+  \Input{una instancia del diagram ER en formato \textit{json}, $diagram$}
   \Output{una lista de entidades del tipo multivalor con sus atributos, $emvWithAttrs$}
   $entitiesMultivalue \gets diagram['nodeDataArrray']$\\
   $attrsList \gets diagram['nodeDataArrray']$\\
@@ -192,9 +194,9 @@ Para realizar esto primero creamos una lista que contenga las entidades del tipo
   \caption{Asociar entidades multivalor con sus atributos.}
 \end{algorithm}
 
-Con los pasos anteriores tenemos de manera separada los elementos necesarios para obtener las sentencias SQL equivalentes al diagrama ER de entrada, como todos los componentes se encuentran en listas resulta fácil iterarlos y con la ayuda de un template previamente generado poder construir los bloques del script en el lenguaje de consultas SQL para que puedan ser ejecutadas en el SGDB MySQL.
+Con los pasos anteriores tenemos de manera separada los elementos necesarios para obtener las sentencias SQL equivalentes al diagrama ER de entrada, como todos los componentes se encuentran en listas resulta fácil iterarlos y poder construir los bloques del \textit{script} (con la ayuda de un template previamente generado ) en el lenguaje de consultas SQL para que puedan ser ejecutadas en el SGDB MySQL.
 
-Para lograr esto se hizo uso de los siguientes templates para crear las sentencias correspondientes y crear las tablas con sus atributos como se aprecia en la figura~\ref{img:templateTable} y elementos de distinción como son la llave primaria de la figura~\ref{img:pkTemplate} y las llaves foráneas de la figura~\ref{img:fkTemplate} dependiendo del tipo de relación entre los elementos del diagrama ER.
+Se hizo uso de los siguientes \textit{templates} para crear las sentencias correspondientes y crear las tablas con sus atributos como se aprecia en la figura~\ref{img:templateTable} y elementos de distinción como son la clave primaria de la figura~\ref{img:pkTemplate} y las claves foráneas de la figura~\ref{img:fkTemplate} dependiendo del tipo de relación entre los elementos del diagrama ER.
 
 
 \begin{figure}[H]
