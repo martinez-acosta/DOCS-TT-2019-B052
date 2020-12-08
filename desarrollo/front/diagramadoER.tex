@@ -25,20 +25,7 @@ De acuerdo con Shahzad~\cite{shahzad_review_2016}, GoJS es una biblioteca de Jav
            desiredSize: new go.Size(8, 8),
            fill: 'tomato',
            stroke: 'darkred'
-         }),
-         'relinkingTool.toHandleArchetype': $(go.Shape, 'Diamond', {
-           segmentIndex: -1,
-           cursor: 'pointer',
-           desiredSize: new go.Size(8, 8),
-           fill: 'darkred',
-           stroke: 'tomato'
-         }),
-         'linkReshapingTool.handleArchetype': $(go.Shape, 'Diamond', {
-           desiredSize: new go.Size(7, 7),
-           fill: 'lightblue',
-           stroke: 'deepskyblue'
-         }),
-         'undoManager.isEnabled': true
+         })
        }
      )
 
@@ -53,19 +40,6 @@ De acuerdo con Shahzad~\cite{shahzad_review_2016}, GoJS es una biblioteca de Jav
           routing: go.Link.AvoidsNodes,
           curve: go.Link.JumpOver
         },
-        $(
-          go.Shape, 
-          { isPanelMain: true, stroke: 'parcial' },
-          new go.Binding('stroke', 'participacion', (f) => {
-            console.log(f)
-            return f === '' ? 'parcial' : 'total'
-          }),
-          new go.Binding(
-            'pathPattern',
-            'participacion',
-            this.convertPathPatternToShape
-          )
-        ),
         $(
           go.TextBlock, // la cardinalidad del enlace
           {
@@ -100,43 +74,6 @@ De acuerdo con Shahzad~\cite{shahzad_review_2016}, GoJS es una biblioteca de Jav
           type: 'relation',
           text: 'Relación',
           figure: 'Diamond',
-          dataType: 'varchar',
-          fill: 'white'
-        },
-        {
-          type: 'weakRelation',
-          text: 'Relación débil',
-          figure: 'weakDiamond',
-          dataType: 'varchar',
-          fill: 'white'
-        },
-        {
-          type: 'attribute',
-          text: 'Atributo',
-          figure: 'Ellipse',
-          dataType: 'varchar',
-          fill: 'white'
-        },
-        {
-          type: 'keyAttribute',
-          text: 'clave',
-          figure: 'Ellipse',
-          dataType: 'varchar',
-          isUnderline: true,
-          fill: 'white'
-        },
-        {
-          type: 'derivedAttribute',
-          text: 'derivado',
-          figure: 'Ellipse',
-          dataType: 'varchar',
-          fill: 'white',
-          strokeDashArray: [4, 2]
-        },
-        {
-          type: 'multivalueAttribute',
-          text: 'multivalor',
-          figure: 'FramedEllipse',
           dataType: 'varchar',
           fill: 'white'
         }

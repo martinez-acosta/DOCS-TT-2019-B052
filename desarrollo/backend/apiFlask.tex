@@ -1,8 +1,8 @@
 \subsection{El api flask} \label{sec:apiFlask}
 
-Como se menciono en la sección \ref{sec:flask}, flask es un microframework pero es posible extender sus capacidades por medio de bibliotecas. Para el desarrollo de la api de servicios web se utiliza la biblioteca \textit{flask\_restplus}, de acuerdo a su documentación oficial(REFFLASKREST) es una extensión de flask con soporte para la construcción de API REST de manera rápida, fomenta buenas prácticas con una configuración mínima y proporciona una colección de decoradores y herramientas para describir un API de manera sencilla y exponer su documentación correctamente(usando Swagger).
+Como se mencionó en la sección~\ref{sec:flask}, flask es un \textit{microframework}, pero es posible extender sus capacidades por medio de bibliotecas. Para el desarrollo de la api de servicios web se utiliza la biblioteca \textit{flask restplus}, que de acuerdo con su documentación oficial~\cite{noauthor_flask-restplus_2020}, es una extensión de flask con soporte para el desarrollo de API REST de manera rápida, fomenta buenas prácticas con una configuración mínima y proporciona una colección de decoradores y herramientas para describir un API de manera sencilla y exponer su documentación correctamente usando Swagger.
 
-Para la construcción de la aplicación se creo la estructura mostrada en la figura~\ref{img:apiStructure} donde la carpeta \textit{config} contiene un archivo con el nombre \textit{app.conf} con las variables de configuración de la aplicación como son la llave secreta para validar el \textit{JWT}, las credenciales para conexión a la base de datos, un usuario de pruebas y característica de la interfaz swagger, mientras que el archivo \textit{database.py} es una clase singleton para mantener una sola instancia de conexión a la base de datos para toda la aplicación.
+Para el desarrollo de la aplicación, se creó la estructura mostrada en la figura~\ref{img:apiStructure,} donde la carpeta \textit{config} contiene un archivo con el nombre \textit{app.conf} con las variables de configuración de la aplicación, como son la llave secreta para validar el JWT, credenciales para conexión a la base de datos, un usuario de pruebas y características de la interfaz swagger. El archivo \textit{database.py} es una clase \textit{singleton} para mantener una sola instancia de conexión a la base de datos para toda la aplicación.
 
 \begin{figure}[H]
   \centering
@@ -11,7 +11,7 @@ Para la construcción de la aplicación se creo la estructura mostrada en la fig
   \label{img:apiStructure}
 \end{figure}
 
-Para lograr la implementación de flask con restplus es necesaria la siguiente configuración. Se deben importar de la biblioteca \textit{flask } en el archivo principal del proyecto las clases \textit{Flask, jsonify, request, make\_response, Response} y al mismo tiempo la configuración descrita en el archivo \textit{config/app.conf} para tener disponible en toda la aplicación laconexiónn a la base de datos como la llave secreta del token de autenticación y las credenciales del servidore SMTP para el envío de correo. Dado como resultado el fragmento de código \ref{code:apiInit}.
+Para lograr la implementación de flask con restplus es necesaria la siguiente configuración: se deben importar de la biblioteca \textit{flask} en el archivo principal del proyecto las clases \textit{Flask, jsonify, request, make\_response, Response} y, al mismo tiempo, la configuración descrita en el archivo \textit{config/app.conf} para tener disponible en toda la aplicación la conexión a la base de datos como la llave secreta del \textit{token} de autenticación y las credenciales del servidore SMTP para el envío de correo. Dado como resultado el fragmento de código \ref{code:apiInit}.
 
 \begin{code}
 \captionof{listing}{Clase principal del api flask}

@@ -1,4 +1,9 @@
-La propuesta de solución usa para la autenticación de usuarios \textit{web tokens}; se dispone del código fuente y un \textit{live demo} de la aplicación.
+En este capítulo se muestra cómo se implementa cada uno de los objetivos~\ref{sec:objSpecifics} de la propuesta de solución, explicando cada función principal del \textit{front end}, del \textit{back end}, y explicando los algoritmos de la sección~\ref{sec:analisis-algoritmos}, empezando por la tranformación del diagrama entidad-relación al esquema relacional de sentencias SQL, la transformación modelo a modelo y modelo a texto del modelo NoSQL.
+
+Asimismo, también se muestran fragmentos del código fuente del \textit{front end}, \textit{back end} y algoritmos. 
+
+
+Para cumplir con los objetivos~\ref{sec:objSpecifics}. la propuesta de solución usa para la autenticación de usuarios \textit{web tokens}; se dispone del código fuente y un \textit{live demo} de la aplicación.
 
 
 El \textit{front end} (Nuxt/JS/GoJS) lo puede consultar en \href{https://github.com/martinez-acosta/TT-2019-B052}{repositorio front}, el \textit{back end} (Python/Flask) en \href{https://github.com/omaraparicio07/api-tt-2019-b052}{repositorio back}, el documento de TT (Latex) en \href{https://github.com/martinez-acosta/DOCS-TT-2019-B052}{repositorio documento} y el \textit{live demo} está disponible en \href{https://serene-haibt-2239b4.netlify.app/}{dirección}.
@@ -11,14 +16,6 @@ Asimismo, en la página de GitHub del proyecto de \textit{front end} es posible 
 
 
 El \textit{live demo} del \textit{back end} está usando el \textit{deploy} automático en Heroku de la rama master y el código de desarrollo está en las ramas \textit{feature}.
-
-
-Para probar la aplicación, es necesario darse de alta en la aplicación, pero el equipo se ha tomado la molestia de crear credenciales temporales para los sinodales, directores y el maestro de seguimiento (las cuentas de usuario y contraseñas se hicieron llegar a cada uno de los involucrados); para los correos temporales de las cuentas se ha usado el servicio de: \href{https://temp-mail.org/es/}{temp-mail}.
-
-
-En lo que resta del capítulo se muestra cómo se implementa cada una de los objetivos~\ref{sec:objSpecifics} de la propuesta de solución usando los algoritmos de la sección~\ref{sec:analisis-algoritmos}, empezando por la tranformación del diagrama entidad-relación al esquema relacional de sentencias SQL, la transformación modelo a modelo y modelo a texto del modelo NoSQL.
-
-Finalmente, se explican fragmentos del código fuente del \textit{front end} y del \textit{back end}. 
 
 
 \input{desarrollo/front/frontend}
@@ -47,3 +44,8 @@ En esta sección se describen cómo se implementan los algoritmos de la sección
 
 
 \section{Conclusiones}
+Durante el proceso de desarrollo de este trabajo terminal se han presentado algunos retos que no se tenían contemplados en un inicio, desde la creación o separación del proyecto en 2 aplicaciones para un mejor manejo del trabajo en equipo hasta las tecnologías a utilizar. 
+
+El resolver cada uno esos retos ha dejado un aprendizaje para el equipo de desarrollo, ya que nos enseña que aun teniendo un plan de trabajo y fechas establecidas, siempre existen inconvenientes con los que uno no cuenta, por lo que el equipo se debe adaptar a estos cambios para tratar de obtener los resultados y, en caso de ser necesario, modificar el plan inicial.
+
+Uno de los mas grandes retos fue la transformación del diagrama entidad-relación al modelo NoSQL, ya que se en el plan inicial mp se contempló la falta de tecnologáis disponibles para transformaciones entre gramáticas en distintos niveles de abstrancción. Al no tener experiencia ni el contexto de todo lo que implica la ingeniería orientada a modelos, dado por las limitantes en tiempo para este trabajo terminal, el equipo se vio en la necesidad de utilizar parte del proyecto de un tercero para lograr el alcance esperado. De ser posible, como un trabajo a futuro se realizará una implementación propia para la transformaciones entre modelos. 

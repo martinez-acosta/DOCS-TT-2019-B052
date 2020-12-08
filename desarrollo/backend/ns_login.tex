@@ -1,6 +1,6 @@
 \subsection{Servicios para login}
 
-Este namespace tiene los servicios relacionados con la autenticación del usuario. Como es de esperarse este namespace no requiere del uso del decorador \ref{code:tokenWrap}, ya que es aquí donde un usuario previamente registrado generará un token de autenticación haciendo uso de su email y contraseña, de la misma forma si este quiere cambiar su contraseña puede hacerlo. La figura~\ref{img:putLogin} muestra el uso del método \textit{PUT} para el cambio de la contraseña proporcionando un email registrado en la base de datos, una vez que el cambio de contraseña sea efectuado el usuario recibirá un correo de confirmación como se muestra en la figura~\ref{img:changePass}.
+Este \textit{namespace} tiene los servicios relacionados con la autenticación del usuario. Como es de esperarse, este \textit{namespace} no requiere del uso del decorador \ref{code:tokenWrap}, ya que es aquí donde un usuario previamente registrado generará un \textit{token} de autenticación haciendo uso de su correo electrónico y contraseña. De la misma forma, si este quiere cambiar su contraseña puede hacerlo. La figura~\ref{img:putLogin} muestra el uso del método \textit{PUT} para el cambio de contraseña, proporcionando un correo electrónico registrado en la base de datos. Una vez que el cambio de contraseña sea efectuado, el usuario recibirá un correo de confirmación como se muestra en la figura~\ref{img:changePass}.
 
 \begin{figure}[H]
   \begin{subfigure}[b]{0.5\textwidth}

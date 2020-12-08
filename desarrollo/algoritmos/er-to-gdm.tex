@@ -1,5 +1,5 @@
 \subsection{Transformación modelo entidad-relación con consultas a una instancia GDM}
-Como se ha mencionado en la sección, debido a que está fuera del alcance de un alumno de ingeneiría desarrollar un compilador para poder hacer la transformación modelo a modelo, se hace uso de la implementación de Mortadelo en Java. 
+Como se ha mencionado en la sección~\ref{sec:alcance}, debido a que está fuera del alcance de un alumno de ingeneiría desarrollar dos compiladores para hacer la transformación modelo a modelo, se hace uso de la implementación de Mortadelo en Java. 
 
 
 A continuación se explica brevente la implementación.
@@ -102,4 +102,6 @@ Comparison:
 \end{minted}
 \end{code}
 
-La gramática GDM del código~\ref{code:mortadelo-gdm-grammar} está compuesta por entidades y consultas, cada entidad contiene \textit{features}, y cada \textit{feature} puede ser atributo o una referencia a otra entidad. Todos los atributos tienen un tipo y una cardinalidad,
+La gramática GDM del código~\ref{code:mortadelo-gdm-grammar} está compuesta por entidades y consultas, cada entidad contiene \textit{features}, y cada \textit{feature} puede ser atributo o una referencia a otra entidad. Todos los atributos tienen un tipo y una cardinalidad.
+
+Del diagramador entidad-relación se obtiene el diagrama ER y las consultas simples generadas por el usuario. Posteriormente, se genera un archivo de texto simple que cumpla con la gramática del GDM para que Mortadelo genere el modelo orientado a documentos de acuerdo con el algoritmo mostrado a continuación.

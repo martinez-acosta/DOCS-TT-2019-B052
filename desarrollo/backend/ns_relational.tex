@@ -1,8 +1,8 @@
-\subsection{Servicio para el modélo relacional}
+\subsection{Servicio para el modelo relacional}
 
-Este namespaces tienes los servicios que tienen una relación con el modelo relacional como son la obtención de las sentencias SQL o la validación del diagrama entidad-relación. Para estos servicios también es necesario un token de autenticación para validar un diagrama ER así como la obtención de las sentencias SQL equivalentes, en ambos caso los servicios se deben hacer por una petición del métodp \textit{POST} para que el protocolo \textit{HTTPS} mantenga cifrado la información que se transmita por la red.
+Este \textit{namespace} tiene los servicios que tienen una relación con el modelo relacional, como son la obtención de las sentencias SQL o la validación del diagrama entidad-relación. Para estos servicios también es necesario un \textit{token} de autenticación para validar un diagrama ER, así como la obtención de las sentencias SQL equivalentes. En ambos casos, los servicios se deben hacer por una petición del métodp \textit{POST} para que el protocolo \textit{HTTPS} mantenga cifrada la información que se transmita por la red.
 
-La figura~\ref{img:validateER} muestra el servicio de validación de diagrama ER, con las reglas que este debe cumplir para ser considerado valido en su estructura. En caso que el diagrama no cumpla con alguna de estas reglas el servicio le muestra al usuario una lista de los errores presentes en el diagrama como se aprecia en la figura~\ref{img:invalidDiagram}.
+La figura~\ref{img:validateER} muestra el servicio de validación de diagrama ER, con las reglas que este debe cumplir para ser considerado válido en su estructura. En caso de que el diagrama no cumpla con alguna de estas reglas, el servicio le muestra al usuario una lista de los errores presentes en el diagrama, tal como se aprecia en la figura~\ref{img:invalidDiagram}.
 
 \begin{figure}[H]
   \centering
@@ -18,9 +18,9 @@ La figura~\ref{img:validateER} muestra el servicio de validación de diagrama ER
   \label{img:invalidDiagram}
 \end{figure}
 
-Para obtener las sentencias SQL al diagrama ER se creo el servicio \textit{/relational} definido en el archivo \textit{apis/relacional.py}. Este servicio solo debe ser usado para un diagrama ER valido, este servicio no ejecuta ninguna validación sobre el diagrama recibido por que ese no es su propósito para eso se tiene el servicio de validación previamente mencionado.
+Para obtener las sentencias SQL al diagrama ER se creó el servicio \textit{/relational} definido en el archivo \textit{apis/relacional.py}. Este servicio solo debe ser usado para un diagrama ER valido. Este servicio no ejecuta ninguna validación sobre el diagrama recibido porque ese no es su propósito, para eso se tiene el servicio de validación previamente mencionado.
 
-Para conocer las sobre el proceso de obtención de las sentencias SQL equivalentes consulte la sección \ref{sec:desarrollo-sql}. Una vez realizado el proceso el servicio muestra al usuario un script de SQL como se muestra en la figura~\ref{img:sqlSentences} que puede descargar o copiar para ejecutar en el sistema gestor de \textit{MySQL}
+Para conocer las sobre el proceso de obtención de las sentencias SQL equivalentes consulte la sección~\ref{sec:desarrollo-sql}. Una vez realizado el proceso el servicio muestra al usuario un script de SQL como se muestra en la figura~\ref{img:sqlSentences} que puede descargar o copiar para ejecutar en el sistema gestor de MySQL.
 
 
 \begin{figure}[H]
