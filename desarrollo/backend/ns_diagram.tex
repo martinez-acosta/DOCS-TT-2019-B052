@@ -1,6 +1,6 @@
 \subsection{Servicios para el diagrama}
 
-Este namespaces tienes los servicios relacionados al diagram entidad-relación del usuario. Por razones de seguridad este namespaces si requiere del uso del decorador \ref{code:tokenWrap}, para asegurar que solamente usuarios registrados en la base de datos puedan consultar su diagram o en su defecto guardar un nuevo diagrama en su cuenta, es en estos casos donde entra en uso la configuración de restplus para la solicitud del token de autenticación de usuario para poder hacer uso de estos servicios como se muestra en la figura~\ref{img:tokenSwagger}.
+Este namespace tienes los servicios relacionados al diagrama entidad-relación del usuario. Por razones de seguridad este namespaces si requiere del uso del decorador \ref{code:tokenWrap}, para asegurar que solamente usuarios registrados en la base de datos puedan consultar su diagrama o en su defecto guardar un nuevo diagrama en su cuenta, es en estos casos donde entra en uso la configuración de restplus para la solicitud del token de autenticación de usuario para poder hacer uso de estos servicios como se muestra en la figura~\ref{img:tokenSwagger}.
 
 \begin{figure}[H]
   \begin{subfigure}[b]{0.49\textwidth}
@@ -16,4 +16,4 @@ Este namespaces tienes los servicios relacionados al diagram entidad-relación d
     \end{subfigure}
 \end{figure}
 
-En caso de no proporcionar un token valido la operación no podrá ser completada y el api mostrara un mensaje como el de la figura~\ref{img:unauthorized}, de igual forma que al registrar un usuario estos servicio requieren que en la petición HTTP se encuentren ciertos parámetros. En este caso solamente se requiere que se encuentre un objeto json para guardar un diagrama, el cual sera el mismo que se vevolverá al usuario al consultar el servicio \textit{/diagram} por medio de una petición \textit{GET}.
+En caso de no proporcionar un token valido la operación no podrá ser completada y el api mostrara un mensaje como el de la figura~\ref{img:unauthorized}, de igual forma que al registrar un usuario estos servicio requieren que en la petición HTTP se encuentren ciertos parámetros. En este caso solamente se requiere que se encuentre un objeto json para guardar un diagrama, el cual será el mismo que se devolverá al usuario al consultar el servicio \textit{/diagram} por medio de una petición \textit{GET}.

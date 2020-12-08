@@ -1,9 +1,9 @@
 \subsection{Los servicios web}
 
-Como se muestra en la sección \ref{sec:apiFlask} eso basta para tener una aplicación flask ejecutandose, pero para poder exponer servicios web y que estos puedan ser consultados por otras aplicaciones son necesarios pasos adicionales descrios en esta sección. Para poder registrar un servicio en la aplicación flask primero se debe configurar la documentación de swagger, para lograr esto se recomienda en un archivo separado mantener la importación de los distintos namespaces de los servicios que desea exponer y es la clase \textbf{API} de restplus quien se encargará de registrarlos en el api y mosntrarlos al usuario como se muestra en el fragmento de código \ref{code:namespaces}, también es posible apreciar en este fragmento de código la configuración del \textit{header} de autenticación para poder hacer uso de los servicios así como la infomación del api, como el nombre de los desarrolladores, su email de contacto, la versión del api, si utiliza algún mecanismo de segirdad en la autenticación, etc.
+Como se muestra en la sección \ref{sec:apiFlask} eso basta para tener una aplicación flask ejecutandose, pero para poder exponer servicios web y que estos puedan ser consultados por otras aplicaciones son necesarios pasos adicionales descritos en esta sección. Para poder registrar un servicio en la aplicación flask primero se debe configurar la documentación de swagger, para lograr esto se recomienda en un archivo separado mantener la importación de los distintos namespaces de los servicios que desea exponer y es la clase \textbf{API} de restplus quien se encargará de registrarlos en el api y mostrarlos al usuario como se muestra en el fragmento de código \ref{code:namespaces}, también es posible apreciar en este fragmento de código la configuración del \textit{header} de autenticación para poder hacer uso de los servicios así como la infamación del api, como el nombre de los desarrolladores, su email de contacto, la versión del api, si utiliza algún mecanismo de seguridad en la autenticación, etc.
 
 \begin{code}
-\captionof{listing}{Registro de los namespaces del api}
+\captionof{listing}{Registro de los namespaces del api.}
 \label{code:namespaces}
 \begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{python}
 from flask_restplus import Api
@@ -41,14 +41,14 @@ api.add_namespace(ns_relational)
 \end{minted}
 \end{code}
 
-De la misma manera es recomendable tener separados cada uno de los namespaces en archivos separados, esto hace mas legible la integración de nuevos servicios al api. Como se aprecia el figura~\ref{img:apiStrucure} todos estos archivos se encuentran en la carpeta \textit{apis/} tanto la configuración como cada uno de los servicios expuestos asociados por contexto, es decir, todos los servicios relacionados con los datos del usuario se encuentran en \textit{apis/user.py}.
+De la misma manera es recomendable tener separados cada uno de los namespaces en archivos separados, esto hace mas legible la integración de nuevos servicios al api. Como se aprecia el figura~\ref{img:apiStructure} todos estos archivos se encuentran en la carpeta \textit{apis/} tanto la configuración como cada uno de los servicios expuestos asociados por contexto, es decir, todos los servicios relacionados con los datos del usuario se encuentran en \textit{apis/user.py}.
 
-Para crear un recurso de un nuevo servicio web debemos agregar el decorador \textit{@api.route()} antes de una clase o método para mapear la ruta por la que el usuario podrá acceder a ese servicio, la clase debe tener como parámetro la clase \textit{Resource} de restplus para identificarlo como un elemento del api. Una de las buenas practicas que implementa la herramienta restplus es la limitante que por cada clase solamente es posible tener definido un método por cada tipo de petición HTTP, es decir, por cada clase solo se permite una método \textit{def get(self):} que atenderá la peticion http que tenga en el header \textit{Request Method} la opción \textit{GET}.
+Para crear un recurso de un nuevo servicio web debemos agregar el decorador \textit{@api.route()} antes de una clase o método para mapear la ruta por la que el usuario podrá acceder a ese servicio, la clase debe tener como parámetro la clase \textit{Resource} de restplus para identificarlo como un elemento del api. Una de las buenas practicas que implementa la herramienta restplus es la limitante que por cada clase solamente es posible tener definido un método por cada tipo de petición HTTP, es decir, por cada clase solo se permite una método \textit{def get(self):} que atenderá la petición http que tenga en el header \textit{Request Method} la opción \textit{GET}.
 
 De manera adicional se implemento un decorador personalizado para validar que las peticiones que tengan que hacer uso de los datos del usuario o la base de datos cuenten con el token de autenticación en los headers de la petición. Este decorador se muestra en el fragmento de código \ref{code:tokenWrap}, una vez creado el decorador basta con colocarlo previamente a la definición de la clase o método que requiera de su uso.
 
 \begin{code}
-\captionof{listing}{Registro de los namespaces del api}
+\captionof{listing}{Decorador personalizado para validar el token en los headers de la petición HTTP.}
 \label{code:tokenWrap}
 \begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{python}
   def token_required(f):
