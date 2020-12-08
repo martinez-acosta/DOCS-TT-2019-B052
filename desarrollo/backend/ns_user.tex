@@ -1,0 +1,27 @@
+\subsection{Servicios para el usuario}
+
+Los métodos o funciones implementadas en este namespace constan de un CRUD (\textit{Create, Read, Update, Delete}) para el manejo de usuarios. Es aquí donde se permite el registro de un usuario nuevo asi como la consulta de todos los usuarios registrados en la base de datos, así como la consulta de un usuario en específico, para limitar los datos que el servicio acepta en una petición se puede hacer uso del meétod model que proporciona la clase \textit{Namespace} de restplus, como se aprecia en el fragmento de código \ref{code:modelUser} el modelo de un usuario conta de los campos \textit{\_id, username, name, email, password, diagram} de los cuales \textit{\_id} y \textit{diagram} no son obligatorios para el registro de un nuevo usuario. Toda la lógica de esta operaciones se encuentra definida en el archivo \textit{apis/user.py} dando como resultado la figura~\ref{img:userEndpoints} en la cual se muestran los servicios disponibles para los usuarios.
+
+
+\begin{code}
+\captionof{listing}{Clase principal del api flask}
+\label{code:apiInit}
+\begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{python}
+  user = api.model('User', {
+    '_id': fields.String(required=False, readonly=True),
+    'username': fields.String(required=False, readonly=True, description="a username", example="username"),
+    'name': fields.String(required=True ),
+    'email': fields.String(required=True, example="email@domain.com"),
+    'password': fields.String(required=True, example="P4ssw0rd*"),
+    'diagram': fields.String(example="{}", readonly=True),
+  })
+
+\end{minted}
+\end{code}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{apiFlask/user_namespaces.png}
+  \caption{Pantalla de los servicios relacionados a un usuario.}
+  \label{img:userEndpoints}
+\end{figure}

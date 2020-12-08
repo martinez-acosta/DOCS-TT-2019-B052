@@ -1,0 +1,31 @@
+\subsection{Servicio para el modélo relacional}
+
+Este namespaces tienes los servicios que tienen una relación con el modélo relacional como son la obtención de las sentencias SQL o la validación del diagram entidad-relación. Para estos servicios tambien es necesario un token de autenticación para validar un diagrama ER así como la obtención de las sentencias SQL equicalentes, en ambos caso los servicios se deben hacer por una petición del métodp \textit{POST} para que el protocolo \textit{HETTPS} mantenga cifrado la información que se transmita por la red.
+
+La figura~\ref{img:validateER} muestra el servicio de validación de diagram ER, con las reglas que este debe cumplir para ser considerado valido en su estructura. En caso que el diagrama no cumpla con alguna de estas reglas el servicio le mustra al usuario una lista de los errores presentes en el diagrama como se aprecia en la figura~\ref{img:invalidDiagram}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{apiFlask/endpointValidate.png}
+  \caption{Pantalla del servicio para validar un diagrama ER con las reglas en la descripción.}
+  \label{img:validateER}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{apiFlask/invalidDiagram.png}
+  \caption{Respuesta para un diagrama ER no valido.}
+  \label{img:invalidDiagram}
+\end{figure}
+
+Para obtener las sentencias SQL al diagrama ER se creo el servicio \textit{/relational} definido en el archivo \textit{apis/relacional.py}. Este servicio solo debe ser usado para un diagrama ER valido, este servicio no ejecuta ninguna validación sobre el diagram recibido por que ese no es su proposito para eso se tiene el servicio de validación previamente mencionado.
+
+Para conocer las sobre el proceso de obtención de las sentencias SQL equivalentes consulte la sección \ref{sec:desarrollo-sql}. Una vez realizado el proceso el servicio muestra al usuario un script de sql como se muestra en la figura~\ref{img:sqlSentences} que puede descargar o copiar para ejecutar en el sistema gestor de \textit{MySQL}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{apiFlask/endpointRelational.png}
+  \caption{Respuesta con las sentencias SQL equivalentes al diagram ER.}
+  \label{img:sqlSentences}
+\end{figure}

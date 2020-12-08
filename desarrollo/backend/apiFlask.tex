@@ -1,0 +1,39 @@
+\subsection{El api flask} \label{sec:apiFlask}
+
+Como se menciono en la sección \ref{sec:flask}, flask es un microframework pero es posible extender sus capacidades por medio de bibliotecas. Para el desarrollo de la api de servicios web se utilza la biblioteca \textit{flask_restplus}, que de acuerdo a su documentación oficial(REFFLASKREST) es una extensión de flask con soporte para la construcción de API REST de manera rápida, fomenta buenas prácticas con una configuración mínima y proporciona una colección de decoradores y herramientas para describir un API de manera sencilla y exponer su documentación correctamente(usando Swagger).
+
+Para la construcción de la aplicación se creo la estructura mostrada en la figura~\ref{img:apiStructure} donde la carpeta \textit{config} contiene un archivo con el nombre \textit{app.conf} con las variables de configuración de la aplicación como son la llave secreta para validar el \textit{JWT}, las credenciales para conexión a la base de datos, un usuario de pruebas y característica de la interfaz swagger, mientras que el archivo \textit{database.py} es una clase singleton para mantener una sola instancia de conexión a la base de datos para toda la aplicación.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{apiFlask/api_structure.png}
+  \caption{Estructura del proyecto backend.}
+  \label{img:apiStructure}
+\end{figure}
+
+Para lograr la implementación de flask con restplus es necesaria la siguiente configuración. Se deben importar de la biblioteca \textit{flask } en el archivo principal del proyecto las clases \textit{Flask, jsonify, request, make\_response, Response} y al mismo tiempo la configuración descrita en el archivo \textit{config/app.conf} para tener disponible en toda la aplicación la conexion a la base de datos como la llave secreta del token de autenticación y las credenciales del servidore SMTP para el envío de correo. Dado como resultado el fragmento de código \ref{code:apiInit}.
+
+\begin{code}
+\captionof{listing}{Clase principal del api flask}
+\label{code:apiInit}
+\begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{python}
+  from flask import Flask, jsonify, request, make_response, Response
+  from flask_cors import CORS
+  from flask_pymongo import PyMongo
+  import os
+  from apis import api
+  from config.database import initialize_db
+
+  app = Flask(__name__)
+  app.config.from_pyfile(os.path.join(".", "config/app.conf"), silent=False)
+
+  mongo = PyMongo(app)
+  CORS(app, resources={r'/*': {'origins': '*'}})
+  initialize_db(app)
+  api.init_app(app)
+
+  if __name__=='__main__':
+    app.run(debug=True)
+
+\end{minted}
+\end{code}
