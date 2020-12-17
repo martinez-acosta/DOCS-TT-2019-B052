@@ -32,7 +32,10 @@ Para seleccionar las tecnologías a usar en las propuesta de solución se ha opt
 \input{marcoTeorico/tecnologias_a_usar/python}
 \input{marcoTeorico/tecnologias_a_usar/back_end}
 \subsection{Herramientas para ingeniería dirigida por modelos}
-De acuerdo con Kahani \cite{kahani_survey_2019}, en su estudio sobre unas 60 herramientas en la literatura del tema para desarrollar tranformaciones entre modelos, el 73 \% de las herramientas están hechas en Java\cite{joy_java_2000} y están implementadas como un \textit{plugin} del IDE Eclipse\cite{eclipse_eclipse_2009}. Igualmente, en las herramientas de otros lenguajes, por ejemplo, Python, aún no existe una integración entre transformaciones modelo a modelo y modelo a texto con la definición de gramáticas. Debido a que la mayoría de herramientas están solo disponibles en Java, se decidió usar las herramientas disponibles en este lenguaje.
+De acuerdo con Kahani \cite{kahani_survey_2019}, en su estudio sobre unas 60 herramientas en la literatura del tema para desarrollar tranformaciones entre modelos, el 75 \% de las herramientas están hechas en Java\cite{joy_java_2000} y están implementadas como un \textit{plugin} del IDE Eclipse\cite{eclipse_eclipse_2009}. Igualmente, en las herramientas de otros lenguajes, por ejemplo, Python, aún no existe una integración entre transformaciones modelo a modelo y modelo a texto con la definición de gramáticas. 
+
+
+Sin embargo, como PyEcore~\cite{pyecore_pyecore_2020} permite crear la definición de clases equivalentes en Python desde un archivo .ecore, se decidió usar PyEcore para implementar el modelo conceptual y lógico del modelo NoSQL.
 % Metamodelo: ecore sirve para describir modelos, el modelo orientado a documentos y el orientado a columnas
 % transformación modelo a modelo: xtend
 % transformación modelo a texto: epsilon generation language

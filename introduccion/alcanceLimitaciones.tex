@@ -14,20 +14,16 @@ Asimismo, los \textit{scripts} generados se probarán con MySQL porque es uno de
 Para la transformación del modelo ER al esquema del modelo relacional no se realizará ninguna normalización, porque está fuera del alcance para el equipo programar la lógica necesaria y se necesita un diagrama no normalizado para la transformación al modelo conceptual NoSQL.
 
 
+No se generará la transformación de atributos compuestos.
+
+
 Dado que hay varias propuestas en la literatura sobre modelos conceptuales NoSQL, se optará por usar la propuesta de Alfonso de la Vega\cite{de_la_vega_mortadelo_2020}, ya que el modelo que propone, conocido como \textit{Generic Data Metamodel}, es un metamodelo conceptual que describe un modelo de datos NoSQL independientemente de si es de clave-valor, orientado a documentos, a columnas o grafos.
+
 
 No se implementará la opción de marcar una entidad en el \textit{Generic Data Metamodel} como \textit{muy usada}.
 
-Respecto a las transformaciones modelo a modelo y modelo a texto, se necesita implementar una gramática del modelo conceptual NoSQL, otra gramática para el modelo lógico orientado a documentos y la transformación entre ambas gramáticas. 
 
-
-Debido a la difícultad de implementar de cero un compilador por cada gramática y porque de acuerdo con Kahani\cite{kahani_survey_2019}, el 75 \% de las herramientas para transformaciones dirigidas a modelo están escritas en Java, además de que las herramientas en Java son las únicas que tienen la generación automática del analizador léxico, analizador sintántico y analizador morfológico que se necesita para manipular cada gramática.
-
-
-Por las razones antes mencionadas y porque el propósito del proyecto es mostrar un diagrama de un modelo orientado a documentos a partir de un diagrama entidad-relación, no implementar compiladores para gramáticas, se optará por usar el código fuente de Mortadelo para las transformaciones modelo a modelo (que están implementadas usando el Eclipse Modeling Framework\cite{steinberg_emf_2008} de Java).
-
-
-De ser posible, como un trabajo a futuro se realizará una implementación propia para la transformaciones entre modelos. 
+Se hará uso de las definiciones de gramática de Mortadelo~\cite{de_la_vega_mortadelo_2020}, porque no se pueden generar en Python desde cero.
 
 
 Los \textit{scripts} NoSQL generados por la aplicación solo serán probados y ejecutados en un único NoSQL DBMS.
@@ -49,5 +45,7 @@ La propuesta de solución se podrá ejecutar en el navegador web Google Chrome v
 
 
 Si un diagrama entidad-relación básico no contiene consultas, solo se podrá obtener el esquema del modelo relacional (sentencias SQL); en caso de que exista al menos una consulta, se puede obtener el modelo conceptual NoSQL.
-%El grado de partición en el modelo entidad-relación será máximo de dos entidades.
+
+
+El grado de partición en el modelo entidad-relación será máximo de dos entidades.
     
