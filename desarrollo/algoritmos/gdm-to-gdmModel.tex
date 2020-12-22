@@ -1,0 +1,62 @@
+\subsection{Parser del archivo de texto simple GDM a su .model}
+Una vez obtenido el archivo de texto simple GDM que está conformado por las entidades (atributos y referencias) y las consultas definidas por el usuario es necesario generar un modelo que entienda PyEcore. A continuación se muestra el algoritmo y parte de su implementación.
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{Entrada}
+    \SetKwInOut{Output}{Salida}
+  
+    \Input{modelo GDM en texto simple, $gdmTextoSimple$}
+    \Output{modelo GDM en XML, $gdmXML$}
+        $entities \gets Entities(gdmTextoSimple)$\\
+        $queries \gets Queries(gdmTextoSimple)$\\
+        $gdm \gets gdm.Model(entities,queries)$\\
+        $gdm.saveXML()$
+     
+      
+    \caption{Generar el .model desde un modelo GDM en archivo de texto simple}
+  \end{algorithm}
+
+
+  \begin{code}
+    \captionof{listing}{Parser GDM de texto simple a XML del GDM}
+    \label{code:er-to-gdm}
+    \begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{python}
+        def main():
+
+        # Creamos el modelo GDM
+        model = gdm.Model()
+        
+        input_file = open('laloVenues.gdm', 'r') 
+        lines = input_file.readlines()
+        
+        # Primero creamos las entidades y las consultas, porque las necesitamos para crear las referencias
+        for line in lines:
+            if "entity" in line:
+                entity = gdm.Entity(name=line.split()[1])
+                model.entities.append(entity)
+            if "query" in line:
+                query = gdm.Query(name=line.split()[1].strip(":"))
+                model.queries.append(query)
+    
+        # Parseamos el documento para agregar llenar las entidades
+        for i in range(len(lines)):
+            line = lines[i]
+            
+            # Ignoramos los comentarios
+            if "/*" in line or "* " in line or "*/" in line:
+                continue
+            
+            # Si es una entidad
+            if "entity" in line:
+                populateEntity(model, lines, i)
+    
+        # Parseamos el documento para agregar llenar las consultas
+        for i in range(len(lines)):
+            line = lines[i]
+            # Si es una consulta            
+            if "query" in line:
+                populateQuery(model,lines,i)
+    
+        saveModel(model)
+    \end{minted}
+\end{code}

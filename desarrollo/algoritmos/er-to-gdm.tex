@@ -1,107 +1,114 @@
-\subsection{Transformación modelo entidad-relación con consultas a una instancia GDM}
-Como se ha mencionado en la sección~\ref{sec:alcance}, debido a que está fuera del alcance de un alumno de ingeneiría desarrollar dos compiladores para hacer la transformación modelo a modelo, se hace uso de la implementación de Mortadelo en Java. 
+\subsection{Transformación modelo entidad-relación a entidades del modelo conceptual GDM}
+La generación de las entidades del modelo GDM desde el modelo entidad-relación básico es de le siguiente manera: 
 
 
 A continuación se explica brevente la implementación.
 
+\begin{algorithm}[H]
+  \SetKwInOut{Input}{Entrada}
+  \SetKwInOut{Output}{Salida}
+
+  \Input{diagrama entidad-relación básico, $er$}
+  \Output{entidades del Generic Datametamodel, $entities_{gdm}$}
+  $entities \gets  list(filter(lambda\ item:\ item['type'] == 'entity',nodeData))$\\
+    $entities2pair \gets  list(map(lambda\ entity: (entity, getConnectedNodes(entity['key'], nodeData, linkData)),entities))$\\
+    $entities_{gdm} \gets  array$\\
+    \ForEach{$pair \in entities2pair:$}{
+      $references \gets references(pair)$\\
+      $features \gets features(pair)$\\
+      $entity pair.key$\\
+      $entity.references \gets references$\\
+      $entity.features \gets features$\\
+      $entities_{gdm}.append(entity)$
+    }
+    
+  \caption{Generar los \textit{features} y las \textit{references} del GDM desde el modelo entidad-relación.}
+\end{algorithm}
+
 \begin{code}
-    \captionof{listing}{Gramática del Generic Data Model}
-    \label{code:mortadelo-gdm-grammar}
-    \begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{java}
-grammar es.unican.istr.mortadelo.gdm.lang.GdmLang
-    with org.eclipse.xtext.common.Terminals
-
-import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-generate gdmLang "http://www.unican.es/istr/mortadelo/gdm/lang/GdmLang"
-
-Model:
-  (entities+=Entity)*
-  (queries+=Query)*;
-
-AnnotatableElement:
-  Feature | Entity | Query
-;
-
-Annotation:
-  "@"name=ID
-;
-
-Entity:
-  (annotations+=Annotation (annotations+=Annotation)*)?
-  "entity" name=ID "{"
-  (features+=Feature)*
-  "}";
-
-Feature:
-  Attribute | Reference;
-
-Attribute:
-  (annotations+=Annotation (annotations+=Annotation)*)?
-  (type=Type)?("[" cardinality=CARDINALITY "]")? name=ID (unique?="unique")?;
-
-Reference:
-  (annotations+=Annotation (annotations+=Annotation)*)?
-  "ref" entity=[Entity]
-  "[" cardinality=CARDINALITY "]"
-  name=ID;
-
-terminal CARDINALITY returns ecore::EString:
-  "*" | ('1'..'9') ('0'..'9')*;
-
-enum Type:
-  NUMBER="number" | TEXT="text" | DATE="date" | BOOLEAN="boolean" | ID="id" |
-  TIMESTAMP="timestamp";
-
-Query:
-  (annotations+=Annotation (annotations+=Annotation)*)?
-  "query" name=ID ":"
-  "select" projections+=AttributeSelection ("," projections+=AttributeSelection)*
-  "from" from=From
-  ("including" inclusions+=Inclusion ("," inclusions+=Inclusion)*)?
-  ("where" condition=BooleanExpression)?
-  ("order" "by" orderingAttributes+=AttributeSelection
-      ("," orderingAttributes+=AttributeSelection)*)?;
-
-AttributeSelection:
-  refAlias=[Alias] "." attribute=[Attribute] ("as" alias=ID)?;
-
-Alias:
-  "as" name=ID;
-
-From:
-  entity=[Entity] alias=Alias;
-
-Inclusion:
-  refAlias=[Alias] ("." refs+=[Reference])+ alias=Alias;
-
-BooleanExpression returns BooleanExpression:
-  AndConjunction;
-
-AndConjunction returns BooleanExpression:
-  OrConjunction ({AndConjunction.left=current} "and" right=OrConjunction)*;
-
-OrConjunction returns BooleanExpression:
-  Primary ({OrConjunction.left=current} "or" right=Primary)*;
-
-Primary returns BooleanExpression:
-  Comparison | '(' AndConjunction ')';
-
-Comparison:
-  {Equality}
-  selection=AttributeSelection '=' value=STRING |
-  {Inequality}
-  selection=AttributeSelection '!=' value=STRING |
-  {MoreThan}
-  selection=AttributeSelection '>' value=STRING |
-  {MoreThanOrEqual}
-  selection=AttributeSelection '>=' value=STRING |
-  {LessThan}
-  selection=AttributeSelection '<' value=STRING |
-  {LessThanOrEqual}
-  selection=AttributeSelection '<=' value=STRING;
-\end{minted}
+    \captionof{listing}{Generación de entidades del GDM desde el modelo entidad-relación básico}
+    \label{code:er-to-gdm}
+    \begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{python}
+      def main():
+    
+      input_file = open('er.json') 
+      data = json.load(input_file) 
+      input_file.close() 
+      
+      nodeData = data['nodeDataArray']
+      linkData = data['linkDataArray']
+    
+      # Obtenemos entidades del modelo ER
+      entities = list(filter(lambda item: item['type'] == "entity",nodeData))
+    
+      # Obtenemos lista de pares, donde la clave es una entidad y su valor son los nodos a los que está conectada la entidad
+      entities2pair = list(map(lambda entity: (entity, getConnectedNodes(entity['key'], nodeData, linkData)),entities))
+      count = 0
+      for pair in entities2pair:
+          entity = pair[0]
+          features = pair[1]
+          attributes = []
+          references = []
+          for feature in features:
+              if (feature['type'] == "relation"):
+                  reference = {}
+                  relation = getRelationInfo( feature["key"], linkData, nodeData)
+    
+                  if (relation["from"]["key"] != entity["key"]):
+                      reference["entity"] = relation["from"]["text"]
+                      reference["cardinality"] = relation["fromC"]
+                      if relation["fromC"] != '1':
+                          reference["name"] = feature["text"] + relation["from"]["text"]
+                      else:
+                          reference["name"] = toFirstLower(relation["from"]["text"])
+                  else:
+                      reference["entity"] = relation["to"]["text"]
+                      reference["cardinality"] = relation["toC"]
+                      # Si la relación es a N, va el nombre de la relación concatenado con el nombre de la entidad
+                      if relation["toC"] != '1':
+                          reference["name"] = feature["text"] + relation["to"]["text"]
+                      else:
+                          reference["name"] = toFirstLower(relation["to"]["text"])
+    
+    
+                  references.append(reference)
+              if ( isAttribute(feature['type']) ):
+                  attribute = {}
+                  attribute["name"] = feature['text']
+                  attribute["type"] =  feature["gdmType"]
+                  attribute["array"] = True if feature["type"] == "multivalueAttribute" else False
+                  attribute["unique"] = True if feature["type"] == "keyAttribute" else False
+                  if attribute["unique"] == True:
+                      attribute["type"] = "id"
+                  attributes.append(attribute)
+          
+          # Escribimos el archivo de texto
+          if count == 0:
+              count += 1
+              with open("laloVenues.gdm", 'w') as output_file:
+                  output_file.write("entity " + entity["text"] + " {\n")
+                  for attribute in reversed(attributes):
+                      output_file.write(parseAttribute(attribute))
+                  for reference in reversed(references):
+                      output_file.write(parseReference(reference))
+                  output_file.write("}\n\n")
+                  output_file.close()
+          else:
+              with open("laloVenues.gdm", 'a') as output_file:
+                  output_file.write("entity " + entity["text"] + " {\n")
+                  for attribute in reversed(attributes):
+                      output_file.write(parseAttribute(attribute))
+                  for reference in reversed(references):
+                      output_file.write(parseReference(reference))
+                  output_file.write("}\n\n")
+                  output_file.close()
+      return
+    \end{minted}
 \end{code}
 
-La gramática GDM del código~\ref{code:mortadelo-gdm-grammar} está compuesta por entidades y consultas, cada entidad contiene \textit{features}, y cada \textit{feature} puede ser atributo o una referencia a otra entidad. Todos los atributos tienen un tipo y una cardinalidad.
 
-Del diagramador entidad-relación se obtiene el diagrama ER y las consultas simples generadas por el usuario. Posteriormente, se genera un archivo de texto simple que cumpla con la gramática del GDM para que Mortadelo genere el modelo orientado a documentos de acuerdo con el algoritmo mostrado a continuación.
+
+El modelo GDM del código~\ref{code:er-to-gdm} está compuesta por entidades y consultas, cada entidad contiene \textit{features}, y cada \textit{feature} puede ser atributo o una referencia a otra entidad. Todos los atributos tienen un tipo y una cardinalidad.
+
+
+Este algoritmo solo obtiene las entidades del modelo GDM. Se necesitan además consultas definidas por el usuario para generar el modelo lógico orientado a documetnos.

@@ -20,8 +20,8 @@ El \textit{live demo} del \textit{back end} está usando el \textit{deploy} auto
 
 \input{desarrollo/front/frontend}
 \input{desarrollo/front/diagramadoER}
-\input{desarrollo/front/consultasAcceso}
 \input{desarrollo/front/sentenciasSQL}
+\input{desarrollo/front/consultasAcceso}
 \input{desarrollo/front/diagramadoNoSQL}
 \input{desarrollo/backend/backend.tex}
 \input{desarrollo/backend/apiFlask.tex}
@@ -39,14 +39,14 @@ En esta sección se describen cómo se implementan los algoritmos de la sección
 \input{desarrollo/algoritmos/validaciónER}
 \input{desarrollo/algoritmos/transformacionSQL}
 \input{desarrollo/algoritmos/er-to-gdm}
-\subsection{Parser del archivo de texto simple GDM a su .model}
+\input{desarrollo/algoritmos/gdm-to-gdmModel}
 \input{desarrollo/algoritmos/transformacionM2M}
-\subsection{Transformación del modelo lógico orientado a documentos a MongoDB}
+\input{desarrollo/algoritmos/transformacionM2T}
 
 
 \section{Conclusiones}
 Durante el proceso de desarrollo de este trabajo terminal se han presentado algunos retos que no se tenían contemplados en un inicio, desde la creación o separación del proyecto en 2 aplicaciones para un mejor manejo del trabajo en equipo hasta las tecnologías a utilizar. 
 
-El resolver cada uno esos retos ha dejado un aprendizaje para el equipo de desarrollo, ya que nos enseña que aun teniendo un plan de trabajo y fechas establecidas, siempre existen inconvenientes con los que uno no cuenta, por lo que el equipo se debe adaptar a estos cambios para tratar de obtener los resultados y, en caso de ser necesario, modificar el plan inicial.
+El resolver cada uno esos retos ha dejado un aprendizaje para el equipo de desarrollo, ya que enseña que aun teniendo un plan de trabajo y fechas establecidas, siempre existen inconvenientes con los que uno no cuenta, por lo que el equipo se debe adaptar a estos cambios para tratar de obtener los resultados y, en caso de ser necesario, modificar el plan inicial.
 
-Uno de los mas grandes retos fue la transformación del diagrama entidad-relación al modelo NoSQL, ya que se en el plan inicial no se contempló la falta de tecnologías disponibles para transformaciones entre gramáticas en distintos niveles de abstracción. Al no tener experiencia ni el contexto de todo lo que implica la ingeniería orientada a modelos, y por las limitantes en tiempo para este trabajo terminal, el equipo pensó en usar parte del proyecto de un tercero para lograr el alcance esperado. Sin embargo, gracias a PyEcore\cite{pyecore_pyecore_2020} se logró implementar los  algoritmos de transformación en el lenguaje de programación Python.
+Uno de los mas grandes retos fue la transformación del diagrama entidad-relación al modelo conceptual NoSQL, ya que se en el plan inicial no se contempló la falta de tecnologías disponibles para transformaciones entre gramáticas en distintos niveles de abstracción. Al no tener experiencia ni el contexto de todo lo que implica la ingeniería orientada a modelos, y por las limitantes en tiempo para este trabajo terminal, el equipo pensó en usar parte del proyecto de un tercero para lograr el alcance esperado. Sin embargo, gracias a PyEcore\cite{pyecore_pyecore_2020} se logró implementar los  algoritmos de transformación en el lenguaje de programación Python.

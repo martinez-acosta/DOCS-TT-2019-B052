@@ -2475,13 +2475,12 @@
     <bcf:citekey order="115">netlify_netlify_nodate</bcf:citekey>
     <bcf:citekey order="116">jwt_web_2020</bcf:citekey>
     <bcf:citekey order="117">shahzad_review_2016</bcf:citekey>
-    <bcf:citekey order="118">noauthor_vue_2020</bcf:citekey>
-    <bcf:citekey order="119">heroku_heroku_2020</bcf:citekey>
-    <bcf:citekey order="120">noauthor_pallets_2020</bcf:citekey>
-    <bcf:citekey order="121">noauthor_flask-restplus_2020</bcf:citekey>
-    <bcf:citekey order="122">pyecore_pyecore_2020</bcf:citekey>
+    <bcf:citekey order="118">heroku_heroku_2020</bcf:citekey>
+    <bcf:citekey order="119">noauthor_pallets_2020</bcf:citekey>
+    <bcf:citekey order="120">noauthor_flask-restplus_2020</bcf:citekey>
+    <bcf:citekey order="121">pyecore_pyecore_2020</bcf:citekey>
+    <bcf:citekey order="122">fowler_brief_2003</bcf:citekey>
     <bcf:citekey order="123">fowler_brief_2003</bcf:citekey>
-    <bcf:citekey order="124">fowler_brief_2003</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
