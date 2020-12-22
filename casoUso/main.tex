@@ -1,0 +1,233 @@
+Para el caso de uso se ha decidido usar el diagrama entidad-relación más usado en la literatura NoSQL, que es el modelo Venues que puede encontrar en el \textit{paper} de Chebotko~\cite{chebotko_big_2015}.
+
+\section{Diagramado modelo entidad-relación básico}
+
+El diagramado de Venues se ha hecho con la propuesta de solución desarrollada y en la figura~\ref{img:venues-er}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{casoUso/venues-er.png}
+    \caption{Diagrama entidad-relación de Venues}
+    \label{img:venues-er}
+\end{figure}
+
+\section{Validación modelo entidad-relación básico}
+
+\section{Generación sentencias SQL}
+ Una vez validado el diagrama entidad-relación básico se pueden generar las sentencias SQL que se muestra en la figura~\ref{img:venues-sql} 
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{casoUso/venues-sql.png}
+    \caption{Sentencias SQL de Venues}
+    \label{img:venues-sql}
+\end{figure}
+
+\subsection*{Prueba de sentencias SQL en MySQL}
+
+\section{Modelo conceptual NoSQL}
+
+Con un diagrama entidad-relación básico válido es posible generar las entidades del modelo conceptual NoSQL como se muestra en la figura~\ref{img:venues-conceptual}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{casoUso/venues-conceptual.png}
+    \caption{Entidades del modelo conceptual GDM}
+    \label{img:venues-conceptual}
+\end{figure}
+
+Una vez generadas las entidades del modelo conceptual GDM es necesario que el usuario defina las consultas en la sección de consultas del GDM como se muestra en la figura~\ref{img:venues-conceptual-queries}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{casoUso/venues-conceptual-queries.png}
+    \caption{Entidades y consultas del modelo conceptual GDM}
+    \label{img:venues-conceptual-queries}
+\end{figure}
+
+Las nueve consultas que se han definido son las siguientes:
+
+\begin{verbatim}
+    query Q1_artifactsByVenue:
+    select venue.venueName, venue.year,
+           artifacts.artifactId, artifacts.artifactTitle, artifacts.avgRating,
+           artifacts.authors, artifacts.keywords
+    from Venue as venue
+    including venue.featuresArtifact as artifacts
+    where venue.venueName = "?"
+      and venue.year > "?"
+  
+  query Q2_artifactsByAuthor:
+    select artifact.artifactId, artifact.artifactTitle, artifact.avgRating,
+           artifact.authors, artifact.keywords, artifact.authors as author
+    from Artifact as artifact
+    where artifact.authors = "?"
+  
+  query Q3_usersByLikedArtifact:
+    select user.userId, user.userName, user.userEmail
+    from User as user
+    including user.likesArtifact as artifacts
+    where artifacts.artifactId = "?"
+  
+  query Q4_expertsByLikedArtifact:
+    select user.userId, user.areasOfExpertise, user.userName, user.userEmail,
+           user.areasOfExpertise as areaOfExpertise
+    from User as user
+    including user.likesArtifact as artifacts
+    where artifacts.artifactId = "?"
+      and user.areasOfExpertise = "?"
+  
+  query Q5_ratingByArtifact:
+    select artifact.artifactId, artifact.avgRating
+    from Artifact as artifact
+    where artifact.artifactId = "?"
+  
+  query Q6_venuesLikedByUser:
+    select user.userId, venues.venueName, venues.year,
+           venues.country, venues.homepage
+    from User as user
+    including user.likesVenue as venues
+    where user.userId = "?"
+  
+  query Q7_artifactsLikedByUser:
+    select user.userId,
+           likesArtifacts.artifactId,
+           likesArtifacts.artifactTitle, likesArtifacts.authors,
+           venue.venueName
+    from User as user
+    including user.likesArtifact as likesArtifacts,
+              user.likesArtifact.venue as venue
+    where user.userId = "?"
+      and venue.year > "?"
+  
+  query Q8_reviewsByUser:
+    select user.userId,
+           reviews.reviewId, reviews.reviewTitle, reviews.body,
+           artifact.artifactId, artifact.artifactTitle
+    from User as user
+    including user.postsReview as reviews,
+              user.postsReview.artifact as artifact
+    where user.userId = "?"
+      and reviews.rating > "?"
+  
+  query Q9_artifacts:
+    select artifact.artifactId, artifact.artifactTitle, artifact.avgRating,
+           artifact.authors, artifact.keywords,
+           venue.venueName
+    from Artifact as artifact
+    including artifact.venue as venue
+    where artifact.artifactId = "?"
+\end{verbatim}
+
+\section{Modelo lógico NoSQL}
+
+A partir de un modelo conceptual GDM, que está conformado por entidades y consultas, se puede generar el modelo lógido orientado a documentos. En la figura~\ref{img:venues-logical} se muestra el diagrama correspondiente al modelo lógico orientado a documentos de Venues.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{casoUso/venues-logical.png}
+    \caption{Modelo lógico orientado a documentos de Venues}
+    \label{img:venues-logical}
+\end{figure}
+
+\section{Modelo físico NoSQL}
+
+Tambien se pueden obtener las sentencias para MongoDB. Para el modelo Venues se muestra a continuación las sentencias correspondientes a su modelo lógico.
+
+\begin{minted}[linenos,tabsize=2,breaklines, fontsize=\small]{json}
+    db.createCollection("Venue",
+{
+  validator: {
+    $jsonSchema: {    bsonType: "object",
+    properties: {
+venueName: { bsonType: "string"
+        },year: { bsonType: "double"
+        },venueId: { bsonType: "objectId"
+        },homepage: { bsonType: "string"
+        },country: { bsonType: "string"
+        },topics: { bsonType: "string"
+        },artifactRefArray: {
+    bsonType: [
+            "array"
+          ],
+    items: {
+         properties: {
+artifactRef: { bsonType: "objectId"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+})
+db.createCollection("Artifact",
+{
+  validator: {
+    $jsonSchema: {    bsonType: "object",
+    properties: {
+artifactId: { bsonType: "objectId"
+        },authors: { bsonType: "string"
+        },numRatings: { bsonType: "double"
+        },avgRating: { bsonType: "double"
+        },sumRatings: { bsonType: "double"
+        },artifactTitle: { bsonType: "string"
+        },keywords: { bsonType: "string"
+        },venueRef: { bsonType: "objectId"
+        }
+      }
+    }
+  }
+})
+db.createCollection("User",
+{
+  validator: {
+    $jsonSchema: {    bsonType: "object",
+    properties: {
+userId: { bsonType: "objectId"
+        },userName: { bsonType: "string"
+        },userEmail: { bsonType: "string"
+        },areasOfExpertise: { bsonType: "string"
+        },artifactRefArray: {
+    bsonType: [
+            "array"
+          ],
+    items: {
+         properties: {
+artifactRef: { bsonType: "objectId"
+              }
+            }
+          }
+        },venueRefArray: {
+    bsonType: [
+            "array"
+          ],
+    items: {
+         properties: {
+venueRef: { bsonType: "objectId"
+              }
+            }
+          }
+        },reviewArray: {
+    bsonType: [
+            "array"
+          ],
+    items: {
+         properties: {
+rating: { bsonType: "double"
+              },body: { bsonType: "string"
+              },reviewTitle: { bsonType: "string"
+              },reviewId: { bsonType: "objectId"
+              },artifactRef: { bsonType: "objectId"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+})
+\end{minted}
+
+
+\subsection*{Prueba de sentencias mongo en MongoDB}
