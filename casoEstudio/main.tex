@@ -1,4 +1,4 @@
-Para el caso de uso se ha decidido usar el diagrama entidad-relación más usado en la literatura NoSQL, que es el modelo Venues que puede encontrar en el \textit{paper} de Chebotko~\cite{chebotko_big_2015}.
+Para el caso de estudio se ha decidido usar el diagrama entidad-relación más usado en la literatura NoSQL, que es el modelo Venues que puede encontrar en el \textit{paper} de Chebotko~\cite{chebotko_big_2015}.
 
 \section{Diagramado modelo entidad-relación básico}
 
@@ -6,7 +6,7 @@ El diagramado de Venues se ha hecho con la propuesta de solución desarrollada y
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{casoUso/venues-er.png}
+    \includegraphics[width=0.75\textwidth]{casoEstudio/venues-er.png}
     \caption{Diagrama entidad-relación de Venues}
     \label{img:venues-er}
 \end{figure}
@@ -18,7 +18,7 @@ El diagramado de Venues se ha hecho con la propuesta de solución desarrollada y
 
  \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{casoUso/venues-sql.png}
+    \includegraphics[width=0.75\textwidth]{casoEstudio/venues-sql.png}
     \caption{Sentencias SQL de Venues}
     \label{img:venues-sql}
 \end{figure}
@@ -29,7 +29,7 @@ Como se muestra en la figura~\ref{img:mysql_workbench} se ha probado la ejecuci�
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{casoUso/mysql_workbench.png}
+  \includegraphics[width=0.75\textwidth]{casoEstudio/mysql_workbench.png}
   \caption{Ejecución de las sentencias SQL en MySQL Workbench.}
   \label{img:mysql_workbench}
 \end{figure}
@@ -40,7 +40,7 @@ Con un diagrama entidad-relación básico válido es posible generar las entidad
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{casoUso/venues-conceptual.png}
+    \includegraphics[width=0.75\textwidth]{casoEstudio/venues-conceptual.png}
     \caption{Entidades del modelo conceptual GDM}
     \label{img:venues-conceptual}
 \end{figure}
@@ -49,7 +49,7 @@ Una vez generadas las entidades del modelo conceptual GDM es necesario que el us
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{casoUso/venues-conceptual-queries.png}
+    \includegraphics[width=0.75\textwidth]{casoEstudio/venues-conceptual-queries.png}
     \caption{Entidades y consultas del modelo conceptual GDM}
     \label{img:venues-conceptual-queries}
 \end{figure}
@@ -134,7 +134,7 @@ A partir de un modelo conceptual GDM, que está conformado por entidades y consu
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{casoUso/venues-logical.png}
+    \includegraphics[width=0.75\textwidth]{casoEstudio/venues-logical.png}
     \caption{Modelo lógico orientado a documentos de Venues}
     \label{img:venues-logical}
 \end{figure}
@@ -245,11 +245,11 @@ Como se muestra en la figura~\ref{img:venues-mongo} se ha probado crear las cole
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{casoUso/venues-mongo.png}
+    \includegraphics[width=0.75\textwidth]{casoEstudio/venues-mongo.png}
     \caption{Prueba de sentencias del modelo físico orientado a documentos de Venues en MongoDB}
     \label{img:venues-mongo}
 \end{figure}
 
 \section{Conclusiones}
-Como se muestra en este caso de uso, la aplicación diagrama correctamente el modelo Venues, genera sus sentencias SQL que están probadas en MySQL, también genera correctamente el modelo conceptual, lógico y físico de un modelo NoSQL. Se diagrama el modelo lógico y se prueban las sentencias del modelo físico en MongoDB.
+Como se muestra en este caso de estudio, la aplicación diagrama correctamente el modelo Venues, genera sus sentencias SQL que están probadas en MySQL, también genera correctamente el modelo conceptual, lógico y físico de un modelo NoSQL. Se diagrama el modelo lógico y se prueban las sentencias del modelo físico en MongoDB.
 
