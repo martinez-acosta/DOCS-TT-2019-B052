@@ -118,7 +118,7 @@ A continuación se listan las principales historias de usuario que se considerar
 	\item Criterios de aceptación:
 	\begin{itemize}
 		\item El usuario tendra un botón ``cargar'' en el menú del diagramador ER para importar un archivo con extensión .json.
-		\item Al importar el archivo, este pasará por un proceso de validación para asegurarse de que es un archivo .json válido.
+		\item Al importar el archivo, este pasará por un proceso de validación para asegurarse de que es un archivo ``.json'' válido.
 		\item Durante el proceso de validación, se verificará que el contenido del archivo sea un diagrama compatible con la estructura de los generados por el diagramador ER.
 		\item Al contener información compatible, se mostrará en la zona de diagramado el contenido del archivo.
 	\end{itemize}
@@ -130,8 +130,8 @@ A continuación se listan las principales historias de usuario que se considerar
 	\item para distribuirlo como yo desee.
 	\item Criterios de aceptación:
 	\begin{itemize}
-		\item El usuario dispondrá de un botón ``Descargar'' en el diagramador ER para obtener un archivo con el contenido del diagrama visible en la zona de diagramado.
-		\item El archivo generado será de extensión .json con la información necesaria para que el diagramador lo cargue en otro momento.
+		\item El usuario dispondrá de un botón ``Descargar diagrama'' en el diagramador ER para obtener un archivo con el contenido del diagrama visible en la zona de diagramado.
+		\item El archivo generado será de extensión ``.json'' con la información necesaria para que el diagramador lo cargue en otro momento.
 	\end{itemize}
 \end{itemize}
 \noindent\rule{\textwidth}{1pt}
@@ -148,25 +148,12 @@ A continuación se listan las principales historias de usuario que se considerar
 \noindent\rule{\textwidth}{1pt}
 \begin{itemize}
 	\item N.° 10
-	\item Como usuario, en caso de tener un diagrama ER válido,
-	\item me gustaría transformar el diagrama ER en su versión del modelo relacional,
-	\item para ver el equivalente del diagrama ER en el modelo Relacional.
-	\item Criterios de aceptación:
-	\begin{itemize}
-		\item El usuario dispondrá de la opción de transformar al modelo relacional solamente después de haber validado que el diagrama ER cumple con las reglas.
-		\item Posterior a la validación, se le mostrará al usuario un mensaje de confirmación y un botón para disparar el proceso de transformación a su equivalente relacional.
-		\item Al terminar el proceso de transformación equivalente, se le redirigirá al menú ``Relacional'' donde podrá visualizar el equivalente al modelo relacional.
-	\end{itemize}
-\end{itemize}
-\noindent\rule{\textwidth}{1pt}
-\begin{itemize}
-	\item N.° 11
-	\item Como usuario, después de observar el diagrama relacional,
-	\item quiero obtener las sentencias SQL equivalentes,
+	\item Como usuario, después de tener un diagrama ER válido
+	\item quiero visualizar y poder descargar las sentencias SQL equivalentes,
 	\item para crear el esquema de base de datos relacional en un DBMS.
 	\item Criterios de aceptación:
 	\begin{itemize}
-		\item Las sentencias SQL solo podrán ser descargadas en el menú ``Relacional'' en un archivo con extension .sql dando clic a un botón con la leyenda ``Descargar SQL''.
+		\item Las sentencias SQL solo podrán ser descargadas en el menú ``Sentencias SQL'' en un archivo con extension ``.sql'' dando clic a un botón con la leyenda ``Descargar''.
 		\item Solo se obtendrán las sentencias SQL de un diagrama ER creado y/o validado por el sistema.
 	\end{itemize}
 \end{itemize}
@@ -184,7 +171,7 @@ A continuación se listan las principales historias de usuario que se considerar
 %\end{itemize}
 \noindent\rule{\textwidth}{1pt}
 \begin{itemize}
-	\item N.° 12
+	\item N.° 11
 	\item Como usuario quiero transformar mi diagrama ER en su equivalente modelo conceptual NoSQL,
 	\item para observar el cambio entre modelos.
 	\item Criterios de aceptación:
@@ -192,12 +179,12 @@ A continuación se listan las principales historias de usuario que se considerar
 		\item El usuario dispondrá de la opción de transformar al modelo NoSQL solamente después de haber validado que el diagrama ER cumple con las reglas.
 		\item Posterior a la validación, se le mostrará al usuario un mensaje de confirmación y un botón para disparar el proceso de transformación al modelo conceptual NoSQL.
 		\item Una vez validado el diagrama ER e iniciado el proceso para la transformación al modelo conceptual NoSQL, se le indicará al usuario que el proceso tardará un tiempo.
-		\item Al término del proceso de transformación, se le redirigirá al menú ``No Relacional'' donde observará el modelo conceptual NoSQL equivalente a su diagrama ER.
+		\item Al término del proceso de transformación, se le redirigirá al menú ``Modelo lógico y físico NoSQL'' donde observará el modelo conceptual NoSQL equivalente a su diagrama ER.
 	\end{itemize}
 \end{itemize}
 \noindent\rule{\textwidth}{1pt}
 \begin{itemize}
-	\item N.° 13
+	\item N.° 12
 	\item Como usuario quiero obtener el \textit{script} desde el modelo conceptual NoSQL,
 	\item para generar la base de datos en un gestor de base de datos NoSQL orientado a documentos.
 	\item Criterios de aceptación:
@@ -205,13 +192,13 @@ A continuación se listan las principales historias de usuario que se considerar
 		\item El usuario dispondrá de la opción de obtener el \textit{script} solamente después de haber validado que el diagrama ER cumple con las reglas.
 		\item Posterior a la validación, se le mostrará al usuario un mensaje de confirmación y un botón para disparar el proceso de generación de \textit{scripts} para el gestor de base de datos orientado a documentos.
 		\item Una vez empezado el proceso de generación de \textit{scripts}, se le indicará al usuario que el proceso tardará un tiempo.
-		\item Al término del proceso de transformación, se le redirigirá al menú ``No Relacional'' donde observará los \textit{scripts} NoSQL.
+		\item Al término del proceso de transformación, el usuario obtendra un archivo con extensión ``.json'' con las sentencias necesarias para crear las colecciones NoSQL equivalentes al diagrama ER.
 	\end{itemize}
 \end{itemize}
 
 \noindent\rule{\textwidth}{1pt}
 \begin{itemize}
-	\item N.° 14
+	\item N.° 13
 	\item Como usuario me gustaría tener un reporte técnico y
 	\item quiero que la redacción sea legible y referenciada,
 	\item para compartirlo en el futuro con equipos de desarrollo y ver la posibilidad de agregar nuevas funciones al sistema.
