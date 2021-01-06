@@ -5,41 +5,6 @@ De acuerdo con de la Vega\cite{de_la_vega_mortadelo_2020}, las bases de datos or
 Estas jerarquías de objetos se conocen como documentos y se agrupan en colecciones; asimismo, una colección almacena documentos de la misma entidad y por lo general un documento está compuesto de pares clave-valor y contiene otros documentos incrustados.
 
 
-\paragraph*{Modelo lógico orientado a documentos}
-
-En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra el modelo lógico orientado a documentos propuesto por Alfonso de la Vega.
-
-
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-logical-model-document-oriented.png}
-    \caption{Modelo lógico orientado a documentos propuesto por Alfonso de la Vega}
-    \label{img:mortadelo-gdm-logical-model-document-oriented}
-\end{figure}
-
-A continuación se explica cada clase que conforma el modelo de la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented}:
-
-\begin{itemize}
-    \item Clase \textit{document data model}: está compuesta de $n$ \textit{collections}.
-    \item Clase \textit{collection}: tiene un nombre que la identifica y en una colección se almacenan documentos que, en general, comparten la misma estructura.
-    \item Clase \textit{document type}: define la estructura de los documentos a guardar con un conjunto de instancias de la clase \textit{field}; es la estructura principal que se guardará en cada colección.
-    \item Clase \textit{field}: tiene instancias de las clases \textit{primitive field} (atributos simples), \textit{array field} (más instancias de la clase \textit{field}) o \textit{document type} (otras estructuras de documentos), permitiendo guardar elementos anidados.
-    \item Clase \textit{primitive field}: contiene un tipo primitivo de dato.
-    \item Clase \textit{array field}: permite anidar más instancias de la clase \textit{field}.
-\end{itemize}
-
-
-La figura~\ref{img:mortadelo-gdm1} muestra el \textit{Generic Data Metamodel}, que está compuesto por clases interrelacionadas entre sí con notación UML y consta de dos secciones principales: los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
-
-
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.75\textwidth]{mortadelo/GDM.png}
-    \caption{Generic Data Metamodel}
-    \label{img:mortadelo-gdm1}
-\end{figure}
-
-
 
 Sea $\mathrm{Queries}$ el conjunto de todas las queries $q_{n}$ en una instancia GDM como la de la figura~\ref{img:mortadelo-gdm1}:
 

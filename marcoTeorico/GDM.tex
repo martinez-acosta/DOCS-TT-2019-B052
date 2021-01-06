@@ -1,0 +1,93 @@
+\subsection{Generic Data Metamodel}
+El Generic Data Metamodel o GDM es un modelo de datos para bases NoSQL que contiene un modelo conceptual y un modelo lógico orientado a documentos.
+\subsubsection{Modelo conceptual}
+
+La figura~\ref{img:mortadelo-gdm} muestra el \textit{Generic Data Metamodel}, que está compuesto por clases interrelacionadas entre sí con notación UML\footnote{La simbología usada en los diagramas de clase UML está en el apéndice.} y consta de dos secciones principales: los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
+
+
+%Como se aprecia en la figura~\ref{img:mortadelo-gdm}, el modelo conceptual que propone de la Vega contiene en un mismo modelo con notación UML los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.75\textwidth]{mortadelo/GDM.png}
+    \caption{Generic Data Metamodel}
+    \label{img:mortadelo-gdm}
+\end{figure}
+
+
+A continuación se da una explicación de cada elemento de la figura~\ref{img:mortadelo-gdm} donde la clase \textit{model} es para indicar que un modelo GDM tiene $n$ entidades y $n$ consultas donde $n=0,1,...,n$.
+
+
+\paragraph*{Structure model elements}
+
+
+\begin{itemize}    
+    
+    \item Clase \textit{entity}: contiene \textit{features} y solo es referenciada directamente desde las clases \textit{from} y \textit{reference}.
+    \item Clase \textit{feature}: es una clase abstracta, una \textit{reference}, un \textit{attribute}, o hereda de la clase \textit{annotatable element} para que la instancia de la clase sea comentada con indicadores de texto que proveen información extra para generar el modelo lógico. 
+    \item Clase \textit{reference}: empieza con la palabra clave ``ref'', un nombre de tipo de entidad, una cardinalidad y un nombre de referencia; por ejemplo: ``ref Category[*] categories'' define una referencia llamada \textit{categories}, del tipo de entidad \textit{category} con una cardinalidad de cero a varios.
+    \item Clase \textit{attribute}: contiene un tipo y un identificador de unicidad.
+    \item Clase \textit{annotatable element}: es una clase abstracta para permitir que una clase contenga anotaciones.
+    \item Clase \textit{annotation}: es un indicador de texto que provee información extra para generar el modelo lógico.
+    
+\end{itemize}
+
+\paragraph*{Access queries elements}
+
+
+\begin{itemize}
+    
+    \item Clase \textit{query}: tiene solo un elemento de la clase \textit{from}, $n$ elementos de la clase \textit{attribute selection}, $n$ elementos de la clase \textit{inclusion} y tiene o no un único elemento de la clase \textit{boolean expression}.
+    \item Clase \textit{from}: asocia una clase \textit{query} con la clase \textit{entity}; es la clase que permite referenciar un tipo de entidad.
+    \item Clase \textit{attribute selection}: accede a los atributos de la \textit{entity} referenciada por la clase \textit{from} o la clase \textit{inclusion}.
+    \item Clase \textit{boolean expression}: expresa una expresión booleana para declarar alguna restricción.
+    \item Clase \textit{inclusion}: permite acceder en una \textit{query} a los atributos de otros tipos de entidad.
+    
+\end{itemize}
+
+La figura~\ref{img:mortadelo-gdm.textual.notation} es una instancia del modelo conceptual GDM en su notación textual en la que se nota que, por ejemplo, en la tercera consulta se accede a los elementos de la entidad \textit{category} a través del elemento ref de la entidad \textit{product}.
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-textual-notation.png}
+    \caption{Notación textual del GDM}
+    \label{img:mortadelo-gdm.textual.notation}
+\end{figure}
+
+\subsubsection{Modelo lógico orientado a documentos}
+
+En la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented} se muestra el modelo lógico orientado a documentos propuesto por Alfonso de la Vega.
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.65\textwidth]{mortadelo/GDM-logical-model-document-oriented.png}
+    \caption{Modelo lógico orientado a documentos propuesto por Alfonso de la Vega}
+    \label{img:mortadelo-gdm-logical-model-document-oriented}
+\end{figure}
+
+A continuación se explica cada clase que conforma el modelo de la figura~\ref{img:mortadelo-gdm-logical-model-document-oriented}:
+
+\begin{itemize}
+    \item Clase \textit{document data model}: está compuesta de $n$ \textit{collections}.
+    \item Clase \textit{collection}: tiene un nombre que la identifica y en una colección se almacenan documentos que, en general, comparten la misma estructura.
+    \item Clase \textit{document type}: define la estructura de los documentos a guardar con un conjunto de instancias de la clase \textit{field}; es la estructura principal que se guardará en cada colección.
+    \item Clase \textit{field}: tiene instancias de las clases \textit{primitive field} (atributos simples), \textit{array field} (más instancias de la clase \textit{field}) o \textit{document type} (otras estructuras de documentos), permitiendo guardar elementos anidados.
+    \item Clase \textit{primitive field}: contiene un tipo primitivo de dato.
+    \item Clase \textit{array field}: permite anidar más instancias de la clase \textit{field}.
+\end{itemize}
+
+
+La figura~\ref{img:mortadelo-gdm1} muestra el \textit{Generic Data Metamodel}, que está compuesto por clases interrelacionadas entre sí con notación UML y consta de dos secciones principales: los elementos de la estructura (\textit{structure model elements}) y el cómo se realizarán las consultas (\textit{access queries elements}).
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.75\textwidth]{mortadelo/GDM.png}
+    \caption{Generic Data Metamodel}
+    \label{img:mortadelo-gdm1}
+\end{figure}
+
+Para más detalles sobre su modelo lógico orientado a documentos y algoritmos asociados, visite la sección~\ref{alg:gdm-to-logic}.
