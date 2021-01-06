@@ -13,7 +13,8 @@
 \begin{enumerate}
     \item El diagramador entidad-relación básico solo podrá editar elementos del modelo entidad-relación, no se podrá diagramar elementos del modelo entidad-relación extendido ni de ningún otro modelo.
     \item El grado de partición en el modelo entidad-relación será máximo de dos entidades.
-    \item No se podrá diagramar atributos parciales
+    \item No se podrá diagramar atributos parciales.
+    \item No se podrá diagramar atributos compuestos.
 \end{enumerate}
 
 \subsection*{Validación diagrama entidad-relación básico}
@@ -33,6 +34,7 @@
 \subsection*{Obtención esquema de la base de datos desde el modelo relacional}
 \begin{enumerate}
     \item Para la generación de \textit{scripts} del esquema de datos relacional se usará el lenguaje de consultas SQL.
+    \item Al realizar ingeniería inversa del esquema generado en MySQL Workbench, pueden no mostrarse las relaciones entre las tablas graficamente(esto es un tema complematemente del propio gestor MySQL). 
     \item Asimismo, los \textit{scripts} generados se probarán con MySQL porque es uno de los DBMS que se usa en la asignatura de Base de Datos y están familiarizados los estudiantes de ESCOM.
 \end{enumerate}
 

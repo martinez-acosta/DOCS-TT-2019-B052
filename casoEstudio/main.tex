@@ -13,13 +13,38 @@ El diagramado de Venues se ha hecho con la propuesta de solución desarrollada y
 
 \section{Validación modelo entidad-relación básico}
 
+ Una vez que el usuario cree tener un diagrama válido o quiere conocer si su diagrama actual presenta algún error, puede hacer click en el boton ``validar diagrama'' con lo que se le mostrará una ventana con los errores que la aplicación detecta. La figura~\ref{img:ex_diagrama1} muestra un ejemplo de diagrama sencillo mientras que en la figura~\ref{img:errors_diagrama1} se aprecian los errores estructurales del mismo.
+
+ \begin{figure}[H]
+  \begin{subfigure}[b]{0.49\textwidth}
+      \includegraphics[width=\textwidth]{casoEstudio/ex_diagrama1.png}
+      \caption{Ejemplo de un diagram er básico.}
+      \label{img:ex_diagrama1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+      \includegraphics[width=\textwidth]{casoEstudio/errors_diagrama1.png}
+      \caption{Ventana de errores del diagrama er.}
+      \label{img:errors_diagrama1}
+    \end{subfigure}
+\end{figure}
+
+ Siguiendo con el ejemplo del modelo Venues la figura~\ref{img:venues_validationER} muestra la validación del diagrma y como se espera este es estructuralmente válido.
+
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{casoEstudio/vuenues_validation.png}
+  \caption{Validación del modelo Venues.}
+  \label{img:venues_validationER}
+\end{figure}
+
 \section{Generación sentencias SQL}
  Una vez validado el diagrama entidad-relación básico se pueden generar las sentencias SQL que se muestra en la figura~\ref{img:venues-sql} 
 
  \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{casoEstudio/venues-sql.png}
-    \caption{Sentencias SQL de Venues}
+    \caption{Sentencias SQL de Venues.}
     \label{img:venues-sql}
 \end{figure}
 
