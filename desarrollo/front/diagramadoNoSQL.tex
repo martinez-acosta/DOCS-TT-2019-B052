@@ -1,8 +1,11 @@
 \subsection{Modelo lógico y físico NoSQL}
 
-El módulo del modelo lógico y físico de un modelo de datos orientado a documentos permite ver gráficamente la estructura del modelo lógico por medio de la biblioteca de GoJS.
+El módulo del modelo lógico y físico de un modelo orientado a documentos permite ver gráficamente la estructura del modelo lógico por medio de la biblioteca de GoJS.
 
-Respecto a los algoritmos usados, el algoritmo para la generación de sentencias de MongoDB desde la definición de un modelo lógico orientado a documentos revise la sección y el algoritmo usado para la generación del diagrama se muestra a continuación en el código fuente~\ref{code:ddm-to-gojs} que como entrada recibe un XML serializado por PyEcore de una instancia del modelo lógico orientado a documentos y de salida genera los nodos y links necesarios para diagramar con GoJS.
+Respecto a los algoritmos usados, el algoritmo para la generación de sentencias de MongoDB desde la definición de un modelo lógico orientado a documentos puede consultarlo en la sección~\ref{sec:script-mongoDB}.
+
+
+Asimismo, el algoritmo usado para la generación del diagrama se muestra en el código fuente~\ref{code:ddm-to-gojs}, que como entrada recibe un XML serializado por PyEcore de una instancia del modelo lógico orientado a documentos y de salida genera los nodos y enlaces necesarios para diagramar con GoJS.
 
 \begin{code}
     \captionof{listing}{Generación de los nodos y links del modelo orientado a documentos para el diagramador NoSQL}
