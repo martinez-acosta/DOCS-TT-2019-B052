@@ -18,6 +18,15 @@ La figura \ref{img:arq_client_server} describe la arquitectura cliente servidor 
 
 En la figura~\ref{img:arq_client_server} se observa que para poder hacer uso del sistema, el usuario debe contar con un dispositivo capaz de ejecutar un navegador web como una computadora o un \textit{smartphone}; el servidor será una computadora que se encuentra en un instancia de la nube que contiene los requisitos necesarios para el funcionamiento del sistema como son: el sistema operativo GNU/Linux, el servidor web, las aplicaciones en Flask y Nuxt, conexión a Internet y una configuración de red que permita la comunicación con la base de datos de MongoDB.
 
+En la figura~\ref{img:desgloce_arquitectura} se muestran los componentes y módulos con los que cuentan tanto el cliente como el servidor. Se utilizas distintas bibliotecas para poder realizar las funcionalidades de la aplicación, por ejemplo Vuex para manejar el estado de los datos que el usuario ingresa en la interfaz gráfica o flask-pymongo para el manejo de la conexión a la base de datos.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{diseño/desgloce_diagrama.png}
+  \caption{Desgloce con los componentes de la arquitectura cliete-servidor.}
+  \label{img:desgloce_arquitectura}
+\end{figure}
+
 
 \subsection{Patrón de diseño MVC}
 
