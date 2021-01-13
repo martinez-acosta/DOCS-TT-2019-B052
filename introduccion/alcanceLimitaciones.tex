@@ -1,59 +1,59 @@
 \section{Alcance y limitaciones}\label{sec:alcance}
 \subsection*{Generales}
 \begin{enumerate}
-    \item Se usará la notación oficial en los modelos de datos conceptuales entidad-relación y relacional, es decir, la notación de Chen y la notación de Codd, respectivamente.
-    \item Respecto al registro de los usuarios, se podrá acceder a la aplicación con un correo válido o no válido, teniendo en cuenta de que si no crea su cuenta con un correo válido, no le llegará notificación de correo que le indica que se ha registrado exitosamente junto con su contraseña.
-    \item La propuesta de solución se podrá ejecutar en el navegador web Google Chrome versión 81 en adelante.
-    \item Solo se podrá guardar un único diagrama entidad-relación en la aplicación.
-    \item No se guardarán las preguntas definidas por el usuario del modelo conceptual NoSQL.
+    \item Se usa la notación oficial en los modelos de datos conceptuales entidad-relación y relacional, es decir, la notación de Chen y la notación de Codd, respectivamente.
+    \item Respecto al registro de los usuarios, se puede acceder a la aplicación con un correo válido o no válido, teniendo en cuenta de que si no crea su cuenta con un correo válido, no le llegará notificación de correo que le indica que se ha registrado exitosamente junto con su contraseña.
+    \item La propuesta de solución se puede ejecutar en el navegador web Google Chrome versión 81 en adelante.
+    \item Solo se puede guardar un único diagrama entidad-relación en la aplicación.
+    \item No se guardan las preguntas definidas por el usuario del modelo conceptual NoSQL.
     
 \end{enumerate}
 
 \subsection*{Diagramado entidad-relación}
 \begin{enumerate}
-    \item El diagramador entidad-relación básico solo podrá editar elementos del modelo entidad-relación, no se podrá diagramar elementos del modelo entidad-relación extendido ni de ningún otro modelo.
-    \item El grado de partición en el modelo entidad-relación será máximo de dos entidades.
-    \item No se podrá diagramar atributos parciales.
-    \item No se podrá diagramar atributos compuestos.
+    \item El diagramador entidad-relación básico solo puede editar elementos del modelo entidad-relación, no se puede diagramar elementos del modelo entidad-relación extendido ni de ningún otro modelo.
+    \item El grado de partipación en el modelo entidad-relación es máximo de dos entidades.
+    \item No se puede diagramar atributos parciales.
+    \item No se puede diagramar atributos compuestos.
 \end{enumerate}
 
 \subsection*{Validación diagrama entidad-relación básico}
 \begin{enumerate}
-    \item De acuerdo con Dullea\cite{dullea_analysis_2003}, un diagrama entidad-relación básico es válido solo si es estructural y semánticamente válido; sin embargo, hasta donde se sabe, en los últimos 17 años no hay estudios sobre la validez semántica de un diagrama entidad-relación básico, porque como expresa Dullea en su trabajo, la validez semántica depende del minimundo que se quiere representar en el diagrama y es imposible definir una métrica generalizada; por ello la validez de un diagrama entidad-relación básico será solo estructuralmente.
-    \item No se hará la validación de atributos compuestos.
+    \item De acuerdo con Dullea\cite{dullea_analysis_2003}, un diagrama entidad-relación básico es válido solo si es estructural y semánticamente válido; sin embargo, hasta donde se sabe, en los últimos 17 años no hay estudios sobre la validez semántica de un diagrama entidad-relación básico, porque como expresa Dullea en su trabajo, la validez semántica depende del minimundo que se quiere representar en el diagrama y es imposible definir una métrica generalizada; por ello la validez de un diagrama entidad-relación básico es solo estructuralmente.
+    \item No se hace la validación de atributos compuestos.
 
 \end{enumerate}
 
 \subsection*{Transformación modelo entidad-relación básico a modelo relacional}
 \begin{enumerate}
-    \item Para la transformación del modelo entidad-relación básico al modelo relacional no se realizará ninguna normalización, porque está fuera del alcance para el equipo programar la lógica necesaria y se necesita un diagrama no normalizado para la transformación al modelo conceptual NoSQL.
-    \item No se generará la transformación de atributos compuestos.
-    \item No se mostrará el diagrama generado del modelo relacional, porque solo se crea para generar las sentencias SQL para ser probadas en MySQL.
+    \item Para la transformación del modelo entidad-relación básico al modelo relacional no se realiza ninguna normalización, porque está fuera del alcance para el equipo programar la lógica necesaria y se necesita un diagrama no normalizado para la transformación al modelo conceptual NoSQL.
+    \item No se genera la transformación de atributos compuestos.
+    \item No se muestra el diagrama generado del modelo relacional, porque solo se crea para generar las sentencias SQL para ser probadas en MySQL.
 \end{enumerate}
 
 \subsection*{Obtención esquema de la base de datos desde el modelo relacional}
 \begin{enumerate}
-    \item Para la generación de \textit{scripts} del esquema de datos relacional se usará el lenguaje de consultas SQL.
-    \item Al realizar ingeniería inversa del esquema generado en MySQL Workbench, pueden no mostrarse las relaciones entre las tablas graficamente(esto es un tema complematemente del propio gestor MySQL). 
-    \item Asimismo, los \textit{scripts} generados se probarán con MySQL porque es uno de los DBMS que se usa en la asignatura de Base de Datos y están familiarizados los estudiantes de ESCOM.
+    \item Para la generación de \textit{scripts} del esquema de datos relacional se usa el lenguaje de consultas SQL.
+    \item Al realizar ingeniería inversa del esquema generado en MySQL Workbench, pueden no mostrarse las relaciones entre las tablas graficamente (esto es un tema complematemente del propio gestor MySQL). 
+    \item Asimismo, los \textit{scripts} generados están probados con MySQL porque es uno de los DBMS que se usa en la asignatura de Base de Datos y están familiarizados los estudiantes de ESCOM.
 \end{enumerate}
 
 \subsection*{Transformación modelo entidad-relación básico a modelo conceptual NoSQL}
 \begin{enumerate}
-    \item Dado que hay varias propuestas en la literatura sobre modelos conceptuales NoSQL, se optará por usar la propuesta de Alfonso de la Vega\cite{de_la_vega_mortadelo_2020}, ya que el modelo que propone, conocido como \textit{Generic Data Metamodel}, es un metamodelo conceptual que describe un modelo de datos NoSQL independientemente de si es de clave-valor, orientado a documentos, a columnas o grafos.
-    \item No se implementará la opción de marcar una entidad en el \textit{Generic Data Metamodel} como \textit{muy usada}.
-    \item Se hará uso de las definiciones de lenguaje de Alfonso de la Vega~\cite{de_la_vega_mortadelo_2020}, porque se usará su definición de modelo conceptual y modelo lógico NoSQL.
+    \item Dado que hay varias propuestas en la literatura sobre modelos conceptuales NoSQL, se opta por usar la propuesta de Alfonso de la Vega\cite{de_la_vega_mortadelo_2020}, ya que el modelo que propone, conocido como \textit{Generic Data Metamodel}, es un metamodelo conceptual que describe un modelo de datos NoSQL independientemente de si es de clave-valor, orientado a documentos, a columnas o grafos.
+    \item No se implementa la opción de marcar una entidad en el \textit{Generic Data Metamodel} como \textit{muy usada}.
+    \item Se hace uso de las definiciones de lenguaje de Alfonso de la Vega~\cite{de_la_vega_mortadelo_2020}, porque se usa su definición de modelo conceptual y modelo lógico NoSQL.
 \end{enumerate}
 
 \subsection*{Obtención modelo lógico modelo NoSQL desde el modelo conceptual NoSQL}
 \begin{enumerate}
-    \item Se usará la propuesta de Alfonso de la Vega\cite{de_la_vega_mortadelo_2020} para el modelo lógico orientado a documentos.
-    \item Si el modelo conceptual NoSQL no contiene consultas, no se podrá generar el modelo lógico NoSQL, porque de acuerdo a Mosquera~\cite{martinez-mosquera_modeling_2020}, no es posible obtener un modelo lógico NoSQL sin consultas.
+    \item Se usa la propuesta de Alfonso de la Vega\cite{de_la_vega_mortadelo_2020} para el modelo lógico orientado a documentos.
+    \item Si el modelo conceptual NoSQL no contiene consultas, no se puede generar el modelo lógico NoSQL, porque de acuerdo a Mosquera~\cite{martinez-mosquera_modeling_2020}, no es posible obtener un modelo lógico NoSQL sin consultas.
 \end{enumerate}
 
 \subsection*{Obtención de setencias de MongoDB}
 \begin{enumerate}
-    \item Los \textit{scripts} NoSQL generados por la aplicación solo serán probados y ejecutados en un único NoSQL DBMS.
-    \item Se eligirá el modelo de datos orientado a documentos y se usará MongoDB para probar los \textit{scripts} NoSQL generados por la aplicación, porque de acuerdo a Mosquera\cite{martinez-mosquera_modeling_2020}, las de bases de datos orientadas a documentos son las más estudiadas y MongoDB es el NoSQL DBMS más probado para modelado físico en la literatura del tema.
+    \item Los \textit{scripts} NoSQL generados por la aplicación solo están probados y ejecutados en un único NoSQL DBMS.
+    \item Se eligió el modelo de datos orientado a documentos y se usa MongoDB para probar los \textit{scripts} NoSQL generados por la aplicación, porque de acuerdo a Mosquera\cite{martinez-mosquera_modeling_2020}, las de bases de datos orientadas a documentos son las más estudiadas y MongoDB es el NoSQL DBMS más probado para modelado físico en la literatura del tema.
 \end{enumerate}
     

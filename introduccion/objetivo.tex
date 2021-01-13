@@ -1,16 +1,18 @@
 \section{Objetivos}
 
 \subsection*{Objetivo general}
-Desarrollar una aplicación web que permita la edición de un diagrama de bases de datos bajo el modelo entidad-relación básico y realice la validación del mismo; el diagrama se transformará  al modelo relacional para obtener el esquema de la base de datos en sentencias SQL, o bien, obtendrá el modelo lógico de un modelo de datos no relacional y podrá obtener las sentencias para generar el modelo no relacional en un NoSQL DBMS (\textit{NoSQL Database Management System}).
+Se ha desarrollado una aplicación web que permite la edición de un diagrama de bases de datos bajo el modelo entidad-relación básico y realiza la validación del mismo; el diagrama se transforma al modelo relacional para obtener el esquema de la base de datos en sentencias SQL, o bien, obtiene el modelo lógico de un modelo de datos no relacional y puede obtener las sentencias para generar el modelo no relacional en un NoSQL DBMS (\textit{NoSQL Database Management System}).
 
 \subsection*{Objetivos específicos}\label{sec:objSpecifics}
 
+
 \begin{itemize}
-    \item La edición del diagrama entidad-relación básico se implementará con alguna biblioteca para diagramado, en donde al usuario se le permitirá arrastrar los entidades, atributos y relaciones del diagrama entidad-relación básico desde una ``paleta''  a la zona para diagramar, conocida también como \textit{canvas}.
-    \item La validación del diagrama entidad-relación básico se realizará con eventos de escucha en el \textit{canvas} o con un botón para validar y será de acuerdo a reglas de validación que se expondrán más adelante.
-    \item La transformación del diagrama entidad-relación básico al modelo relacional se realizará con alguno de los algoritmos conocidos en la literatura del tema para generar la definición del esquema de sentencias SQL desde el modelo relacional.
-    \item Se realizará la transformación del modelo entidad-relación básico a entidades del modelo conceptual NoSQL.
-    \item Por medio de preguntas definidas por el usuario para las entidades del modelo conceptual NoSQL se generará el modelo lógico NoSQL.
-    \item Se mostrará el modelo lógico NoSQL usando alguna biblioteca para diagramado donde no se le permitirá al usuario editar ningún elemento del mismo.
-    \item Se generará un \textit{script} con instrucciones para generar el esquema de una base de datos NoSQL desde el modelo lógico elegido y se probará en un único NoSQL DBMS.
+    \item La edición del diagrama entidad-relación básico está implementada con una biblioteca para diagramado en donde al usuario se le permite arrastrar entidades, atributos y relaciones desde una ``paleta'' a la zona para diagramar, conocida también como \textit{canvas}.
+    \item La validación del diagrama entidad-relación básico está realizada con eventos de escucha en el \textit{canvas} y con un botón para validar; las reglas de validación están definidas más adelante en el documento.
+    \item La transformación del diagrama entidad-relación básico al modelo relacional está realizado con un algoritmo conocido de la literatura del tema para generar la definición del esquema de sentencias SQL desde el modelo relacional.
+    \item Se implementa la transformación del modelo entidad-relación básico a entidades del modelo conceptual NoSQL.
+    \item Con preguntas definidas por el usuario respecto a las entidades del modelo conceptual NoSQL se genera el modelo lógico orientado a documentos.
+    \item Se muestra el modelo lógico NoSQL usando una biblioteca para diagramado donde no se permite al usuario editar ningún elemento.
+    \item Se genera un \textit{script} con instrucciones para generar el esquema de una base de datos NoSQL desde el modelo lógico elegido y se prueba en un único NoSQL DBMS.
 \end{itemize}
+

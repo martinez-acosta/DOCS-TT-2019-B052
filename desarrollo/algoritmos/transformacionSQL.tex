@@ -1,6 +1,6 @@
 \subsection{Tranformación del diagrama entidad-relación al modelo relacional y generar las sentencias SQL}\label{sec:desarrollo-sql}
 
-Para lograr la transformación del modelo entidad-relación del diagramador de la propuesta de solución al modelo relacional, se implementó el algoritmo de 7 pasos descrito en la sección \ref{sec:erToSQL}, a excepción del paso siete que por restricciones autoimpuestas en la propuesta de solución del proyecto no aplica. El séptimo paso hace referencia a la transformación de relaciones de grado 3 o superior, pero el diagramador no permite relaciones de grado 3 o superior, por lo cual este paso es omitido.
+Para lograr la transformación del modelo entidad-relación del diagramador de la propuesta de solución al modelo relacional, se implementó el algoritmo de 7 pasos descrito en la sección \ref{sec:erToSQL}, a excepción del paso siete que por restricciones autoimpuestas en la propuesta de solución del proyecto no aplica. El séptimo paso hace referencia a la transformación de relaciones de grado 3 o superior, pero el diagramador no permite dichas relaciones, por lo cual este paso es omitido.
 
 Cabe destacar que por simplicidad se implementó en un solo algoritmo la transformación del modelo entidad-relación al modelo relacional y la genración de las sentencias SQL a partir del modelo relacional.
 
@@ -27,8 +27,6 @@ Cabe destacar que por simplicidad se implementó en un solo algoritmo la transfo
   \caption{Asociar entidades con sus atributos.}
 \end{algorithm}
 
-Para cada entidad fuerte en la propiedad \textit{nodeDataArrray} del objeto \textit{json diagram}, se asocian a cada uno de los atributos simples con los que tiene una conexión directa en la propiedad \textit{linksDataArrray} del objeto \textit{json} \textit{diagram}.
-
 \paragraph*{Paso 2: Mapeado de los tipos de entidad débiles}
 
 \begin{algorithm}[H]
@@ -52,11 +50,7 @@ Para cada entidad fuerte en la propiedad \textit{nodeDataArrray} del objeto \tex
   \caption{Asociar entidades débiles con sus atributos.}
 \end{algorithm}
 
-En caso de que el objeto \textit{json diagram} cuente con entidades débiles, se debe seguir el mismo proceso para asociar sus atributos. Si este cuenta con un atributo clave parcial, este debe formar parte del atributo clave de la relación con la entidad fuerte asociada.
-
 \paragraph*{Paso 3: Mapeado de los tipos de relación 1:1 binaria}
-
-Primero creamos una lista que contenga las relaciones 1:1 con los identificadores de las entidades que la conforman así como la cardinalidad que debe ser igual a 1. Para el manejo de este tipo de relaciones existen tres metodologías de las cuales se utiliza la metodología de la clave foránea, posteriormente se procede a agregar el atributo clave de la entidad \textit{S} a los atributos de la entidad \textit{T} como clave foránea. 
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
@@ -90,8 +84,6 @@ Primero creamos una lista que contenga las relaciones 1:1 con los identificadore
 \end{algorithm}
 
 \paragraph*{Paso 4: Mapeado de tipos de relaciones 1:N binarias}
-
-Primero creamos una lista que contenga las relaciones 1:N con los identificadores de las entidades que la conforman así como la cardinalidad (1 o N). Para el manejo de este tipo de relaciones se debe identificar a la entidad con el tipo de participación \textit{N} a la que se le debe agregar como clave foránea el atributo clave del otro lado de la participación en la relación, esto se debe a que cada instancia de entidad del lado de participación \textit{N} esta relacionado, a lo sumo, con una única instancia de la entidad con participación 1 de la relación.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
@@ -128,8 +120,6 @@ Primero creamos una lista que contenga las relaciones 1:N con los identificadore
 \end{algorithm}
 
 \paragraph*{Paso 5: Mapeado de tipos de relaciones N:M binarias}
-
-Creamos una lista que contenga las relaciones N:M con los identificadores de las entidades que la conforman así como la cardinalidad(N o N). Para el manejo de este tipo de relaciones se debe crear una nueva entidad S y agregar todos los atributos simples o compuestos con los que se tengan una conexión. Adicionalmente, se deben agregar los atributos claves de las entidades participantes de la relación como claves foráneas de la nueva relación S, de la misma forma la combinación de estas claves foráneas formaran el atributo clave de la nueva entidad S.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
@@ -169,8 +159,6 @@ Creamos una lista que contenga las relaciones N:M con los identificadores de las
 \end{algorithm}
 
 \paragraph*{Paso 6: Mapeado de atributos multivalor}
-
-Para realizar esto primero creamos una lista que contenga las entidades del tipo multivalor, por cada atributo multivalor E se debe crear una nueva entidad R el cual tendrá como atributos un atributo de la entidad E y el atributo clave de la entidad S de la relación relación como clave foránea.
 
 \begin{algorithm}[H]
   \SetKwInOut{Input}{Entrada}
