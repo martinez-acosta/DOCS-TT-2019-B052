@@ -46,6 +46,18 @@ A continuación se da una explicación de cada elemento de la figura~\ref{img:mo
     
 \end{itemize}
 
+Ahora bien, para generar una pregunta se siguen estos pasos:
+
+\begin{enumerate}
+    \item Se indica el nombre de la \textit{query} con el elemento  \textit{query} seguido de dos puntos (:).
+    \item Se indica la palabra clave \textit{from}, en la que estará la entidad principal a consultar.
+    \item Se agregan los alias con el elemento \textit{including}, cada uno de estos elementos debe ser una referencia válida desde la entidad \textit{from}. Pueden ser referencias anidadas, pero siempre empezando desde la entidad asignada al elemento \textit{from}.
+    \item Con la palabra clave \textit{select} se seleccionan todos los elementos para la búsqueda, conocidos o desconocidos para la consulta.
+    \item De los elementos en \textit{select}, se escribe la condición booleana para indicar cuáles elementos son los desconocidos y que se quieren buscar de acuerdo a alguna condición booleanda. Estos elementos desconocidos se denotan por un ``?''.
+    \item Finalmente, se puede agregar el elemento \textit{order by} para ordenar los elementos de acuerdo al parámetro indicado.
+
+\end{enumerate}
+
 La figura~\ref{img:mortadelo-gdm.textual.notation} es una instancia del modelo conceptual GDM en su notación textual en la que se nota que, por ejemplo, en la tercera consulta se accede a los elementos de la entidad \textit{category} a través del elemento ref de la entidad \textit{product}.
 
 
