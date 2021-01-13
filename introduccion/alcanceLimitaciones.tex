@@ -43,12 +43,16 @@
     \item Dado que hay varias propuestas en la literatura sobre modelos conceptuales NoSQL, se opta por usar la propuesta de Alfonso de la Vega\cite{de_la_vega_mortadelo_2020}, ya que el modelo que propone, conocido como \textit{Generic Data Metamodel}, es un metamodelo conceptual que describe un modelo de datos NoSQL independientemente de si es de clave-valor, orientado a documentos, a columnas o grafos.
     \item No se implementa la opción de marcar una entidad en el \textit{Generic Data Metamodel} como \textit{muy usada}.
     \item Se hace uso de las definiciones de lenguaje de Alfonso de la Vega~\cite{de_la_vega_mortadelo_2020}, porque se usa su definición de modelo conceptual y modelo lógico NoSQL.
+    \item No está implementado el tipo de dato timestamp.
+    \item No está implementado el tipo de dato boolean.
 \end{enumerate}
 
 \subsection*{Obtención modelo lógico modelo NoSQL desde el modelo conceptual NoSQL}
 \begin{enumerate}
     \item Se usa la propuesta de Alfonso de la Vega\cite{de_la_vega_mortadelo_2020} para el modelo lógico orientado a documentos.
     \item Si el modelo conceptual NoSQL no contiene consultas, no se puede generar el modelo lógico NoSQL, porque de acuerdo a Mosquera~\cite{martinez-mosquera_modeling_2020}, no es posible obtener un modelo lógico NoSQL sin consultas.
+    \item No está implementada la opción \textit{order by}.
+    \item El máximo de niveles anidados de eferencias anidadas en los alias es dos. 
 \end{enumerate}
 
 \subsection*{Obtención de setencias de MongoDB}

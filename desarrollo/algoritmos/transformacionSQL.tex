@@ -182,7 +182,7 @@ Cabe destacar que por simplicidad se implementó en un solo algoritmo la transfo
   \caption{Asociar entidades multivalor con sus atributos.}
 \end{algorithm}
 
-Con los pasos anteriores tenemos de manera separada los elementos necesarios para obtener las sentencias SQL equivalentes al diagrama ER de entrada, como todos los componentes se encuentran en listas resulta fácil iterarlos y poder construir los bloques del \textit{script} (con la ayuda de un template previamente generado ) en el lenguaje de consultas SQL para que puedan ser ejecutadas en el SGDB MySQL.
+Con los pasos anteriores tenemos de manera separada los elementos necesarios para obtener las sentencias SQL equivalentes al diagrama ER de entrada. Como todos los componentes se encuentran en listas resulta fácil iterarlos y poder construir los bloques del \textit{script} (con la ayuda de un template previamente generado ) en el lenguaje de consultas SQL para que puedan ser ejecutadas en el SGDB MySQL.
 
 Se hizo uso de los siguientes \textit{templates} para crear las sentencias correspondientes y crear las tablas con sus atributos como se aprecia en la figura~\ref{img:templateTable} y elementos de distinción como son la clave primaria de la figura~\ref{img:pkTemplate} y las claves foráneas de la figura~\ref{img:fkTemplate} dependiendo del tipo de relación entre los elementos del diagrama ER.
 

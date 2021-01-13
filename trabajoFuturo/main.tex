@@ -1,5 +1,32 @@
 \section{Conclusiones}
 
+
+El diagramado del modelo entidad-relación básico y la validación estructural se realizaron de acuerdo al trabajo de Dullea~\cite{dullea_analysis_2003}; lo más complicado de esta parte fue aprender a describir un modelo entidad-relación con la biblioteca para diagramado de GoJs~\cite{noauthor_gojs_nodate-1}.
+
+
+Respecto a la transformación del modelo entidad-relación básico al modelo relacional para la generación del esquema de sentencias SQL bastó recurrir al algoritmo de 7 pasos de Elmasri~\cite{ramez_elmasri_fundamentos_nodate}.
+
+
+Ahora bien, la dificultad de la transformación NoSQL desde un modelo entidad-relación básico recae no solo en el algoritmo de transformación, sino que también de desarrollar una forma de realizar consultas al modelo conceptual NoSQL o al modelo conceptual entidad-relación, porque de acuerdo con Mosquera~\cite{martinez-mosquera_modeling_2020}, entre otros autores, es necesario conocer cómo se realizarán las consultas de los datos.
+
+
+
+No obstante, gracias a los algoritmos recientemente desarrollados y probados por Alfonso de la Vega y su equipo en Mortadelo~\cite{de_la_vega_mortadelo_2020}, se ha logrado implementar la transformación entre modelos definida en la propuesta de solución.
+
+
+Debido a que el desarrollo de Mortadelo está muy enfocado a una ingeniería orientado a modelos en Java, se complicó implementar el Generic Data Metamodel en las tecnologías a usar seleccionadas, que son Python y JavaScript. Sin embargo, por la utilidad PyEcore~\cite{pyecore_pyecore_2020} se pudieron generar todas las clases correspondientes del modelo conceptual y del modelo lógico del GDM para que se implementaran los algoritmos correspondientes en las transformaciones entre modelos en Python, desarrollando los \textit{parsers} faltantes que no existen para las trasnformaciones entre modelos en dicho lenguaje.
+
+
+Para la generación de sentencias en MongoDB se realizó generando su sentencia correspondiente en MongoDB de cada elemento del modelo orientado a documentos.
+
+
+Finalmente, el usar los algoritmos de transformación del Generic Data Metamodel ha permitido al equipo tener la certeza de que se generan bases de datos orientados a documentos funcionales y probadas.
+
+
+
+
+\section{Trabajo a futuro}
+
 Se consideran las siguientes puntos como trabajo a futuro:
 
 \begin{itemize}
@@ -14,5 +41,3 @@ Se consideran las siguientes puntos como trabajo a futuro:
   \item Una forma más amigable para que el usuario cree consultas de acceso para los modelos NoSQL.
   \item Considerar otros modelos lógicos NoSQL como el orientado a columnas.
 \end{itemize}
-
-\section{Trabajo a futuro}

@@ -2480,8 +2480,14 @@
     <bcf:citekey order="120">pyecore_pyecore_2020</bcf:citekey>
     <bcf:citekey order="121">de_la_vega_mortadelo_2020</bcf:citekey>
     <bcf:citekey order="122">chebotko_big_2015</bcf:citekey>
-    <bcf:citekey order="123">fowler_brief_2003</bcf:citekey>
-    <bcf:citekey order="124">fowler_brief_2003</bcf:citekey>
+    <bcf:citekey order="123">dullea_analysis_2003</bcf:citekey>
+    <bcf:citekey order="124">noauthor_gojs_nodate-1</bcf:citekey>
+    <bcf:citekey order="125">ramez_elmasri_fundamentos_nodate</bcf:citekey>
+    <bcf:citekey order="126">martinez-mosquera_modeling_2020</bcf:citekey>
+    <bcf:citekey order="127">de_la_vega_mortadelo_2020</bcf:citekey>
+    <bcf:citekey order="128">pyecore_pyecore_2020</bcf:citekey>
+    <bcf:citekey order="129">fowler_brief_2003</bcf:citekey>
+    <bcf:citekey order="130">fowler_brief_2003</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

@@ -14,7 +14,7 @@ Como se especificó en la sección~\ref{ref:sec-nuxt-framework}, el \textit{web 
   
 Por la reactividad de Nuxt/Vue y la necesidad de implementar GoJS por sobre Nuxt/Vue, todas las instancias de GoJS se crean en el \textit{hook mounted} y se restaura el estado de cada componente usando Vuex; se eliminan todos los escuchas necesarios y se limpian los componentes de ser necesario en el \textit{hook beforeDestroy}.
 
-\subsection{Web Token}
+\subsection{Web Token y sesión o registro de usuario} 
 
 %De acuerdo con el sitio de Netlify~\cite{netlify_netlify_nodate}, Netlify ofrece funcionalidad HTTPS para todos sus sitios, tiene una mitigación activa en contra de ataques DDoS, todo su tráfico está cifrado en redes TLS y los \textit{tokens} están cifrados.
 
@@ -26,33 +26,33 @@ Esta información se puede verificar y confiar porque está firmada digitalmente
 Aunque los JWT se pueden cifrar para proporcionar ``secreto'' entre las partes, los \textit{jwt web tokens} se enfocan en \textit{tokens} firmados; los \textit{tokens} firmados pueden verificar la integridad de los reclamos que contiene, mientras que los \textit{tokens} cifrados ocultan esos reclamos de otras partes; cuando los \textit{tokens} se firman utilizando pares de claves públicas / privadas, la firma también certifica que solo la parte que posee la clave privada es la que la firmó.
 
 
-% La figura~\ref{img:prototipo-welcome} muestra la pantalla de bienvenida de la aplicación, donde el mensaje de iniciar sesión o registarse es visible si el usuario no ha iniciado sesión.
+La figura~\ref{img:prototipo-welcome} muestra la pantalla de bienvenida de la aplicación, donde el mensaje de iniciar sesión o registarse es visible si el usuario no ha iniciado sesión.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.75\textwidth]{interfaz/home.png}
-%     \caption{Pantalla de bienvenida}
-%     \label{img:prototipo-welcome}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/home.png}
+    \caption{Pantalla de bienvenida}
+    \label{img:prototipo-welcome}
+\end{figure}
 
-% La figura~\ref{img:prototipo-login} muestra la pantalla de inicio de sesión de la aplicación, donde se pide el correo y la contraseña para iniciar sesión.
-
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.75\textwidth]{interfaz/login.png}
-%     \caption{Pantalla de login}
-%     \label{img:prototipo-login}
-% \end{figure}
-% La figura~\ref{img:prototipo-signup} muestra el formulario de registro de la aplicación; para la validación de los campos se ha usado Vuelidate y muestra mensajes de error en caso de que algún campo esté rellenado incorrectamente.
+La figura~\ref{img:prototipo-login} muestra la pantalla de inicio de sesión de la aplicación, donde se pide el correo y la contraseña para iniciar sesión.
 
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.75\textwidth]{interfaz/register.png}
-%     \caption{Pantalla de alta de usuario}
-%     \label{img:prototipo-signup}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/login.png}
+    \caption{Pantalla de login}
+    \label{img:prototipo-login}
+\end{figure}
+La figura~\ref{img:prototipo-signup} muestra el formulario de registro de la aplicación; para la validación de los campos se ha usado Vuelidate y muestra mensajes de error en caso de que algún campo esté rellenado incorrectamente.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{interfaz/register.png}
+    \caption{Pantalla de alta de usuario}
+    \label{img:prototipo-signup}
+\end{figure}
 % La figura~\ref{img:prototipo-er} muestra la vista del diagramador entidad-relación básico, del lado izquierdo están los botones para guardar y cargar un diagrama en formato .json válido para la aplicación; en la segunda columna está la zona de diagramado para crear un diagrama entidad-relación y del lado derecho está la paleta de elementos donde están los elementos de un diagrama entidad-relación básico; en la parte de abajo está el JSON equivalente del diagrama que está en la zona de diagramado y a su derecha está un menú para modificar algunas propiedades de los elementos del diagramador.
 
 % \begin{figure}[H]
