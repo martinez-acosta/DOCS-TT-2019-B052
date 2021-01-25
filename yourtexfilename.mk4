@@ -1,0 +1,9 @@
+if mode=="draft" then
+  Make:htlatex{}
+else
+  Make:htlatex{}
+  Make:htlatex{}
+  Make:htlatex{}
+end
+
+Make:image("svg$","dvisvgm -n -p ${page} -c 1.4,1.4 -s ${source} > ${output}")

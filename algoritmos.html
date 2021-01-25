@@ -1,0 +1,232 @@
+<!DOCTYPE html> 
+<html lang="es" xml:lang="es" > 
+<head>
+   <title></title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="algoritmos.css" /> 
+<meta name="src" content="algoritmos.tex" /> 
+</head><body 
+>
+<!--l. 12--><p class="noindent" ><img 
+src="algoritmos0x.svg" alt="---------------------------------------------------------------------------
+  Algoritmo:  Transformaci ´on del modelo conceptual entidad-relaci´on
+
+--al modelo-relacional------------------------------------------------------
+   Entrada:   una instancia del modelo entidad-relaci´on, er
+   Salida   : una instancia del modelo relacional, relacional
+ 1 entidades ←  M  apearEntidadesRegulares   (er)
+ 2 relaciones ←  M apearRelaciones  (er)
+ 3 atributos ←  M apearAtributos (er)
+
+ 4 relacional.agregar (entidades)
+ 5 relacional.agregar (relaciones )
+ 6 relacional.agregar (atributos )
+---------------------------------------------------------------------------
+"  /><a 
+ id="x1-2r1"></a><a 
+ id="x1-3r1"></a><a 
+ id="x1-4r2"></a><a 
+ id="x1-5r3"></a><a 
+ id="x1-6r4"></a><a 
+ id="x1-7r5"></a><a 
+ id="x1-8r6"></a>
+<!--l. 28--><p class="noindent" ><img 
+src="algoritmos1x.svg" alt="---------------------------------------------------------------------------
+  Algoritmo:  Transformaci ´on del modelo conceptual GDM   al modelo
+--l´ogico-DDM----------------------------------------------------------------
+   Entrada:   una instancia del modelo GDM,   gdm
+   Salida   : una instancia del modelo DDM,   ddm
+
+ 1 entidadesP  rincipales ←  gdm.consultas.obtener ((c)|c.f rom )
+ 2 para  cada  entidad ∈ entidadesP rincipales hacer
+ 3  |  colecci´on ←  nueva  colecci´on ()
+ 4  |  colecci´on.nombre  ←  entidad.nombre
+    |                         ´
+ 5  |  ´arbolAcceso ←  generar ArbolAcceso (entidad,gdm.consultas  )
+ 6  |  colecci´on ←
+    |   llenarDocumento   (colecci´on.root,entidad,´arbolAcceso, entidadesP rincipales)
+ 7  |  ddm.colecciones.agregar (colecci´on )
+
+ 8 fin
+---------------------------------------------------------------------------
+"  /><a 
+ id="x1-11r2"></a><a 
+ id="x1-12r1"></a><a 
+ id="x1-13r2"></a><a 
+ id="x1-14r3"></a><a 
+ id="x1-15r4"></a><a 
+ id="x1-16r5"></a><a 
+ id="x1-17r6"></a><a 
+ id="x1-18r7"></a><a 
+ id="x1-19r8"></a>
+<!--l. 46--><p class="noindent" ><img 
+src="algoritmos2x.svg" alt="---------------------------------------------------------------------------
+--Algoritmo:--Generar--el contenido-de-un-documento------------------------
+   Entrada:   Un documento,  documento
+   Entrada:   Entidad actual, entidad
+   Entrada:   Un ´arbol de acceso de la entidad, ´arbol
+
+   Entrada:   Conjunto  de entidades principales, entidadesP rincipales
+   Salida   : Un documento   llenado  de elementos, documento
+ 1 agregarAtributos  (documento,  entidad )
+ 2 para  cada  hijo ∈ ´arbol.hijos hacer
+ 3  |  referencia ←  hijo.datos
+    |
+ 4  |  nuevoElemento   ←  nulo
+ 5  |  si referenciaApuntaAEntidadPrinci -
+    |   pal(referencia.entidad,entidadesPrincipales)
+    |   entonces
+ 6  |     nuevoElemento   ←  nuevo  elementoP  rimitivo()
+    |   |
+ 7  |     nuevoElemento.nombre    ←
+    |   |  ref erencia.entidad.nombre  + “Ref ”
+ 8  |     nuevoElemento.tipo   ←  “ID  ”
+ 9  |  en otro  caso
+    |   |
+10  |     nuevoElemento   ←  nuevo  Documento  ()
+11  |     nuevoElemento.nombre    ←  ref erencia.entidad.nombre
+12  |     llenarDocumento   (nuevoElemento,   ref erencia.entidad,
+    |   |  hijo,entidadesP  rincipales)
+13  |  fin
+    |
+14  |  si ref erencia.cardinalidad ⁄= 1 entonces
+15  |     nuevoElemento   ←  nuevo  elementoP  rimitivo()
+16  |     elementoArreglo   ← nuevo  elementoArreglo  ()
+17  |     elementoArreglo.nombre    ←
+    |   |  elementoArreglo.nombre    + “Arreglo ”
+    |   |
+18  |     elementoArreglo.tipo  ←  nuevoElemento
+19  |     documento.elementos.agregar   (elementoArreglo  )
+20  |  en otro  caso
+21  |     documento.elementos.agregar   (nuevoElemento  )
+    |   |
+22  |  fin
+23 fin
+---------------------------------------------------------------------------
+                                                                          
+
+                                                                          
+"  /><a 
+ id="x1-22r3"></a><a 
+ id="x1-23r1"></a><a 
+ id="x1-24r2"></a><a 
+ id="x1-25r3"></a><a 
+ id="x1-26r4"></a><a 
+ id="x1-27r5"></a><a 
+ id="x1-28r6"></a><a 
+ id="x1-29r7"></a><a 
+ id="x1-30r8"></a><a 
+ id="x1-31r9"></a><a 
+ id="x1-32r10"></a><a 
+ id="x1-33r11"></a><a 
+ id="x1-34r12"></a><a 
+ id="x1-35r13"></a><a 
+ id="x1-36r14"></a><a 
+ id="x1-37r15"></a><a 
+ id="x1-38r16"></a><a 
+ id="x1-39r17"></a><a 
+ id="x1-40r18"></a><a 
+ id="x1-41r19"></a><a 
+ id="x1-42r20"></a><a 
+ id="x1-43r21"></a><a 
+ id="x1-44r22"></a><a 
+ id="x1-45r23"></a>
+<!--l. 83--><p class="noindent" ><img 
+src="algoritmos3x.svg" alt="---------------------------------------------------------------------------
+  Algoritmo:  Transformaci ´on del modelo  entidad -relaci´on a las enti-
+--dades-del modelo-GDM-----------------------------------------------------
+   Entrada:   una instancia del modelo entidad-relaci´on, er
+   Salida   : una instancia de las entidades del modelo GDM,
+             entidades
+                       GDM
+ 1 entidades ←  obtenerEntidades  (er)
+ 2 entidadesApares   ← obtenerConexiones   (entidades, er)
+ 3 para  cada  par ∈ entidadesApares  hacer
+ 4  |  entidad ←  par.clave
+ 5  |  elementos  ←  par.valor
+    |
+ 6  |  atributos ←  []
+ 7  |  referencias ←  []
+ 8  |  para cada  elemento  ∈ elementos  hacer
+ 9  |     si elemento.tipo  =  “relaci´on” entonces
+10  |   |  |  nuevoElemento   ←  nuevo elementoP  rimitivo()
+    |   |  |
+11  |   |  |  referencia ←   {}
+12  |   |  |  relaci´on ←
+    |   |  |   obtenerElementosConectadosArelaci     ´on(elemento )
+13  |   |  |  referencia.nombre  ←
+    |   |  |
+    |   |  |   obtenerN  ombreRespectoCardinalidad   (ref erencia,relaci´on)
+14  |   |  |  referencia.entidad ←  obtenerEntidad  (relaci´on )
+15  |   |  |  referencia.cardinalidad ←
+    |   |  |   obtenerCardinalidad  (relaci´on)
+16  |   |  |  referencias.agregar (referencia )
+    |   |  |
+17  |     si elemento.tipo  =  “atributo” entonces
+18  |   |  |  atributo ←   {}
+19  |   |  |  atributo.nombre  ←  elemento.nombre
+20  |   |  |  atributo.tipo ← elemento.tipo
+21  |   |  |  atributo.tipo ← elemento.tipo
+    |   |  |
+22  |      |  atributos.agrergar (atributo)
+23  |  fin
+24  |  entidadesGDM  .agregar (atributos)
+25  |  entidades     .agregar (referencias )
+                GDM
+26 fin
+---------------------------------------------------------------------------
+                                                                          
+
+                                                                          
+"  /><a 
+ id="x1-48r4"></a><a 
+ id="x1-49r1"></a><a 
+ id="x1-50r2"></a><a 
+ id="x1-51r3"></a><a 
+ id="x1-52r4"></a><a 
+ id="x1-53r5"></a><a 
+ id="x1-54r6"></a><a 
+ id="x1-55r7"></a><a 
+ id="x1-56r8"></a><a 
+ id="x1-57r9"></a><a 
+ id="x1-58r10"></a><a 
+ id="x1-59r11"></a><a 
+ id="x1-60r12"></a><a 
+ id="x1-61r13"></a><a 
+ id="x1-62r14"></a><a 
+ id="x1-63r15"></a><a 
+ id="x1-64r16"></a><a 
+ id="x1-65r17"></a><a 
+ id="x1-66r18"></a><a 
+ id="x1-67r19"></a><a 
+ id="x1-68r20"></a><a 
+ id="x1-69r21"></a><a 
+ id="x1-70r22"></a><a 
+ id="x1-71r23"></a><a 
+ id="x1-72r24"></a><a 
+ id="x1-73r25"></a><a 
+ id="x1-74r26"></a>
+<!--l. 121--><p class="noindent" ><img 
+src="algoritmos4x.svg" alt="---------------------------------------------------------------------------
+--Algoritmo:--Generador--de-sentencias-MongoDB-----------------------------
+   Entrada:   una instancia del modelo DDM,   ddm
+
+   Salida   : sentencias del DDM   en MongoDB,   mongo
+ 1 para  cada  colecci´on ∈  ddm.colecciones hacer
+ 2  |  mongo  ←  generarColecci ´on(colecci´on)
+ 3 fin
+
+---------------------------------------------------------------------------
+"  /><a 
+ id="x1-77r5"></a><a 
+ id="x1-78r1"></a><a 
+ id="x1-79r2"></a><a 
+ id="x1-80r3"></a>
+    
+</body> 
+</html>
+                                                                          
+
+

@@ -1,0 +1,53 @@
+entity User {
+  id userId unique
+  text userName
+  text userEmail
+  text[*] areasOfExpertise
+  ref Review[*] postsReview
+  ref Artifact[*] likesArtifact
+  ref Venue[*] likesVenue
+  ref Review[*] likesReview
+}
+
+query Q1_artifactsByVenue:
+  select venue.venueName, venue.year
+        , artifacts.artifactId, artifacts.artifactTitle, artifacts.avgRating,
+        , artifacts.authors, artifacts.keywords
+  from Venue as venue
+  including venue.artifacts as artifacts
+  where venue.venueName = "?"
+    and venue.year > "?"
+
+entity Artifact {
+  id artifactId unique
+  text[*] authors
+  number numRatings
+  number avgRating
+  number sumRatings
+  text artifactTitle
+  text[*] keywords
+  ref Review[*] ratesReview
+  ref Venue[1] venue
+  ref User[*] likesUser
+}
+
+entity Venue {
+  text venueName
+  number year
+  id venueId unique
+  text homepage
+  text country
+  text[*] topics
+  ref Artifact[*] featuresArtifact
+  ref User[*] likesUser
+}
+
+entity Review {
+  number rating
+  text body
+  text reviewTitle
+  id reviewId unique
+  ref Artifact[1] artifact
+  ref User[1] user
+  ref User[*] likesUser
+}

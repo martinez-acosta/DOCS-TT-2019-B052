@@ -1,0 +1,3 @@
+  import langs.ddmLang as ddm
+  from pyecore.resources import ResourceSet, URI
+  from pyecore.resources.xmi import XMIResource

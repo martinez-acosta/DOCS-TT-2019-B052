@@ -1,0 +1,135 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[linesnumbered,ruled,spanish,onelanguage]{algorithm2e}
+\usepackage[spanish,mexico]{babel}
+\usepackage{algorithmicx}
+\usepackage[newfloat]{minted}
+
+\renewcommand{\thealgocf}{}
+\begin{document}
+
+\begin{algorithm}
+  \SetKwInOut{Input}{Entrada}
+  \SetKwInOut{Output}{Salida}
+
+  \Input{una instancia del modelo entidad-relación, $er$}
+  \Output{una instancia del modelo relacional, $relacional$}
+  $entidades \gets MapearEntidadesRegulares(er)$\\
+  $relaciones \gets MapearRelaciones(er)$\\
+  $atributos \gets MapearAtributos(er)$\\
+  $relacional.agregar(entidades)$\\
+  $relacional.agregar(relaciones)$\\
+  $relacional.agregar(atributos)$\\
+
+  \caption{Transformación del modelo conceptual entidad-relación al modelo relacional}
+\end{algorithm}
+
+\begin{algorithm}
+  \SetKwInOut{Input}{Entrada}
+  \SetKwInOut{Output}{Salida}
+
+  \Input{una instancia del modelo GDM, $gdm$}
+  \Output{una instancia del modelo DDM, $ddm$}
+  $entidadesPrincipales \gets gdm.consultas.obtener((c)|c.from)$\\
+  \ForEach{$entidad \in entidadesPrincipales$}{
+      $colección \gets nueva \ colección()$\\
+      $colección.nombre \gets entidad.nombre$\\
+      $árbolAcceso \gets generarÁrbolAcceso(entidad,gdm.consultas)$\\
+      $colección \gets llenarDocumento(colección.root,entidad,árbolAcceso,entidadesPrincipales)$\\
+      $ddm.colecciones.agregar(colección)$
+  }
+  
+  \caption{Transformación del modelo conceptual GDM al modelo lógico DDM}
+\end{algorithm}
+
+\begin{algorithm}
+  \SetKwInOut{Input}{Entrada}
+  \SetKwInOut{Output}{Salida}
+
+  \Input{Un documento, $documento$}
+  \Input{Entidad actual, $entidad$}
+  \Input{Un árbol de acceso de la entidad, $árbol$}
+  \Input{Conjunto de entidades principales, $entidadesPrincipales$ }
+  \Output{Un documento llenado de elementos, $documento$}
+  $agregarAtributos(documento,entidad)$\\
+  \ForEach{$hijo \in árbol.hijos$}{
+      $referencia \gets hijo.datos $\\
+      $nuevoElemento \gets nulo $\\
+      \uIf{referenciaApuntaAEntidadPrincipal(referencia.entidad,entidadesPrincipales)}{
+            $nuevoElemento \gets nuevo \ elementoPrimitivo()$\\
+            $nuevoElemento.nombre \gets referencia.entidad.nombre + ``Ref" $\\
+            $nuevoElemento.tipo \gets  \ ``ID"$\\
+        }
+        \Else{
+            $nuevoElemento \gets nuevo\ Documento()$\\
+            $nuevoElemento.nombre \gets referencia.entidad.nombre$\\
+            $llenarDocumento(nuevoElemento, referencia.entidad,\linebreak hijo, entidadesPrincipales)$\\
+        }
+        \uIf{$referencia.cardinalidad \neq 1$}{
+            $nuevoElemento \gets nuevo \ elementoPrimitivo()$\\
+            $elementoArreglo \gets nuevo \ elementoArreglo()$\\
+            $elementoArreglo.nombre \gets elementoArreglo.nombre + ``Arreglo"$\\
+            $elementoArreglo.tipo \gets nuevoElemento$\\
+            $documento.elementos.agregar(elementoArreglo)$\\
+        }
+        \Else{
+           $documento.elementos.agregar(nuevoElemento)$\\
+        }
+  }
+  \caption{Generar el contenido de un documento}
+\end{algorithm}
+
+\begin{algorithm}
+  \SetKwInOut{Input}{Entrada}
+  \SetKwInOut{Output}{Salida}
+
+  \Input{una instancia del modelo entidad-relación, $er$}
+  \Output{una instancia de las entidades del modelo GDM, $entidades_{GDM}$}
+  $entidades \gets obtenerEntidades(er)$\\
+  $entidadesApares \gets obtenerConexiones(entidades,er)$\\
+  \ForEach{$par \in entidadesApares$}{
+    $entidad \gets par.clave $\\
+    $elementos \gets par.valor $\\
+    $atributos \gets [] $\\
+    $referencias \gets [] $\\
+    \ForEach{$elemento \in elementos$}{
+      \uIf{$elemento.tipo =  \ ``relación"$}{
+            $nuevoElemento \gets nuevo \ elementoPrimitivo()$\\
+            $referencia \gets  \ \{ \}$\\
+            $relación \gets obtenerElementosConectadosArelación(elemento)$\\
+            $referencia.nombre \gets obtenerNombreRespectoCardinalidad(referencia,relación)$\\
+            $referencia.entidad \gets obtenerEntidad(relación)$\\
+            $referencia.cardinalidad \gets obtenerCardinalidad(relación)$\\
+            $referencias.agregar(referencia)$
+        }
+        \uIf{$elemento.tipo = \ ``atributo"$}{
+            $atributo \gets  \ \{ \}$\\
+            $atributo.nombre \gets elemento.nombre$\\
+            $atributo.tipo \gets elemento.tipo$\\
+            $atributo.tipo \gets elemento.tipo$\\
+            $atributos.agrergar(atributo)$\\
+        }
+    }
+    $entidades_{GDM}.agregar(atributos)$\\
+    $entidades_{GDM}.agregar(referencias)$\\
+}
+  
+  \caption{Transformación del modelo entidad-relación a las entidades del modelo GDM}
+\end{algorithm}
+
+\begin{algorithm}
+  \SetKwInOut{Input}{Entrada}
+  \SetKwInOut{Output}{Salida}
+
+  \Input{una instancia del modelo DDM, $ddm$}
+  \Output{sentencias del DDM en MongoDB, $mongo$}
+  \ForEach{$colección \in ddm.colecciones$}{
+      $mongo \gets generarColección(colección)$\\
+  }
+  
+  \caption{Generador de sentencias MongoDB}
+\end{algorithm}
+
+\end{document}
+
